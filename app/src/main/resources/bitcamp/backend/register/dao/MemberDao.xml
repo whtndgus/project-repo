@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.register.dao.MemberDao">
+
+  <resultMap type="member" id="memberMap">
+    <id column="m_no" property="no"/>
+    <result column="m_id" property="id"/>
+    <result column="m_pw" property="password"/>
+    <result column="m_name" property="name"/>
+    <result column="m_bday" property="birth"/>
+    <result column="addr" property="addr"/>
+    <result column="m_email" property="email"/>
+    <result column="m_gender" property="gender"/>
+    <result column="m_tel" property="tel"/>
+    <result column="m_auth" property="auth"/>
+    <result column="m_photo" property="phoUrl"/>
+    <result column="pho_filename" property="phoName"/>
+    <result column="pho_type" property="phoType"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="member" 
+          useGeneratedKeys="true" keyProperty="no" keyColumn="m_no">
+    insert into app_member(m_id, m_pw, m_name, m_bday, addr, m_email, m_gender, m_tel, m_auth, m_photo, pho_filename, pho_type)
+    values(#{id}, sha2(#{password},256), #{name}, #{birth}, #{addr}, #{email}, #{gender}, #{tel}, #{auth}, #{phoUrl}, #{phoName}, #{phoType})
+  </insert>
+  
+  <select id="findById" parameterType="String" resultMap="memberMap">
+	  select 
+	    m_no, 
+	    m_id, 
+	    m_pw, 
+	    m_name, 
+	    m_bday, 
+	    addr, 
+	    m_email, 
+	    m_gender, 
+	    m_tel, 
+	    m_auth, 
+	    m_photo, 
+	    pho_filename, 
+	    pho_type 
+	  from 
+	    app_member 
+	  where 
+	    m_id=#{id}
+  </select>
+
+  <select id="findAll" resultMap="memberMap">
+    select 
+      m_id, 
+      m_name, 
+      m_email, 
+      m_tel 
+    from 
+      app_member 
+    order by 
+      m_no desc
+  </select>
+
+  <select id="findByNo" parameterType="int" resultMap="memberMap">
+    select 
+      m_id, 
+      m_pw, 
+      m_name, 
+      m_email, 
+      m_tel 
+    from 
+      app_member 
+    where 
+      m_no=#{no}
+  </select>
+  
+  <update id="update" parameterType="member">
+    update app_member set
+      m_name=#{name}, 
+      m_bday=#{birth}, 
+      addr=#{addr}, 
+      m_email=#{email}, 
+      m_gender=#{gender}, 
+      m_tel=#{tel} 
+    where m_no=#{no}
+  </update>
+  
+  <update id="updatePw" parameterType="member">
+    update app_member set
+      m_pw=#{password}
+    where m_no=#{no}
+  </update>
+  
+  <update id="updateImg" parameterType="member">
+    update app_member set
+      m_photo=#{phoUrl},
+      pho_filename=#{phoName},
+      pho_type=#{phoType}
+    where m_no=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from app_member
+    where m_no=#{no}
+  </delete>
+</mapper>
+

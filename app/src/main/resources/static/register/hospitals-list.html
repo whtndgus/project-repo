@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>의사 - Main</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+    <!--구글폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="../assets/img/newlogo.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+body::-webkit-scrollbar {
+  background-color: transparent;
+}
+.hos-time::-webkit-scrollbar {
+  width: 10px;
+}
+
+.hos-time::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.hos-time::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: none;
+}
+
+
+  </style>
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>  -->
+    <!-- <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script> -->
+    <!-- <script>
+        jQuery(function($){
+            $("#foo-table").DataTable();
+            $("#foo-table2").DataTable();
+        });
+    </script> -->
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+  <div class="d-flex align-items-center justify-content-between">
+    <a href="index.html" class="logo d-flex align-items-center">
+      <img src="../assets/img/newlogo.png" alt="">
+      <span class="d-none d-lg-block">MyClinic</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div><!-- End Logo -->
+
+  <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+  </div><!-- End Search Bar -->
+
+  <div class="top-menu">
+    <a href="pages-notice.html"  class="nav-link collapsed"><span>공지사항</span></a>
+    
+    <a href="doctors-community-main.html"  class="nav-link"><span>커뮤니티</span></a>
+
+    <a href="doctors-signup.html"  class="nav-link collapsed"><span>회원가입(의사)</span></a>
+  </div>
+
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+
+      <li class="nav-item dropdown">
+
+        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <i class="bi bi-bell"></i>
+          <span class="badge bg-primary badge-number">2</span>
+        </a><!-- End Notification Icon -->
+
+        <!--우측 상단 알림 -->
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+          <li class="dropdown-header">
+            확인하지 않은 알림이 있습니다.
+            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li class="notification-item">
+            <i class="bi bi-exclamation-circle text-warning"></i>
+            <div>
+              <h4>진료 답변 확인하기</h4>
+              <p>OOO 환자님 안녕하세요....</p>
+              <p>30분 전</p>
+            </div>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li class="notification-item">
+            <i class="bi bi-x-circle text-danger"></i>
+            <div>
+              <h4>개인정보 보호 안내</h4>
+              <p>비밀번호를 변경해주세요</p>
+              <p>1 시간 전</p>
+            </div>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="dropdown-footer">
+            <a href="#">Show all notifications</a>
+          </li>
+
+        </ul><!-- End Notification Dropdown Items -->
+
+      </li><!-- End Notification Nav -->
+
+      
+
+      <li class="nav-item dropdown pe-3">
+
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2">엄 진 영</span>
+        </a><!-- End Profile Iamge Icon -->
+
+
+</header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+    
+      <li class="nav-heading">의사 전용 페이지</li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="doctors-mypage.html">
+          <i class="bi bi-person"></i>
+          <span>내 정보</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="doctors-advices.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>진료하기</span>
+        </a>
+      </li> 
+
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="doctors-review.html">
+          <i class="bi bi-envelope"></i>
+          <span>진료 리뷰 확인</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bi bi-question-circle"></i>
+          <span>Q & A</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="doctors-myhospital.html">
+          <i class="bi bi-card-list"></i>
+          <span>내 병원 정보</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>로그아웃</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+      
+      <!--
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-blank.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>Blank</span>
+        </a>
+      </li> End Blank Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>병원정보</h1>
+      <!-- <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item active">Main</li>
+
+        </ol>
+      </nav> -->
+    </div><!-- End Page Title -->
+    
+    <section class="section">
+      <div class="row">
+        <div class="container">
+        <div class="col-12">
+          <div class="card"> 
+            <div class="card-body">
+              <h4 class="card-title" style="float: right;">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#staticBackdrop"style="background-color: #77DD77; color: #FFFFFF; border: none; height:40px; border-radius: 5px 5px 5px 5px;">
+                  병원추가
+                </button> 
+                <strong style="margin-left: 710px;">병원정보검색</strong>
+                  <input type="text" id="search-input" placeholder="병원명,주소,진료과목🔍">
+                </h4>            
+                  <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
+              
+              <!-- Table with stripped rows -->
+              <table id= "foo-table"class="table table-hover">
+                <thead> 
+                  <tr>
+                    <!-- table 작업시에 <th><td> 갯수가 서로 일치하지 않으면 정렬 버튼 사라집니다 -->
+                    <th scope="col">번호</th>
+                    <th scope="col">병원명</th>
+                    <th scope="col">주소</th>
+                    <th scope="col">전화</th>
+                    <!-- <th scope="col">진료시간</th> 굳이시간 받을필요 없음 --> 
+                    <th scope="col">진료과목</th>
+                    <th scope="col">사업자번호</th>
+                  </tr> 
+                </thead>
+                <tbody id="hospital-list" class="table-group-divider">
+                  <tr id = "hospital-list-detail">                    
+                    <td id="hospitalNo"></td>
+                    <td id="hospitalName"></td>
+                    <td id="hospitalAddr"></td>
+                    <td id="hospitalTel"></td>
+                    <!-- <td id="hospitalTime"></td> 굳이시간 받을필요 없음 -->
+                    <td id="hospitalSub"></td>
+                    <td id="hospitalBusno"></td>
+                  </tr>
+                </tbody>
+              </table>
+                          
+              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#staticBackdrop"style="background-color: #77DD77; color: #FFFFFF; border: none; height:40px; border-radius: 5px 5px 5px 5px;">
+                병원추가
+              </button>               -->
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl"   style="max-width: 1600px;">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">병원추가</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="max-height: 300px; overflow-y: auto;">
+                      <table id="foo-table2" class="table-hover cursor">
+                        <thead> 
+                          <tr>                              
+                            <th scope="col">병원명</th>
+                            <th scope="col">주소</th>
+                            <th scope="col">전화<span id="id-validation-msg"class="validation-msg"></span></th>
+                            <th scope="col">진료시간</th> 
+                            <th scope="col">진료과목</th>
+                            <th scope="col">사업자번호</th>
+                            <th scope="col">병원사진</th>                                 
+                          </tr> 
+                        </thead>
+                        <form id="hospital-list">
+                        <tbody class="table-group-divider">
+                          <div class="hospital-list-css">
+                          <tr>                  
+                            <td><input id="hosName" class="hos-name" type="text"/></td>
+                            <td><input id="hosAddr" class="hos-addr"type="text"/></td>
+                            <td><input id="hosTel"  class="hos-tel"type="text" 
+                              placeholder="'-' 없이 입력" 
+                              pattern="^01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}$"
+                              maxlength="13"
+                              oninput="autoTelHyphen(event)"
+                              required/></td>
+                            <td><input id="hosTime" class="hos-time" type="text" placeholder="예:월~금 08시~18시30분,토 휴진"/></td>  
+                            <td><input id="hosSub"  class="hos-sub"type="text" placeholder="예: 가정의학과,소아과"/></td>
+                            <td><input id="hosBusno"  class="hos-busno"type="text"/></td>   
+                            <form> 
+                            <td><input type="file" id="hosPhoto" class="hos-photo hospital-files" style="width: 220px;" accept="image/*" multiple required></td>                               
+                            </form>
+                          </tr>   
+                        </div>                          
+                        </tbody>
+                        </form>
+                      </table>                      
+                    </div>
+                    <div id="hospital-success-message" style="display: none; text-align: center; color: #77DD77;">
+                      <h4>💚추가되었습니다.</h4>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                      
+                      <button type="button" class="btn btn-secondary mr-auto" onclick="location.reload()" data-bs-dismiss="modal">Close</button>
+                      <button type="button" id="btn-submit" class=" btn btn-secondary" style="background-color: #77DD77; color: #FFFFFF; border: none; height:40px; border-radius: 5px 5px 5px 5px;">병원추가</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+      
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="../assets/vendor/echarts/echarts.min.js"></script>
+  <script src="../assets/vendor/quill/quill.min.js"></script>
+  <!-- <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script> -->
+  <!-- <script src="../assets/vendor/simple-datatables/doctor-datatables.js"></script> -->
+  <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script>    
+ 
+//검색기능
+const tbody = document.querySelector('tbody');
+const searchInput = document.querySelector('#search-input');
+// const hospitalNo = document.querySelector('#hospitalNo').value;
+
+let dataList = [];
+
+searchInput.addEventListener('input', function() {
+  const searchValue = searchInput.value.trim();
+  if (searchValue === '') {
+    renderDataList(dataList);
+  } else {
+    const filteredDataList = dataList.filter(function(data) {
+      return data.hosName.includes(searchValue) ||
+       data.hosAddr.includes(searchValue) ||
+       data.hosSub.includes(searchValue);
+    });
+    renderDataList(filteredDataList);
+  }
+});
+//검색기능 출력(렌더링)
+// <td>${row.hosTime}</td>
+function renderDataList(dataList) {
+  let html = '';
+  for (var row of dataList) {
+    html += `<tr>
+        <td>${row.hospitalNo}</td>
+        <td><a href="hospitals-view.html?no=${row.hospitalNo}">${row.hosName}</a></td>
+        <td>${row.hosAddr}</td>
+        <td>${row.hosTel}</td>        
+        <td>${row.hosSub}</td>
+        <td>${row.hosBusno}</td>
+        </tr>\n`;
+  }
+  tbody.innerHTML = html;
+}
+
+fetch('http://localhost:8080/hospital/list')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {      
+    dataList = data.data;
+    renderDataList(dataList);
+  })
+  .catch((err) => {
+    alert('서버 요청 오류!');
+    console.log(err);
+  });
+        // tel 변수
+const hosTel = document.querySelector('.hos-tel');
+const idValidationMsg = document.getElementById('id-validation-msg');
+let isDuplicate = false;
+
+// tel 중복 확인
+hosTel.addEventListener('keyup', () => {
+  const tel = hosTel.value;
+  if (tel.length < 7) {
+    idValidationMsg.textContent = '번호를 7자 이상 입력하세요.';
+    hosTel.classList.remove('is-valid', 'is-invalid');
+    hosTel.classList.add('is-invalid');
+    idValidationMsg.style.color = '#dc3545';
+    return;
+  }
+        // 전화번호 자동 하이픈 입력
+        function autoTelHyphen(event) {
+        const target = event.target;
+        target.value = target.value
+          .replace(/[^0-9]/g, '')
+          .replace(/^(\d{3})(\d{4})(\d{4})$/g, '$1-$2-$3')
+          .replace(/(\-{1,2})$/g, '');
+      }
+
+  // 유효한 전화번호인 경우에만 fetch 요청을 보냅니다.
+  fetch(`http://localhost:8080/hospital/check-duplicate/${tel}`)
+    .then((response) => response.json())
+    .then((result) => {
+      if (result.status === 'failure') {
+        idValidationMsg.textContent = result.message;
+        hosTel.classList.remove('is-valid', 'is-invalid');
+        hosTel.classList.add('is-invalid');
+        idValidationMsg.style.color = '#dc3545';
+        isDuplicate = true;
+      } else {
+        idValidationMsg.textContent = result.message;
+        hosTel.classList.remove('is-valid', 'is-invalid');
+        hosTel.classList.add('is-valid');
+        idValidationMsg.style.color = '#198754';
+        isDuplicate = false;
+      }
+    })
+    .catch((exception) => {
+      console.error('전화번호 중복 확인 중 오류 발생:', exception);
+      idValidationMsg.textContent = '오류가 발생했습니다. 다시 시도해주세요.';
+      hosTel.classList.remove('is-valid', 'is-invalid');
+      hosTel.classList.add('is-invalid');
+      idValidationMsg.style.color = '#dc3545';
+    });
+});
+
+const message = document.querySelector('#hospital-success-message');
+
+document.querySelector('#btn-submit').onclick = (e) => {
+  if(hosTel.value === '' || hosTel.value.length < 7){
+    return false;
+  }
+document.getElementById("btn-submit").style.display = "none";
+
+    //인풋태그 read only로 변경
+    function makeInputsReadonly() {
+      var inputs = document.querySelectorAll(".hos-name, .hos-addr, .hos-tel, .hos-time, .hos-sub, .hos-busno, .hos-photo");
+      inputs.forEach(function(input) {
+      input.setAttribute("readonly", true);
+      input.style.color = 'grey;';
+      });
+    }
+    makeInputsReadonly();
+
+    fetch("http://localhost:8080/hospital", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        hosName: document.querySelector('#hosName').value,
+        hosAddr: document.querySelector('#hosAddr').value,
+        hosTel: document.querySelector('#hosTel').value,
+        hosTime: document.querySelector('#hosTime').value,
+        hosSub: document.querySelector('#hosSub').value,
+        hosBusno: document.querySelector('#hosBusno').value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {        
+        console.log("성공:", data);
+        message.style.display = 'block';
+        submitFiles(data.data.hospitalNo);
+        console.log(data.data.hospitalNo);
+       })
+      .catch((error) => {
+        console.error("실패:", error);
+      })
+
+    }; 
+  
+  function submitFiles(no) {
+  console.log(no);
+  let formData = new FormData();
+  let files = document.querySelector(".hospital-files").files;
+
+  if (files.length == 0) {
+    return
+  }
+
+  for (let i = 0; i < files.length; i++) {
+    if (files[i].name.includes(".bmp") || 
+    files[i].name.includes(".jpeg") || 
+    files[i].name.includes(".jpg") || 
+    files[i].name.includes(".gif") || 
+    files[i].name.includes(".png") || 
+    files[i].name.includes(".tiff") || 
+    files[i].name.includes(".psd") || 
+    files[i].name.includes(".tga") || 
+    files[i].name.includes(".ai") || 
+    iles[i].name.includes(".svg") || 
+    files[i].name.includes(".exif") || 
+    files[i].name.includes(".jfif")) {
+
+    formData.append("files", files[i]);
+    formData.append("hosNo", no); //  여기 입력되는 정수가 커뮤 번호여야 한다
+    }
+  }
+  $.ajax({
+    url: 'http://localhost:8080/hospitalImg/insertHosImg',
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+    type: 'POST',
+    success: function (data) {
+      console.log("데이터 업로드 성공");
+    },
+    error: function (e) {
+      console.log("데이터 업로드 실패");
+    }
+  });
+}
+    // document.getElementById('btn-submit').addEventListener('click', function() {
+    // document.getElementById('hospital-list').innerHTML = ''; // clear the table
+  // });
+  </script>
+  <script>
+
+   
+</script>
+</body>
+
+</html>

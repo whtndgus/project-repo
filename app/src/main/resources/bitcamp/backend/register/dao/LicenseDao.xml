@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.register.dao.LicenseDao">
+
+  <resultMap type="license" id="licenseMap">
+    <id column="d_no" property="d_no"/>
+    <result column="license_no" property="l_no"/>
+    <result column="license_photo" property="licensePhoto"/>
+    <result column="pho_filename" property="phoFilename"/>
+    <result column="pho_type" property="phoType"/>
+    <result column="license_OX" property="licenseOx"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="license" 
+          useGeneratedKeys="true" keyProperty="no" keyColumn="d_no">
+    insert into app_license(d_no, license_no, license_photo, pho_filename, pho_type)
+    values(#{d_no}, #{l_no}, #{licensePhoto}, #{phoFilename}, #{phoType})
+  </insert>
+
+  <select id="findAll" resultMap="licenseMap">
+    select
+     m.m_id, 
+     m.m_name, 
+     m.m_email, 
+     m.m_tel,
+     h.hos_name,
+     d.career,
+     i.license_name,
+     l.pho_filename,
+     l.license_OX
+    from
+     app_doctor d
+    left join app_hospital h on d.hos_no=h.hos_no
+    left join app_license l on d.d_no=l.d_no
+    left join app_license_info i on l.license_no=i.license_no
+    left join app_member m on m.m_no=d.d_no
+    order by 
+      d.d_no desc
+  </select>
+
+  <select id="findByDno" parameterType="int" resultMap="licenseMap">
+    select
+     m.m_id, 
+     m.m_name, 
+     m.m_email, 
+     m.m_tel,
+     h.hos_name,
+     d.career,
+     i.license_name,
+     l.pho_filename,
+     l.license_OX
+    from
+     app_doctor d
+    left join app_hospital h on d.hos_no=h.hos_no
+    left join app_license l on d.d_no=l.d_no
+    left join app_license_info i on l.license_no=i.license_no
+    left join app_member m on m.m_no=d.d_no
+    where d.d_no=#{d_no}
+  </select>
+  
+  <select id="findByLno" parameterType="int" resultMap="licenseMap">
+    select
+     m.m_id, 
+     m.m_name, 
+     m.m_email, 
+     m.m_tel,
+     h.hos_name,
+     d.career,
+     i.license_name,
+     l.pho_filename,
+     l.license_OX
+    from
+     app_doctor d
+    left join app_hospital h on d.hos_no=h.hos_no
+    left join app_license l on d.d_no=l.d_no
+    left join app_license_info i on l.license_no=i.license_no
+    left join app_member m on m.m_no=d.d_no
+    where l.license_no=#{l_no}
+  </select>
+  
+  <!--  <select id="findByIdAndPassword" parameterType="map" resultMap="licenseMap">
+    select
+     m.m_id, 
+     m.m_name, 
+     m.m_email, 
+     m.m_tel,
+     h.hos_name,
+     d.career,
+     i.license_name,
+     l.pho_filename,
+     l.license_OX
+    from
+     app_doctor d
+    left join app_hospital h on d.hos_no=h.hos_no
+    left join app_license l on d.d_no=l.d_no
+    left join app_license_info i on l.license_no=i.license_no
+    left join app_member m on m.m_no=d.d_no
+    where
+      
+      m.m_id = m_id
+      and m.m_pw = m_pw 
+      
+      m.m_id = #{id}
+      and m.m_pw = sha2(#{password},256)  
+  </select> -->
+  
+  <!-- <update id="update" parameterType="license">
+    update app_license set
+       license_OX=#{licenseOx} 
+    where d_no=#{no}
+    and license_no=#{licenseNo}
+  </update> -->
+  
+  <delete id="delete" parameterType="license">
+    delete from app_license
+    where d_no=#{d_no}
+    and license_no=#{l_no}
+  </delete>
+  
+</mapper>
+

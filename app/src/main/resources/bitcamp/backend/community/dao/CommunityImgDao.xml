@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.community.dao.CommunityImgDao">
+
+ <resultMap type="communityImg" id="communityImgMap">
+ <id column="pho_no" property="imgNo"/>
+ <result column="com_no" property="comNo"/>
+ <result column="pho_name" property="imgUrl"/>
+ <result column="pho_filename" property="imgName"/>
+ <result column="pho_type" property="imgType"/>
+ </resultMap>
+
+  <insert id="insertImg" parameterType="communityImg" >
+    insert into app_comm_photo (com_no, pho_name, pho_filename, pho_type)
+    value (#{comNo}, #{imgUrl}, #{imgName}, #{imgType});
+  </insert>
+   
+  <select id ="findByCno" resultMap="communityImgMap" parameterType="int">
+    select 
+      c.com_no,
+      p.pho_no,
+      p.pho_name,
+      p.pho_filename,
+      p.pho_type
+    from app_comm_photo p
+      left join app_community c
+      on p.com_no=c.com_no
+    where 
+      p.com_no=#{no}
+  </select>
+  
+  <delete id="deleteImg" parameterType="int">
+    delete from app_comm_photo p
+    where com_no=#{no}
+  </delete>
+  
+  
+  
+  
+</mapper>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.register.dao.HospitalDao">
+
+<resultMap type="Hospital" id="hospitalMap">
+  <id column="hos_no" property="hospitalNo"/>
+  <result column="hos_name" property="hosName"/>
+  <result column="hos_addr" property="hosAddr"/>
+  <result column="hos_tel" property="hosTel"/>
+  <result column="hos_time" property="hosTime"/>
+  <result column="hos_sub" property="hosSub"/>
+  <result column="hos_busno" property="hosBusno"/>
+</resultMap>
+
+<insert id="insert" parameterType="Hospital" useGeneratedKeys="true" keyProperty="hospitalNo" keyColumn="hos_no">
+  insert into app_hospital(hos_name, hos_addr, hos_tel, hos_time, hos_sub, hos_busno)
+  values(#{hosName}, #{hosAddr}, #{hosTel}, #{hosTime}, #{hosSub}, #{hosBusno})
+</insert>
+
+ 
+  <select id="findAll" resultMap="hospitalMap">
+    select 
+      hos_no,
+      hos_name, 
+      hos_addr, 
+      hos_tel, 
+      hos_time,
+      hos_sub,
+      hos_busno
+    from 
+      app_hospital 
+    order by 
+      hos_no desc
+  </select>
+  
+<select id="findByTel" parameterType="String" resultMap="hospitalMap">
+    select 
+      hos_no,
+      hos_name, 
+      hos_addr, 
+      hos_tel, 
+      hos_time,
+      hos_sub,
+      hos_busno
+    from 
+      app_hospital 
+    where 
+      hos_tel = #{tel}
+</select>
+
+  <select id="findByNo" parameterType="int" resultMap="hospitalMap">
+    select 
+      hos_no,
+      hos_name, 
+      hos_addr, 
+      hos_tel, 
+      hos_time,
+      hos_sub,
+      hos_busno
+    from 
+      app_hospital 
+    where 
+      hos_no=#{hosNo}
+  </select>
+  
+  <update id="update" parameterType="hospital">
+    update app_hospital set
+      hos_name=#{hosName}, 
+      hos_addr=#{hosAddr}, 
+      hos_tel=#{hosTel}, 
+      hos_time=#{hosTime},
+      hos_sub=#{hosSub},
+      hos_busno=#{hosBusno}
+    where hos_no=#{hosNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from app_hospital
+    where hos_no=#{hosNo}
+  </delete>
+</mapper>
+

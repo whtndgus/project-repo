@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.user.dao.BoardDao">
+
+ <!--<resultMap type="board" id="boardMap">
+    <id column="board_id" property="no"/>
+    <result column="title" property="title"/>
+    <result column="pain" property="pain"/>
+    <result column="pwd" property="password"/>
+  </resultMap>  --> 
+
+  <insert id="insert" parameterType="bitcamp.backend.user.vo.Board" 
+          useGeneratedKeys="true" keyColumn="board_id" keyProperty="no">
+    insert into app_symp_board (symp_title, symp_cont1, symp_cont2, serial)
+    values(#{title}, #{pain}, #{another}, #{serial})
+  </insert>
+  
+  <select id="findAll" resultType="bitcamp.backend.user.vo.Board" parameterType="string">
+    select 
+      b.symp_no as no, 
+      b.symp_title as title,
+      b.symp_date as createdDate,
+      b.symp_cont1 as pain,
+      b.symp_cont2 as another
+    from 
+      app_symp_board b
+    <if test="keyword != '' and keyword != null">
+    where 
+      b.symp_title like(concat('%',#{keyword},'%'))
+      or b.symp_cont1 like(concat('%',#{keyword},'%'))
+    </if> 
+  </select>
+  
+  <select id="findByNo" resultType="bitcamp.backend.user.vo.Board" parameterType="int">
+    select 
+      b.symp_no as no, 
+      b.symp_title as title,
+      b.serial as serial,
+      b.symp_date as createdDate,
+      b.symp_cont1 as pain,
+      b.symp_cont2 as another
+    from 
+      app_symp_board b
+    <if test="no != 0 and no != null">
+    where 
+      b.symp_no = #{no}
+    </if> 
+  </select>
+  
+  <update id="update" parameterType="bitcamp.backend.user.vo.Board">
+    UPDATE
+      app_symp_board b
+		SET
+		  b.symp_title=#{title},
+		  b.symp_cont1=#{pain},
+		  b.symp_cont2=#{another}
+		WHERE symp_no=#{no};
+  </update>
+  
+  <select id="findByPassword" resultType="bitcamp.backend.user.vo.Board" parameterType="long">
+    select 
+      b.symp_no as no, 
+      b.symp_title as title,
+      b.serial as serial,
+      b.symp_date as createdDate,
+      b.symp_cont1 as pain,
+      b.symp_cont2 as another
+    from 
+      app_symp_board b
+    <if test="serial != 0 and serial != null">
+    where 
+      b.serial = #{serial}
+    </if> 
+  </select>
+  
+  <select id="findByPno" resultType="bitcamp.backend.user.vo.Board" parameterType="int">
+    select 
+      b.symp_no as no, 
+      b.symp_title as title,
+      b.serial as serial,
+      b.symp_date as createdDate,
+      b.symp_cont1 as pain,
+      b.symp_cont2 as another
+    from 
+      app_symp_board b
+    <if test="no != 0 and no != null">
+    where 
+      b.p_no = #{no}
+    </if> 
+  </select>
+  
+</mapper>

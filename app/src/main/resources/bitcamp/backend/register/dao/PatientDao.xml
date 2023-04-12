@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.register.dao.PatientDao">
+
+  <resultMap type="patient" id="patientMap">
+    <id column="p_no" property="no"/>
+    <result column="m_id" property="id"/>
+    <result column="m_pw" property="password"/>
+    <result column="m_name" property="name"/>
+    <result column="m_bday" property="birth"/>
+    <result column="addr" property="addr"/>
+    <result column="m_email" property="email"/>
+    <result column="m_gender" property="gender"/>
+    <result column="m_tel" property="tel"/>
+    <result column="m_auth" property="auth"/>
+    <result column="m_photo" property="phoUrl"/>
+    <result column="pho_filename" property="phoName"/>
+    <result column="pho_type" property="phoType"/>
+    <result column="p_phy" property="phy"/>
+    <result column="p_drug" property="drug"/>
+    
+  </resultMap>
+
+  <insert id="insert" parameterType="patient" 
+          useGeneratedKeys="true" keyProperty="no" keyColumn="p_no">
+    <!--  insert into app_patient(p_no, p_phy, p_drug)
+    values(#{no},#{phy}, #{drug})-->
+    insert into app_patient(p_no, p_phy, p_drug)
+    values(#{no},#{phy}, #{drug})
+  </insert>
+
+  <select id="findAll" resultMap="patientMap">
+    select 
+      m.m_id, 
+      m.m_name, 
+      m.m_email, 
+      m.m_tel,
+      p.p_phy,
+      p.p_drug 
+    from 
+      app_patient as p
+      inner join app_member m on p.p_no = m.m_no
+    order by 
+      p_no desc
+  </select>
+
+  <select id="findByNo" parameterType="int" resultMap="patientMap">
+    select 
+      m.m_id, 
+      m.m_pw, 
+      m.m_name, 
+      m.m_email, 
+      m.m_gender,
+      m.m_bday,
+      m.m_tel,
+      m.addr,
+      m.m_photo,
+      m.pho_filename,
+      m.pho_type,
+      p.p_phy,
+      p.p_drug,
+      p.p_drug,
+      p.p_no
+    from 
+      app_patient p
+      inner join app_member m on p.p_no = m.m_no
+    where 
+      p_no=#{no}
+  </select>
+  
+  <select id="findByIdAndPassword" parameterType="map" resultMap="patientMap">
+    select
+      p.p_no,
+      m.m_id,
+      m.m_name,
+      m.m_pw,
+      m.m_tel,
+      m.m_email,
+      p.p_phy,
+      p.p_drug,
+      m.addr,
+      m.m_gender
+    from
+      app_patient p
+      inner join app_member m on p.p_no = m.m_no
+    where
+    <!--
+      m.m_id = m_id
+      and m.m_pw = m_pw  
+      -->        
+      m.m_id = #{id}
+      and m.m_pw = sha2(#{password},256)  
+  </select>
+  
+  <update id="update" parameterType="patient">
+    update app_patient set
+      p_phy=#{phy},
+      p_drug=#{drug}
+    where p_no=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from app_patient
+    where p_no=#{no}
+  </delete>
+</mapper>

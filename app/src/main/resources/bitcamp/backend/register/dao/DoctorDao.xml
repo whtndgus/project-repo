@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.register.dao.DoctorDao">
+
+  <resultMap type="doctor" id="doctorMap">
+    <id column="d_no" property="no"/>
+    <result column="m_id" property="id"/>
+    <result column="m_pw" property="password"/>
+    <result column="m_name" property="name"/>
+    <result column="m_bday" property="birth"/>
+    <result column="addr" property="addr"/>
+    <result column="m_email" property="email"/>
+    <result column="m_gender" property="gender"/>
+    <result column="m_tel" property="tel"/>
+    <result column="m_auth" property="auth"/>
+    <result column="m_photo" property="phoUrl"/>
+    <result column="pho_filename" property="phoName"/>
+    <result column="pho_type" property="phoType"/>
+    <result column="career" property="career"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="doctor" 
+          useGeneratedKeys="true" keyProperty="no" keyColumn="d_no">
+    insert into app_doctor(d_no, career)
+    values(#{no}, #{career})
+  </insert>
+
+  <select id="findAll" resultMap="doctorMap">
+    select 
+      m.m_id, 
+      m.m_name, 
+      m.m_email, 
+      m.m_tel,
+      h.hos_name,
+      d.career 
+    from 
+      app_doctor as d
+      inner join app_member m on d.d_no = m.m_no
+      left outer join app_hospital h on d.hos_no = h.hos_no
+    order by 
+      d_no desc
+  </select>
+
+  <select id="findByNo" parameterType="int" resultMap="doctorMap">
+    select
+      d.d_no,
+      m.m_id, 
+      m.m_name, 
+      m.m_email, 
+      m.m_tel,
+      h.hos_name,
+      d.career  
+    from 
+      app_doctor as d
+      inner join app_member m on d.d_no = m.m_no
+      left outer join app_hospital h on d.hos_no = h.hos_no
+    where 
+      d_no=#{no}
+  </select>
+  
+  <select id="findByIdAndPassword" parameterType="Map" resultMap="doctorMap">
+    select
+      d.d_no,
+      m.m_id,
+      m.m_name,
+      m.m_pw,
+      m.m_tel,
+      m.m_email,
+      d.career
+    from
+      app_doctor d
+      inner join app_member m on d.d_no = m.m_no
+    where
+      <!--  
+      m.m_id = m_id
+      and m.m_pw = m_pw 
+      -->
+      m.m_id = #{id}
+      and m.m_pw = sha2(#{password},256)  
+  </select>
+  
+  <update id="update" parameterType="doctor">
+    update app_doctor set
+       career=#{career} 
+    where d_no=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from app_doctor
+    where d_no=#{no}
+  </delete>
+</mapper>
+

@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>회원가입</title>
+    <!--tables.data에 연결할 상세 페이지-->
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="../assets/img/newlogo.png" rel="icon" />
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="../assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link
+      href="../assets/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <main>
+      <div class="container">
+        <section
+          class="section min-vh-100 d-flex flex-column align-items-center justify-content-center py-4"
+        >
+          <div class="container">
+            <div class="row justify-content-center">
+              <div
+                class="col-0 d-flex flex-column align-items-center justify-content-center"
+              >
+                <div class="d-flex justify-content-center py-4">
+                  <a
+                    href="index.html"
+                    class="logo d-flex align-items-center w-auto"
+                  >
+                    <img src="../assets/img/newlogo.png" />
+                    <span class="d-none d-lg-block">MyClinic</span>
+                  </a>
+                </div>
+                <div class="card" id="register-form">
+                  <div class="card-body">
+                    <div class="pt-4 pb-2">
+                      <h5 class="card-title text-center pb-0 fs-4">
+                        Create an Account
+                      </h5>
+                      <p class="text-center small">
+                        계정 생성을 위한 정보를 입력하세요.
+                      </p>
+                    </div>
+                    <form
+                      id="doctors-register-form"
+                      class="row g-3 needs-validation"
+                      method="post"
+                      novalidate
+                    >
+                      <div>
+                        <!-- 이미지 미리보기를 위한 영역 -->
+                        <div id="preview-container">
+                          <img
+                            id="preview-img"
+                            src="../assets/img/default_profile.png"
+                          />
+                        </div>
+
+                        <!-- 파일 선택 버튼 -->
+                        <div class="row mb-3">
+                          <label class="col-sm-2 form-label padding-right-0"
+                            >프로필 사진</label
+                          >
+                          <div class="col-sm-6">
+                            <input
+                              type="file"
+                              id="profile-file"
+                              accept="image/*"
+                              class="form-control"
+                              onchange="previewImage(event);"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label
+                          for="id-input"
+                          class="col-sm-2 form-label padding-right-0"
+                          >ID</label
+                        >
+                        <div class="col-sm-5">
+                          <input
+                            type="text"
+                            name="id"
+                            class="form-control"
+                            id="id-input"
+                            placeholder="ID"
+                            minlength="4"
+                            required
+                          />
+                          <div
+                            id="id-validation-msg"
+                            class="validation-msg"
+                          ></div>
+                        </div>
+                        <div class="col-sm-3">
+                          <button
+                            type="button"
+                            id="check-duplicate-btn"
+                            class="btn btn-primary"
+                          >
+                            중복 확인
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label
+                          for="password"
+                          class="col-sm-2 form-label padding-right-0"
+                          >비밀번호</label
+                        >
+                        <div class="col-sm-5">
+                          <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="form-control"
+                            placeholder="8자 이상 숫자, 특수 문자 포함"
+                            pattern="^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
+                            required
+                          />
+                          <div
+                            id="password-validation-msg"
+                            class="validation-msg"
+                          ></div>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label
+                          for="confirmPassword"
+                          class="col-sm-2 form-label padding-right-0"
+                          >비밀번호 확인</label
+                        >
+                        <div class="col-sm-5">
+                          <input
+                            type="password"
+                            id="confirmPassword"
+                            class="form-control"
+                            placeholder="비밀번호를 다시 입력해주세요."
+                            required
+                          />
+                          <div
+                            id="confirm-password-validation-msg"
+                            class="validation-msg"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label
+                          for="name"
+                          class="col-sm-2 form-label padding-right-0"
+                          >이름</label
+                        >
+                        <div class="col-sm-5">
+                          <input
+                            id="name"
+                            name="name"
+                            class="form-control"
+                            placeholder="이름"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label
+                          for="tel"
+                          class="col-sm-2 form-label padding-right-0"
+                          >휴대폰번호</label
+                        >
+                        <div class="col-sm-5">
+                          <input
+                            type="tel"
+                            id="tel"
+                            name="tel"
+                            class="form-control"
+                            placeholder="'-' 없이 입력"
+                            pattern="^01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}$"
+                            maxlength="13"
+                            oninput="autoTelHyphen(event)"
+                            required
+                          />
+                          <div
+                            id="tel-validation-msg"
+                            class="validation-msg"
+                          ></div>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label
+                          for="birth"
+                          class="col-sm-2 form-label padding-right-0"
+                          >생년월일</label
+                        >
+                        <div class="col-sm-5">
+                          <input
+                            type="date"
+                            id="birth"
+                            name="birth"
+                            class="form-control"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label
+                          for="email-id"
+                          class="col-sm-2 form-label padding-right-0"
+                          >이메일</label
+                        >
+                        <div class="col-sm-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="email"
+                            id="email-id"
+                            placeholder="이메일 ID"
+                            required
+                          />
+                        </div>
+                        <div class="col-sm-3">
+                          <select
+                            class="form-select"
+                            id="email-domain"
+                            required
+                          >
+                            <option selected disabled value="">선택</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.net">daum.net</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="hanmail.net">hanmail.net</option>
+                            <option value="직접입력">직접입력</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="email-direct"
+                            placeholder="이메일 주소"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 form-label padding-right-0">
+                          성별
+                        </label>
+                        <div class="col-sm-5">
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="gender"
+                              id="gender-m"
+                              value="0"
+                              checked
+                            />
+                            <label class="form-check-label" for="gender-m">
+                              남
+                            </label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="gender"
+                              id="gender-w"
+                              value="1"
+                            />
+                            <label class="form-check-label" for="gender-w">
+                              여
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Active Table -->
+                      <div class="row mb-3">
+                        <label
+                          for="inputPostNo"
+                          class="col-sm-2 form-label padding-right-0"
+                          >주소</label
+                        >
+                        <div class="col-sm-3">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="postcode"
+                            placeholder="우편번호"
+                            name="addr"
+                            required
+                            readonly
+                          />
+                        </div>
+                        <div class="col-sm-3">
+                          <input
+                            type="button"
+                            onclick="execDaumPostcode()"
+                            value="우편번호 찾기"
+                            class="btn btn-primary"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label
+                          class="col-sm-2 form-label padding-right-0"
+                        ></label>
+                        <div class="col-sm-5">
+                          <input
+                            type="text"
+                            id="roadAddress"
+                            placeholder="도로명주소"
+                            class="form-control"
+                            required
+                            readonly
+                          />
+                        </div>
+
+                        <div class="col-sm-5">
+                          <input
+                            type="text"
+                            id="jibunAddress"
+                            placeholder="지번주소"
+                            class="form-control"
+                            readonly
+                          />
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label
+                          class="col-sm-2 form-label padding-right-0"
+                        ></label>
+                        <div class="col-sm-5">
+                          <input
+                            type="text"
+                            id="detailAddress"
+                            placeholder="상세주소"
+                            class="form-control"
+                            required
+                          />
+                        </div>
+
+                        <div class="col-sm-5">
+                          <input
+                            type="text"
+                            id="extraAddress"
+                            placeholder="참고주소"
+                            class="form-control"
+                            readonly
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 form-label padding-right-0"
+                          >자격</label
+                        >
+                        <div class="col-sm-5">
+                          <select id="license" class="form-select" required>
+                            <option value="">선택하세요</option>
+                            <option value="MD">의사</option>
+                            <option value="DMD">치과의사</option>
+                            <option value="KMD">한의사</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-5">
+                          <select
+                            id="specialist"
+                            name="licenseNo"
+                            class="form-select"
+                            required
+                          ></select>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3" id="license-file-row">
+                        <label class="col-sm-2 form-label padding-right-0"
+                          >면허/자격</label
+                        >
+                        <div class="col-sm-5">
+                          <input
+                            type="file"
+                            id="license-file"
+                            accept="image/*"
+                            class="form-control"
+                            required
+                          />
+                        </div>
+                        <div class="col-sm-5">
+                          <input
+                            type="file"
+                            id="specialist-file"
+                            accept="image/*"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="register-list">
+                        <div class="row mb-3">
+                          <label
+                            for="career"
+                            class="col-sm-2 form-label padding-right-0"
+                            >경력</label
+                          >
+                          <div class="col-sm-9">
+                            <input
+                              type="text"
+                              id="career"
+                              placeholder="경력 사항"
+                              class="form-control career"
+                            />
+                          </div>
+                          <div class="col-sm-1 btn-list">
+                            <button
+                              type="button"
+                              class="btn btn-outline-primary btn-sm add-btn"
+                            >
+                              ＋
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <button
+                          type="submit"
+                          class="btn btn-primary w-100"
+                          id="btn-insert"
+                        >
+                          가입 완료
+                        </button>
+                      </div>
+                      <div class="col-12">
+                        <p class="small mb-0">
+                          이미 계정이 있으신가요?
+                          <a href="pages-login.html">로그인</a>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Vendor JS Files -->
+    <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="../assets/vendor/echarts/echarts.min.js"></script>
+    <script src="../assets/vendor/quill/quill.min.js"></script>
+    <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- 사용자가 추가한 스크립트 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- <script type='text/babel' src="doctor-board.js"></script> -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+      // ID 변수
+      const idInput = document.getElementById('id-input');
+      const idValidationMsg = document.getElementById('id-validation-msg');
+      const checkDuplicateBtn = document.getElementById('check-duplicate-btn');
+      let isDuplicate = true;
+
+      // 비밀번호 변수
+      const password = document.getElementById('password');
+      const passwordValidationMsg = document.getElementById(
+        'password-validation-msg'
+      );
+      const confirmPassword = document.getElementById('confirmPassword');
+      const confirmPasswordValidationMsg = document.getElementById(
+        'confirm-password-validation-msg'
+      );
+
+      // 전화번호 변수
+      const tel = document.getElementById('tel');
+      const telValidationMsg = document.getElementById('tel-validation-msg');
+
+      // 이메일 변수
+      const emailIdInput = document.getElementById('email-id');
+      const emailDomainSelect = document.getElementById('email-domain');
+      const emailDirectInput = document.getElementById('email-direct');
+
+      // 자격 변수
+      const licenseSelect = document.getElementById('license');
+      const specialistSelect = document.getElementById('specialist');
+      const licenseFileRow = document.querySelector('#license-file-row');
+
+      // 프로필 이미지 업로드
+      function previewImage(event) {
+        const input = event.target;
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const previewImg = document.getElementById('preview-img');
+            previewImg.src = e.target.result;
+          };
+          reader.readAsDataURL(input.files[0]);
+          console.log(input.files[0]);
+        } else {
+          const previewImg = document.getElementById('preview-img');
+          previewImg.src = '../assets/img/default_profile.png'; // 기본 이미지 경로
+        }
+      }
+
+      // ID 중복 확인
+      checkDuplicateBtn.addEventListener('click', () => {
+        const id = idInput.value;
+        if (id.length < 4) {
+          idValidationMsg.textContent = 'ID를 4자 이상 입력하세요.';
+          idInput.classList.remove('is-valid', 'is-invalid');
+          idInput.classList.add('is-invalid');
+          idValidationMsg.style.color = '#dc3545';
+          return;
+        } else {
+          fetch(`http://localhost:8080/doctors/check-duplicate/${id}`)
+            .then((response) => response.json())
+            .then((result) => {
+              if (result.status === 'failure') {
+                idValidationMsg.textContent = result.message;
+                idInput.classList.remove('is-valid', 'is-invalid');
+                idInput.classList.add('is-invalid');
+                idValidationMsg.style.color = '#dc3545';
+                isDuplicate = true;
+                console.log(result.status);
+                console.log(isDuplicate);
+              } else {
+                idValidationMsg.textContent = result.message;
+                idInput.classList.remove('is-valid', 'is-invalid');
+                idInput.classList.add('is-valid');
+                idValidationMsg.style.color = '#198754';
+                isDuplicate = false;
+                console.log(result.status);
+                console.log(isDuplicate);
+              }
+            })
+            .catch((exception) => {
+              console.error('ID 중복 확인 중 오류 발생:', exception);
+              idValidationMsg.textContent =
+                '오류가 발생했습니다. 다시 시도해주세요.';
+              idInput.classList.remove('is-valid', 'is-invalid');
+              idInput.classList.add('is-invalid');
+              idValidationMsg.style.color = '#dc3545';
+            });
+        }
+      });
+
+      // 비밀번호 확인
+      password.addEventListener('input', () => {
+        if (password.checkValidity()) {
+          passwordValidationMsg.textContent = '올바른 비밀번호입니다.';
+          password.classList.remove('is-valid', 'is-invalid');
+          password.classList.add('is-valid');
+          passwordValidationMsg.style.color = '#198754';
+        } else {
+          passwordValidationMsg.textContent =
+            '8자 이상의 문자, 숫자, 특수문자를 포함하여 작성하세요.';
+          password.classList.remove('is-valid', 'is-invalid');
+          password.classList.add('is-invalid');
+          passwordValidationMsg.style.color = '#dc3545';
+        }
+      });
+
+      // 비밀번호 재확인
+      confirmPassword.addEventListener('input', () => {
+        if (password.value === confirmPassword.value) {
+          confirmPasswordValidationMsg.textContent = '비밀번호가 일치합니다.';
+          confirmPassword.classList.remove('is-valid', 'is-invalid');
+          confirmPassword.classList.add('is-valid');
+          confirmPasswordValidationMsg.style.color = '#198754';
+        } else {
+          confirmPasswordValidationMsg.textContent =
+            '비밀번호가 일치하지 않습니다.';
+          confirmPassword.classList.remove('is-valid', 'is-invalid');
+          confirmPassword.classList.add('is-invalid');
+          confirmPasswordValidationMsg.style.color = '#dc3545';
+        }
+      });
+
+      // 전화번호 확인
+      tel.addEventListener('input', () => {
+        if (tel.checkValidity()) {
+          telValidationMsg.textContent = '올바른 휴대폰 번호입니다.';
+          tel.classList.remove('is-valid', 'is-invalid');
+          tel.classList.add('is-valid');
+          telValidationMsg.style.color = '#198754';
+        } else {
+          telValidationMsg.textContent = '올바른 휴대폰 번호를 작성해주세요.';
+          tel.classList.remove('is-valid', 'is-invalid');
+          tel.classList.add('is-invalid');
+          telValidationMsg.style.color = '#dc3545';
+        }
+      });
+
+      // 전화번호 자동 하이픈 입력
+      function autoTelHyphen(event) {
+        const target = event.target;
+        target.value = target.value
+          .replace(/[^0-9]/g, '')
+          .replace(/^(\d{3})(\d{4})(\d{4})$/g, '$1-$2-$3')
+          .replace(/(\-{1,2})$/g, '');
+      }
+
+      // 이메일 유효성 검사
+      emailIdInput.addEventListener('input', updateEmailValue);
+      emailDomainSelect.addEventListener('change', updateEmailValue);
+      emailDirectInput.addEventListener('input', updateEmailValue);
+
+      function updateEmailValue() {
+        const emailId = emailIdInput.value;
+        const emailDomain = emailDomainSelect.value;
+        let emailValue = '';
+
+        if (emailId !== '' && emailDomain !== '직접입력') {
+          emailDirectInput.style.display = 'none';
+          emailDirectInput.required = false;
+          emailDirectInput.removeAttribute('pattern');
+          emailValue = `${emailId}@${emailDomain}`;
+        } else if (emailId !== '' && emailDomain === '직접입력') {
+          emailDirectInput.style.display = 'inline-block';
+          emailDirectInput.required = true;
+          emailDirectInput.pattern =
+            "^([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])";
+          emailValue = `${emailId}@${emailDirectInput.value}`;
+        }
+
+        emailIdInput.setAttribute('value', emailValue);
+        return emailValue;
+      }
+
+      // 우편번호 주소 검색 API
+      function execDaumPostcode() {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var roadAddr = data.roadAddress; // 도로명 주소 변수
+            var extraRoadAddr = ''; // 참고 항목 변수
+
+            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+              extraRoadAddr += data.bname;
+            }
+            // 건물명이 있고, 공동주택일 경우 추가한다.
+            if (data.buildingName !== '' && data.apartment === 'Y') {
+              extraRoadAddr +=
+                extraRoadAddr !== ''
+                  ? ', ' + data.buildingName
+                  : data.buildingName;
+            }
+            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            if (extraRoadAddr !== '') {
+              extraRoadAddr = ' (' + extraRoadAddr + ')';
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('postcode').value = data.zonecode;
+            document.getElementById('roadAddress').value = roadAddr;
+            document.getElementById('jibunAddress').value = data.jibunAddress;
+
+            // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+            if (roadAddr !== '') {
+              document.getElementById('extraAddress').value = extraRoadAddr;
+            } else {
+              document.getElementById('extraAddress').value = '';
+            }
+          },
+        }).open();
+      }
+
+      // 자격 옵션
+      licenseSelect.addEventListener('change', () => {
+        const selectedLicense = licenseSelect.value;
+
+        // 전문의 자격 select 보이도록 함
+        if (selectedLicense !== '') {
+          specialistSelect.style.display = 'block';
+        } else {
+          specialistSelect.style.display = 'none';
+        }
+
+        // 전문의 자격 select 옵션 설정
+        if (selectedLicense === 'MD') {
+          specialistSelect.innerHTML = `
+        <option value="">선택하세요</option>
+        <option value="1">General Practitioner, 일반의</option>
+        <option value="2">Family medicine, 가정의학과</option>
+        <option value="3">Tuberculosis, 결핵과</option>
+        <option value="4">Internal medicine, 내과</option>
+        <option value="5">Pediatrics, 소아청소년과</option>
+        <option value="6">Neurology, 신경과</option>
+        <option value="7">Psychiatry, 정신건강의학과</option>
+        <option value="8">Rehabilitation medicine, 재활의학과</option>
+        <option value="9">Dermatology, 피부과</option>
+        <option value="10">Urology, 비뇨의학과</option>
+        <option value="11">Obstetrics &amp; Gynecology, 산부인과</option>
+        <option value="12">Plastic surgery, 성형외과</option>
+        <option value="13">Neurosurgery, 신경외과</option>
+        <option value="14">Ophthalmology, 안과</option>
+        <option value="15">General surgery, 외과</option>
+        <option value="16">Otolaryngology, 이비인후과</option>
+        <option value="17">Orthopaedic surgery, 정형외과</option>
+        <option value="18">Thoracic &amp; cardiovascular surgery, 흉부외과</option>
+        <option value="19">Anesthesiology, 마취통증의학과</option>
+        <option value="20">Radiation Oncology, 방사선종양학과</option>
+        <option value="21">Radiology, 영상의학과</option>
+        <option value="22">Emergency medicine, 응급의학과</option>
+        <option value="23">Occupational &amp; Environmental medicine, 직업환경의학과</option>
+        <option value="24">Laboratory medicine, 진단검사의학과</option>
+        <option value="25">Nuclear medicine, 핵의학과</option>
+        <option value="26">Preventive medicine, 예방의학과</option>
+        <option value="27">Pathology, 병리과</option>
+      `;
+        } else if (selectedLicense === 'DMD') {
+          specialistSelect.innerHTML = `
+        <option value="">선택하세요</option>
+        <option value="28">General Practitioner, 일반의</option>
+        <option value="29">Oral &amp; Maxillofacial Surgery, 구강악안면외과</option>
+        <option value="30">Prosthodontics, 치과보철과</option>
+        <option value="31">Orthodontics, 치과교정과</option>
+        <option value="32">Pediatric Dentistry, 소아치과</option>
+        <option value="33">Periodontology, 치주과</option>
+        <option value="34">Conservative Dentistry, 치과보존과</option>
+        <option value="35">Oral Medicine, 구강내과</option>
+        <option value="36">Advaced General Dentistry, 통합치의학과</option>
+        <option value="37">Oral &amp; Maxillofacial Radiology, 영상치의학과</option>
+        <option value="38">Oral &amp; Maxillofacial Pathology, 구강병리과</option>
+        <option value="39">Preventive Dentistry, 예방치과</option>
+      `;
+        } else if (selectedLicense === 'KMD') {
+          specialistSelect.innerHTML = `
+        <option value="">선택하세요</option>
+        <option value="40">General Practitioner, 일반의</option>
+        <option value="41">Internal Korean Medicine, 한방내과</option>
+        <option value="42">Korean Medicine Obstetrics &amp; Gynecology, 한방부인과</option>
+        <option value="43">Korean Medicine Pediatrics, 한방소아과</option>
+        <option value="44">Korean Neuropsychiatry, 한방 신경정신과</option>
+        <option value="45">Acupuncture &amp; Moxibustion, 침구과</option>
+        <option value="46">Korean Medical Ophthalmology, Otolaryngology &amp; Dermatology, 한방안ㆍ이비인후ㆍ피부과</option>
+        <option value="47">Korean Medicine Rehabilitation, 한방재활의학과</option>
+        <option value="48">Sasang Constitutional Medicine, 사상체질과</option>
+      `;
+        }
+      });
+
+      // 자격증 파일 보이기 및 required 설정
+      specialistSelect.addEventListener('change', () => {
+        const specialistFile = document.getElementById('specialist-file');
+        if (specialistSelect.value !== '') {
+          licenseFileRow.style.display = 'flex';
+          if (
+            specialistSelect.value === '1' ||
+            specialistSelect.value === '28' ||
+            specialistSelect.value === '40'
+          ) {
+            specialistFile.required = false;
+          } else {
+            specialistFile.required = true;
+          }
+        } else {
+          licenseFileRow.style.display = 'none';
+        }
+      });
+
+      // '＋' 버튼 클릭 시 새로운 row div 추가
+      const addButton = document.querySelector('.add-btn');
+      addButton.addEventListener('click', () => {
+        const registerList = document.querySelector('.register-list');
+        const newRow = document.createElement('div');
+        newRow.classList.add('row', 'mb-3');
+        newRow.innerHTML = `
+          <label class="col-sm-2 form-label padding-right-0"></label>
+          <div class="col-sm-9">
+            <input type="text" placeholder="경력 사항" class="form-control career">
+          </div>
+          <div class="col-sm-1 btn-list">
+            <button type="button" class="btn btn-outline-danger btn-sm remove-btn">×</button>
+          </div>
+        `;
+        registerList.appendChild(newRow);
+      });
+
+      // '×' 버튼 클릭 시 해당 row div 삭제
+      const registerList = document.querySelector('.register-list');
+      registerList.addEventListener('click', (event) => {
+        const removeButton = event.target.closest('.remove-btn');
+        if (removeButton) {
+          const rowToRemove = removeButton.closest('.row');
+          rowToRemove.remove();
+        }
+      });
+
+      // 회원가입 버튼 클릭
+      document.getElementById('btn-insert').addEventListener('click', () => {
+        const form = document.getElementById('doctors-register-form');
+        const formData = new FormData(form);
+
+        // ID 확인
+        if (idInput.value.length < 4) {
+          idValidationMsg.textContent = 'ID를 4자 이상 입력하세요.';
+          idInput.classList.remove('is-valid', 'is-invalid');
+          idInput.classList.add('is-invalid');
+          idValidationMsg.style.color = '#dc3545';
+          isDuplicate = true;
+          return;
+        } else if (idInput.value.length >= 4 && isDuplicate) {
+          idValidationMsg.textContent = 'ID를 중복 확인하세요.';
+          idInput.classList.remove('is-valid', 'is-invalid');
+          idInput.classList.add('is-invalid');
+          idValidationMsg.style.color = '#dc3545';
+          return;
+        }
+
+        // 파일 변수
+        const profileFile = document.getElementById('profile-file');
+
+        // 파일 정보 추가
+        if (profileFile.files && profileFile.files[0]) {
+          formData.append('phoName', profileFile.files[0].name);
+          formData.append('phoType', profileFile.files[0].type);
+        }
+
+        // 이메일 변수 및 정보 추가
+        const emailValue = updateEmailValue();
+        formData.set('email', emailValue);
+
+        // 주소 변수 및 정보 추가
+        const zipcode = document.getElementById('postcode').value;
+        const roadAddress = document.getElementById('roadAddress').value;
+        const detailAddress = document.getElementById('detailAddress').value;
+        formData.set('addr', `${zipcode}: ${roadAddress} ${detailAddress}`);
+
+        // 경력 변수 및 정보 추가
+        const career = form.querySelectorAll('.career');
+        let careers = [];
+        career.forEach((input) => {
+          careers.push(input.value);
+        });
+        formData.set('career', careers.join(', '));
+
+        // 폼 유효성 검사 및 요청
+        if (form.checkValidity()) {
+          let url = '';
+          let json;
+
+          new Promise((resolve) => {
+            url = submitFiles();
+            console.log(url);
+            resolve();
+          }).then(() => {
+            formData.append('phoUrl', url);
+            json = JSON.stringify(Object.fromEntries(formData));
+            console.log(json);
+            fetch('http://localhost:8080/doctors', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: json,
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                if (result.status == 'success') {
+                  location.reload();
+                  console.log('성공:', result);
+                } else {
+                  alert('입력실패');
+                  console.log(result.data);
+                }
+              })
+              .catch((exception) => {
+                alert('입력 중 오류 발생');
+                console.log(exception);
+              });
+          });
+        } else {
+          form.reportValidity();
+        }
+      });
+
+      // 파일 경로 저장
+      function submitFiles(no) {
+        let formData = new FormData();
+        let inputFiles = $('input[name=files]')[0];
+        if (!inputFiles || !inputFiles.files || inputFiles.files.length === 0) {
+          return;
+        }
+        let files = inputFiles.files;
+        if (files.length == 0) {
+          return;
+        }
+        formData.append('files', files[0]);
+        $.ajax({
+          url: 'http://localhost:8080/doctors/profileimg',
+          data: formData,
+          cache: false,
+          async: false,
+          contentType: false,
+          processData: false,
+          type: 'POST',
+          success: function (data) {
+            str = data;
+            console.log('데이터 업로드 성공');
+          },
+          error: function (e) {
+            console.log('데이터 업로드 실패');
+          },
+        });
+        return str;
+      }
+    </script>
+  </body>
+</html>

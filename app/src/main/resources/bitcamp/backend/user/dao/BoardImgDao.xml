@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.user.dao.BoardImgDao">
+
+ <!--<resultMap type="board" id="boardMap">
+    <id column="board_id" property="no"/>
+    <result column="title" property="title"/>
+    <result column="pain" property="pain"/>
+    <result column="pwd" property="password"/>
+  </resultMap>  --> 
+
+  <insert id="insert" parameterType="bitcamp.backend.user.vo.BoardImg" 
+          useGeneratedKeys="true" keyColumn="board_id" keyProperty="no">
+    insert into app_symp_photo (symp_no, pho_name, pho_filename, pho_type)
+    value (#{b_no}, #{url}, #{name}, #{MIMETYPE});
+  </insert>
+  
+  <select id="findAll" resultType="bitcamp.backend.user.vo.BoardImg" parameterType="string">
+  </select>
+  
+  <select id="findByBno" resultType="bitcamp.backend.user.vo.BoardImg" parameterType="int">
+    select 
+      bp.pho_no as no, 
+      bp.symp_no as b_no,
+      bp.pho_name as url,
+      bp.pho_filename as name,
+      bp.pho_type as MIMETYPE
+    from 
+      app_symp_photo bp
+    <if test="no != 0 and no != null">
+    where 
+      bp.symp_no like #{no}
+    </if> 
+  </select>
+  
+  <select id="findByNo" resultType="bitcamp.backend.user.vo.BoardImg" parameterType="int">
+  </select>
+  
+</mapper>

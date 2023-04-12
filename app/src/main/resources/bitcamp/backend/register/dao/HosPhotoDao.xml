@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.register.dao.HosPhotoDao">
+
+  <resultMap type="hosPhoto" id="hos_photoMap">
+    <id column="pho_no" property="photoNo"/>
+    <result column="hos_no" property="hospitalNo"/>
+    <result column="pho_name" property="hosPhotoUrl"/>
+    <result column="pho_filename" property="hosPhotoFilename"/>
+    <result column="pho_type" property="hosPhotoType"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="hosPhoto" 
+          useGeneratedKeys="true" keyProperty="photoNo" keyColumn="pho_no">
+    insert into app_hos_photo(hos_no, pho_name, pho_filename, pho_type)
+    values( #{hospitalNo}, #{hosPhotoUrl}, #{hosPhotoFilename}, #{hosPhotoType})
+  </insert>
+
+  <select id="findAll" resultMap="hos_photoMap">
+    select 
+      pho_name, 
+      pho_filename, 
+      pho_type,
+      hos_name, 
+      hos_addr, 
+      hos_tel, 
+      hos_time,
+      hos_sub,
+      hos_busno
+    from 
+      app_hos_photo p
+      inner join app_hospital h on p.hos_no = h.hos_no
+    order by 
+      pho_no desc
+  </select>
+
+  <select id="findByNo" parameterType="int" resultMap="hos_photoMap">
+  select 
+      pho_name, 
+      pho_filename, 
+      pho_type,
+      hos_name, 
+      hos_addr, 
+      hos_tel, 
+      hos_time,
+      hos_sub,
+      hos_busno
+    from 
+      app_hos_photo p
+      inner join app_hospital h on p.hos_no = h.hos_no
+    where 
+      pho_no=#{no}
+  </select>
+
+  <select id="findByHno" parameterType="int" resultMap="hos_photoMap">
+  select
+      hos_no, 
+      pho_no, 
+      pho_name, 
+      pho_filename, 
+      pho_type
+    from 
+      app_hos_photo
+    where 
+      hos_no=#{no}
+  </select>
+  
+  <delete id="delete" parameterType="int">
+    delete from app_hos_photo
+    where pho_no=#{no}
+  </delete>
+  
+  <delete id="deleteOfBoard" parameterType="int">
+    delete from app_hos_photo 
+    where pho_no=#{no}
+  </delete>
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.backend.feedback.dao.FeedBackDao">
+
+  <insert id="insert" parameterType="bitcamp.backend.feedback.vo.FeedBack" >
+    insert into app_feedback (d_no, symp_no, re_cont, fed_visit, fed_popen, fed_money)
+    values(#{doc_no}, #{symp_no}, #{content}, #{visit}, #{popen}, #{money})
+  </insert>
+  
+  <select id="findByBoardNo" resultType="bitcamp.backend.feedback.vo.FeedBack" parameterType="int">
+    SELECT 
+      f.d_no as doc_no,
+      f.symp_no as symp_no,
+      f.re_cont as content,
+      f.fed_date as createdDate,
+      f.fed_visit as visit,
+      f.fed_money as money,
+      f.fed_popen as popen,
+      f.rev_star as star,
+      f.rev_cont as rev_content,
+      f.rev_date as rev_createdDate,
+      m.m_name as doc_name,
+      h.hos_name as hos_name,
+      h.hos_addr as hos_addr
+    FROM 
+	    app_feedback f
+      LEFT JOIN app_symp_board b
+      ON f.symp_no=b.symp_no
+	    LEFT JOIN app_doctor d
+	    ON f.d_no=d.d_no
+	    LEFT JOIN app_member m
+	    ON d.d_no=m.m_no 
+	    LEFT JOIN app_hospital h
+	    ON h.hos_no=d.hos_no
+    where
+      f.symp_no=#{no}
+  </select>
+  
+  
+  <update id="update" parameterType="bitcamp.backend.feedback.vo.FeedBack">
+    UPDATE
+      app_feedback
+    SET
+      fed_visit=#{visit},
+      fed_popen=#{popen},
+      re_cont=#{content},
+      fed_money=#{money}
+    WHERE
+      symp_no=#{symp_no} and d_no=#{doc_no}
+  </update>
+  
+</mapper>

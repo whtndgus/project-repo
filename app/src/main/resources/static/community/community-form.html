@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>커뮤니티 - 글쓰기</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="../assets/img/newlogo.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+  <div class="d-flex align-items-center justify-content-between">
+    <a href="index.html" class="logo d-flex align-items-center">
+      <img src="../assets/img/newlogo.png" alt="">
+      <span class="d-none d-lg-block">MyClinic</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div><!-- End Logo -->
+
+  <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+  </div><!-- End Search Bar -->
+
+  <div class="top-menu">
+    <a href="pages-notice.html"  class="nav-link collapsed"><span>공지사항</span></a>
+    
+    <a href="doctors-community-main.html"  class="nav-link"><span>커뮤니티</span></a>
+
+    <a href="doctors-signup.html"  class="nav-link collapsed"><span>회원가입(의사)</span></a>
+  </div>
+
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <i class="bi bi-bell"></i>
+          <span class="badge bg-primary badge-number">2</span>
+        </a><!-- End Notification Icon -->
+        <!--우측 상단 알림 -->
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+          <li class="dropdown-header">
+            확인하지 않은 알림이 있습니다.
+            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li class="notification-item">
+            <i class="bi bi-exclamation-circle text-warning"></i>
+            <div>
+              <h4>진료 답변 확인하기</h4>
+              <p>OOO 환자님 안녕하세요....</p>
+              <p>30분 전</p>
+            </div>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li class="notification-item">
+            <i class="bi bi-x-circle text-danger"></i>
+            <div>
+              <h4>개인정보 보호 안내</h4>
+              <p>비밀번호를 변경해주세요</p>
+              <p>1 시간 전</p>
+            </div>
+          </li>        
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="dropdown-footer">
+            <a href="#">Show all notifications</a>
+          </li>
+
+        </ul><!-- End Notification Dropdown Items -->
+      </li><!-- End Notification Nav -->
+
+      <li class="nav-item dropdown pe-3">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2">엄 진 영</span>
+        </a><!-- End Profile Iamge Icon -->
+      </li>
+      </ul>
+      </nav>
+
+</header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav"> 
+      <li class="nav-heading">의사 전용 페이지</li>
+      <li class="nav-item">
+        <a class="nav-link " href="doctors-mypage.html">
+          <i class="bi bi-person"></i>
+          <span>내 정보</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="doctors-advices.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>진료하기</span>
+        </a>
+      </li> 
+     
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="doctors-review.html">
+          <i class="bi bi-envelope"></i>
+          <span>진료 리뷰 확인</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bi bi-question-circle"></i>
+          <span>Q & A</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="doctors-myhospital.html">
+          <i class="bi bi-card-list"></i>
+          <span>내 병원 정보</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>로그아웃</span>
+        </a>
+      </li>
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>글쓰기</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Community</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+             
+              <h5 class="card-title">글 작성</h5>
+              <div class="col-12 row g-3 ">
+                  <div class="col-md-5 ">
+                    <input type="text" class="form-control" id="title" placeholder="글 제목 입력">
+                  </div>
+                  <div class="col-md-5 ">
+                    <select class="form-select" id="category" aria-label="Default select example">
+                      <option selected >글 카테고리 선택</option>
+                      <option value="1">자유 게시판</option>
+                      <option value="2">의학 지식</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-12 row g-3" style="margin-top: 10px;">
+                  <div class="col-sm-10">
+                    <input class="form-control" type="file" id="formFile">
+                  </div>
+                </div>
+
+                <div class="form-floating col-md-12" style="margin-top: 20px;">
+                <textarea class="form-control"  id="content" style="height: 100px;" placeholder="글 내용 입력"> </textarea>
+              </div>
+              </div>
+              
+              <div class="text-center" >
+                <button type="submit" class="btn btn-primary" id="btn-submit">저장</button>
+                <button type="reset" class="btn btn-secondary" id="btn-cancel">이전</button>
+              </div>
+              <br>
+
+            </div>
+          </div>
+
+        </div>   
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+  document.querySelector('#btn-submit').onclick = (e) => {
+	   
+	    var doctorNo = 1;
+	    var title = document.querySelector('#title').value;
+	    var content = document.querySelector('#content').value;
+	    var category = Number(document.querySelector('#category').value);
+	   //var viewCnt;
+	    var filter = 0;
+	    var area = 0;
+
+	   const data = {title, content, category};
+
+	     fetch("http://localhost:8080/community", {
+	       method: "POST",
+	       headers: {
+	         "Content-Type": "application/json",
+	       },
+	       body: JSON.stringify(data),
+	     })
+	       .then((response) => response.json())
+	       .then((data) => {
+	         console.log("성공:", data);
+	       })
+	       .catch((error) => {
+	         console.error("실패:", error);
+	       });
+  };
+	 
+
+  
+  </script>
+
+</body>
+
+</html>

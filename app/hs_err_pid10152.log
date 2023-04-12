@@ -1,0 +1,219 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 266338304 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3541), pid=10152, tid=10872
+#
+# JRE version:  (17.0.5+9) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (17.0.5+9-LTS-191, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:+ShowCodeDetailsInExceptionMessages -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:51152 -javaagent:C:\Users\bitcamp\eclipse\jee-2022-12\eclipse\configuration\org.eclipse.osgi\420\0\.cp\lib\javaagent-shaded.jar -Dfile.encoding=UTF-8 bitcamp.backend.user.App
+
+Host: Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz, 8 cores, 15G,  Windows 10 , 64 bit Build 19041 (10.0.19041.2364)
+Time: Tue Jan 10 18:50:37 2023  Windows 10 , 64 bit Build 19041 (10.0.19041.2364) elapsed time: 0.012034 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000029ee30a19f0):  JavaThread "Unknown thread" [_thread_in_vm, id=10872, stack(0x000000a584800000,0x000000a584900000)]
+
+Stack: [0x000000a584800000,0x000000a584900000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x672eea]
+V  [jvm.dll+0x7d2a04]
+V  [jvm.dll+0x7d41ae]
+V  [jvm.dll+0x7d4813]
+V  [jvm.dll+0x242c15]
+V  [jvm.dll+0x66fe09]
+V  [jvm.dll+0x664682]
+V  [jvm.dll+0x300e8b]
+V  [jvm.dll+0x308426]
+V  [jvm.dll+0x357ffe]
+V  [jvm.dll+0x35822f]
+V  [jvm.dll+0x2d80a8]
+V  [jvm.dll+0x2d9014]
+V  [jvm.dll+0x7a44e1]
+V  [jvm.dll+0x365df1]
+V  [jvm.dll+0x7838fc]
+V  [jvm.dll+0x3e873f]
+V  [jvm.dll+0x3ea1e1]
+C  [jli.dll+0x527b]
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17614]
+C  [ntdll.dll+0x526a1]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffded3da8d8, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000029ee310c420 GCTaskThread "GC Thread#0" [stack: 0x000000a584900000,0x000000a584a00000] [id=13984]
+  0x0000029ee311e0f0 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000a584a00000,0x000000a584b00000] [id=13924]
+  0x0000029ee311f2a0 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000a584b00000,0x000000a584c00000] [id=12644]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffdecc28a97]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000029ee309d730] Heap_lock - owner thread: 0x0000029ee30a19f0
+
+Heap address: 0x0000000702800000, size: 4056 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x0000000702800000, 0x0000000800000000)
+  region size 2048K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffded00c399]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (1 events):
+Event: 0.009 Loaded shared library C:\Program Files\Java\jdk-17.0.5\bin\java.dll
+
+
+Dynamic libraries:
+0x00007ff6b5830000 - 0x00007ff6b5840000 	C:\Program Files\Java\jdk-17.0.5\bin\javaw.exe
+0x00007ffe5c970000 - 0x00007ffe5cb68000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffe5aca0000 - 0x00007ffe5ad5f000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffe5a2a0000 - 0x00007ffe5a572000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffe5a060000 - 0x00007ffe5a160000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffe40090000 - 0x00007ffe400a8000 	C:\Program Files\Java\jdk-17.0.5\bin\jli.dll
+0x00007ffe400b0000 - 0x00007ffe400ca000 	C:\Program Files\Java\jdk-17.0.5\bin\VCRUNTIME140.dll
+0x00007ffe5ae80000 - 0x00007ffe5af2e000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffe5b810000 - 0x00007ffe5b8ae000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffe5a9b0000 - 0x00007ffe5aa4c000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffe5b2f0000 - 0x00007ffe5b415000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffe5b140000 - 0x00007ffe5b2e1000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffe5a710000 - 0x00007ffe5a732000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffe5ab80000 - 0x00007ffe5abab000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffe31bf0000 - 0x00007ffe31e8a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e\COMCTL32.dll
+0x00007ffe5a8a0000 - 0x00007ffe5a9af000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffe5a620000 - 0x00007ffe5a6bd000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffe546c0000 - 0x00007ffe546ca000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffe5c1a0000 - 0x00007ffe5c1d2000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffe46310000 - 0x00007ffe4631c000 	C:\Program Files\Java\jdk-17.0.5\bin\vcruntime140_1.dll
+0x00007ffe29cf0000 - 0x00007ffe29d7d000 	C:\Program Files\Java\jdk-17.0.5\bin\msvcp140.dll
+0x00007ffdec940000 - 0x00007ffded502000 	C:\Program Files\Java\jdk-17.0.5\bin\server\jvm.dll
+0x00007ffe5b800000 - 0x00007ffe5b808000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffe3f6b0000 - 0x00007ffe3f6b9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffe43d20000 - 0x00007ffe43d47000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffe5b790000 - 0x00007ffe5b7fb000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffe57e60000 - 0x00007ffe57e72000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffe3e0d0000 - 0x00007ffe3e0da000 	C:\Program Files\Java\jdk-17.0.5\bin\jimage.dll
+0x00007ffe46f50000 - 0x00007ffe47134000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffe468c0000 - 0x00007ffe468f5000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffe5a160000 - 0x00007ffe5a1e2000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffe37060000 - 0x00007ffe3709b000 	C:\Program Files\Java\jdk-17.0.5\bin\jdwp.dll
+0x00007ffe578a0000 - 0x00007ffe578ae000 	C:\Program Files\Java\jdk-17.0.5\bin\instrument.dll
+0x00007ffe36fc0000 - 0x00007ffe36fe5000 	C:\Program Files\Java\jdk-17.0.5\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-17.0.5\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e;C:\Program Files\Java\jdk-17.0.5\bin\server
+
+VM Arguments:
+jvm_args: -XX:+ShowCodeDetailsInExceptionMessages -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:51152 -javaagent:C:\Users\bitcamp\eclipse\jee-2022-12\eclipse\configuration\org.eclipse.osgi\420\0\.cp\lib\javaagent-shaded.jar -Dfile.encoding=UTF-8 
+java_command: bitcamp.backend.user.App
+java_class_path (initial): C:\Users\bitcamp\git\bitcamp-ncp\backend-app\app\bin\main;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-configuration-processor\3.0.1\f14786a40bdc99cbed57e924a4c12e43abc95dd\spring-boot-configuration-processor-3.0.1.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\31.1-jre\60458f877d055d0c9114d9e1a2efb737b4bc282c\guava-31.1-jre.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-web\3.0.1\1d99ce519a0fe66f15dc9bbdc2507a8d0a01690\spring-boot-starter-web-3.0.1.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-webflux\3.0.1\71bfd2979a98d78e64d8c4ba3aba8e88c13404af\spring-boot-starter-webflux-3.0.1.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\com.google.guava\failureaccess\1.0.1\1dcf1de382a0bf95a3d8b0849546c88bac1292c9\failureaccess-1.0.1.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\com.google.guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\b421526c5f297295adef1c886e5246c39d4ac629\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\org.checkerframework\checker-qual\3.12.0\d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5\checker-qual-3.12.0.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.11.0\c5a0ace696d3f8b1c1d8cc036d8c03cc0cbe6b69\error_prone_annotations-2.11.0.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.3\ba035118bc8bac37d7eff77700720999acd9986d\j2objc-annotations-1.3.jar;C:\Users\bitcamp\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-json\3.0.1\e409ce80cf518c619d59e44f0173a7e728f75da2\spring-boo
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 2097152                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 266338304                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4253024256                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 2097152                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 4253024256                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-17.0.5
+CLASSPATH=%classpath%;.
+PATH=C:/Program Files/Java/jdk-17.0.5/bin/server;C:/Program Files/Java/jdk-17.0.5/bin;C:\Program Files\Java\jdk-17.0.5\bin;C:\Gradle\gradle-7.6\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Bandizip\;C:\HashiCorp\Vagrant\bin;C:\cygwin64\bin;C:\msys64\mingw64\bin;C:\Program Files\nodejs\;C:\Ruby31-x64\bin;C:\Users\bitcamp\AppData\Local\Microsoft\WindowsApps;C:\Users\bitcamp\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\bitcamp\AppData\Roaming\npm;C:\Program Files\Java\jdk-17.0.5;C:\Program Files\Java\jdk-17.0.5\bin;C:\Ruby31-x64\bin;C:\Users\bitcamp\AppData\Local\Microsoft\WindowsApps;C:\Users\bitcamp\AppData\Local\Programs\Microsoft VS Code\bin;C:\cygwin64\bin;C:\msys64\mingw64\bin;C:\Users\bitcamp\AppData\Roaming\npm;C:\Program Files\Java\jdk-17.0.5;;C:\WINDOWS\System32;
+USERNAME=bitcamp
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 13, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.2364)
+OS uptime: 19 days 2:22 hours
+
+CPU: total 8 (initial active 8) (8 cores per cpu, 1 threads per core) family 6 model 158 stepping 13 microcode 0xec, cx8, cmov, fxsr, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt
+
+Memory: 4k page, system-wide physical 16222M (4271M free)
+TotalPageFile size 46665M (AvailPageFile size 76M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 60M, peak: 314M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (17.0.5+9-LTS-191) for windows-amd64 JRE (17.0.5+9-LTS-191), built on Sep 13 2022 17:31:43 by "mach5one" with MS VC++ 16.8 / 16.9 (VS2019)
+
+END.

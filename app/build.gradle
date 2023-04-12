@@ -1,0 +1,119 @@
+plugins {
+  id 'application' // gradle run 의 기능을 가지고있는 플러그인
+  id 'eclipse'
+  id 'java' // application 플러그인에 포함
+  id 'org.springframework.boot' version '3.0.1' // gradle 에서 스프링을 다룰 수 있도록
+  id 'io.spring.dependency-management' version '1.1.0' // gradle 에서 
+  // id 'com.palantir.docker' version '0.22.1'
+  id "com.github.node-gradle.node" version "3.5.1" // gradle에서 npm 사용
+}
+
+// gradle을 실행하는 호스트에 node가 없을 경우를 대비해 
+// 지정된 버전의 node를 다운로드하게 만드는 설정
+// $ gradle npmSetup 을 실행하여 node 프로그램을 설치한다.
+node {
+  version = '17.6.0'
+  npmVersion = '8.5.1'
+  download = true
+}
+/*
+tasks.register("npm-install") {
+  group = "application"
+  description = "Installs dependencies from package.json"
+  tasks.appNpmInstall.exec();
+}
+*/
+task appNpmInstall(type: NpmTask) {
+  description = "Installs dependencies from package.json"
+  workingDir = file("${projectDir}/src/main/resources/static");
+  args = ["install"]
+}
+
+
+group = 'bitcamp' // 빌드 배포파일(.jar, .zip 등) 을 만들때 사용할 이름
+version = '0.0.1-SNAPSHOT' // 위와 동일, 배포파일의 이름에 이 버전명이 붙음
+
+configurations { // Spring Configurations 프로세스를 다룰 때 필요한 설정 정보 java에 포함됨
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+}
+
+// docker {
+//     name 'psawesome/genlog'
+//     tag 'Dockerhub', "psawesome/genlog:${project.version}_${BUILD_VERSION}"
+//     dockerfile file('Dockerfile')
+//     files tasks.bootJar.outputs.files
+//     buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
+//     labels(['key': 'value'])
+//     pull true
+//     noCache true
+// }
+
+// java 플러그인 설정으로 java 의 플러그가 있어야 정상적으로 작동
+tasks.withType(JavaCompile) {
+    // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
+    // $javac -encoding UTF-8 ..
+    options.encoding = 'UTF-8' 
+
+    // 소스 파일을 작성할 때 사용할 자바 버전
+    sourceCompatibility = '17'
+
+    // 자바 클래스를 실행시킬 JVM의 최소 버전
+    targetCompatibility = '17'
+}
+
+// java 플러그인이 추가된 상태에서 어플리케이션 테스트에 사용될 단위 테스트 프래임워크 설정
+tasks.named('test') {
+  useJUnitPlatform()
+}
+
+repositories { // 의존 라이브러리가 업로드 되어있는 서버의 정보
+    // gradle 은 해당 서버에서 라이브러리를 다운로드 받게 된다.
+    mavenCentral()
+}
+
+
+configurations {
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+}
+
+// 어플리케이션에서 사용하는 외부 라이브러리의 정보
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation ('org.springframework.boot:spring-boot-starter-web') {
+      exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+    implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.4.4'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
+    
+}
+
+// run 명령을 실행할 때 run 명령으로 실행시킬 java Class 이름
+application {
+    mainClass = 'bitcamp.backend.App'
+}
+
+// 이클립스 프로젝트 이름 설정하기
+eclipse {
+    project {
+        name = "backend"
+    }
+    jdt {
+      //if you want to alter the java versions (by default they are configured with gradle java plugin settings):
+      sourceCompatibility = 17
+      targetCompatibility = 17
+      javaRuntimeName = "JavaSE-17"
+    }
+}
