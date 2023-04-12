@@ -15,13 +15,12 @@ node {
   npmVersion = '8.5.1'
   download = true
 }
-/*
 tasks.register("npm-install") {
   group = "application"
   description = "Installs dependencies from package.json"
   tasks.appNpmInstall.exec();
 }
-*/
+
 task appNpmInstall(type: NpmTask) {
   description = "Installs dependencies from package.json"
   workingDir = file("${projectDir}/src/main/resources/static");
