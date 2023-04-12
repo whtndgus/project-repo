@@ -1,10 +1,9 @@
 plugins {
-  id 'application' // gradle run 의 기능을 가지고있는 플러그인
+  id 'application' 
   id 'eclipse'
-  id 'java' // application 플러그인에 포함
-  id 'org.springframework.boot' version '3.0.1' // gradle 에서 스프링을 다룰 수 있도록
-  id 'io.spring.dependency-management' version '1.1.0' // gradle 에서 
-  // id 'com.palantir.docker' version '0.22.1'
+  id 'java'
+  id 'org.springframework.boot' version '3.0.4'
+  id 'io.spring.dependency-management' version '1.1.0'
   id "com.github.node-gradle.node" version "3.5.1" // gradle에서 npm 사용
 }
 
