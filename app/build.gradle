@@ -28,7 +28,7 @@ task appNpmInstall(type: NpmTask) {
 }
 
 
-group = 'bitcamp' // 빌드 배포파일(.jar, .zip 등) 을 만들때 사용할 이름
+group = 'myapp' // 빌드 배포파일(.jar, .zip 등) 을 만들때 사용할 이름
 version = '0.0.1-SNAPSHOT' // 위와 동일, 배포파일의 이름에 이 버전명이 붙음
 
 configurations { // Spring Configurations 프로세스를 다룰 때 필요한 설정 정보 java에 포함됨
@@ -106,7 +106,7 @@ application {
 // 이클립스 프로젝트 이름 설정하기
 eclipse {
     project {
-        name = "backend"
+        name = "myapp"
     }
     jdt {
       //if you want to alter the java versions (by default they are configured with gradle java plugin settings):
