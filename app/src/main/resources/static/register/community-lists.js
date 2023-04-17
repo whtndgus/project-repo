@@ -10,7 +10,7 @@ fetch(`http://175.106.99.31:80/auth/user`, {
 })
   .then(response => response.json())
   .then(data => {
-    if (data.status == "success") {
+    if (data.status == "success") {  
       console.log(data.data)
       return data.data;
     } else {
