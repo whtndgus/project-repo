@@ -5,7 +5,7 @@ document.querySelector('#btn-write').onclick = (e) => {
 
 let myno = 0;
 
-fetch(`http://localhost:8080/auth/user`, {
+fetch(`http://175.106.99.31:80/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -25,7 +25,7 @@ fetch(`http://localhost:8080/auth/user`, {
 
 tbody = document.querySelector('#community-list')
 
-fetch('http://localhost:8080/community/list')
+fetch('http://175.106.99.31:80/community/list')
   .then((response) => response.json())
   .then((data) => {
 

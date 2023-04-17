@@ -63,7 +63,7 @@ const roots = ReactDOM.createRoot(document.getElementById('roots'));
 let myno = 0;
 let mydata;
 
-fetch(`http://localhost:8080/auth/user`, {
+fetch(`http://175.106.99.31:80/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -394,7 +394,7 @@ $(".btn-1").click(() => {
                 }
                 if ($(".insert-title").val().length > 0 && $(".form-check-input:checked").length > 0) {
   
-                  fetch('http://localhost:8080/insert', {
+                  fetch('http://175.106.99.31:80/insert', {
                     method: 'POST', // 또는 'PUT'
                     headers: {
                       'Content-Type': 'application/json',
@@ -811,7 +811,7 @@ $(".btn-1").click(() => {
             {/* <button type="button" className="btn btn-primary insert-btn" onClick={() => {
               // 비밀번호 중복 조회
               if ($(".insert-password").val().length > 3) {
-                fetch("http://localhost:8080/boardPassword", {
+                fetch("http://175.106.99.31:80/boardPassword", {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -896,7 +896,7 @@ $(".btn-1").click(() => {
                 }
                 if ($(".insert-title").val().length > 0 && $(".form-check-input:checked").length > 0) {
   
-                  fetch('http://localhost:8080/insert', {
+                  fetch('http://175.106.99.31:80/insert', {
                     method: 'POST', // 또는 'PUT'
                     headers: {
                       'Content-Type': 'application/json',
@@ -972,7 +972,7 @@ $(".btn-2").click(() => {
             <button className="btn btn-dark" type="button" onClick={(e) => { // 검색 탭 검색버튼 클릭시 액션
               let ser = $(".insert-title").val();
               if (ser.length > 0) {
-                fetch("http://localhost:8080/boardSearch", {
+                fetch("http://175.106.99.31:80/boardSearch", {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -1119,7 +1119,7 @@ $(".btn-3").click(() => {
               alert("잘못된 비밀번호 입니다")
               return;
             }
-            fetch("http://localhost:8080/boardPassword", {
+            fetch("http://175.106.99.31:80/boardPassword", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -1215,7 +1215,7 @@ function submitFiles(no) {
   }
 
   $.ajax({
-    url: 'http://localhost:8080/insertBoardImg',
+    url: 'http://175.106.99.31:80/insertBoardImg',
     data: formData,
     cache: false,
     contentType: false,

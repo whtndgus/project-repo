@@ -358,7 +358,7 @@
         <script>
           $(".logout").click(() => {
             console.log(11);
-            fetch(`http://localhost:8080/auth/logout`, {
+            fetch(`http://175.106.99.31:80/auth/logout`, {
               method: "GET",
             })
               .then((response) => response.json())
@@ -722,7 +722,7 @@
     <script>
       let myno = 0;
 
-      fetch(`http://localhost:8080/auth/user`, {
+      fetch(`http://175.106.99.31:80/auth/user`, {
         method: "GET",
       })
         .then((response) => response.json())
@@ -747,13 +747,13 @@
       function goToHospitalMap() {
         const urlParams = new URLSearchParams(window.location.search);
         const hospitalNo = urlParams.get("no");
-        location.href = `http://localhost:8080/register/hospitals-map.html?no=${hospitalNo}`;
+        location.href = `http://175.106.99.31:80/register/hospitals-map.html?no=${hospitalNo}`;
       }
 
       // 폼 유효성 검사 및 요청
       if (form.checkValidity()) {
         let json = JSON.stringify(Object.fromEntries(formData));
-        fetch(`http://localhost:8080/hospital/list/${no}`, {
+        fetch(`http://175.106.99.31:80/hospital/list/${no}`, {
           method: "GET",
         })
           .then((response) => response.json())
@@ -830,7 +830,7 @@
       // 폼 유효성 검사 및 요청
       if (uform.checkValidity()) {
         let json = JSON.stringify(Object.fromEntries(uformData));
-        fetch(`http://localhost:8080/hospital/list/${uno}`, {
+        fetch(`http://175.106.99.31:80/hospital/list/${uno}`, {
           method: "GET",
         })
           .then((response) => response.json())
@@ -862,7 +862,7 @@
 
       document.querySelector("#hos-update-submit").onclick = (e) => {
         let kno = new URL(location.href).searchParams.get("no");
-        fetch(`http://localhost:8080/hospital/${kno}`, {
+        fetch(`http://175.106.99.31:80/hospital/${kno}`, {
           method: "PUT",
           headers: {
             "Content-type": "application/json",

@@ -3,7 +3,7 @@ const no = urlParams.get('no');
 
 let myno = 0;
 
-fetch(`http://localhost:8080/auth/user`, {
+fetch(`http://175.106.99.31:80/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -26,8 +26,8 @@ document.querySelector('#former-btn').onclick = (e) => {
 };
 
 Promise.all([
-  fetch(`http://localhost:8080/community/${no}`),
-  fetch(`http://localhost:8080/recomment/${no}`)
+  fetch(`http://175.106.99.31:80/community/${no}`),
+  fetch(`http://175.106.99.31:80/recomment/${no}`)
 ])
 .then((responses) => Promise.all(responses.map((response) => response.json())))
 .then((data) => {
@@ -74,7 +74,7 @@ Promise.all([
   for (var row of recommentData.data) {
     document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = (e) => {
      
-      fetch(`http://localhost:8080/recomment/delete/${row.recNo}`, {
+      fetch(`http://175.106.99.31:80/recomment/delete/${row.recNo}`, {
         method: 'DELETE',
       })
       .then((response) => response.json())
@@ -103,7 +103,7 @@ Promise.all([
 //댓글 입력
 document.querySelector('#rec-save-btn').onclick = (e) => {
 
-  fetch("http://localhost:8080/recomment", {
+  fetch("http://175.106.99.31:80/recomment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -128,7 +128,7 @@ document.querySelector('#rec-save-btn').onclick = (e) => {
 
 //게시물 내용 변경
 document.querySelector('#update-btn').onclick = (e) => {
-  fetch('http://localhost:8080/community',{
+  fetch('http://175.106.99.31:80/community',{
     method: 'PUT',
     headers: {
       'Content-type': 'application/json',
@@ -157,7 +157,7 @@ document.querySelector('#update-btn').onclick = (e) => {
   // 게시물 삭제
   document.querySelector('#delete-btn').onclick = (e) => {
 
-    fetch(`http://localhost:8080/community/${no}`,{
+    fetch(`http://175.106.99.31:80/community/${no}`,{
       method: 'DELETE',
     })
     .then((response) => response.json())
@@ -179,7 +179,7 @@ document.querySelector('#update-btn').onclick = (e) => {
   //이미지만 삭제
     document.querySelector('#btn-img-delete').onclick = (e) => {
 
-      fetch(`http://localhost:8080/communityImg/${no}`,{
+      fetch(`http://175.106.99.31:80/communityImg/${no}`,{
       method: 'DELETE',
     })
     .then((response) => response.json())

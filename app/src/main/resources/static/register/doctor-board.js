@@ -45,7 +45,7 @@ let str;
 
 let myno = 0;
 
-fetch(`http://localhost:8080/auth/user`, {
+fetch(`http://175.106.99.31:80/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -65,7 +65,7 @@ fetch(`http://localhost:8080/auth/user`, {
 
 if (window.localStorage.getItem("boardNo") != null) {
   str = window.localStorage.getItem("boardNo");
-  fetch("http://192.168.0.7:8080/boardNo", {
+  fetch("http://192.168.0.7:80/boardNo", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ if (window.localStorage.getItem("boardNo") != null) {
       $(".board-tel").val(data.another.split(",")[3] != "null" && data.another.split(",")[3].length > 0 ? data.another.split(",")[3] : "-");
     })
 
-  fetch("http://192.168.0.7:8080/findAllBoardImg", {
+  fetch("http://192.168.0.7:80/findAllBoardImg", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ if (window.localStorage.getItem("boardNo") != null) {
 
     })
 
-  fetch("http://192.168.0.7:8080/feedback/findByBno", {
+  fetch("http://192.168.0.7:80/feedback/findByBno", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -336,7 +336,7 @@ class Btns extends React.Component {
       <div className="sogyun-btns">
         <button type="button" className="btn btn-secondary sogyon-insert" onClick={() => {
 
-          fetch("http://192.168.0.7:8080/feedback/insert", {
+          fetch("http://192.168.0.7:80/feedback/insert", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -397,7 +397,7 @@ class Cbtns extends React.Component {
       <div className="sogyun-btns">
         <button type="button" className="btn btn-secondary sogyon-update" onClick={() => {
 
-          fetch("http://192.168.0.7:8080/feedback/update", {
+          fetch("http://192.168.0.7:80/feedback/update", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

@@ -227,7 +227,7 @@
       <script>
         $(".logout").click(() => {
           console.log(11)
-          fetch(`http://localhost:8080/auth/logout`, {
+          fetch(`http://175.106.99.31:80/auth/logout`, {
             method: 'GET'
           })
             .then(response => response.json())
@@ -423,7 +423,7 @@
 
     let myno = 0;
 
-    fetch(`http://localhost:8080/auth/user`, {
+    fetch(`http://175.106.99.31:80/auth/user`, {
       method: 'GET'
     })
       .then(response => response.json())
@@ -479,7 +479,7 @@
       tbody.innerHTML = html;
     }
 
-    fetch('http://localhost:8080/hospital/list')
+    fetch('http://175.106.99.31:80/hospital/list')
       .then((response) => {
         return response.json();
       })
@@ -516,7 +516,7 @@
       }
 
       // 유효한 전화번호인 경우에만 fetch 요청을 보냅니다.
-      fetch(`http://localhost:8080/hospital/check-duplicate/${tel}`)
+      fetch(`http://175.106.99.31:80/hospital/check-duplicate/${tel}`)
         .then((response) => response.json())
         .then((result) => {
           if (result.status === 'failure') {
@@ -560,7 +560,7 @@
       }
       makeInputsReadonly();
 
-      fetch("http://localhost:8080/hospital", {
+      fetch("http://175.106.99.31:80/hospital", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -615,7 +615,7 @@
         }
       }
       $.ajax({
-        url: 'http://localhost:8080/hospitalImg/insertHosImg',
+        url: 'http://175.106.99.31:80/hospitalImg/insertHosImg',
         data: formData,
         cache: false,
         contentType: false,

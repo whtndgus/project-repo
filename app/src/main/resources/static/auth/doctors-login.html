@@ -136,7 +136,7 @@
   <script>
     let myno = 0;
 
-    fetch(`http://localhost:8080/auth/user`, {
+    fetch(`http://175.106.99.31:80/auth/user`, {
       method: 'GET'
     })
       .then(response => response.json())
@@ -185,7 +185,7 @@
       const form = document.querySelector('#login-form');
       const formData = new FormData(form);
 
-      fetch("http://localhost:8080/auth/doctorLogin", {
+      fetch("http://175.106.99.31:80/auth/doctorLogin", {
         method: "POST",
         body: formData
       })

@@ -26,7 +26,7 @@ class Board extends React.Component {
 }
 
 
-fetch(`http://localhost:8080/auth/user`, {
+fetch(`http://175.106.99.31:80/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -40,7 +40,7 @@ fetch(`http://localhost:8080/auth/user`, {
   })
   .then(user => {
     console.log(user.no)
-    fetch("http://localhost:8080/patientsBoards", {
+    fetch("http://175.106.99.31:80/patientsBoards", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

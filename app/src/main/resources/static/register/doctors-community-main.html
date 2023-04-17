@@ -200,7 +200,7 @@
       <script>
         $(".logout").click(() => {
           console.log(11)
-          fetch(`http://localhost:8080/auth/logout`, {
+          fetch(`http://175.106.99.31:80/auth/logout`, {
             method: 'GET'
           })
             .then(response => response.json())
@@ -349,7 +349,7 @@
 
   <!-- 사용자 스크립트 추가-->
   <script>
-    fetch(`http://localhost:8080/auth/user`, {
+    fetch(`http://175.106.99.31:80/auth/user`, {
       method: 'GET'
     })
       .then(response => response.json())

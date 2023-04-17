@@ -2,7 +2,7 @@
 let myno = 0;
 let password = document.querySelector('#password').value;
 
-fetch(`http://localhost:8080/auth/user`, {
+fetch(`http://175.106.99.31:80/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -25,7 +25,7 @@ document.querySelector('.btn-submit').onclick = (e) => {
   if (pwd == null) {
     alert ('비밀번호를 입력해주세요!');
   } else {
-    fetch("http://localhost:8080/community", {
+    fetch("http://175.106.99.31:80/community", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ console.log(no);
     }
   }
   $.ajax({
-    url: 'http://localhost:8080/communityImg/insertComImg',
+    url: 'http://175.106.99.31:80/communityImg/insertComImg',
     data: formData,
     cache: false,
     contentType: false,

@@ -524,7 +524,7 @@
           idValidationMsg.style.color = '#dc3545';
           return;
         } else {
-          fetch(`http://localhost:8080/patients/check-duplicate/${id}`)
+          fetch(`http://175.106.99.31:80/patients/check-duplicate/${id}`)
             .then((response) => response.json())
             .then((result) => {
               if (result.status === 'failure') {
@@ -736,7 +736,7 @@
             formData.append('phoUrl', url);
             json = JSON.stringify(Object.fromEntries(formData));
             // console.log(json);
-            fetch('http://localhost:8080/patients', {
+            fetch('http://175.106.99.31:80/patients', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -775,7 +775,7 @@
         }
         formData.append('files', files[0]);
         $.ajax({
-          url: 'http://localhost:8080/patients/profileimg',
+          url: 'http://175.106.99.31:80/patients/profileimg',
           data: formData,
           cache: false,
           async: false,

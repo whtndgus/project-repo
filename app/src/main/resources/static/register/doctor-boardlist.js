@@ -13,7 +13,7 @@ function Td(props) {
 
   let myno = 0; 
 
-  fetch(`http://localhost:8080/auth/user`, {
+  fetch(`http://175.106.99.31:80/auth/user`, {
     method: 'GET'
   })
     .then(response => response.json())
@@ -72,7 +72,7 @@ $(".search-btn").click(() => {
 function reflesh(string) {
   let lists;
 
-  fetch("http://192.168.0.7:8080/boardSearch", {
+  fetch("http://192.168.0.7:80/boardSearch", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
