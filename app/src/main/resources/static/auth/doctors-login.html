@@ -94,7 +94,7 @@
                       <button class="btn btn-primary w-100" type="button">비회원</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">계정이 없으시다구요? <a href="../register/doctors-form.html">지금 계정 만들기</a></p>
+                      <p class="small mb-0">계정이 없으시다구요? <a href="../register/doctors-signup.html">지금 계정 만들기</a></p>
                     </div>
                   </form>
 
@@ -134,24 +134,45 @@
   <script src="../assets/js/main.js"></script>
 
   <script>
+    let myno = 0;
+
+    fetch(`http://localhost:8080/auth/user`, {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status == "success") {
+          console.log(data.data)
+          location.href = "../register/doctors-advices.html"
+          return data.data;
+        } else {
+          
+        }
+        return data.data
+      })
+      .then((user) => {
+        myno = user.no
+        console.log(myno)
+      })
+      
     // 쿠키정보 id 받아오기
     document.querySelector('input[name="id"]').value = getCookie('id');
-    
+
     const loginForm = document.querySelector('#login-form');
-    
+
     // 로그인 버튼 - click event 
     document.querySelector('#btn-login').addEventListener('click', () => {
       login();
     });
-    
+
     // 로그인 버튼 - enter key event
     loginForm.addEventListener("keydown", (event) => {
-      if(event.key === "Enter") {
+      if (event.key === "Enter") {
         event.preventDefault(); // 기본 동작 취소
         login();
       }
     });
-        
+
     function login() {
       // 회원 ID를 쿠키에 보관
       if (document.querySelector('input[type="checkbox"]:checked') != null) {
@@ -159,32 +180,32 @@
       } else {
         setCookie('id', '', 0);
       }
-    
-        
-        const form = document.querySelector('#login-form');
-        const formData = new FormData(form);
 
-        fetch("http://localhost:8080/auth/doctorLogin", {
-          method: "POST",
-          body: formData
+
+      const form = document.querySelector('#login-form');
+      const formData = new FormData(form);
+
+      fetch("http://localhost:8080/auth/doctorLogin", {
+        method: "POST",
+        body: formData
+      })
+        .then(response => {
+          return response.json();
         })
-          .then(response => {
-            return response.json();
-          })
-          .then(result => {
-            if (result.status == 'success') {
-              location.href = '../doctors.html';
-            } else {
-              alert('로그인 실패!');
-              document.querySelector('input[name="id"]').value = "";
-              document.querySelector('input[name="password"]').value = "";
-            }
-          })
-          .catch(exception => {
-            alert("로그인 오류!");
-            console.log(exception);
-          });
-      }
+        .then(result => {
+          if (result.status == 'success') {
+            location.href = '../register/doctors-advices.html';
+          } else {
+            alert('로그인 실패!');
+            document.querySelector('input[name="id"]').value = "";
+            document.querySelector('input[name="password"]').value = "";
+          }
+        })
+        .catch(exception => {
+          alert("로그인 오류!");
+          console.log(exception);
+        });
+    }
 
     function getCookie(cookieName) {
       var cookieValue = null;

@@ -78,7 +78,6 @@
                     <form
                       id="patients-register-form"
                       class="row g-3 needs-validation"
-                      method="post"
                       novalidate
                     >
                       <div>
@@ -292,7 +291,7 @@
                               type="radio"
                               name="gender"
                               id="gender-m"
-                              value="0"
+                              value="true"
                               checked
                             />
                             <label class="form-check-label" for="gender-m">
@@ -305,7 +304,7 @@
                               type="radio"
                               name="gender"
                               id="gender-w"
-                              value="1"
+                              value="false"
                             />
                             <label class="form-check-label" for="gender-w">
                               여
@@ -433,7 +432,7 @@
                       <div class="col-12">
                         <p class="small mb-0">
                           이미 계정이 있으신가요?
-                          <a href="pages-login.html">로그인</a>
+                          <a href="../auth/patients-login.html">로그인</a>
                         </p>
                       </div>
                     </form>
@@ -685,6 +684,7 @@
 
       // 회원가입 버튼 클릭
       document.getElementById('btn-insert').addEventListener('click', () => {
+        $("#btn-insert").prop('disabled', true);
         const form = document.getElementById('patients-register-form');
         const formData = new FormData(form);
 
@@ -746,7 +746,7 @@
               .then((response) => response.json())
               .then((result) => {
                 if (result.status == 'success') {
-                  location.reload();
+                  location.replace('index.html');
                   // console.log('성공:', result);
                 } else {
                   alert('입력실패');
@@ -754,8 +754,7 @@
                 }
               })
               .catch((exception) => {
-                alert('입력 중 오류 발생');
-                console.log(exception);
+                console.log(exception)
               });
           });
         } else {
@@ -764,9 +763,9 @@
       });
 
       // 파일 경로 저장
-      function submitFiles(no) {
+      function submitFiles() {
         let formData = new FormData();
-        let inputFiles = $('input[name=files]')[0];
+        let inputFiles = $('#profile-file')[0];
         if (!inputFiles || !inputFiles.files || inputFiles.files.length === 0) {
           return;
         }

@@ -66,10 +66,11 @@ public class HospitalController {
   public Object view(@PathVariable int no) {
     return new RestResult()
         .setStatus(RestStatus.SUCCESS)
-        .setData(hospitalService.get(no).setHosphotos(hosPhotoService.hget(no)));
+        .setData(hospitalService.get(no)
+            .setHosphotos(hosPhotoService.hget(no)));
   }
 
-  @PutMapping("{no}")
+  @PutMapping("/{no}")
   public Object update(
       @PathVariable int no,
       @RequestBody Hospital hospital) {

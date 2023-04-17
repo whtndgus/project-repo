@@ -39,6 +39,7 @@ public class AuthController {
 
     if (member != null) {
       session.setAttribute("loginUser", member);
+
       return new RestResult().setStatus(RestStatus.SUCCESS);
     } else {
       return new RestResult().setStatus(RestStatus.FAILURE);
@@ -51,7 +52,6 @@ public class AuthController {
 
     Member member = null;
     member = doctorService.get(id, password);
-    System.out.println(member);
 
     if (member != null) {
       session.setAttribute("loginUser", member);
@@ -70,6 +70,7 @@ public class AuthController {
   @RequestMapping("user")
   public Object user(HttpSession session) {
     Member loginUser = (Member) session.getAttribute("loginUser");
+
     if (loginUser != null) {
       return new RestResult().setStatus(RestStatus.SUCCESS).setData(loginUser);
     } else {

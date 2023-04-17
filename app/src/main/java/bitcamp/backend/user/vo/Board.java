@@ -11,6 +11,7 @@ public class Board {
   @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
   private Date createdDate;
   private int no;
+  private int pno;
 
   private int fedcount;
   private String title;

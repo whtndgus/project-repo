@@ -24,12 +24,6 @@ public class RecommentController {
   @Autowired
   private RecommentService recommentService;
 
-  //  @GetMapping("/list")
-  //  public Object list() {
-  //    return new RestResult()
-  //        .setStatus(RestStatus.SUCCESS)
-  //        .setData(recommentService.list());
-  //  }
 
   @PostMapping
   public Object insert(@RequestBody Recomment recomment) {
@@ -40,19 +34,18 @@ public class RecommentController {
     return restResult;
   }
 
-
-  @DeleteMapping("{no}")
-  public Object delete(@PathVariable int no) {
-    recommentService.delete(no);
-    return new RestResult()
-        .setStatus(RestStatus.SUCCESS);
-  }
-
   @GetMapping("{no}")
   public Object list(@PathVariable int no) {
     return new RestResult()
         .setStatus(RestStatus.SUCCESS)
         .setData(recommentService.list(no));
+  }
+
+  @DeleteMapping("/delete/{recNo}")
+  public Object deleteRec(@PathVariable int recNo) {
+    recommentService.delete(recNo);
+    return new RestResult()
+        .setStatus(RestStatus.SUCCESS);
   }
 
 

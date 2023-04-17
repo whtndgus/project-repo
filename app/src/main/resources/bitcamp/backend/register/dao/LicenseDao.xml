@@ -5,8 +5,8 @@
 <mapper namespace="bitcamp.backend.register.dao.LicenseDao">
 
   <resultMap type="license" id="licenseMap">
-    <id column="d_no" property="d_no"/>
-    <result column="license_no" property="l_no"/>
+    <id column="d_no" property="doctorNo"/>
+    <result column="license_no" property="licenseNo"/>
     <result column="license_photo" property="licensePhoto"/>
     <result column="pho_filename" property="phoFilename"/>
     <result column="pho_type" property="phoType"/>
@@ -16,7 +16,7 @@
   <insert id="insert" parameterType="license" 
           useGeneratedKeys="true" keyProperty="no" keyColumn="d_no">
     insert into app_license(d_no, license_no, license_photo, pho_filename, pho_type)
-    values(#{d_no}, #{l_no}, #{licensePhoto}, #{phoFilename}, #{phoType})
+    values(#{doctorNo}, #{licenseNo}, #{licensePhoto}, #{phoFilename}, #{phoType})
   </insert>
 
   <select id="findAll" resultMap="licenseMap">

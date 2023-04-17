@@ -10,7 +10,8 @@ import bitcamp.backend.community.vo.Recomment;
 @Service
 public class DefaultRecommentService implements RecommentService {
 
-  @Autowired private RecommentDao recommentDao;
+  @Autowired
+  private RecommentDao recommentDao;
 
   @Override
   public void add(Recomment recomment) {
@@ -23,8 +24,14 @@ public class DefaultRecommentService implements RecommentService {
   }
 
   @Override
-  public void delete(int no) {
+  public void delete(int recNo) {
+    recommentDao.deleteRec(recNo);
+  }
+
+  @Override
+  public void deleteCno(int no) {
     recommentDao.delete(no);
+
   }
 
 }

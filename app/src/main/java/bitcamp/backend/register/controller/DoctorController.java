@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import bitcamp.backend.register.service.DoctorService;
 import bitcamp.backend.register.service.LicenseService;
 import bitcamp.backend.register.vo.Doctor;
+import bitcamp.backend.register.vo.License;
 import bitcamp.backend.user.service.ObjectStorageService;
 import bitcamp.util.RestResult;
 import bitcamp.util.RestStatus;
@@ -48,9 +49,27 @@ public class DoctorController {
   @PostMapping
   public Object insert(@RequestBody Doctor doctor) {
     doctorService.add(doctor);
-    //  licenseService.add(doctor.getNo(), l_no);
+    System.out.println(doctor);
 
-    return new RestResult().setStatus(RestStatus.SUCCESS);
+    return new RestResult().setStatus(RestStatus.SUCCESS).setData(doctor);
+  }
+
+  @PostMapping("{no}")
+  public void insertL(@PathVariable int no, MultipartHttpServletRequest request) {
+    List<MultipartFile> files = request.getFiles("file");
+    String[] names = request.getParameterValues("licenseName");
+    for (int i = 0; i < files.size(); i++) {
+      String url = objectStorageService.uploadFile(licenseImg, files.get(i));
+      url = url.split("/")[5];
+      License license = new License();
+      license.setDoctorNo(no);
+      license.setLicenseNo(Integer.parseInt(names[i]));
+      license.setLicensePhoto(url);
+      license.setPhoFilename(files.get(i).getOriginalFilename());
+      license.setPhoType(files.get(i).getContentType());
+      licenseService.add(license);
+    }
+    System.out.println(no);
   }
 
   @PostMapping("/profileimg")

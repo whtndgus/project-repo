@@ -1,23 +1,12 @@
 plugins {
-  id 'application' 
+  id 'application' // gradle run 의 기능을 가지고있는 플러그인
   id 'eclipse'
-  id 'java'
-  id 'org.springframework.boot' version '3.0.4'
-  id 'io.spring.dependency-management' version '1.1.0'
-  id 'com.palantir.docker' version '0.22.1'
+  id 'java' // application 플러그인에 포함
+  id 'org.springframework.boot' version '3.0.1' // gradle 에서 스프링을 다룰 수 있도록
+  id 'io.spring.dependency-management' version '1.1.0' // gradle 에서 
+  // id 'com.palantir.docker' version '0.22.1'
   id "com.github.node-gradle.node" version "3.5.1" // gradle에서 npm 사용
 }
-
-// docker {
-//     name 'psawesome/genlog'
-//     tag 'Dockerhub', "psawesome/genlog:${project.version}_${BUILD_VERSION}"
-//     dockerfile file('Dockerfile')
-//     files tasks.bootJar.outputs.files
-//     buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
-//     labels(['key': 'value'])
-//     pull true
-//     noCache true
-// }
 
 // gradle을 실행하는 호스트에 node가 없을 경우를 대비해 
 // 지정된 버전의 node를 다운로드하게 만드는 설정

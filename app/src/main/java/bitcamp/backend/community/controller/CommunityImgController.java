@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import bitcamp.backend.community.service.CommunityImgService;
 import bitcamp.backend.community.vo.CommunityImg;
 import bitcamp.backend.user.service.ObjectStorageService;
+import bitcamp.util.RestResult;
+import bitcamp.util.RestStatus;
 
 @RestController
 @RequestMapping("/communityImg")
@@ -58,10 +60,11 @@ public class CommunityImgController {
 
   @CrossOrigin("*")
   @DeleteMapping("{no}")
-  public void deleteImg(@PathVariable int no) {
+  public Object deleteImg(@PathVariable int no) {
 
     System.out.println("커뮤 사진번호 : " + no);
     communityImgService.delete(no);
+    return new RestResult().setStatus(RestStatus.SUCCESS);
   }
 
 

@@ -8,13 +8,13 @@ public interface LicenseService {
 
   List<License> list(int licenseNo);
 
-  License get(int dNo);
+  License get(int doctorNo);
 
   void update(License license);
 
-  List<License> dlist(int D_no);
+  List<License> dlist(int doctorNo);
 
-  List<License> llist(int D_no);
+  List<License> llist(int licenseNo);
 
-  void delete(int dNo);
+  void delete(int doctorNo);
 }

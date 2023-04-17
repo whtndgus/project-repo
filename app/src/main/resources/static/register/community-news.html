@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>커뮤니티 - 이슈토론</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!--구글폰트-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="assets/img/newlogo.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+  <div class="d-flex align-items-center justify-content-between">
+    <a href="index.html" class="logo d-flex align-items-center">
+      <img src="assets/img/newlogo.png" alt="">
+      <span class="d-none d-lg-block">MyClinic</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div><!-- End Logo -->
+
+  <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+  </div><!-- End Search Bar -->
+
+  <div class="top-menu">
+    <a href="pages-notice.html"  class="nav-link collapsed"><span>공지사항</span></a>
+    
+    <a href="doctors-community-main.html"  class="nav-link collapsed"><span>커뮤니티</span></a>
+
+    <a href="doctors-signup.html"  class="nav-link collapsed"><span>회원가입(의사)</span></a>
+  </div>
+
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+
+      <li class="nav-item dropdown">
+
+        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <i class="bi bi-bell"></i>
+          <span class="badge bg-primary badge-number">4</span>
+        </a><!-- End Notification Icon -->
+
+        <!--우측 상단 알림 -->
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+          <li class="dropdown-header">
+            확인하지 않은 알림이 있습니다.
+            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li class="notification-item">
+            <i class="bi bi-exclamation-circle text-warning"></i>
+            <div>
+              <h4>진료 답변 확인하기</h4>
+              <p>OOO 환자님 안녕하세요....</p>
+              <p>30분 전</p>
+            </div>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li class="notification-item">
+            <i class="bi bi-x-circle text-danger"></i>
+            <div>
+              <h4>개인정보 보호 안내</h4>
+              <p>비밀번호를 변경해주세요</p>
+              <p>1 시간 전</p>
+            </div>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <!--  알림
+          <li class="notification-item">
+            <i class="bi bi-check-circle text-success"></i>
+            <div>
+              <h4>Sit rerum fuga</h4>
+              <p>Quae dolorem earum veritatis oditseno</p>
+              <p>2 hrs. ago</p>
+            </div>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li class="notification-item">
+            <i class="bi bi-info-circle text-primary"></i>
+            <div>
+              <h4>Dicta reprehenderit</h4>
+              <p>Quae dolorem earum veritatis oditseno</p>
+              <p>4 hrs. ago</p>
+            </div>
+          </li>
+          -->
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li class="dropdown-footer">
+            <a href="#">Show all notifications</a>
+          </li>
+
+        </ul><!-- End Notification Dropdown Items -->
+
+      </li><!-- End Notification Nav -->
+
+      
+
+      <li class="nav-item dropdown pe-3">
+
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2">엄 진 영</span>
+        </a><!-- End Profile Iamge Icon -->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <li class="dropdown-header">
+            <h6>엄 진 영</h6>
+            <span>개발자</span>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <i class="bi bi-person"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <i class="bi bi-gear"></i>
+              <span>Account Settings</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+              <i class="bi bi-question-circle"></i>
+              <span>Need Help?</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Sign Out</span>
+            </a>
+          </li>
+
+        </ul><!-- End Profile Dropdown Items -->
+      </li><!-- End Profile Nav -->
+
+    </ul>
+  </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->
+
+ <!-- ======= Sidebar ======= -->
+ <aside id="sidebar" class="sidebar">
+
+  <ul class="sidebar-nav" id="sidebar-nav">
+  
+    <li class="nav-heading">의사 전용 페이지</li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="doctors-mypage.html">
+        <i class="bi bi-person"></i>
+        <span>내 정보</span>
+      </a>
+    </li><!-- End Profile Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="doctors-advices.html">
+        <i class="bi bi-file-earmark"></i>
+        <span>진료하기</span>
+      </a>
+    </li> 
+
+    
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="doctors-review.html">
+        <i class="bi bi-envelope"></i>
+        <span>진료 리뷰 확인</span>
+      </a>
+    </li><!-- End Contact Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-faq.html">
+        <i class="bi bi-question-circle"></i>
+        <span>Q & A</span>
+      </a>
+    </li><!-- End F.A.Q Page Nav -->
+    
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="hospitals-list.html">
+        <i class="bi bi-card-list"></i>
+        <span>내 병원 정보</span>
+      </a>
+    </li><!-- End Register Page Nav -->
+
+    <!-- 로그아웃 태그 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <li class="nav-item logout">
+      <a class="nav-link collapsed">
+        <i class="bi bi-box-arrow-in-right"></i>
+        <span>로그아웃</span>
+      </a>
+    </li><!-- End Login Page Nav -->
+    <script>
+      $(".logout").click(() => {
+        console.log(11)
+        fetch(`http://localhost:8080/auth/logout`, {
+          method: 'GET'
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status == "success") {
+              location.href = ""
+            } else {
+              alert("로그아웃 실패")
+              location.href = ""
+            }
+          })
+      })
+    </script>
+
+  </ul>
+
+</aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>이 달의 이슈토론 #1</h1>
+      
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <br>
+              <h5 class="community-topic">비타민C 과다복용 부르는 메가도스 요법… 부작용은 없을까?</h5>
+              <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+    
+                  <img src="assets/img/vitamin.jfif" alt="Profile" class="rounded-circle">
+                
+              <p><br>비타민C는 활성산소 제거, 콜라겐의 합성, 피부 미백, 색소침착 억제 등 다양한 효능이 있는데, 그중에서도 특히 피부 미용에 필수적인 영양소로 알려져 있다.<br>
+                비타민C는 수용성 비타민이라 체내에 축적되지 않고 배출되는 성질을 가졌다. 이에 비타민C 과다복용을 부르는 메가도스(Megadose) 요법이 크게 유행하고 있다.<br>
+                메가도스 요법이란 권장 섭취량보다 과용량으로 복용하는 것을 의미하며, 비타민C의 경우 하루 권장 섭취량인 100mg보다 10배에서 200배 더 많은 양을 주사로 투여하거나 보충제로 먹는 방법을 말한다.그러나 비타민C 고용량 섭취는 부작용을 부를 수 있어 전문가들 사이에서 크게 권장되는 방법은 아니다. 가장 흔한 부작용으로는 위장 장애가 있다.<br>
+                 과도하게 섭취하여 체내에서 흡수되지 못한 비타민C가 삼투 효과를 일으키면서 발생하는데, 한 번에 2,000mg 이상 섭취할 시 발생할 확률이 높다.<br>
+                 주로 속쓰림, 메스꺼움, 구토, 설사 등의 증상을 동반한다.<br>
+                 또 다른 대표적인 부작용으로는 신장결석이 있다. 비타민C는 대사 과정에서 옥살산이 발생하는데, 이때 비타민C의 대사산물인 옥살산과 칼슘이 만나 생성되는 옥살산칼슘이 신장결석을 유발한다. 옥살산칼슘은 시금치, 양배추 등의 식품에도 포함되어 있으나, 대부분 고용량의 보충제를 따로 먹는 경우에 부작용이 나타난다.<br>
+                 이외에도 철분 과잉으로 인해 심장이나 간, 췌장, 갑상선 등에 손상을 일으킬 수 있고, 방광염이 발생할 수 있다.이러한 부작용을 방지하기 위해서는 비타민C의 안전한 섭취 방법을 알아야 한다. 우선 적정량의 섭취가 필요하다.<br>
+                  일반적인 메가도스 요법으로는 약 1,000~20,000mg 정도가 투여 및 섭취되지만, 흡수율 측면에서 본다면 200~500mg 정도가 가장 적합하다. 이는 혈중농도를 유지하는 현상에 따라 과다복용을 해도 흡수되는 양은 일정량으로 유지되기 때문이다.<br>
+                  그다음 종류를 확인해야 한다. 비타민C는 크게 합성 비타민C와 천연 비타민C로 나눌 수 있는데, 천연 비타민C의 흡수율이 합성 비타민C보다 약 2~3배가량 더 높다. 또한 합성 비타민C에 비해 생체 이용률도 약 12배가량 높으며, 특히 암라 비타민C가 생체 이용률이 가장 높다고 알려져 있다.<br>
+                    만일 피부 미용이나 항산화 등을 목적으로 비타민C 보충을 고려 중이라면, 암라 비타민C와 같이 흡수율이 좋은 천연 비타민C를 선택하되, 일 200~500mg 정도로 안전하게 섭취하는 것이 좋다.
+                <br><br>[바이오타임즈=최진주 기자] news@biotimes.co.kr
+                <br>출처 : 바이오타임즈(http://www.biotimes.co.kr)
+                </p>
+                </div>
+                </div>
+              </section>
+
+              <section class="section">
+                <div class="col-lg-12">
+                  <h5 class="community-topic">댓글</h5>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row mb-3" id="com-comment">
+                       
+                        <div class="col-lg-12">
+                          <label for="inputAddress" class="form-label">댓글 입력</label>
+                          <input type="text" class="form-control" id="inputAddress" placeholder="비방이나 욕설은 자동 검열되어 삭제됩니다.">
+                        </div>
+                  
+                        <div class="text-center" style="margin-top: 20px;">
+                          <button type="submit" class="btn btn-primary">입력</button>
+                          <button type="reset" class="btn btn-secondary">변경</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                
+                <!--<code>required</code></p>-->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -41,18 +41,11 @@ public class DefaultHospitalService implements HospitalService{
   @Transactional
   @Override
   public void update(Hospital hospital) {
-    if (hospitalDao.update(hospital) == 0) {
-    } else {
-      throw new RuntimeException("병원이 존재하지 않습니다.");
-    }
+    hospitalDao.update(hospital);
   }
 
   @Transactional
   @Override
   public void delete(int no) {
-    if (hospitalDao.delete(no) == 0) {
-    } else {
-      throw new RuntimeException("병원이 존재하지 않습니다.");
-    }
   }
 }

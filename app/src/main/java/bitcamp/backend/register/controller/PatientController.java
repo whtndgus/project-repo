@@ -41,6 +41,7 @@ import bitcamp.backend.register.vo.Patient;
 import bitcamp.backend.user.service.ObjectStorageService;
 import bitcamp.util.RestResult;
 import bitcamp.util.RestStatus;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @CrossOrigin("*")
@@ -77,6 +78,7 @@ public class PatientController {
   @PostMapping
   public Object insert(@RequestBody Patient patient) {
     patientService.add(patient);
+    System.out.println(patient);
     return new RestResult().setStatus(RestStatus.SUCCESS);
   }
 
@@ -110,7 +112,7 @@ public class PatientController {
   }
 
   @GetMapping("{no}")
-  public Object view(@PathVariable int no)
+  public Object view(@PathVariable int no, HttpSession session)
       throws InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException,
       JsonProcessingException, RestClientException, URISyntaxException {
 
@@ -193,7 +195,7 @@ public class PatientController {
   public Object phonecheck(@RequestBody HashMap<String, Object> param) {
     String sn = (String) param.get("serial");
     if (sn.length() == 6) {
-      if (this.serial.equals(sn)) { 
+      if (this.serial.equals(sn)) {
 
         return new RestResult().setStatus(RestStatus.SUCCESS);
       } else {

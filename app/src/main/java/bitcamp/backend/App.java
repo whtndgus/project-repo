@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import bitcamp.backend.feedback.service.FeedBackService;
+import bitcamp.backend.register.vo.Member;
 import bitcamp.backend.user.service.BoardImgService;
 import bitcamp.backend.user.service.BoardService;
 import bitcamp.backend.user.service.ObjectStorageService;
 import bitcamp.backend.user.vo.Board;
 import bitcamp.backend.user.vo.BoardImg;
+import jakarta.servlet.http.HttpSession;
 
 
 @CrossOrigin("*")
@@ -77,7 +79,6 @@ public class App {
     }
     System.out.println("param : " + param);
     String str = "";
-
     str += param.get("name") + ",";
     str += param.get("age") + ",";
     str += param.get("gender") + ",";
@@ -86,6 +87,13 @@ public class App {
     str += param.get("another");
 
     Board board = new Board();
+
+    int no = (int) (param.get("no"));
+    if (no > 0) {
+      board.setPno(no);
+    } else {
+
+    }
 
     board.setTitle((String) param.get("title"));
     board.setSerial(ran + "");
@@ -99,7 +107,11 @@ public class App {
   }
 
   @PostMapping("/boardSearch")
-  public Object bSearch(@RequestBody HashMap<String, Object> param) {
+  public Object bSearch(@RequestBody HashMap<String, Object> param, HttpSession session) {
+
+    Member loginUser = (Member) session.getAttribute("loginUser");
+    System.out.println(loginUser);
+
     List<Board> boards = boardService.list((String) param.get("search"));
     for (int i = 0; i < boards.size(); i++) {
       boards.get(i).setFedcount(backService.blist(boards.get(i).getNo()).size());
@@ -262,7 +274,7 @@ public class App {
       result.put("data", boards);
     } else {
       result.put("status", "fail");
-      System.out.println("환자 회원 작성글 없거나 어류");
+      System.out.println("환자 회원 작성글 없거나 오류");
     }
 
 

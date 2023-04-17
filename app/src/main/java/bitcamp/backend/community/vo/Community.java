@@ -20,5 +20,4 @@ public class Community {
   private int viewCnt;
   private int filter;
   private int area;  // 게시글 공개 범위
-
 }

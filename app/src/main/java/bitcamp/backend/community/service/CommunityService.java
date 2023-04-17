@@ -11,5 +11,6 @@ public interface CommunityService {
   Community get(int no);
   void update(Community community);
   void delete(int no);
+
 }
 

@@ -53,7 +53,11 @@ public class FeedBackController {
     feedBack.setPopen((boolean) param.get("popen"));
     feedBack.setVisit((boolean) param.get("visit"));
     feedBack.setContent((String) param.get("content"));
-    feedBack.setMoney(Integer.parseInt((String) param.get("money")));
+    if (((String) param.get("money")).equals("")) {
+
+    } else {
+      feedBack.setMoney(Integer.parseInt((String) param.get("money")));
+    }
     try {
       backService.add(feedBack);
       result.put("status", "success");
@@ -73,7 +77,11 @@ public class FeedBackController {
     feedBack.setPopen((boolean) param.get("popen"));
     feedBack.setVisit((boolean) param.get("visit"));
     feedBack.setContent((String) param.get("content"));
-    feedBack.setMoney(Integer.parseInt((String) param.get("money")));
+    if (((String) param.get("money")).equals("")) {
+
+    } else {
+      feedBack.setMoney(Integer.parseInt((String) param.get("money")));
+    }
 
     try {
       backService.update(feedBack);

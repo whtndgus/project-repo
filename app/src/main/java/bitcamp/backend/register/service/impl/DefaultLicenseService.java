@@ -19,13 +19,13 @@ public class DefaultLicenseService implements LicenseService {
   }
 
   @Override
-  public List<License> dlist(int D_no) {
-    return licenseDao.findByDno(D_no);
+  public List<License> dlist(int doctorNo) {
+    return licenseDao.findByDno(doctorNo);
   }
 
   @Override
-  public List<License> llist(int l_no) {
-    return licenseDao.findByLno(l_no);
+  public List<License> llist(int licenseNo) {
+    return licenseDao.findByLno(licenseNo);
   }
 
   @Override
@@ -34,7 +34,7 @@ public class DefaultLicenseService implements LicenseService {
   }
 
   @Override
-  public void delete(int no) {
+  public void delete(int doctorNo) {
 
   }
 
@@ -45,7 +45,7 @@ public class DefaultLicenseService implements LicenseService {
   }
 
   @Override
-  public License get(int dNo) {
+  public License get(int doctorNo) {
     // TODO Auto-generated method stub
     return null;
   }

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>환자 - 마이페이지</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/newlogo.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    div .row {
+      font-size: 20px !important;
+      margin-bottom: 40px !important;
+    }
+
+    div .row:first-child {
+      margin-top: 30px !important;
+    }
+
+    .patients-gender {
+      margin-left: 60px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/newlogo.png" alt="">
+        <span class="d-none d-lg-block">MyClinic</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <div class="top-menu">
+      <a href="pages-notice.html" class="nav-link collapsed"><span>공지사항</span></a>
+
+      <a href="doctors-community-main.html" class="nav-link collapsed"><span>커뮤니티</span></a>
+
+      <a href="patients-signup.html" class="nav-link collapsed"><span>회원가입(환자)</span></a>
+    </div>
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <!--우측 상단 알림 -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              확인하지 않은 알림이 있습니다.
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>진료 답변 확인하기</h4>
+                <p>OOO 환자님 안녕하세요....</p>
+                <p>30분 전</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>개인정보 보호 안내</h4>
+                <p>비밀번호를 변경해주세요</p>
+                <p>1 시간 전</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span id="username" class="d-none d-md-block dropdown-toggle ps-2"></span>
+          </a><!-- End Profile Iamge Icon -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Main</span>
+        </a>
+      </li>
+      <li class="nav-heading">My page</li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="patients-profile.html">
+          <i class="bi bi-person"></i>
+          <span>내 정보</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="patients-records.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>작성글 목록</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="">
+          <i class="bi bi-question-circle"></i>
+          <span>문의하기</span>
+        </a>
+      </li>
+
+      <!-- 로그아웃 태그 -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <li class="nav-item logout">
+        <a class="nav-link collapsed">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>로그아웃</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+      <script>
+        $(".logout").click(() => {
+          console.log(11)
+          fetch(`http://localhost:8080/auth/logout`, {
+            method: 'GET'
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.status == "success") {
+                location.href = ""
+              } else {
+                alert("로그아웃 실패")
+                location.href = ""
+              }
+            })
+        })
+      </script>
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>내 정보</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-2">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src="무직.jpg" alt="Profile" class="rounded-circle patients-img">
+              <h2 class="top-name">엄 진 영</h2>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item" style="">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">개인 정보
+                    조회</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">개인 정보 변경</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">비밀번호
+                    변경</button>
+                </li>
+
+              </ul>
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview row gx-3" id="profile-overview">
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">이 름/ 성 별</div>
+                    <div class="col-lg-9 col-md-8 patients-name"></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">아이디</div>
+                    <div class="col-lg-9 col-md-8 patients-id"></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">생년월일</div>
+                    <div class="col-lg-9 col-md-8 patients-birth"></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">전화 번호</div>
+                    <div class="col-lg-9 col-md-8 patients-tel"></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">주소</div>
+                    <div class="col-lg-9 col-md-8 patients-addr"></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">이메일</div>
+                    <div class="col-lg-9 col-md-8 patients-email"></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">특이사항</div>
+                    <div class="col-lg-9 col-md-8 patients-drug"></div>
+                  </div>
+
+                </div>
+
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                  <!-- Profile Edit Form -->
+                  <form>
+                    <div class="row mb-3">
+                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">사진 수정</label>
+                      <input type="file" class="form-control change-img" accept="image/*" id="inputGroupFile01"
+                        style="width: 300px; height: 38px; margin-left: 12px;">
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">아이디</label>
+                      <div class="col-md-8 col-lg-3">
+                        <input name="fullName" type="text" class="form-control change-id" id="fullName" value=""
+                          readonly>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">이름</label>
+                      <div class="col-md-8 col-lg-3">
+                        <input name="fullName" type="text" class="form-control change-name" id="fullName" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">생년월일</label>
+                      <div class="col-md-8 col-lg-3">
+                        <input name="fullName" type="text" class="form-control change-birth" id="fullName" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label">전화번호</label>
+                      <div class="col-md-6 col-lg-3">
+                        <input name="company" type="text" class="form-control change-tel" id="company" value=""
+                          readonly>
+                      </div>
+                      <button type="button" onclick="tel()" class="btn btn-secondary col-md-2" style="height: 90%;">변경 /
+                        인증</button>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">주소</label>
+                      <div class="col-md-4 col-lg-6">
+                        <input name="job" type="text" class="form-control change-addr" id="Job" value="" readonly>
+                      </div>
+                      <button type="button" onclick="addr()" class="btn btn-secondary col-md-2" style="height: 90%;">주소
+                        정보 변경</button>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">이메일</label>
+                      <div class="col-md-8 col-lg-5">
+                        <input name="country" type="text" class="form-control change-email" id="Country" value=""
+                          readonly>
+                      </div>
+                      <button type="button" onclick="tel()" class="btn btn-secondary col-md-2" style="height: 90%;">변경 /
+                        인증</button>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">특이사항(약물)</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="email" type="email" class="form-control change-drug" id="Email" value="">
+                      </div>
+                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">특이사항(신체)</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="email" type="email" class="form-control change-phy" id="Email" value="">
+                      </div>
+                    </div>
+
+
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary change-btn">저장</button>
+                    </div>
+                  </form><!-- End Profile Edit Form -->
+
+                </div>
+
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <!-- Change Password Form -->
+                  <form>
+
+                    <div class="row mb-3">
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">현재 비밀번호</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="password" type="password" class="form-control patients-pw" id="currentPassword">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">새 비밀번호</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="newpassword" type="password" class="form-control change-pw" id="newPassword"
+                          onchange="checkPw()">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">새 비밀번호 확인</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="renewpassword" type="password" class="form-control change-pw-check"
+                          id="renewPassword" onchange="checkPw()">
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary change-pw-btn">변경하기</button>
+                    </div>
+                  </form><!-- End Change Password Form -->
+
+                </div>
+
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- 사용자가 추가한 스크립트 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type='text/babel' src="patients-profile.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+    function addr() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+          // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+          // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+          document.querySelector(".change-addr").value = data.address;
+        }
+      }).open();
+    }
+  </script>
+
+
+</body>
+
+</html>

@@ -45,4 +45,6 @@ public class DefaultCommunityService implements CommunityService{
   public void delete(int no) {
     communityDao.delete(no);
   }
+
+
 }

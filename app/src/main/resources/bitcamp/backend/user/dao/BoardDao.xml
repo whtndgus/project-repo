@@ -13,13 +13,14 @@
 
   <insert id="insert" parameterType="bitcamp.backend.user.vo.Board" 
           useGeneratedKeys="true" keyColumn="board_id" keyProperty="no">
-    insert into app_symp_board (symp_title, symp_cont1, symp_cont2, serial)
-    values(#{title}, #{pain}, #{another}, #{serial})
+    insert into app_symp_board (p_no, symp_title, symp_cont1, symp_cont2, serial)
+    values(#{pno}, #{title}, #{pain}, #{another}, #{serial})
   </insert>
   
   <select id="findAll" resultType="bitcamp.backend.user.vo.Board" parameterType="string">
     select 
       b.symp_no as no, 
+      b.p_no as pno, 
       b.symp_title as title,
       b.symp_date as createdDate,
       b.symp_cont1 as pain,
@@ -36,6 +37,7 @@
   <select id="findByNo" resultType="bitcamp.backend.user.vo.Board" parameterType="int">
     select 
       b.symp_no as no, 
+      b.p_no as pno, 
       b.symp_title as title,
       b.serial as serial,
       b.symp_date as createdDate,
@@ -62,6 +64,7 @@
   <select id="findByPassword" resultType="bitcamp.backend.user.vo.Board" parameterType="long">
     select 
       b.symp_no as no, 
+      b.p_no as pno, 
       b.symp_title as title,
       b.serial as serial,
       b.symp_date as createdDate,
@@ -78,6 +81,7 @@
   <select id="findByPno" resultType="bitcamp.backend.user.vo.Board" parameterType="int">
     select 
       b.symp_no as no, 
+      b.p_no as pno, 
       b.symp_title as title,
       b.serial as serial,
       b.symp_date as createdDate,
@@ -85,10 +89,8 @@
       b.symp_cont2 as another
     from 
       app_symp_board b
-    <if test="no != 0 and no != null">
     where 
       b.p_no = #{no}
-    </if> 
   </select>
   
 </mapper>

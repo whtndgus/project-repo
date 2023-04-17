@@ -19,8 +19,8 @@ public interface LicenseDao {
 
   int delete(License l);
 
-  List<License> findByDno(int d_no);
+  List<License> findByDno(int docterNo);
 
-  List<License> findByLno(int l_no);
+  List<License> findByLno(int licenseNo);
 
 }

@@ -13,8 +13,8 @@ public class License {
   // return category.getLicenseNo();
   // }
   //
-  private int d_no;
-  private int l_no;
+  private int doctorNo;
+  private int licenseNo;
   private String licensePhoto;
   private String phoFilename;
   private String phoType;

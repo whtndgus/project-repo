@@ -81,6 +81,10 @@
       p.p_phy,
       p.p_drug,
       m.addr,
+      m.m_photo,
+      m.m_bday,
+      m.pho_filename,
+      m.pho_type,
       m.m_gender
     from
       app_patient p
