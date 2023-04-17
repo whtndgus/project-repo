@@ -14,7 +14,7 @@ fetch(`http://175.106.99.31:80/auth/user`, {
       console.log(data.data)
       return data.data;
     } else {
-      location.href = "../auth/doctors-login.html"  
+      location.href = "../auth/doctors-login.html"
     }
     return data.data
 })
