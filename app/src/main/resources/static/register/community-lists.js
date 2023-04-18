@@ -5,12 +5,12 @@ document.querySelector('#btn-write').onclick = (e) => {
 
 let myno = 0;
 
-fetch(`http://175.106.99.31:80/auth/user`, {
+fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
   .then(data => {
-    if (data.status == "success") {  
+    if (data.status == "success") {
       console.log(data.data)
       return data.data;
     } else {
@@ -25,7 +25,7 @@ fetch(`http://175.106.99.31:80/auth/user`, {
 
 tbody = document.querySelector('#community-list')
 
-fetch('http://175.106.99.31:80/community/list')
+fetch('http://175.106.99.31/community/list')
   .then((response) => response.json())
   .then((data) => {
 

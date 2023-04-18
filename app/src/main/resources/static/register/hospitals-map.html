@@ -337,7 +337,7 @@
         <script>
           $(".logout").click(() => {
             console.log(11)
-            fetch(`http://175.106.99.31:80/auth/logout`, {
+            fetch(`http://175.106.99.31/auth/logout`, {
               method: 'GET'
             })
               .then(response => response.json())
@@ -433,7 +433,7 @@
 
       // 폼 유효성 검사 및 요청
       if (form.checkValidity()) {
-        fetch(`http://175.106.99.31:80/hospital/list/${no}`, {
+        fetch(`http://175.106.99.31/hospital/list/${no}`, {
           method: "GET",
         })
           .then((response) => response.json())

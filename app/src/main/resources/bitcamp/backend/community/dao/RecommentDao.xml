@@ -7,6 +7,7 @@
   <resultMap type="recomment" id="recommentMap">
     <id column="rcom_no" property="recNo"/>
     <result column="com_no" property="comNo"/>
+    <result column="d_no" property="docNo"/>
     <result column="m_name" property="docName"/>
     <result column="rcom_date" property="createdDate"/>
     <result column="rcom_cont" property="recContent"/>
@@ -23,7 +24,9 @@
       r.rcom_no,
       r.rcom_date,
       r.rcom_cont,
-      m.m_name
+      m.m_name,
+      r.d_no,
+      r.com_no
     from app_recomment r
 		  join app_member m on r.d_no = m.m_no
     where 

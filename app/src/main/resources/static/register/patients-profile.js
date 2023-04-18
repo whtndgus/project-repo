@@ -2,7 +2,7 @@ let patientNo = 0;
 let samePw = false;
 patientNo = 0;
 
-fetch(`http://175.106.99.31:80/auth/user`, {
+fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -18,7 +18,7 @@ fetch(`http://175.106.99.31:80/auth/user`, {
   .then((user) => {
     patientNo = user.no;
     if (patientNo > 0) {
-      fetch(`http://175.106.99.31:80/patients/${patientNo}`, {
+      fetch(`http://175.106.99.31/patients/${patientNo}`, {
         method: 'GET'
       })
         .then(response => response.json())
@@ -64,23 +64,13 @@ fetch(`http://175.106.99.31:80/auth/user`, {
     }
 
   })
-var popupWidth = 320;
-var popupHeight = 450;
 
-var popupX = (window.screen.width / 2) - (popupWidth / 2);
-
-var popupY = (window.screen.height / 2) - (popupHeight / 2);
-
-function tel() {
-  console.log(11)
-  window.open("tel-input.html", "popupNo1", 'status=no, height=' + popupHeight + ', width=' + popupWidth + ', left=' + popupX + ', top=' + popupY);
-}
 
 $(".change-btn").click(() => {
   let formData = new FormData();
   if (document.querySelector(".change-img").files.length > 0) {
     formData.append("file", document.querySelector(".change-img").files[0])
-    fetch(`http://175.106.99.31:80/patients/${patientNo}`, {
+    fetch(`http://175.106.99.31/patients/${patientNo}`, {
       method: 'POST',
       body: formData,
     })
@@ -99,7 +89,7 @@ $(".change-btn").click(() => {
   formData.append("drug", document.querySelector(".change-drug").value);
   formData.append("phy", document.querySelector(".change-phy").value);
 
-  fetch(`http://175.106.99.31:80/patients/${patientNo}`, {
+  fetch(`http://175.106.99.31/patients/${patientNo}`, {
     method: 'PUT',
     body: formData,
   })
@@ -126,7 +116,7 @@ function checkPw() {
 
 $(".change-pw-btn").click(() => {
   if (samePw && document.querySelector(".change-pw-check").value != document.querySelector(".patients-pw").value) {
-    fetch(`http://175.106.99.31:80/patients/updatePw/${patientNo}`, {
+    fetch(`http://175.106.99.31/patients/updatePw/${patientNo}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

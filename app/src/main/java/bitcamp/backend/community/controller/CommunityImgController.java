@@ -44,7 +44,8 @@ public class CommunityImgController {
 
     for (MultipartFile file : files) {
       System.out.println(file.getOriginalFilename() + ":" + file.getSize());
-      String str = objectStorageService.uploadFile(bucketName, file);
+      String str = objectStorageService.uploadFile(bucketName, file).split("/")[5];
+
 
       System.out.println(str);
 

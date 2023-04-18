@@ -18,6 +18,7 @@ public class Board {
   private String serial;
   private String pain;
   private String another;
+  private boolean filter;
 
   // String name;
   // int age;

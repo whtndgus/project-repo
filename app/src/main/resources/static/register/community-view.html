@@ -182,7 +182,7 @@
       <script>
         $(".logout").click(() => {
           console.log(11)
-          fetch(`http://175.106.99.31:80/auth/logout`, {
+          fetch(`http://175.106.99.31/auth/logout`, {
             method: 'GET'
           })
             .then(response => response.json())
@@ -224,37 +224,38 @@
 
               <div class="col-12 row g-3">
                   <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="게시글 제목" id="title">
+                    <input type="text" class="form-control" placeholder="게시글 제목" id="title" readonly>
                   </div>
                   <div class="col-md-2">
-                    <input type="text" class="form-control" placeholder="카테고리" id="category">
+                    <input type="text" class="form-control" placeholder="카테고리" id="category" readonly>
                   </div>
                   <div class="col-md-2">
-                    <input type="text" class="form-control" placeholder="작성자" id="doctorName">
+                    <input type="text" class="form-control" placeholder="작성자" id="doctorName" readonly>
                   </div>
                   <div class="col-md-2">
-                    <input type="text" class="form-control" placeholder="작성일" id="createdDate">
+                    <input type="text" class="form-control" placeholder="작성일" id="createdDate" readonly>
                   </div>
               </div>
              
                 <div style=" margin-top: 20px; width: 400px;  overflow: hidden; background-color: white; margin-left: auto; margin-right: auto;" class="carousel slide" data-bs-ride="carousel">           
                     <div class="carousel-item active photocover" >
                       <img src="" id="comImg" class="d-block w-100" >
-                    </div>              
-                </div>
+                    </div>  
+                </div>     
                 <br>
                 <button type="button" class=" btn btn-outline-danger btn-sm" id="btn-img-delete"
-                        style="margin-left: 600px; margin-bottom: 0">삭제</button>
-
+                        style="margin-left: 650px; margin-bottom: 0">삭제</button>
+                        
   
                 <div class="form-floating col-md-12 " style="margin-top: 20px;" >
-                <input type="text" id="content" class="form-control content" style="height: 300px;">
+                  <input type="text" id="content" class="form-control content" style="height: 300px;" readonly>
                 </div>
-              <br>
-                <div class="text-center" >
+                <br>
+              <div class="text-center" id="uptdel-btns">
                   <button type="button" id="update-btn" class="btn btn-primary ">변경</button>
                   <button type="button" id="delete-btn" class="btn btn-primary ">삭제</button>
-                </div>
+              </div>
+               
 
               </div>   
             </div>
@@ -302,9 +303,9 @@
                 <textarea class="form-control recomment"  id="floatingTextarea" style="height: 100px;" placeholder="댓글 입력"> </textarea>
               </div>
               <div class="text-center"  style="margin-top: 20px;" >
-                <button type="button" id="rec-save-btn" class="btn btn-primary ">저장</button>
+                <button type="button" id="rec-save-btn" class="btn btn-primary ">댓글 저장</button>
                 <button type="button" id="former-btn" class="btn btn-secondary">이전</button>
-                <button type="button" id="rec-delete-btn" class="btn btn-primary ">삭제</button>
+               <!-- <button type="button" id="rec-delete-btn" class="btn btn-primary ">삭제</button>  --> 
               </div>
 
             </div>

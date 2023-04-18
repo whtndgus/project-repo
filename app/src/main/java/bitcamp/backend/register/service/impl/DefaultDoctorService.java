@@ -68,6 +68,7 @@ public class DefaultDoctorService implements DoctorService {
       throw new RuntimeException("의사가 존재하지 않습니다.");
     }
   }
+
 }
 
 

@@ -13,8 +13,8 @@
 
   <insert id="insert" parameterType="bitcamp.backend.user.vo.Board" 
           useGeneratedKeys="true" keyColumn="board_id" keyProperty="no">
-    insert into app_symp_board (p_no, symp_title, symp_cont1, symp_cont2, serial)
-    values(#{pno}, #{title}, #{pain}, #{another}, #{serial})
+    insert into app_symp_board (p_no, symp_title, symp_cont1, symp_cont2, serial, filter)
+    values(#{pno}, #{title}, #{pain}, #{another}, #{serial}, #{filter})
   </insert>
   
   <select id="findAll" resultType="bitcamp.backend.user.vo.Board" parameterType="string">

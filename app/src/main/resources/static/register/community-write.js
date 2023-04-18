@@ -1,8 +1,7 @@
 // 로그인 정보 가져오기
 let myno = 0;
-let password = document.querySelector('#password').value;
 
-fetch(`http://175.106.99.31:80/auth/user`, {
+fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -22,17 +21,14 @@ fetch(`http://175.106.99.31:80/auth/user`, {
 // 게시글 입력
 document.querySelector('.btn-submit').onclick = (e) => {
   
-  if (pwd == null) {
-    alert ('비밀번호를 입력해주세요!');
-  } else {
-    fetch("http://175.106.99.31:80/community", {
+  
+    fetch("http://175.106.99.31/community", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         doctorNo: myno,
-        password: password,
         title: document.querySelector('#title').value,
         content: document.querySelector('.content').value,
         category: Number(document.querySelector('#category').value),
@@ -48,7 +44,6 @@ document.querySelector('.btn-submit').onclick = (e) => {
       .catch((error) => {
         console.error("실패:", error);
       })
-   } 
 };
 
 
@@ -69,7 +64,7 @@ console.log(no);
     }
   }
   $.ajax({
-    url: 'http://175.106.99.31:80/communityImg/insertComImg',
+    url: 'http://175.106.99.31/communityImg/insertComImg',
     data: formData,
     cache: false,
     contentType: false,

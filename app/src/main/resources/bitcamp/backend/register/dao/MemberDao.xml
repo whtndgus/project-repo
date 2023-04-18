@@ -72,6 +72,25 @@
       m_no=#{no}
   </select>
   
+  <select id="findByTel" parameterType="String" resultMap="memberMap">
+    select 
+      m.m_id, 
+      m.m_pw, 
+      m.m_name, 
+      m.m_email, 
+      m.m_gender,
+      m.m_bday,
+      m.m_tel,
+      m.addr,
+      m.m_photo,
+      m.pho_filename,
+      m.pho_type
+    from 
+      app_member m
+    where 
+      m.m_tel=#{tel}
+  </select>
+  
   <update id="update" parameterType="member">
     update app_member set
       m_name=#{name}, 
@@ -101,5 +120,6 @@
     delete from app_member
     where m_no=#{no}
   </delete>
+  
 </mapper>
 

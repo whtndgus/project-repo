@@ -164,7 +164,7 @@
       const form = document.querySelector('#login-form');
       const formData = new FormData(form);
 
-      fetch("http://175.106.99.31:80/auth/patientLogin", {
+      fetch("http://175.106.99.31/auth/patientLogin", {
         method: "POST",
         body: formData
       })
@@ -173,7 +173,7 @@
         })
         .then(result => {
           if (result.status == 'success') {
-            location.href = '../register/patients-profile.html';
+            location.href = '../register/index.html';
           } else {
             alert('로그인 실패!');
             document.querySelector('input[name="id"]').value = "";

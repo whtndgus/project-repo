@@ -63,7 +63,7 @@ const roots = ReactDOM.createRoot(document.getElementById('roots'));
 let myno = 0;
 let mydata;
 
-fetch(`http://175.106.99.31:80/auth/user`, {
+fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
@@ -72,18 +72,49 @@ fetch(`http://175.106.99.31:80/auth/user`, {
       myno = data.data.no;
       mydata = data.data;
       console.log(mydata)
+      $(".log-btn").text("로그아웃")
+      $(".log-mypage").css("display", "")
+      $(".btn-3").css("width", "0px")
+      $(".btn-3").text("")
+      $(".btn-1").css("width", "49%")
+      $(".btn-2").css("width", "49%")
+      $(".log-mypage").click(() => {
+        location.href = "patients-profile.html"
+      })
+      $(".log-btn").attr("class", "btn btn-primary logout-btn")
+      $(".logout-btn").click(() => {
+        fetch(`http://175.106.99.31/auth/logout`, {
+          method: 'GET'
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status == "success") {
+              location.href = ""
+            } else {
+              alert("로그아웃 실패")
+              location.href = ""
+            }
+          })
+      })
     } else {
-
+      $(".log-btn").text("로그인")
     }
+  })
+
+$(".log-btn").click(() => {
+  location.href = "../auth/patients-login.html"
 })
 
 $(".btn-1").click(() => {
+  btnoff($(".btn-1"));
+  btnon($(".btn-2"));
+  btnon($(".btn-3"));
   if (stat == 1)
     return
   stat = 1
   roots.render()
   setTimeout(() => {
-    if(myno > 0) {
+    if (myno > 0) {
       roots.render(
         <div id="root">
           <div className="insert-left">
@@ -373,12 +404,12 @@ $(".btn-1").click(() => {
               />
             </div>
             <h3>추가 입력항목</h3>
-  
+
             <form>
               <input type="file" name="files" multiple="multiple" style={{ width: 250 }} />
               <span style={{ fontWeight: 900 }}>증상 사진 선택</span>
             </form>
-  
+
             <div className="insert-btns">
               <button type="button" className="btn btn-primary insert-btn" onClick={() => {
                 // 저장버튼 툴린후에 발생할 코드 입력 필요
@@ -393,8 +424,8 @@ $(".btn-1").click(() => {
                   }
                 }
                 if ($(".insert-title").val().length > 0 && $(".form-check-input:checked").length > 0) {
-  
-                  fetch('http://175.106.99.31:80/insert', {
+
+                  fetch('http://175.106.99.31/insert', {
                     method: 'POST', // 또는 'PUT'
                     headers: {
                       'Content-Type': 'application/json',
@@ -404,7 +435,7 @@ $(".btn-1").click(() => {
                       title: $(".insert-title").val(),
                       pain: pa,
                       name: mydata.name,
-                      age: mydata.birth.split("-")[0] - new Date().getYear()+1900,
+                      age: mydata.birth.split("-")[0] - new Date().getYear() + 1900,
                       tel: mydata.tel,
                       addr1: mydata.addr,
                       addr2: "",
@@ -415,14 +446,15 @@ $(".btn-1").click(() => {
                     .then(data => {
                       let bno = data.no;
                       submitFiles(bno);
-                      alert("인증 번호(비회원 작성글 조회시에 필요 합니다) : "+data.serial);
                     })
-  
-                  $("#root").fadeOut(1000)
-                  setTimeout(() => {
-                    roots.render(
-                    );
-                  }, 1000);
+                    .then(() => {
+                      stat = 0
+                      roots.render(
+                      );
+                      btnon($(".btn-1"));
+                      btnon($(".btn-2"));
+                      btnon($(".btn-3"));
+                    })
                 } else {
                   alert("제목 및 필수 선택 사항 입력 필요")
                 }
@@ -433,11 +465,12 @@ $(".btn-1").click(() => {
               </button>
               <button type="button" className="btn btn-primary close-btn" onClick={() => {
                 // 취소버튼 툴린후에 발생할 코드 입력 필요
-                $("#root").fadeOut(400)
-                setTimeout(() => {
+                  stat = 0;
                   roots.render(
                   );
-                }, 400);
+                  btnon($(".btn-1"));
+                  btnon($(".btn-2"));
+                  btnon($(".btn-3"));
               }}>
                 취소
               </button>
@@ -445,7 +478,7 @@ $(".btn-1").click(() => {
           </div>
         </div>
       );
-    }else {
+    } else {
       roots.render(
         <div id="root">
           <div className="insert-left">
@@ -771,7 +804,7 @@ $(".btn-1").click(() => {
                 aria-describedby="basic-addon1"
               />
             </div>
-  
+
             <div className="form-check form-check-inline" style={{ padding: 0, lineHeight: 2, with: 40, height: 40, marginLeft: 20, float: "left" }}>
               <input
                 type="radio"
@@ -794,7 +827,7 @@ $(".btn-1").click(() => {
                 여
               </label>
             </div>
-  
+
             {/* <div className="input-group mb-3" style={{ marginLeft: 5, marginRight: 5, width: 320, float: "left" }}>
               <span className="input-group-text" id="basic-addon1">
                 비밀번호
@@ -807,11 +840,11 @@ $(".btn-1").click(() => {
                 aria-describedby="basic-addon1"
               />
             </div> */}
-  
+
             {/* <button type="button" className="btn btn-primary insert-btn" onClick={() => {
               // 비밀번호 중복 조회
               if ($(".insert-password").val().length > 3) {
-                fetch("http://175.106.99.31:80/boardPassword", {
+                fetch("http://175.106.99.31/boardPassword", {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -838,8 +871,8 @@ $(".btn-1").click(() => {
             }}>
               중복확인
             </button> */}
-  
-  
+
+
             <div className="input-group mb-3" style={{ marginLeft: 0, marginRight: 200, width: 500, float: "left" }}>
               <span className="input-group-text" id="basic-addon1">
                 주소
@@ -852,12 +885,12 @@ $(".btn-1").click(() => {
                 aria-describedby="basic-addon1"
               />
             </div>
-  
+
             <form>
               <input type="file" name="files" multiple="multiple" style={{ width: 250 }} />
               <span style={{ fontWeight: 900 }}>증상 사진 선택</span>
             </form>
-  
+
             <div className="input-group mb-3" style={{ width: 700, float: "left" }}>
               <span className="input-group-text" id="basic-addon1">
                 상세주소
@@ -895,8 +928,8 @@ $(".btn-1").click(() => {
                   }
                 }
                 if ($(".insert-title").val().length > 0 && $(".form-check-input:checked").length > 0) {
-  
-                  fetch('http://175.106.99.31:80/insert', {
+
+                  fetch('http://175.106.99.31/insert', {
                     method: 'POST', // 또는 'PUT'
                     headers: {
                       'Content-Type': 'application/json',
@@ -917,14 +950,16 @@ $(".btn-1").click(() => {
                     .then(data => {
                       let bno = data.no;
                       submitFiles(bno);
-                      alert("인증 번호(비회원 작성글 조회시에 필요 합니다) : "+data.serial);
+                      alert("인증 번호(비회원 작성글 조회시에 필요 합니다) : " + data.serial);
                     })
-  
-                  $("#root").fadeOut(1000)
-                  setTimeout(() => {
-                    roots.render(
-                    );
-                  }, 1000);
+                    .then(() => {
+                      stat = 0
+                      roots.render(
+                      );
+                      btnon($(".btn-1"));
+                      btnon($(".btn-2"));
+                      btnon($(".btn-3"));
+                    })
                 } else {
                   alert("제목 및 필수 선택 사항 입력 필요")
                 }
@@ -935,11 +970,12 @@ $(".btn-1").click(() => {
               </button>
               <button type="button" className="btn btn-primary close-btn" onClick={() => {
                 // 취소버튼 툴린후에 발생할 코드 입력 필요
-                $("#root").fadeOut(400)
-                setTimeout(() => {
+                  stat = 0;
                   roots.render(
                   );
-                }, 400);
+                  btnon($(".btn-1"));
+                  btnon($(".btn-2"));
+                  btnon($(".btn-3"));
               }}>
                 취소
               </button>
@@ -952,6 +988,9 @@ $(".btn-1").click(() => {
 
 })
 $(".btn-2").click(() => {
+  btnoff($(".btn-2"));
+  btnon($(".btn-1"));
+  btnon($(".btn-3"));
   if (stat == 2)
     return
   stat = 2
@@ -972,7 +1011,7 @@ $(".btn-2").click(() => {
             <button className="btn btn-dark" type="button" onClick={(e) => { // 검색 탭 검색버튼 클릭시 액션
               let ser = $(".insert-title").val();
               if (ser.length > 0) {
-                fetch("http://175.106.99.31:80/boardSearch", {
+                fetch("http://175.106.99.31/boardSearch", {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -992,7 +1031,7 @@ $(".btn-2").click(() => {
                       let n_day = n.getDate();
                       let e_year = Number(e.createdDate.split("-")[0]);
                       let e_month = Number(e.createdDate.split("-")[1]);
-                      let e_day = Number(e.createdDate.split("-")[2]) +1 ;
+                      let e_day = Number(e.createdDate.split("-")[2]) + 1;
                       if (n_year > e_year) {
                         e.createdDate = (n_year - e_year) + "년 전";
                       } else if (n_month > e_month) {
@@ -1096,9 +1135,13 @@ $(".btn-2").click(() => {
   }, 10);
 
 })
+
 $(".btn-3").click(() => {
-  console.log(11)
-  location.href = "patients-profile.html"
+  btnoff($(".btn-3"));
+  btnon($(".btn-1"));
+  btnon($(".btn-2"));
+
+  
   if (stat == 3)
     return
   stat = 3
@@ -1116,10 +1159,10 @@ $(".btn-3").click(() => {
           />
           <button type="button" className="btn btn-warning search-board-btn" onClick={() => {   // 비회원 작성글 비밀번호 조회 버튼 눌렸을 때 액션
             if ($(".search-board").val().length <= 4) {
-              alert("잘못된 비밀번호 입니다")
+              alert("잘못된 일련번호 입니다")
               return;
             }
-            fetch("http://175.106.99.31:80/boardPassword", {
+            fetch("http://175.106.99.31/boardPassword", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -1204,7 +1247,7 @@ function submitFiles(no) {
   let formData = new FormData();
   let files = $("input[name=files]")[0].files;
   let i = 0;
-  if(files.length == 0) {
+  if (files.length == 0) {
     return
   }
   for (i = 0; i < files.length; i++) {
@@ -1215,7 +1258,7 @@ function submitFiles(no) {
   }
 
   $.ajax({
-    url: 'http://175.106.99.31:80/insertBoardImg',
+    url: 'http://175.106.99.31/insertBoardImg',
     data: formData,
     cache: false,
     contentType: false,
@@ -1232,50 +1275,112 @@ function submitFiles(no) {
 
 let scleft = true;
 let scright = true;
-$(window).on("wheel", function (event){
-  // deltaY obviously records vertical scroll
-  
-  // event.originalEvent → JavaScript 의 wheelEvent 객체
-  // deltaY 값은 개인이 마우스 설정에서 설정한 휠 설정 값에 따라 다르다.
-  if(event.originalEvent.deltaY == 100 && scright){
-    console.log(event.originalEvent.deltaY +" "+$(document).scrollLeft());
-    new Promise(resolve => {
-      $('html').animate({scrollLeft : $(document).scrollLeft()+200}, 1)
-      scright = false;
-      resolve();
-    })
-    .then(() => {
-      setTimeout(() => {
-        scright = true;
-        console.log(scright)
-      }, 175)
-    })
-  }else if(event.originalEvent.deltaY == -100 && scleft) {
-    console.log(event.originalEvent.deltaY +" "+$(document).scrollLeft());
-    new Promise(resolve => {
-      $('html').animate({scrollLeft : $(document).scrollLeft()-200}, 1)
-      scleft = false;
-      resolve();
-    })
-    .then(() => {
-      setTimeout(() => {
-        scleft = true;
-        console.log(scleft)
-      }, 175)
-    })
+
+
+
+$(".backmov-left").click(() => {
+  if ($(document).scrollLeft() == 0) {
+
+  } else if ($(document).scrollLeft() == 1920) {
+    scrollmov(0)
+  } else if ($(document).scrollLeft() == 3840) {
+    scrollmov(1920)
+  } else if ($(document).scrollLeft() == 5760) {
+    scrollmov(3840)
+  } else if ($(document).scrollLeft() == 7680) {
+    scrollmov(5760)
   }
+})
 
-  if (event.originalEvent.deltaY < 0) {
-
+$(".backmov-right").click(() => {
+  if ($(document).scrollLeft() == 0) {
+    scrollmov(1920)
+  } else if ($(document).scrollLeft() == 1920) {
+    scrollmov(3840)
+  } else if ($(document).scrollLeft() == 3840) {
+    scrollmov(5760)
+  } else if ($(document).scrollLeft() == 5760) {
+    scrollmov(7680)
+  } else if ($(document).scrollLeft() == 7680) {
 
   }
-  else {
+})
 
-
+$(".body-cover").css("width", screen.availWidth)
+setTimeout(() => {
+  let s = $(document).scrollLeft();
+  if (s == 0 || s == 1920 || s == 3840 || s == 5760 || s == 7680) {
+    
+  }else if ($(document).scrollLeft() >= 6720) {
+    scrollmov(7680)
+  }else if ($(document).scrollLeft() >= 4800) {
+    scrollmov(5760)
+  }else if ($(document).scrollLeft() >= 2880) {
+    scrollmov(3840)
+  }else if ($(document).scrollLeft() >= 960) {
+    scrollmov(1920)
+  }else {
+    console.log($(document).scrollLeft())
+    scrollmov(0)
   }
-});
+}, 500);
+
+
+// $(".body-cover").css("height", screen.availHeight)
+
+// $(window).on("wheel", function (event){
+//   // deltaY obviously records vertical scroll
+
+//   // event.originalEvent → JavaScript 의 wheelEvent 객체
+//   // deltaY 값은 개인이 마우스 설정에서 설정한 휠 설정 값에 따라 다르다.
+//   if(event.originalEvent.deltaY == 100){
+//     console.log(event.originalEvent.deltaY +" "+$(document).scrollLeft());
+//     new Promise(resolve => {
+//       $('html').animate({scrollLeft : 1920}, 1000)
+//       resolve();
+//     })
+//   }else if(event.originalEvent.deltaY == -100) {
+//     console.log(event.originalEvent.deltaY +" "+$(document).scrollLeft());
+//     new Promise(resolve => {
+//       $('html').animate({scrollLeft : 3840}, 1000)
+//       resolve();
+//     })
+//   }
+
+//   if (event.originalEvent.deltaY < 0) {
+
+
+//   }
+//   else {
+
+
+//   }
+// });
 // $(window).scroll(function (event) { 
 //   console.log(event.originalEvent.deltaY +" "+$(document).scrollLeft());
 // 	// var scrollValue = $(document).scrollLeft(); 
 //   //   console.log(scrollValue); 
 // });
+
+
+function scrollmov(code) {
+  new Promise(resolve => {
+    $(document).scrollLeft(code)
+    resolve();
+  })
+    .then(() => {
+      $(document).scrollLeft(code)
+    })
+}
+
+
+function btnon(btn) {
+  btn.css("margin-top", "")
+  btn.css("opacity", "1")
+  btn.css("box-shadow", "0 0 0 1px #7fccde inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 rgba(102, 164, 178, .6), 0 8px 0 1px rgba(0,0,0,.4), 0 8px 8px 1px rgba(0,0,0,0.5)")
+}
+function btnoff(btn) {
+  btn.css("margin-top", "9px")
+  btn.css("opacity", "0.8")
+  btn.css("box-shadow", "0 0 0 1px #82c8a0 inset,0 0 0 2px rgba(255,255,255,0.15) inset,0 0 0 1px rgba(0,0,0,0.4)")
+}

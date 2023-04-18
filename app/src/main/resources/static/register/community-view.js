@@ -1,15 +1,16 @@
-const urlParams = new URL(location.href).searchParams;
-const no = urlParams.get('no');
+let urlParams = new URL(location.href).searchParams;
+let no = urlParams.get('no');
 
 let myno = 0;
 
-fetch(`http://175.106.99.31:80/auth/user`, {
+fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET'
 })
   .then(response => response.json())
   .then(data => {
     if (data.status == "success") {
       console.log(data.data)
+      
       return data.data;
     } else {
       location.href = "../auth/doctors-login.html"
@@ -21,19 +22,22 @@ fetch(`http://175.106.99.31:80/auth/user`, {
   console.log(myno)
 })
 
+
+
 document.querySelector('#former-btn').onclick = (e) => {
   location.href='doctors-community-main.html';
 };
 
 Promise.all([
-  fetch(`http://175.106.99.31:80/community/${no}`),
-  fetch(`http://175.106.99.31:80/recomment/${no}`)
+  fetch(`http://175.106.99.31/community/${no}`),
+  fetch(`http://175.106.99.31/recomment/${no}`)
 ])
 .then((responses) => Promise.all(responses.map((response) => response.json())))
 .then((data) => {
   console.log(data);
   var communityData = data[0];
   var recommentData = data[1];
+  console.log(communityData);
 
   //console.log(communityData);
   if (communityData.status == 'failure') {
@@ -46,19 +50,44 @@ Promise.all([
   document.querySelector('#doctorName').value = communityData.data.doctorName;
   document.querySelector('#createdDate').value = communityData.data.createdDate;
   document.querySelector('#content').value = communityData.data.content;
-  if(communityData.photo.length >0 ) {
-    $('#comImg')[0].src = communityData.photo[0].imgUrl;
-  } else {
-    $("#comImg").attr('src', '');
-    document.querySelector('#btn-img-delete').style.display = 'none';
+  
+  
+  let photoUrl = "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/community-img/"+communityData.photo[0].imgUrl+"?type=f&w=500&h=500&quality=85&autorotate=true&faceopt=true&anilimit=24"
+  if(communityData.photo.length >0 && myno == communityData.data.doctorNo) {
+    $('#comImg')[0].src = photoUrl;
+    document.querySelector('#btn-img-delete').style.display = 'block';
+    
+      } else if (communityData.photo.length >0 && myno != communityData.data.doctorNo) {
+        $('#comImg')[0].src = photoUrl;
+        document.querySelector('#btn-img-delete').style.display = 'none';
+        
+      } else {
+        $("#comImg").attr('src', ' ');
+        document.querySelector('#btn-img-delete').style.display = 'none';
   }
+  
+   if ( myno == communityData.data.doctorNo ) {  
+       document.querySelector('#uptdel-btns').style.display = 'block';    
+      document.querySelector('#title').readOnly = false;
+      document.querySelector('#content').readOnly = false;
+      document.querySelector('#category').readOnly = false;
+      document.querySelector('#createdDate').readOnly = false;
+    } else {
+      document.querySelector('#uptdel-btns').style.display = 'none';
+      document.querySelector('#title').readOnly = true;
+      document.querySelector('#content').readOnly = true;
+      document.querySelector('#category').readOnly = true;
+      document.querySelector('#createdDate').readOnly = true;
+    }
+  
   // console.log(communityData.photo[0].imgUrl)
 
   // 두번째 fetch 요청 후
   var tbody = document.querySelector('#recomment-list');
-  
   var html = '';
   for (var row of recommentData.data) {
+    console.log (row)
+  if ( row.docNo == myno) {
     html += `<tr>
         <td>${row.recNo}</td>
         <td><p>${row.recContent}</p></td>
@@ -67,14 +96,22 @@ Promise.all([
         <td><button type="button" class="btn btn-outline-danger btn-sm" 
                     id="btn-recomment-delete-${row.recNo}">X</button></td>
         </tr>\n`;
-  }
+  } else {
+     html += `<tr>
+        <td>${row.recNo}</td>
+        <td><p>${row.recContent}</p></td>
+        <td>${row.docName}</td> 
+        <td>${row.createdDate}</td>
+        </tr>\n`;
+    
+  } }
   tbody.innerHTML = html;
-
+  
   // 댓글 삭제
   for (var row of recommentData.data) {
     document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = (e) => {
      
-      fetch(`http://175.106.99.31:80/recomment/delete/${row.recNo}`, {
+      fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
         method: 'DELETE',
       })
       .then((response) => response.json())
@@ -103,7 +140,7 @@ Promise.all([
 //댓글 입력
 document.querySelector('#rec-save-btn').onclick = (e) => {
 
-  fetch("http://175.106.99.31:80/recomment", {
+  fetch("http://175.106.99.31/recomment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -118,7 +155,6 @@ document.querySelector('#rec-save-btn').onclick = (e) => {
     .then((data) => {
       console.log("성공:", data);
       location.reload();
-
     })
     .catch((error) => {
       console.error("실패:", error);
@@ -128,7 +164,7 @@ document.querySelector('#rec-save-btn').onclick = (e) => {
 
 //게시물 내용 변경
 document.querySelector('#update-btn').onclick = (e) => {
-  fetch('http://175.106.99.31:80/community',{
+  fetch('http://175.106.99.31/community',{
     method: 'PUT',
     headers: {
       'Content-type': 'application/json',
@@ -157,7 +193,7 @@ document.querySelector('#update-btn').onclick = (e) => {
   // 게시물 삭제
   document.querySelector('#delete-btn').onclick = (e) => {
 
-    fetch(`http://175.106.99.31:80/community/${no}`,{
+    fetch(`http://175.106.99.31/community/${no}`,{
       method: 'DELETE',
     })
     .then((response) => response.json())
@@ -179,7 +215,7 @@ document.querySelector('#update-btn').onclick = (e) => {
   //이미지만 삭제
     document.querySelector('#btn-img-delete').onclick = (e) => {
 
-      fetch(`http://175.106.99.31:80/communityImg/${no}`,{
+      fetch(`http://175.106.99.31/communityImg/${no}`,{
       method: 'DELETE',
     })
     .then((response) => response.json())

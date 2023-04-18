@@ -47,7 +47,7 @@ let str;
 
 if (window.localStorage.getItem("boardNo") != null) {
   str = window.localStorage.getItem("boardNo");
-  fetch("http://175.106.99.31:80/boardNo", {
+  fetch("http://175.106.99.31/boardNo", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ if (window.localStorage.getItem("boardNo") != null) {
       $(".board-tel").val(data.another.split(",")[3] != "null" && data.another.split(",")[3].length > 0 ? data.another.split(",")[3] : "-");
     })
 
-  fetch("http://175.106.99.31:80/findAllBoardImg", {
+  fetch("http://175.106.99.31/findAllBoardImg", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ if (window.localStorage.getItem("boardNo") != null) {
  
     })
 
-  fetch("http://175.106.99.31:80/feedback/findByBno", {
+  fetch("http://175.106.99.31/feedback/findByBno", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -290,7 +290,7 @@ class Btns extends React.Component {
       <div className="sogyun-btns">
         <button type="button" className="btn btn-secondary sogyon-insert" onClick={() => {
 
-          fetch("http://175.106.99.31:80/feedback/insert", {
+          fetch("http://175.106.99.31/feedback/insert", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -410,7 +410,7 @@ class Review extends React.Component {
 
 
 $(".patients-change-btn").click(() => {
-  fetch('http://175.106.99.31:80/boardUpdata', {
+  fetch('http://175.106.99.31/boardUpdata', {
     method: 'POST', // 또는 'PUT'
     headers: {
       'Content-Type': 'application/json',

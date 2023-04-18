@@ -24,6 +24,8 @@ public interface MemberDao {
 
   int updatePw(Patient patient);
 
+  Member findByTel(String tel);
+
 }
 
 

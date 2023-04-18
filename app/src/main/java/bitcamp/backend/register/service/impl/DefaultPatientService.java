@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import bitcamp.backend.register.dao.MemberDao;
 import bitcamp.backend.register.dao.PatientDao;
 import bitcamp.backend.register.service.PatientService;
+import bitcamp.backend.register.vo.Member;
 import bitcamp.backend.register.vo.Patient;
 
 
@@ -83,6 +84,11 @@ public class DefaultPatientService implements PatientService {
   public int updatePw(Patient patient) {
     memberDao.updatePw(patient);
     return 0;
+  }
+
+  @Override
+  public Member tget(String tel) {
+    return memberDao.findByTel(tel);
   }
 
 

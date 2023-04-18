@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import bitcamp.backend.community.service.CommunityImgService;
 import bitcamp.backend.community.service.CommunityService;
 import bitcamp.backend.community.service.RecommentService;
 import bitcamp.backend.community.vo.Community;
+import bitcamp.backend.register.service.DoctorService;
 import bitcamp.util.RestResult;
 import bitcamp.util.RestStatus;
 
@@ -34,23 +34,22 @@ public class CommunityController {
   @Autowired
   private RecommentService recommentService;
 
-  // @GetMapping("/test")
-  // public void test(){
-  // communityService.get(7);
-  // System.out.println(communityService);
-  // }
+  @Autowired
+  private DoctorService doctorService;
 
   @PostMapping
-  public Object insert(@RequestBody Community community, @RequestParam String password) {
+  public Object insert(@RequestBody Community community) {
 
     RestResult restResult = new RestResult();
+
+
     communityService.add(community);
     restResult.setData(community);
     restResult.setStatus(RestStatus.SUCCESS);
     restResult.setStatus(RestStatus.FAILURE);
 
-
     return restResult;
+
   }
 
   @GetMapping("/list")

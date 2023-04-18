@@ -98,9 +98,13 @@
       window.close();
     }
 
+    function exit() {
+      window.close();
+    }
+
     $(".tel-btn").click(() => {
       console.log(11)
-      fetch(`http://175.106.99.31:80/patients/phone`, {
+      fetch(`http://175.106.99.31/phone`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
@@ -129,14 +133,17 @@
 
 
     $(".serial-btn").click(() => {
+      let str = document.querySelector(".tel-insert").value;
+      str = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11);
       console.log(11)
-      fetch(`http://175.106.99.31:80/patients/phoneC`, {
+      fetch(`http://175.106.99.31/phoneC`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
         },
         body: JSON.stringify({
-          serial: document.querySelector(".serial-insert").value
+          serial: document.querySelector(".serial-insert").value,
+          tel: str
         })
       })
         .then(response => response.json())
@@ -147,8 +154,12 @@
             alert("인증 되었습니다.")
             setParentText()
           } else {
-
-            alert("틀린 인증번호.")
+            if(data.data == "중복된 연락처") {
+              alert("중복된 연락처 입니다.")
+              exit()
+            }else {
+              alert("틀린 인증번호.")
+            }
           }
         })
     })

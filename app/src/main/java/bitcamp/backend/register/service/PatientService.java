@@ -1,6 +1,7 @@
 package bitcamp.backend.register.service;
 
 import java.util.List;
+import bitcamp.backend.register.vo.Member;
 import bitcamp.backend.register.vo.Patient;
 
 public interface PatientService {
@@ -21,6 +22,8 @@ public interface PatientService {
   void updateImg(Patient patient);
 
   int updatePw(Patient patient);
+
+  Member tget(String tel);
 }
 
 

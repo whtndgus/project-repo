@@ -110,15 +110,31 @@
                         <input id="name" name="name" class="form-control" placeholder="이름" required />
                       </div>
                     </div>
+                    
                     <div class="row mb-3">
                       <label for="tel" class="col-sm-2 form-label padding-right-0">휴대폰번호</label>
                       <div class="col-sm-5">
-                        <input type="tel" id="tel" name="tel" class="form-control" placeholder="'-' 없이 입력"
-                          pattern="^01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}$" maxlength="13" oninput="autoTelHyphen(event)"
-                          required />
+                        <input type="tel" id="tel" name="tel" class="form-control insert-tel change-tel"
+                          placeholder="'-' 없이 입력" pattern="^01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}$" maxlength="13"
+                          oninput="autoTelHyphen(event)" required readonly />
                         <div id="tel-validation-msg" class="validation-msg"></div>
                       </div>
+                      <button type="button" onclick="calltel()" class="btn btn-primary col-md-2" style="height: 90%;">변경
+                        /
+                        인증</button>
                     </div>
+                    <script>
+                      var popupWidth = 320;
+                      var popupHeight = 450;
+
+                      var popupX = (window.screen.width / 2) - (popupWidth / 2);
+
+                      var popupY = (window.screen.height / 2) - (popupHeight / 2);
+
+                      function calltel() {
+                        window.open("tel-input.html", "popupNo1", 'status=no, height=' + popupHeight + ', width=' + popupWidth + ', left=' + popupX + ', top=' + popupY);
+                      }
+                    </script>
 
                     <div class="row mb-3">
                       <label for="birth" class="col-sm-2 form-label padding-right-0">생년월일</label>
@@ -354,7 +370,7 @@
         idValidationMsg.style.color = '#dc3545';
         return;
       } else {
-        fetch(`http://175.106.99.31:80/doctors/check-duplicate/${id}`)
+        fetch(`http://175.106.99.31/doctors/check-duplicate/${id}`)
           .then((response) => response.json())
           .then((result) => {
             if (result.status === 'failure') {
@@ -761,7 +777,7 @@
 
           json = JSON.stringify(Object.fromEntries(formData));
           console.log(json);
-          fetch('http://175.106.99.31:80/doctors', {
+          fetch('http://175.106.99.31/doctors', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -780,7 +796,7 @@
             })
             .then((dno) => {
               console.log(dno);
-              fetch(`http://175.106.99.31:80/doctors/${dno}`, {
+              fetch(`http://175.106.99.31/doctors/${dno}`, {
                 method: 'POST',
                 body: formData,
               })
@@ -811,7 +827,7 @@
       }
       formData.append('files', files[0]);
       $.ajax({
-        url: 'http://175.106.99.31:80/doctors/profileimg',
+        url: 'http://175.106.99.31/doctors/profileimg',
         data: formData,
         cache: false,
         async: false,
