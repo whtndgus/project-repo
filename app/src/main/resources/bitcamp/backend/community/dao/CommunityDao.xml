@@ -71,7 +71,8 @@
    set 
 	  c.com_tile = #{title},
 	  c.cat_no = #{category},
-	  c.com_cont = #{content}
+	  c.com_cont = #{content},
+    c.filter = #{filter}
 	where 
 	  c.com_no = #{no}
   </update>

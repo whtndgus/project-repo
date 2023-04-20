@@ -37,7 +37,15 @@
       m.m_name, 
       m.m_email, 
       m.m_tel,
+      m.m_auth,
+      m.m_photo,
+      m.pho_filename,
+      m.pho_type,
+      m.addr,
+      m.m_bday,
+      m.m_gender,
       p.p_phy,
+      p.p_no, 
       p.p_drug 
     from 
       app_patient as p

@@ -66,14 +66,14 @@
     where 
       hos_no=#{no}
   </select>
-  
-  <delete id="delete" parameterType="int">
-    delete from app_hos_photo
+    
+  <delete id="deleteImg" parameterType="int">
+    delete from app_hos_photo 
     where pho_no=#{no}
   </delete>
   
-  <delete id="deleteOfBoard" parameterType="int">
-    delete from app_hos_photo 
-    where pho_no=#{no}
+   <delete id="delete" parameterType="int">
+    delete from app_hos_photo
+    where hos_no=#{no}
   </delete>
 </mapper>

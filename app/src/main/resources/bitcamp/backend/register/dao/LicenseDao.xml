@@ -7,6 +7,7 @@
   <resultMap type="license" id="licenseMap">
     <id column="d_no" property="doctorNo"/>
     <result column="license_no" property="licenseNo"/>
+    <result column="license_name" property="licensename"/>
     <result column="license_photo" property="licensePhoto"/>
     <result column="pho_filename" property="phoFilename"/>
     <result column="pho_type" property="phoType"/>
@@ -48,8 +49,12 @@
      m.m_tel,
      h.hos_name,
      d.career,
-     i.license_name,
+     i.license_name ,
      l.pho_filename,
+     l.license_photo,
+     l.license_no,
+     l.pho_type,
+     l.d_no,
      l.license_OX
     from
      app_doctor d
@@ -79,6 +84,20 @@
     left join app_member m on m.m_no=d.d_no
     where l.license_no=#{l_no}
   </select>
+  
+  <select id="findDoctorLicense" parameterType="int" resultMap="licenseMap">
+    select
+     *
+    from
+     app_doctor
+    where d_no=#{d_no}
+  </select>
+  
+  <update id="update" parameterType="license">
+    update app_license set
+       license_OX=#{licenseOx} 
+    where d_no=#{doctorNo} AND license_no=#{licenseNo}
+  </update>
   
   <!--  <select id="findByIdAndPassword" parameterType="map" resultMap="licenseMap">
     select

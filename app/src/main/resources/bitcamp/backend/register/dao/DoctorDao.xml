@@ -19,6 +19,8 @@
     <result column="pho_filename" property="phoName"/>
     <result column="pho_type" property="phoType"/>
     <result column="career" property="career"/>
+    <result column="hos_name" property="hosName"/>
+    <result column="hos_no" property="hosno"/>
   </resultMap>
 
   <insert id="insert" parameterType="doctor" 
@@ -33,7 +35,15 @@
       m.m_name, 
       m.m_email, 
       m.m_tel,
+      m.m_auth,
+      m.m_photo,
+      m.pho_filename,
+      m.pho_type,
+      m.addr,
+      m.m_bday,
+      m.m_gender,
       h.hos_name,
+      d.d_no,
       d.career 
     from 
       app_doctor as d
@@ -47,17 +57,24 @@
     select
       d.d_no,
       m.m_id, 
+      m.m_pw, 
       m.m_name, 
-      m.m_email, 
+      m.m_email,
+      m.m_gender,
+      m.m_bday, 
       m.m_tel,
+      m.addr,
+      m.m_photo,
+      m.pho_filename,
+      m.pho_type,
       h.hos_name,
-      d.career  
+      d.career
     from 
       app_doctor as d
       inner join app_member m on d.d_no = m.m_no
       left outer join app_hospital h on d.hos_no = h.hos_no
     where 
-      d_no=#{no}
+      d.d_no=#{no}
   </select>
   
   <select id="findByIdAndPassword" parameterType="Map" resultMap="doctorMap">

@@ -37,5 +37,11 @@
   
   <select id="findByNo" resultType="bitcamp.backend.user.vo.BoardImg" parameterType="int">
   </select>
+  <delete id="deleteByBno" parameterType="int">
+    DELETE
+    FROM
+      app_symp_photo
+    WHERE symp_no=#{b_no};
+  </delete>
   
 </mapper>

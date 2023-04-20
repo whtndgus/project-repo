@@ -51,4 +51,18 @@
       symp_no=#{symp_no} and d_no=#{doc_no}
   </update>
   
+  <delete id="deleteByBno" parameterType="int">
+    DELETE
+    FROM
+      app_feedback
+    WHERE symp_no=#{symp_no};
+  </delete>
+  
+  <delete id="deleteByDno" parameterType="int">
+    DELETE
+    FROM
+      app_feedback
+    WHERE d_no=#{doc_no};
+  </delete>
+  
 </mapper>
