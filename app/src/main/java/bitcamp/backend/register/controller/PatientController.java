@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,22 @@ public class PatientController {
     return url;
   }
 
+  @PostMapping("/check-mypage")
+  public Object checkMypage(@RequestBody Map<String, String> formData, HttpSession session) {
+    String id = formData.get("id");
+    String password = formData.get("password");
+    System.out.println(id);
+    System.out.println(password);
+    System.out.println(patientService.get(id, password));
+    Patient patient = patientService.get(id, password);
+    if (patient != null) {
+      session.setAttribute("mycheck", true);
+      return new RestResult().setStatus(RestStatus.SUCCESS).setData(patient);
+    } else {
+      return new RestResult().setStatus(RestStatus.FAILURE).setData(patient);
+    }
+  }
+
   @GetMapping("/check-duplicate/{id}")
   public Object checkDuplicateId(@PathVariable String id) {
     boolean isDuplicate = patientService.isDuplicateId(id);
@@ -108,7 +125,7 @@ public class PatientController {
     return new RestResult().setStatus(RestStatus.SUCCESS);
   }
 
-  @PostMapping("{no}")
+  @PostMapping("/updateImg/{no}")
   public Object imgUpdate(@PathVariable int no, @RequestParam("file") MultipartFile file) {
     log.debug(file);
     System.out.println(file.getOriginalFilename() + ":" + file.getSize());

@@ -84,8 +84,9 @@ public class HospitalController {
         .setStatus(RestStatus.SUCCESS);
   }
 
-  @DeleteMapping("{no}")
+  @DeleteMapping("/delete/{no}")
   public Object delete(@PathVariable int no) {
+    hosPhotoService.deleteh(no);
     hospitalService.delete(no);
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);

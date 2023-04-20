@@ -74,7 +74,10 @@ fetch(`http://175.106.99.31/auth/user`, {
       console.log(mydata)
       $(".log-btn").text("로그아웃")
       $(".log-mypage").css("display", "")
-      $(".btn-3").css("width", "0px")
+      $(".btn-3").css("width", "-1px")
+      setTimeout(() => {
+        $(".btn-3").css("display", "none")
+      }, 100);
       $(".btn-3").text("")
       $(".btn-1").css("width", "49%")
       $(".btn-2").css("width", "49%")

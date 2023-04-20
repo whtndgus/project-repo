@@ -13,5 +13,7 @@ public interface BoardImgDao {
 
   public BoardImg findByNo(int no);
 
+  public void delete(int no);
 
+  public void deleteByBno(int no);
 }

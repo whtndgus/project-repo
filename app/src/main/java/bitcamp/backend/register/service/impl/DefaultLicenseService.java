@@ -30,7 +30,7 @@ public class DefaultLicenseService implements LicenseService {
 
   @Override
   public void update(License license) {
-
+    licenseDao.update(license);
   }
 
   @Override

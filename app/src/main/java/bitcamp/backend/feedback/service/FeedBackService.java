@@ -14,5 +14,7 @@ public interface FeedBackService {
 
   void update(FeedBack feedBack);
 
-  void delete(int no);
+  void deleteDno(int no);
+
+  void deleteBno(int no);
 }

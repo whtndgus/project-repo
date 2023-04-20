@@ -144,9 +144,19 @@ public class App {
   @PostMapping("/boardSearch")
   public Object bSearch(@RequestBody HashMap<String, Object> param, HttpSession session) {
 
-    System.out.println(negaText("무릎 수술 자국에 멍이 들기 시작했습니다", 0.9));
 
     List<Board> boards = boardService.list((String) param.get("search"));
+    for (int i = 0; i < boards.size(); i++) {
+      boards.get(i).setFedcount(backService.blist(boards.get(i).getNo()).size());
+    }
+    return boards;
+  }
+
+  @GetMapping("/boardSearch")
+  public Object boSearch() {
+
+
+    List<Board> boards = boardService.list("");
     for (int i = 0; i < boards.size(); i++) {
       boards.get(i).setFedcount(backService.blist(boards.get(i).getNo()).size());
     }
@@ -201,8 +211,6 @@ public class App {
       System.out.println(file.getOriginalFilename() + ":" + file.getSize());
       strs.add(objectStorageService.uploadFile(bucketName, file));
     }
-
-
     return strs;
   }
 
@@ -267,6 +275,17 @@ public class App {
     System.out.println(board);
 
     return result;
+  }
+
+  @PostMapping("/deleteByNo")
+  public Object deleteByNo(@RequestBody HashMap<String, Object> param) {
+    try {
+      boardService.delete((int) param.get("no"));
+      return new RestResult().setStatus(RestStatus.SUCCESS);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return new RestResult().setStatus(RestStatus.FAILURE);
+    }
   }
 
 

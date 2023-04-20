@@ -24,7 +24,7 @@
   cursor: pointer;
 }
 .btn-3d.cyan:hover {
-  background-color: #82D1E3;
+  background-color: #7fdaee;
   opacity: 1;
   cursor: pointer;
 }
@@ -71,7 +71,7 @@
 body {
   width: 400%;
   height: 100%;
-  background-image: url(44.jpg);
+  background-image: url(4k4k.jpg);
   background-repeat: no-repeat;
 }
 
@@ -348,6 +348,10 @@ body::-webkit-scrollbar {
   background-color: rgb(228, 247, 255);
   border: 2px solid rgb(169, 219, 238);
   box-sizing: border-box;
+}
+
+#naver_id_login {
+  width :1500px;
 }
 
 

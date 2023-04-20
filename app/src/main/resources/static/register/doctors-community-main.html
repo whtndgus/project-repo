@@ -234,16 +234,69 @@
     <section class="section">
       <div class="row">
         
-            
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title"><strong>실시간 인기 게시글</strong></h5>
                   <ul>
-                    <li><p id="hot-posting1"></p></li>
-                    <li><p id="hot-posting2"></p></li>
+                    <li><p id="hot-posting1" style="cursor:pointer;"></p></li>
+                    <li><p id="hot-posting2" style="cursor:pointer;"></p></li>
                   </ul>
                 </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><img src="../assets/img/naverlogo.png" style="width:180px;"></h5>
+                     <div class="input-group mb-3">
+                       <button class="naver-btn btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
+                       <input type="text" class="form-control-md" id="naver-search" aria-describedby="button-addon1">
+                     </div> 
+                 </div>
+              </div>
+            </div> 
+        </div>
+        
+        <div class="col-lg-12" style="display: none;" id="when-searched">     
+           <div class="card">
+            <div class="card-body"  >
+              <h5 class="card-title"><strong>블로그 검색 결과</strong></h5>
+            
+              <div class="list-group">
+                <div class="list-group-item list-group-item-action cursor" id="search-0" >
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" id="search-title-0"> </h5>
+                    <small id="search-date-0"></small>
+                  </div>
+	                  <p class="mb-1" id="search-desc-0"></p>
+	                  <small id="search-blogger-0"></small>
+                </div>
+                
+                <div class="list-group-item list-group-item-action cursor" id="search-1" >
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" id="search-title-1"></h5>
+                    <small class="text-muted" id="search-date-1"></small>
+                  </div>
+	                  <p class="mb-1" id="search-desc-1"></p>
+	                  <small id="search-blogger-1"></small>
+                </div>
+                
+                <div class="list-group-item list-group-item-action cursor" id="search-2" >
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" id="search-title-2"></h5>
+                    <small class="text-muted" id="search-date-2"></small>
+                  </div>
+	                  <p class="mb-1" id="search-desc-2"></p>
+	                  <small id="search-blogger-2"></small>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+                  
+                    
               </div>
             </div>
         </div>

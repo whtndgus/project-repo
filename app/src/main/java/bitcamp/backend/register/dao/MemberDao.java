@@ -3,7 +3,6 @@ package bitcamp.backend.register.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import bitcamp.backend.register.vo.Member;
-import bitcamp.backend.register.vo.Patient;
 
 @Mapper
 public interface MemberDao {
@@ -20,9 +19,9 @@ public interface MemberDao {
 
   int delete(int no);
 
-  void updateImg(Patient patient);
+  void updateImg(Member member);
 
-  int updatePw(Patient patient);
+  int updatePw(Member member);
 
   Member findByTel(String tel);
 

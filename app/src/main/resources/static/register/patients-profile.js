@@ -70,7 +70,7 @@ $(".change-btn").click(() => {
   let formData = new FormData();
   if (document.querySelector(".change-img").files.length > 0) {
     formData.append("file", document.querySelector(".change-img").files[0])
-    fetch(`http://175.106.99.31/patients/${patientNo}`, {
+    fetch(`http://175.106.99.31/patients/updateImg/${patientNo}`, {
       method: 'POST',
       body: formData,
     })

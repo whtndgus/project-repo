@@ -108,6 +108,9 @@ h5,
 h6 {
   font-family: 'Noto Sans KR', sans-serif;
 }
+.naver-btn.btn:hover {
+  background-color: #2DB400;
+}
 
 /*--------------------------------------------------------------
 # Main

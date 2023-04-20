@@ -23,4 +23,5 @@ public interface LicenseDao {
 
   List<License> findByLno(int licenseNo);
 
+  List<License> findDoctorLicense(int docterNo);
 }

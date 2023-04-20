@@ -15,8 +15,9 @@ public class License {
   //
   private int doctorNo;
   private int licenseNo;
+  private String licensename;
   private String licensePhoto;
   private String phoFilename;
   private String phoType;
-  private int licenseOx;
+  private boolean licenseOx;
 }

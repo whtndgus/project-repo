@@ -19,6 +19,7 @@ public class Member {
   private String phoUrl;
   private String phoName;
   private String phoType;
+  private boolean passwordcheck;
 
   @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
   private Date birth;

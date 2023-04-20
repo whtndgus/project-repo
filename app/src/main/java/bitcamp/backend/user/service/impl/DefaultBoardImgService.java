@@ -35,7 +35,7 @@ public class DefaultBoardImgService implements BoardImgService {
 
   @Override
   public void delete(int no) {
-
+    boardImgDao.delete(no);
   }
 
 }

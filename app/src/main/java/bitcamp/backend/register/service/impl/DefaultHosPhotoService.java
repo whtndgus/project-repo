@@ -29,10 +29,12 @@ public class DefaultHosPhotoService implements HosPhotoService  {
   @Transactional
   @Override
   public void delete(int no) {
-    if (hosPhotoDao.delete(no) == 0) {
-    } else {
-      throw new RuntimeException("사진이 존재하지 않습니다.");
-    }
+    hosPhotoDao.deleteImg(no);
+  }
+
+  @Override
+  public void deleteh(int no) {//병원의 모든사진 지우기
+    hosPhotoDao.delete(no);
   }
 
   @Override

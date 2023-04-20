@@ -42,8 +42,13 @@ public class DefaultFeedBackService implements FeedBackService {
   }
 
   @Override
-  public void delete(int no) {
+  public void deleteBno(int no) {
+    feedBackDao.deleteByBno(no);
+  }
 
+  @Override
+  public void deleteDno(int no) {
+    feedBackDao.deleteByDno(no);
   }
 
 }

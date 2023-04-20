@@ -7,16 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import bitcamp.backend.register.dao.DoctorDao;
+import bitcamp.backend.register.dao.HospitalDao;
+import bitcamp.backend.register.dao.LicenseDao;
 import bitcamp.backend.register.dao.MemberDao;
 import bitcamp.backend.register.service.DoctorService;
 import bitcamp.backend.register.vo.Doctor;
+import bitcamp.backend.register.vo.Member;
 
 
 @Service
 public class DefaultDoctorService implements DoctorService {
 
-  @Autowired private MemberDao memberDao;
-  @Autowired private DoctorDao doctorDao;
+  @Autowired
+  private MemberDao memberDao;
+  @Autowired
+  private DoctorDao doctorDao;
+  @Autowired
+  private LicenseDao licenseDao;
+  @Autowired
+  private HospitalDao hospitalDao;
 
   @Transactional
   @Override
@@ -32,17 +41,26 @@ public class DefaultDoctorService implements DoctorService {
 
   @Override
   public List<Doctor> list() {
-    return doctorDao.findAll();
+    List<Doctor> doctors = doctorDao.findAll();
+    for (int i = 0; i < doctors.size(); i++) {
+      doctors.get(i).setLicenses(licenseDao.findByDno(doctors.get(i).getNo()));
+      doctors.get(i).setHospital(hospitalDao.findByNo(doctors.get(i).getHosno()));
+    }
+    return doctors;
   }
 
   @Override
   public Doctor get(int no) {
-    return doctorDao.findByNo(no);
+    Doctor doctor = doctorDao.findByNo(no);
+    doctor.setLicenses(licenseDao.findByDno(no));
+    doctor.setHospital(hospitalDao.findByNo(doctor.getHosno()));
+    System.out.println(doctor);
+    return doctor;
   }
 
   @Override
   public Doctor get(String id, String password) {
-    Map<String,Object> paramMap = new HashMap<>();
+    Map<String, Object> paramMap = new HashMap<>();
     paramMap.put("id", id);
     paramMap.put("password", password);
 
@@ -52,8 +70,7 @@ public class DefaultDoctorService implements DoctorService {
   @Transactional
   @Override
   public void update(Doctor doctor) {
-    if (memberDao.update(doctor) == 1 &&
-        doctorDao.update(doctor) == 1) {
+    if (memberDao.update(doctor) == 1 && doctorDao.update(doctor) == 1) {
     } else {
       throw new RuntimeException("의사가 존재하지 않습니다.");
     }
@@ -62,16 +79,28 @@ public class DefaultDoctorService implements DoctorService {
   @Transactional
   @Override
   public void delete(int no) {
-    if (doctorDao.delete(no) == 1 &&
-        memberDao.delete(no) == 1) {
+    if (doctorDao.delete(no) == 1 && memberDao.delete(no) == 1) {
     } else {
       throw new RuntimeException("의사가 존재하지 않습니다.");
     }
   }
 
+  @Override
+  public void updateImg(Doctor doctor) {
+    memberDao.updateImg(doctor);
+  }
+
+  @Override
+  public int updatePw(Doctor doctor) {
+    memberDao.updatePw(doctor);
+    return 0;
+  }
+
+  @Override
+  public Member tget(String tel) {
+    return memberDao.findByTel(tel);
+  }
+
 }
-
-
-
 
 

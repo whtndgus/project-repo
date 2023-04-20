@@ -47,5 +47,6 @@ public class DefaultHospitalService implements HospitalService{
   @Transactional
   @Override
   public void delete(int no) {
+    hospitalDao.delete(no);
   }
 }

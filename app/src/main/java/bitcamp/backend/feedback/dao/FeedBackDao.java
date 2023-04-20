@@ -18,4 +18,8 @@ public interface FeedBackDao {
 
   void update(FeedBack feedBack);
 
+  void deleteByBno(int no);
+
+  void deleteByDno(int no);
+
 }

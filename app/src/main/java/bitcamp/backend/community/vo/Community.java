@@ -18,6 +18,6 @@ public class Community {
   private String content;
   private int category;
   private int viewCnt;
-  private int filter;
-  private int area;  // 게시글 공개 범위
+  private boolean filter;
+  private int area; // 게시글 공개 범위
 }
