@@ -54,7 +54,6 @@ public class DefaultDoctorService implements DoctorService {
     Doctor doctor = doctorDao.findByNo(no);
     doctor.setLicenses(licenseDao.findByDno(no));
     doctor.setHospital(hospitalDao.findByNo(doctor.getHosno()));
-    System.out.println(doctor);
     return doctor;
   }
 
