@@ -86,6 +86,7 @@
       m.m_pw,
       m.m_tel,
       m.m_email,
+      m.admin,
       p.p_phy,
       p.p_drug,
       m.addr,

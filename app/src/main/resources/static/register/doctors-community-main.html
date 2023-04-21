@@ -75,7 +75,6 @@
     
     <a href="doctors-community-main.html"  class="nav-link"><span>커뮤니티</span></a>
 
-    <a href="doctors-signup.html"  class="nav-link collapsed"><span>회원가입(의사)</span></a>
   </div>
 
   <nav class="header-nav ms-auto">
@@ -155,7 +154,7 @@
       <li class="nav-heading">의사 전용 페이지</li>
 
       <li class="nav-item">
-        <a class="nav-link " href="doctors-mypage.html">
+        <a class="nav-link " href="doctors-profile.html">
           <i class="bi bi-person"></i>
           <span>내 정보</span>
         </a>
@@ -168,13 +167,6 @@
         </a>
       </li> 
 
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="doctors-review.html">
-          <i class="bi bi-envelope"></i>
-          <span>진료 리뷰 확인</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-faq.html">
           <i class="bi bi-question-circle"></i>
@@ -248,12 +240,17 @@
             
             <div class="col-lg-6">
               <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title"><img src="../assets/img/naverlogo.png" style="width:180px;"></h5>
-                     <div class="input-group mb-3">
+                <div class="card-body" >
+                  <h5 class="card-title" id="naver-logo-title" ><img src="../assets/img/naverlogo.png" style="width:180px;"></h5>
+                   <div class="input-group mb-3">
+									  <button class="naver-btn btn btn-outline-secondary" type="button" id="naver-search button-addon1">Search</button>
+									  <input type="text" class="form-control naver-search" placeholder="">
+									</div>
+                   
+                    <!--  <div class="input-group-addon mb-3">
                        <button class="naver-btn btn btn-outline-secondary" type="button" id="button-addon1">Search</button>
                        <input type="text" class="form-control-md" id="naver-search" aria-describedby="button-addon1">
-                     </div> 
+                     </div>  -->
                  </div>
               </div>
             </div> 
@@ -370,16 +367,13 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
+  
+  <div class="footer-img-container">
+   <img src ="../register/assets/img/bitcamplogo.png" > 
+   <img src ="../register/assets/img/navercloudlogo.png" style="width:200px; margin-left: 50px;"> 
+   <img src ="../register/assets/img/magicecole.png" style="width:150px; margin-left: 50px;">
+  </div>
+   
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -397,31 +391,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script type='text/babel' src="doctor-boardlist.js"></script>
+  <!-- <script type='text/babel' src="doctor-boardlist.js"></script> -->
   <script src="community-lists.js"></script>
-
-  <!-- 사용자 스크립트 추가-->
-  <script>
-    fetch(`http://175.106.99.31/auth/user`, {
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status == "success") {
-          document.querySelector('#username').innerHTML = data.data.name;
-          console.log(data.data)
-          return data.data;
-        } else {
-          location.href = "../auth/doctors-login.html"
-        }
-        return data.data
-      })
-      .then((user) => {
-        myno = user.no
-        console.log(myno)
-      })
-  </script>
-
 </body>
 
 </html>

@@ -44,7 +44,7 @@ public class DefaultDoctorService implements DoctorService {
     List<Doctor> doctors = doctorDao.findAll();
     for (int i = 0; i < doctors.size(); i++) {
       doctors.get(i).setLicenses(licenseDao.findByDno(doctors.get(i).getNo()));
-      doctors.get(i).setHospital(hospitalDao.findByNo(doctors.get(i).getHosno()));
+      doctors.get(i).setHospital(hospitalDao.findByNo(doctors.get(i).getHosNo()));
     }
     return doctors;
   }
@@ -53,7 +53,7 @@ public class DefaultDoctorService implements DoctorService {
   public Doctor get(int no) {
     Doctor doctor = doctorDao.findByNo(no);
     doctor.setLicenses(licenseDao.findByDno(no));
-    doctor.setHospital(hospitalDao.findByNo(doctor.getHosno()));
+    doctor.setHospital(hospitalDao.findByNo(doctor.getHosNo()));
     return doctor;
   }
 

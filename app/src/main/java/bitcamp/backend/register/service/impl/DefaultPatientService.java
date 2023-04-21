@@ -92,7 +92,10 @@ public class DefaultPatientService implements PatientService {
   }
 
 
-
+  @Override
+  public Member getMember(int no) {
+    return memberDao.findByNo(no);
+  }
 }
 
 

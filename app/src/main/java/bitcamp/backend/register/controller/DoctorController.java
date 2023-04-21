@@ -215,4 +215,16 @@ public class DoctorController {
 
     return new RestResult().setStatus(RestStatus.SUCCESS);
   }
+
+  @RequestMapping("user")
+  public Object user(HttpSession session) {
+    Doctor loginUser = (Doctor) session.getAttribute("dUser");
+
+    if (loginUser != null) {
+      loginUser.setPasswordcheck((boolean) session.getAttribute("mycheck"));;
+      return new RestResult().setStatus(RestStatus.SUCCESS).setData(loginUser);
+    } else {
+      return new RestResult().setStatus(RestStatus.FAILURE);
+    }
+  }
 }

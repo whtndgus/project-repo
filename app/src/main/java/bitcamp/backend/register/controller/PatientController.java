@@ -177,7 +177,17 @@ public class PatientController {
     return builder.toString();
   }
 
+  @RequestMapping("user")
+  public Object user(HttpSession session) {
+    Patient loginUser = (Patient) session.getAttribute("pUser");
 
+    if (loginUser != null) {
+      loginUser.setPasswordcheck((boolean) session.getAttribute("mycheck"));;
+      return new RestResult().setStatus(RestStatus.SUCCESS).setData(loginUser);
+    } else {
+      return new RestResult().setStatus(RestStatus.FAILURE);
+    }
+  }
 
 }
 

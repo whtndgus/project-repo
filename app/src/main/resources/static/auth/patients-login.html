@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -94,7 +94,7 @@
                       <button class="btn btn-primary w-100" type="button">비회원</button>
                     </div>
                     <div id="naver_id_login">
-                      <!-- <button id="naver_id_login" class="naver_login" style="width:400px"></button> -->
+
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">계정이 없으시다구요?<a href="../register/patients-signup.html">지금 계정 만들기</a></p>
@@ -109,7 +109,7 @@
 
               <div class="credits">
 
-              </div> 
+              </div>
 
             </div>
           </div>
@@ -134,26 +134,48 @@
   <script src="../assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Naver Login -->
-  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+    charset="utf-8"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
- 
+
   <script>
+
+    fetch(`http://175.106.99.31/auth/user`, {
+      method: 'GET'
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status == "success") {
+          return data.data;
+        } else {
+
+        }
+      })
+      .then((user) => {
+        if(user.phy !== undefined) {
+          location.href = '../register/index.html';
+        }else if(user.admin) {
+          location.href = '../register/memberEditor.html';
+        }
+      })
+
+
     // 쿠키정보 id 받아오기
     document.querySelector('input[name="id"]').value = getCookie('id');
 
     const loginForm = document.querySelector('#login-form');
 
-     // 로그인 버튼 - click event 
-     document.querySelector('#btn-login').addEventListener('click', () => {
+    // 로그인 버튼 - click event 
+    document.querySelector('#btn-login').addEventListener('click', () => {
       login();
     });
 
     // 로그인 버튼 - enter key event
     loginForm.addEventListener("keydown", (event) => {
-      if(event.key === "Enter") {
+      if (event.key === "Enter") {
         event.preventDefault(); // 기본 동작 취소
         login();
       }
@@ -167,7 +189,7 @@
       } else {
         setCookie('id', '', 0);
       }
- 
+
       const form = document.querySelector('#login-form');
       const formData = new FormData(form);
 
@@ -180,7 +202,11 @@
         })
         .then(result => {
           if (result.status == 'success') {
-            location.href = '../register/index.html';
+            if (result.data != null) {
+              location.href = '../register/memberEditor.html';
+            } else {
+              location.href = '../register/index.html';
+            }
           } else {
             alert('로그인 실패!');
             document.querySelector('input[name="id"]').value = "";
@@ -213,59 +239,80 @@
       cookieText += (cookieSecure ? '; secure' : '');
       document.cookie = cookieText;
     }
- 
+
 
   </script>
 
-<!-- 네이버 아이디 로그인 초기화 Script-->
-<script type="text/javascript">
-  var naver_id_login = new naver_id_login("xrpuojJYw18imfX2Z6DQ", "http://175.106.99.31/register/index.html");
-  var state = naver_id_login.getUniqState();
-  naver_id_login.setButton("green", 3, 75);
-  naver_id_login.setDomain("http://175.106.99.31/auth/patients-login.html");
-  naver_id_login.setState(state);
-  // naver_id_login.setPopup();
-  naver_id_login.init_naver_id_login();
-</script>
-<!-- //네이버 아아디 로그인 초기화 Script -->
 
-// <!-- 네이버 아이디 로그인 CallBack 페이지 처리 Script : 환자페이지 로그인 성공시 index.html로 Callback -->
-<script type="text/javascript">
+  <!-- 네이버 아이디 로그인 초기화 Script-->
+  <script type="text/javascript">
+    var naver_id_login = new naver_id_login("xrpuojJYw18imfX2Z6DQ", "http://175.106.99.31/auth/callback.html");
+    var state = naver_id_login.getUniqState();
+    naver_id_login.setButton("green", 3, 75);
+    naver_id_login.setDomain("http://175.106.99.31/auth/patients-login.html");
+    naver_id_login.setState(state);
+    // naver_id_login.setPopup();
+    naver_id_login.init_naver_id_login();
+    naver_id_login.get_naver_userprofile("naverSignInCallback");
+  </script>
+
+  <script type="text/javascript">
+    var naver_id_login = new naver_id_login("xrpuojJYw18imfX2Z6DQ", "http://175.106.99.31/register/index.html");
+    // 접근 토큰 값 출력
+    alert(naver_id_login.oauthParams.access_token + "접근 토큰");
+
+    // 네이버 사용자 프로필 조회
+    function naverSignInCallback() {
+      alert(naver_id_login.getProfileData('name'));
+      alert(naver_id_login.getProfileData('email'));
+      alert(naver_id_login.getProfileData('mobile'));
+    } 
+  </script>
+
+
+
+
+
+
+
+  <!-- //네이버 아아디 로그인 초기화 Script
+
+ // 네이버 아이디 로그인 CallBack 페이지 처리 Script : 환자페이지 로그인 성공시 index.html로 Callback
+
   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-  function naverSignInCallback() {
-    // naver_id_login.getProfileData('프로필항목명');
-		// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
-    // 네이버 사용자 프로필 정보 가져오기
-    var name = naver_id_login.getProfileData('name');
-    var email = naver_id_login.getProfileData('email');
-    var mobile = naver_id_login.getProfileData('mobile');
+  // function naverSignInCallback() {
+  //   // naver_id_login.getProfileData('프로필항목명');
+  //  // 프로필 항목은 개발가이드를 참고하시기 바랍니다.
+  //   // 네이버 사용자 프로필 정보 가져오기
+  //   var name = naver_id_login.getProfileData('name');
+  //   var email = naver_id_login.getProfileData('email');
+  //   var mobile = naver_id_login.getProfileData('mobile');
 
-    // 회원 정보를 JSON 형식으로 만들기 
-    var data = {
-      name: name,
-      email: email,
-      mobile: mobile
-    };
+  //   // 회원 정보를 JSON 형식으로 만들기 
+  //   var data = {
+  //     name: name,
+  //     email: email,
+  //     mobile: mobile
+  //   };
 
-    console.log(data);
+  //   console.log(data);
 
-    // fetch() 함수를 사용하여 회원 정보를 서버로 전송
-    fetch('http://175.106.99.31/auth/naverLogin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then(function(response) {
-      // 서버로부터 응답을 받았을 때 처리할 코드
-    }).catch(function(error) {
-      // 오류 처리 코드
-    });
-  }
+  //   // fetch() 함수를 사용하여 회원 정보를 서버로 전송
+  //   fetch("http://175.106.99.31/auth/naverLogin", {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(data)
+  //   }).then(function(response) {
+  //     // 서버로부터 응답을 받았을 때 처리할 코드
+  //   }).catch(function(error) {
+  //     // 오류 처리 코드
+  //   });
+  // }
 
   // 네이버 사용자 프로필 조회
-	naver_id_login.get_naver_userprofile("naverSignInCallback()");
-</script>
+  // naver_id_login.get_naver_userprofile(naverSignInCallback()); -->
 
 </body>
 

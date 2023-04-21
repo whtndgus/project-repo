@@ -3,9 +3,17 @@ package bitcamp.backend.community.controller;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import bitcamp.backend.community.service.CommunityImgService;
 import bitcamp.backend.community.service.CommunityService;
 import bitcamp.backend.community.service.RecommentService;
@@ -43,6 +53,7 @@ public class CommunityController {
   public Object insert(@RequestBody Community community) {
 
     RestResult restResult = new RestResult();
+    community.setFilter(!negaText(community.getTitle() + community.getContent(), 0.9));
     communityService.add(community);
     restResult.setData(community);
     restResult.setStatus(RestStatus.SUCCESS);
@@ -66,6 +77,7 @@ public class CommunityController {
   @PutMapping
   public Object update(@RequestBody Community community) {
 
+    community.setFilter(!negaText(community.getTitle() + community.getContent(), 0.9));
     communityService.update(community);
 
     RestResult restResult = new RestResult();
@@ -84,7 +96,6 @@ public class CommunityController {
 
   @GetMapping("/search")
   public Object search(@RequestParam String query) {
-    System.out.println(query);
     return new RestResult().setStatus(RestStatus.SUCCESS).setData(Naver(query));
   }
 
@@ -120,12 +131,40 @@ public class CommunityController {
         response.append(inputLine);
       }
       br.close();
-      System.out.println(response.toString());
       return response;
 
     } catch (Exception e) {
       System.out.println(e);
       return null;
+    }
+  }
+
+  public boolean negaText(String str, double d) {
+    try {
+      HttpHeaders headers = new HttpHeaders();
+      headers.setContentType(MediaType.APPLICATION_JSON);
+      headers.set("X-NCP-APIGW-API-KEY-ID", "djlxkf8glr");
+      headers.set("X-NCP-APIGW-API-KEY", "WKmWLEDy3PCDtnpZw1X8EZETZTLAvANUCnmk9a0a");
+      Map<String, Object> text = new HashMap<>();
+      text.put("content", str);
+      ObjectMapper objectMapper = new ObjectMapper();
+      String body;
+      body = objectMapper.writeValueAsString(text);
+      HttpEntity<String> httpBody = new HttpEntity<>(body, headers);
+      RestTemplate restTemplate = new RestTemplate();
+      restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+      Map<String, Object> response = restTemplate.postForObject(
+          new URI("https://naveropenapi.apigw.ntruss.com/sentiment-analysis/v1/analyze"), httpBody,
+          Map.class);
+      List<Object> sen = (List<Object>) response.get("sentences");
+      Map<String, Object> senten = (Map<String, Object>) sen.get(0);
+      Map<String, Object> sentence = (Map<String, Object>) senten.get("confidence");
+      double nega = (double) sentence.get("negative");
+
+      return nega >= d;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return false;
     }
   }
 

@@ -141,7 +141,7 @@
     })
       .then(response => response.json())
       .then(data => {
-        if (data.status == "success") {
+        if (data.status == "success" && data.data.hosName !== undefined) {
           console.log(data.data)
           location.href = "../register/doctors-advices.html"
           return data.data;

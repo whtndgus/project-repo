@@ -12,11 +12,17 @@ fetch(`http://175.106.99.31/auth/user`, {
       location.href = "../auth/doctors-login.html"
     }
     return data.data
-})
-.then((user) => {
-  myno = user.no
-  console.log(myno)
-})
+  })
+  .then((user) => {
+    console.log(user.hosName !== undefined)
+    if(user.hosName !== undefined) {
+      myno = user.no
+    }else {
+      console.log(user.hosName)
+      location.href = "../auth/doctors-login.html"
+    }
+
+  })
 
 // 게시글 입력
 document.querySelector('.btn-submit').onclick = (e) => {
@@ -40,6 +46,7 @@ document.querySelector('.btn-submit').onclick = (e) => {
       .then((data) => {
         console.log("성공:", data);
         submitFiles(data.data.no);
+        location.href = 'doctors-community-main.html';
       })
       .catch((error) => {
         console.error("실패:", error);
@@ -72,7 +79,6 @@ console.log(no);
     type: 'POST',
     success: function (data) {
       console.log("데이터 업로드 성공");
-      location.href = 'doctors-community-main.html';
       
     },
     error: function (e) {

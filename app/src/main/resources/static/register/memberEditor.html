@@ -226,18 +226,43 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.html" target='_blank'>
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-box-arrow-in-right"></i>
           <span>환자 사이트</span>
         </a>
       </li>
 
       <!-- 로그아웃 태그 -->
-      <li class="nav-item logout">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="../auth/doctors-login.html" target='_blank'>
           <i class="bi bi-box-arrow-in-right"></i>
           <span>의사 사이트</span>
         </a>
       </li><!-- End Login Page Nav -->
+      <!-- 로그아웃 태그 -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <li class="nav-item logout">
+        <a class="nav-link collapsed">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>로그아웃</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+      <script>
+        $(".logout").click(() => {
+          console.log(11)
+          fetch(`http://175.106.99.31/auth/logout`, {
+            method: 'GET'
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.status == "success") {
+                location.href = ""
+              } else {
+                alert("로그아웃 실패")
+                location.href = ""
+              }
+            })
+        })
+      </script>
 
     </ul>
 

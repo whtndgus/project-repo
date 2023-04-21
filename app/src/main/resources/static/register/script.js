@@ -68,7 +68,8 @@ fetch(`http://175.106.99.31/auth/user`, {
 })
   .then(response => response.json())
   .then(data => {
-    if (data.status == "success") {
+    if (data.status == "success" && data.data.phy !== undefined) {
+      console.log(data)
       myno = data.data.no;
       mydata = data.data;
       console.log(mydata)
@@ -99,7 +100,9 @@ fetch(`http://175.106.99.31/auth/user`, {
             }
           })
       })
-    } else {
+    }else if(data.status == "success" && data.data.admin) {
+      $(".log-btn").text("관리자")
+    }else {
       $(".log-btn").text("로그인")
     }
   })

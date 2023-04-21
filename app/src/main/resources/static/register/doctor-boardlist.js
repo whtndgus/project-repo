@@ -19,18 +19,22 @@ function Td(props) {
     .then(response => response.json())
     .then(data => {
       if (data.status == "success") {
-        document.querySelector('#username').innerHTML = data.data.name;
-        console.log(data.data)
         return data.data;
       } else {
         location.href = "../auth/doctors-login.html"
       }
       return data.data
-  })
-  .then((user) => {
-    myno = user.no
-    console.log(myno)
-  })
+    })
+    .then((user) => {
+      console.log(user.hosName !== undefined)
+      if(user.hosName !== undefined) {
+        myno = user.no
+      }else {
+        console.log(user.hosName)
+        location.href = "../auth/doctors-login.html"
+      }
+  
+    })
 
 class BoardLists extends React.Component {
   constructor(props) {
@@ -72,7 +76,7 @@ $(".search-btn").click(() => {
 function reflesh(string) {
   let lists;
 
-  fetch("http://192.168.0.7:8080/boardSearch", {
+  fetch("http://175.106.99.31/boardSearch", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

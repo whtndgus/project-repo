@@ -51,21 +51,26 @@ fetch(`http://175.106.99.31/auth/user`, {
   .then(response => response.json())
   .then(data => {
     if (data.status == "success") {
-      console.log(data.data)
       return data.data;
     } else {
       location.href = "../auth/doctors-login.html"
     }
     return data.data
-})
-.then((user) => {
-  myno = user.no
-  console.log(myno)
-})
+  })
+  .then((user) => {
+    console.log(user.hosName !== undefined)
+    if(user.hosName !== undefined) {
+      myno = user.no
+    }else {
+      console.log(user.hosName)
+      location.href = "../auth/doctors-login.html"
+    }
+
+  })
 
 if (window.localStorage.getItem("boardNo") != null) {
   str = window.localStorage.getItem("boardNo");
-  fetch("http://192.168.0.7:8080/boardNo", {
+  fetch("http://175.106.99.31/boardNo", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -87,7 +92,7 @@ if (window.localStorage.getItem("boardNo") != null) {
       $(".board-tel").val(data.another.split(",")[3] != "null" && data.another.split(",")[3].length > 0 ? data.another.split(",")[3] : "-");
     })
 
-  fetch("http://192.168.0.7:8080/findAllBoardImg", {
+  fetch("http://175.106.99.31/findAllBoardImg", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -113,7 +118,7 @@ if (window.localStorage.getItem("boardNo") != null) {
 
     })
 
-  fetch("http://192.168.0.7:8080/feedback/findByBno", {
+  fetch("http://175.106.99.31/feedback/findByBno", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -336,7 +341,7 @@ class Btns extends React.Component {
       <div className="sogyun-btns">
         <button type="button" className="btn btn-secondary sogyon-insert" onClick={() => {
 
-          fetch("http://192.168.0.7:8080/feedback/insert", {
+          fetch("http://175.106.99.31/feedback/insert", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -397,7 +402,7 @@ class Cbtns extends React.Component {
       <div className="sogyun-btns">
         <button type="button" className="btn btn-secondary sogyon-update" onClick={() => {
 
-          fetch("http://192.168.0.7:8080/feedback/update", {
+          fetch("http://175.106.99.31/feedback/update", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

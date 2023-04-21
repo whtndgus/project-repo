@@ -20,7 +20,7 @@
     <result column="pho_type" property="phoType"/>
     <result column="career" property="career"/>
     <result column="hos_name" property="hosName"/>
-    <result column="hos_no" property="hosno"/>
+    <result column="hos_no" property="hosNo"/>
   </resultMap>
 
   <insert id="insert" parameterType="doctor" 

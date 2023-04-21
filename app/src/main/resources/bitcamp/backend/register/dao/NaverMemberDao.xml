@@ -23,4 +23,13 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
   </insert>
+  
+  <select id="findByEmail" parameterType="String" resultMap="naver_memberMap">
+    select 
+      *
+    from 
+      app_naver_member 
+    where 
+      email=#{email}
+  </select>
 </mapper>

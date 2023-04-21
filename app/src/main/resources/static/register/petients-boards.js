@@ -25,7 +25,6 @@ class Board extends React.Component {
   }
 }
 
-
 fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET'
 })
@@ -39,7 +38,11 @@ fetch(`http://175.106.99.31/auth/user`, {
     }
   })
   .then(user => {
-    console.log(user.no)
+    if (user.phy !== undefined) {
+
+    } else {
+      location.href = "index.html"
+    }
     fetch("http://175.106.99.31/patientsBoards", {
       method: 'POST',
       headers: {

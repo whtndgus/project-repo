@@ -9,18 +9,22 @@ fetch(`http://175.106.99.31/auth/user`, {
   .then(response => response.json())
   .then(data => {
     if (data.status == "success") {
-      console.log(data.data)
-      
       return data.data;
     } else {
       location.href = "../auth/doctors-login.html"
     }
     return data.data
-})
-.then((user) => {
-  myno = user.no
-  console.log(myno)
-})
+  })
+  .then((user) => {
+    console.log(user.hosName !== undefined)
+    if(user.hosName !== undefined) {
+      myno = user.no
+    }else {
+      console.log(user.hosName)
+      location.href = "../auth/doctors-login.html"
+    }
+
+  })
 
 
 
@@ -51,23 +55,24 @@ Promise.all([
   document.querySelector('#createdDate').value = communityData.data.createdDate;
   document.querySelector('#content').value = communityData.data.content;
   
-  
+  if (communityData.photo[0] != null) {
   let photoUrl = "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/community-img/"+communityData.photo[0].imgUrl+"?type=f&w=500&h=500&quality=85&autorotate=true&faceopt=true&anilimit=24"
-  if(communityData.photo.length >0 && myno == communityData.data.doctorNo) {
-    $('#comImg')[0].src = photoUrl;
-    document.querySelector('#btn-img-delete').style.display = 'block';
-    
-      } else if (communityData.photo.length >0 && myno != communityData.data.doctorNo) {
-        $('#comImg')[0].src = photoUrl;
-        document.querySelector('#btn-img-delete').style.display = 'none';
-        
-      } else {
+   
+    if(communityData.photo.length >0 && myno == communityData.data.doctorNo) {
+      $('#comImg')[0].src = photoUrl;
+      document.querySelector('#btn-img-delete').style.display = 'block';
+      
+        } else if (communityData.photo.length >0 && myno != communityData.data.doctorNo) {
+          $('#comImg')[0].src = photoUrl;
+          document.querySelector('#btn-img-delete').style.display = 'none';
+        }   
+  } else {
         $("#comImg").attr('src', ' ');
         document.querySelector('#btn-img-delete').style.display = 'none';
   }
   
    if ( myno == communityData.data.doctorNo ) {  
-       document.querySelector('#uptdel-btns').style.display = 'block';    
+      document.querySelector('#uptdel-btns').style.display = 'block';    
       document.querySelector('#title').readOnly = false;
       document.querySelector('#content').readOnly = false;
       document.querySelector('#category').readOnly = false;

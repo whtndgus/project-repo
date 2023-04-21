@@ -1,6 +1,6 @@
 package bitcamp.backend.register.vo;
 
-import org.joda.time.DateTime;
+import java.sql.Date;
 import lombok.Data;
 
 @Data
@@ -11,6 +11,6 @@ public class NaverMember {
   private String email;
   private String nickname;
   private String mobile;
-  private DateTime create_date;
-  private DateTime modify_date;
+  private Date createDate;
+  private Date modifyDate;
 }

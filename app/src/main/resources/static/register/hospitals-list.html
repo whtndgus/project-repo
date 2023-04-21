@@ -101,7 +101,6 @@
 
       <a href="doctors-community-main.html" class="nav-link"><span>커뮤니티</span></a>
 
-      <a href="doctors-signup.html" class="nav-link collapsed"><span>회원가입(의사)</span></a>
     </div>
 
     <nav class="header-nav ms-auto">
@@ -181,7 +180,7 @@
       <li class="nav-heading">의사 전용 페이지</li>
 
       <li class="nav-item">
-        <a class="nav-link " href="doctors-mypage.html">
+        <a class="nav-link " href="doctors-profile.html">
           <i class="bi bi-person"></i>
           <span>내 정보</span>
         </a>
@@ -193,14 +192,6 @@
           <span>진료하기</span>
         </a>
       </li>
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="doctors-review.html">
-          <i class="bi bi-envelope"></i>
-          <span>진료 리뷰 확인</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-faq.html">
@@ -414,12 +405,12 @@
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  
-  
+
+
 
   <script>
 
-  
+
 
     let myno = 0;
 
@@ -429,8 +420,6 @@
       .then(response => response.json())
       .then(data => {
         if (data.status == "success") {
-          document.querySelector('#username').innerHTML = data.data.name;
-          console.log(data.data)
           return data.data;
         } else {
           location.href = "../auth/doctors-login.html"
@@ -438,8 +427,13 @@
         return data.data
       })
       .then((user) => {
-        myno = user.no
-        console.log(myno)
+        if (user.hosName !== undefined) {
+          myno = user.no
+        } else {
+          console.log(user.hosName)
+          location.href = "../auth/doctors-login.html"
+        }
+
       })
 
     //검색기능

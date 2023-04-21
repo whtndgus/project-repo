@@ -24,6 +24,8 @@ public interface PatientService {
   int updatePw(Patient patient);
 
   Member tget(String tel);
+
+  Member getMember(int no);
 }
 
 

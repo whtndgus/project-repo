@@ -104,6 +104,27 @@ class Dctr extends React.Component {
   }
 }
 
+fetch(`http://175.106.99.31/auth/user`, {
+  method: 'GET'
+})
+  .then(response => response.json())
+  .then(data => {
+    if (data.status == "success") {
+      return data.data;
+    } else {
+      location.href = "index.html"
+    }
+    return data.data
+  })
+  .then((user) => {
+    if(user.admin) {
+      myno = user.no
+    }else {
+      location.href = "index.html"
+    }
+
+  })
+
 
 fetch("http://175.106.99.31/boardSearch")
   .then((response) => response.json())
