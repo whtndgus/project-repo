@@ -285,40 +285,47 @@
     <!-- End Header -->
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
-
       <ul class="sidebar-nav" id="sidebar-nav">
-  
         <li class="nav-heading">의사 전용 페이지</li>
-  
+
         <li class="nav-item">
-          <a class="nav-link " href="doctors-profile.html">
+          <a class="nav-link" href="doctors-mypage.html">
             <i class="bi bi-person"></i>
             <span>내 정보</span>
           </a>
-        </li><!-- End Profile Page Nav -->
-  
+        </li>
+        <!-- End Profile Page Nav -->
+
         <li class="nav-item">
           <a class="nav-link collapsed" href="doctors-advices.html">
             <i class="bi bi-file-earmark"></i>
             <span>진료하기</span>
           </a>
         </li>
-  
-  
+
         <li class="nav-item">
-          <a class="nav-link collapsed" href="pages-faq.html">
-            <i class="bi bi-question-circle"></i>
-            <span>Q & A</span>
+          <a class="nav-link collapsed" href="doctors-review.html">
+            <i class="bi bi-envelope"></i>
+            <span>진료 리뷰 확인</span>
           </a>
-        </li><!-- End F.A.Q Page Nav -->
-  
+        </li>
+        <!-- End Contact Page Nav -->
+
         <li class="nav-item">
-          <a class="nav-link collapsed" href="hospitals-list.html">
+          <a class="nav-link collapsed" href="QnQ-doc.html">
+            <i class="bi bi-question-circle"></i>
+            <span>문의하기</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="hospitals-view.html">
             <i class="bi bi-card-list"></i>
             <span>내 병원 정보</span>
           </a>
-        </li><!-- End Register Page Nav -->
-  
+        </li>
+        <!-- End Register Page Nav -->
+
         <!-- 로그아웃 태그 -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <li class="nav-item logout">
@@ -326,26 +333,26 @@
             <i class="bi bi-box-arrow-in-right"></i>
             <span>로그아웃</span>
           </a>
-        </li><!-- End Login Page Nav -->
+        </li>
+        <!-- End Login Page Nav -->
         <script>
           $(".logout").click(() => {
-            console.log(11)
+            console.log(11);
             fetch(`http://175.106.99.31/auth/logout`, {
-              method: 'GET'
+              method: "GET",
             })
-              .then(response => response.json())
-              .then(data => {
+              .then((response) => response.json())
+              .then((data) => {
                 if (data.status == "success") {
-                  location.href = ""
+                  location.href = "";
                 } else {
-                  alert("로그아웃 실패")
-                  location.href = ""
+                  alert("로그아웃 실패");
+                  location.href = "";
                 }
-              })
-          })
+              });
+          });
         </script>
-  
-  
+
         <!--
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-blank.html">
@@ -353,10 +360,9 @@
           <span>Blank</span>
         </a>
       </li> End Blank Page Nav -->
-  
       </ul>
-  
-    </aside><!-- End Sidebar-->
+    </aside>
+    <!-- End Sidebar-->
 
     <main id="main" class="main">
       <section class="section contact align-middle">
@@ -378,16 +384,16 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-      <div class="copyright">
-        &copy; Copyright <strong><span>NiceAdmin</span></strong
-        >. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <div class="footer-img-container">
+        <img src="../register/assets/img/bitcamplogo.png" />
+        <img
+          src="../register/assets/img/navercloudlogo.png"
+          style="width: 200px; margin-left: 50px"
+        />
+        <img
+          src="../register/assets/img/magicecole.png"
+          style="width: 150px; margin-left: 50px"
+        />
       </div>
     </footer>
     <!-- End Footer -->
@@ -454,6 +460,12 @@
                       response.v2.addresses[0].x
                     ),
                     map: map,
+                    icon: {
+                      url: "https://navermaps.github.io/maps.js.ncp/docs/img/example/sally.png",
+                      size: new naver.maps.Size(50, 52),
+                      origin: new naver.maps.Point(0, 0),
+                      anchor: new naver.maps.Point(25, 26),
+                    },
                   });
 
                   // 마커 클릭 시 정보창 표시
@@ -484,27 +496,6 @@
       } else {
         form.reportValidity();
       }
-      // naver.maps.Service.geocode(
-      //   { address: "666" },
-      //   function (status, response) {
-      //     if (status === naver.maps.Service.Status.ERROR) {
-      //       return alert("Something wrong!");
-      //     }
-      //     var new_position = new naver.maps.LatLng(
-      //       response.v2.addresses[0].y,
-      //       response.v2.addresses[0].x
-      //     );
-      //     map.setCenter(new_position);
-
-      //     var marker = new naver.maps.Marker({
-      //       position: new naver.maps.LatLng(
-      //         response.v2.addresses[0].y,
-      //         response.v2.addresses[0].x
-      //       ),
-      //       map: map,
-      //     });
-      //   }
-      // );
     </script>
   </body>
 </html>

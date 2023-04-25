@@ -100,14 +100,14 @@ public class CommunityController {
   }
 
   public Object Naver(String str) {
+    System.out.println(str);
     String clientId = "hw5sLEXYEIU41gqRI7Tn"; // API Client ID
     String clientSecret = "Q4OYDrcdPf"; // API Client Secret
 
     try {
       String query = str; // 검색어
       String encodedQuery = URLEncoder.encode(query, "UTF-8");
-      String apiUrl = "https://openapi.naver.com/v1/search/blog.json?query=" + encodedQuery
-          + "&display=5&sort=sim"; // API URL
+      String apiUrl = "https://openapi.naver.com/v1/search/blog.json?query=" + encodedQuery + "&sort=sim"; // API URL
 
       URL url = new URL(apiUrl);
       HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -107,6 +107,30 @@
       and m.m_pw = sha2(#{password},256)  
   </select>
   
+  <select id="findByToken" parameterType="String" resultMap="patientMap">
+    select
+      p.p_no,
+      m.m_id,
+      m.m_name,
+      m.m_pw,
+      m.m_tel,
+      m.m_email,
+      m.admin,
+      p.p_phy,
+      p.p_drug,
+      m.addr,
+      m.m_photo,
+      m.m_bday,
+      m.pho_filename,
+      m.pho_type,
+      m.m_gender
+    from
+      app_patient p
+      inner join app_member m on p.p_no = m.m_no
+    where 
+      m.m_pw = sha2(#{password},256)
+  </select>
+  
   <update id="update" parameterType="patient">
     update app_patient set
       p_phy=#{phy},

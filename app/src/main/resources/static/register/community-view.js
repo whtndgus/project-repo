@@ -1,3 +1,6 @@
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 let urlParams = new URL(location.href).searchParams;
 let no = urlParams.get('no');
 
@@ -23,54 +26,33 @@ fetch(`http://175.106.99.31/auth/user`, {
       console.log(user.hosName)
       location.href = "../auth/doctors-login.html"
     }
-
   })
-
-
 
 document.querySelector('#former-btn').onclick = (e) => {
   location.href='doctors-community-main.html';
 };
 
-Promise.all([
-  fetch(`http://175.106.99.31/community/${no}`),
-  fetch(`http://175.106.99.31/recomment/${no}`)
-])
-.then((responses) => Promise.all(responses.map((response) => response.json())))
+
+
+/*//게시글,댓글 데이터 가져오기
+const fetch1 = fetch(`http://175.106.99.31/community/${no}`);
+const fetch2 = fetch(`http://175.106.99.31/recomment/${no}`);
+
+Promise.all([fetch1, fetch2])
+.then(responses => Promise.all(responses.map(response => response.json())))
 .then((data) => {
-  console.log(data);
   var communityData = data[0];
   var recommentData = data[1];
   console.log(communityData);
+  
+ // 버튼 상태 초기화
+  document.querySelector('#uptdel-btns').style.display = 'none';
+  document.querySelector('#title').readOnly = true;
+  document.querySelector('#content').readOnly = true;
+  document.querySelector('#category').readOnly = true;
+  document.querySelector('#createdDate').readOnly = true;
 
-  //console.log(communityData);
-  if (communityData.status == 'failure') {
-    // alert('서버 요청 오류!');
-   // console.log(communityData);
-    return;
-  }
-  document.querySelector('#title').value = communityData.data.title;
-  document.querySelector('#category').value = communityData.data.category;
-  document.querySelector('#doctorName').value = communityData.data.doctorName;
-  document.querySelector('#createdDate').value = communityData.data.createdDate;
-  document.querySelector('#content').value = communityData.data.content;
-  
-  if (communityData.photo[0] != null) {
-  let photoUrl = "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/community-img/"+communityData.photo[0].imgUrl+"?type=f&w=500&h=500&quality=85&autorotate=true&faceopt=true&anilimit=24"
-   
-    if(communityData.photo.length >0 && myno == communityData.data.doctorNo) {
-      $('#comImg')[0].src = photoUrl;
-      document.querySelector('#btn-img-delete').style.display = 'block';
-      
-        } else if (communityData.photo.length >0 && myno != communityData.data.doctorNo) {
-          $('#comImg')[0].src = photoUrl;
-          document.querySelector('#btn-img-delete').style.display = 'none';
-        }   
-  } else {
-        $("#comImg").attr('src', ' ');
-        document.querySelector('#btn-img-delete').style.display = 'none';
-  }
-  
+// 본인 글을 조회하는 경우와 아닌경우 버튼
    if ( myno == communityData.data.doctorNo ) {  
       document.querySelector('#uptdel-btns').style.display = 'block';    
       document.querySelector('#title').readOnly = false;
@@ -84,67 +66,168 @@ Promise.all([
       document.querySelector('#category').readOnly = true;
       document.querySelector('#createdDate').readOnly = true;
     }
-  
-  // console.log(communityData.photo[0].imgUrl)
 
+  document.querySelector('#title').value = communityData.data.title;
+  document.querySelector('#category').value = communityData.data.category;
+  document.querySelector('#doctorName').value = communityData.data.doctorName;
+  document.querySelector('#createdDate').value = communityData.data.createdDate;
+  document.querySelector('#content').value = communityData.data.content;
+  
+  // 사진 없을 경우와 있을 경우 이미지 삭제 버튼
+  if (communityData.photo[0] != null) {
+    // 이미지 옵티마이저
+      let photoUrl = "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/community-img/"+communityData.photo[0].imgUrl+"?type=f&w=500&h=500&quality=85&autorotate=true&faceopt=true&anilimit=24"
+      if(myno == communityData.data.doctorNo) { 
+        $('#comImg')[0].src = photoUrl;
+        document.querySelector('#btn-img-delete').style.display = 'block'; 
+      } else if (myno != communityData.data.doctorNo) {
+            $('#comImg')[0].src = photoUrl;
+            document.querySelector('#btn-img-delete').style.display = 'none';
+        }        
+   } else if (communityData.photo[0] == null) {
+        $("#comImg").attr('src', ' ');
+        document.querySelector('#btn-img-delete').style.display = 'none';
+  }
+  
   // 두번째 fetch 요청 후
   var tbody = document.querySelector('#recomment-list');
   var html = '';
   for (var row of recommentData.data) {
     console.log (row)
-  if ( row.docNo == myno) {
-    html += `<tr>
-        <td>${row.recNo}</td>
-        <td><p>${row.recContent}</p></td>
-        <td>${row.docName}</td> 
-        <td>${row.createdDate}</td>
-        <td><button type="button" class="btn btn-outline-danger btn-sm" 
-                    id="btn-recomment-delete-${row.recNo}">X</button></td>
-        </tr>\n`;
-  } else {
-     html += `<tr>
-        <td>${row.recNo}</td>
-        <td><p>${row.recContent}</p></td>
-        <td>${row.docName}</td> 
-        <td>${row.createdDate}</td>
-        </tr>\n`;
-    
-  } }
-  tbody.innerHTML = html;
+    if ( row.docNo == myno) {
+      html += `<tr>
+          <td>${row.recNo}</td>
+          <td><p>${row.recContent}</p></td>
+          <td>${row.docName}</td> 
+          <td>${row.createdDate}</td>
+          <td><button type="button" class="btn btn-outline-danger btn-sm" 
+                      id="btn-recomment-delete-${row.recNo}">X</button></td>
+          </tr>\n`;
+    } else {
+       html += `<tr>
+          <td>${row.recNo}</td>
+          <td><p>${row.recContent}</p></td>
+          <td>${row.docName}</td> 
+          <td>${row.createdDate}</td>
+          </tr>\n`;
+      
+    } 
+  }
+  tbody.innerHTML = html;*/
   
-  // 댓글 삭제
+$.ajax({
+  url: `http://175.106.99.31/community/${no}`,
+  method: 'GET',
+  dataType: 'json'
+})
+.done(function(communityData) {
+  $.ajax({
+    url: `http://175.106.99.31/recomment/${no}`,
+    method: 'GET',
+    dataType: 'json'
+  })
+.done(function(recommentData) {
+   /* // 버튼 상태 초기화
+    $('#uptdel-btns').hide();
+    $('#title').prop('readOnly', true);
+    $('#content').prop('readOnly', true);
+    $('#category').prop('readOnly', true);
+    $('#createdDate').prop('readOnly', true);*/
+
+  console.log(communityData);
+  console.log(recommentData);
+    // 본인 글을 조회하는 경우와 아닌경우 버튼
+    if ( myno == communityData.data.doctorNo ) {  
+      $('#uptdel-btns').show();    
+      $('#title').prop('readOnly', false);
+      $('#content').prop('readOnly', false);
+      $('#category').prop('readOnly', false);
+      $('#createdDate').prop('readOnly', false);
+    } else {
+      $('#uptdel-btns').hide();
+      $('#title').prop('readOnly', true);
+      $('#content').prop('readOnly', true);
+      $('#category').prop('readOnly', true);
+      $('#createdDate').prop('readOnly', true);
+    }
+
+    $('#title').val(communityData.data.title);
+    $('#category').val(communityData.data.category);
+    $('#doctorName').val(communityData.data.doctorName);
+    $('#createdDate').val(communityData.data.createdDate);
+    $('#content').val(communityData.data.content);
+
+    // 사진 없을 경우와 있을 경우 이미지 삭제 버튼
+    if (communityData.photo[0] != null) {
+      // 이미지 옵티마이저
+      let photoUrl = "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/community-img/"+communityData.photo[0].imgUrl+"?type=f&w=500&h=500&quality=85&autorotate=true&faceopt=true&anilimit=24"
+      if(myno == communityData.data.doctorNo) { 
+        $('#comImg').attr('src', photoUrl);
+        $('#btn-img-delete').show(); 
+      } else if (myno != communityData.data.doctorNo) {
+        $('#comImg').attr('src', photoUrl);
+        $('#btn-img-delete').hide();
+      }        
+    } else if (communityData.photo[0] == null) {
+      $('#comImg').attr('src', '');
+      $('#btn-img-delete').hide();
+    }
+
+    // 두번째 ajax 요청 후
+    var tbody = $('#recomment-list');
+    var html = '';
+    console.log(recommentData);
+    
+    $.each(recommentData.data , function(index, row)  {
+      if ( row.docNo == myno) {
+        html += `<tr>
+          <td>${row.recNo}</td>
+          <td><p>${row.recContent}</p></td>
+          <td>${row.docName}</td> 
+          <td>${row.createdDate}</td>
+          <td><button type="button" class="btn btn-outline-danger btn-sm" id="btn-recomment-delete-${row.recNo}">X</button></td>
+        </tr>\n`;
+      } else {
+        html += `<tr>
+          <td>${row.recNo}</td>
+          <td><p>${row.recContent}</p></td>
+          <td>${row.docName}</td> 
+          <td>${row.createdDate}</td>
+        </tr>\n`;
+      }
+    tbody.html(html);
+   
+    // 댓글 삭제
   for (var row of recommentData.data) {
     document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = (e) => {
-     
       fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
         method: 'DELETE',
       })
       .then((response) => response.json())
       .then((data) => {
         console.log("성공:", data);
-
-        if (data.status == 'failure') {
+        location.reload();
+       /* if (data.status == 'failure') {
           alert('댓글 삭제 실패!\n' + data.data);
           return;
-        }
-        // location.href = reload();
-      })
+        }*/ 
+       })
       .catch((error) => {
         console.error("실패:", error);
-      });
-      location.reload();
-    };
-  }
+       });
+     };  
+   }
+ });
 })
+    
 .catch((err) => {
   //alert('서버 요청 오류!');
   console.log(err);
 });
-
+  
 
 //댓글 입력
 document.querySelector('#rec-save-btn').onclick = (e) => {
-
   fetch("http://175.106.99.31/recomment", {
     method: "POST",
     headers: {
@@ -214,9 +297,8 @@ document.querySelector('#update-btn').onclick = (e) => {
     .catch((error) => {
       console.error("실패:", error);
     });
-    };
-
-    
+  }
+  
   //이미지만 삭제
     document.querySelector('#btn-img-delete').onclick = (e) => {
 
@@ -235,5 +317,5 @@ document.querySelector('#update-btn').onclick = (e) => {
     .catch((error) => {
       console.log("실패:", error);
     });
-    };
-  
+  }
+})

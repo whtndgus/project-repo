@@ -12,6 +12,7 @@ public interface DoctorDao {
   Doctor findByNo(int no);
   Doctor findByIdAndPassword(Map<String, Object> params);
   int update(Doctor d);
+  int updatec(Doctor d);
   int delete(int no);
 }
 

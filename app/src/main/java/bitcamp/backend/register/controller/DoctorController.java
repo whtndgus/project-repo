@@ -153,9 +153,9 @@ public class DoctorController {
   }
 
   @PutMapping("{no}")
-  public Object update(@PathVariable int no, @RequestBody Doctor doctor) {
+  public Object update(@PathVariable int no, Doctor doctor) {
 
-    log.debug(doctor);
+    System.out.println(no+" "+doctor);
 
     // doctor.setNo(no);
     doctorService.update(doctor);

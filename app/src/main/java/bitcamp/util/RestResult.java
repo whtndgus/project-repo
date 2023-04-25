@@ -1,11 +1,14 @@
 package bitcamp.util;
 
+import bitcamp.backend.register.vo.NaverMember;
+
 public class RestResult {
   String status;
   String errorCode;
   Object data;
   String message;
   Object photo;
+  NaverMember naverMember;
 
   public Object getPhoto() {
     return photo;
@@ -42,4 +45,13 @@ public class RestResult {
     this.message = message;
     return this;
   }
+	public NaverMember getNaverMember() {
+		return naverMember;
+	}
+	public RestResult setNaverMember(NaverMember member) {
+		this.naverMember = member;
+	    return this;
+	}
+  
+  
 }

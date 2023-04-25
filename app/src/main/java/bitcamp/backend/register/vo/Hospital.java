@@ -11,7 +11,7 @@ public class Hospital {
   private String hosTel;
   private String hosTime;
   private String hosSub;
-  private String hosBusno;
+  private String hosPwd;
   private List<HosPhoto> hosphotos;
 
   public Hospital setHosphotos(List<HosPhoto> hosphotos) {

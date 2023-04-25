@@ -158,7 +158,7 @@ class Sogyun extends React.Component {
       title: props.title,
       pro: props.popen,
       data: props
-    }  
+    }   
   }
   render() {
     if (this.state.pro) {
@@ -370,7 +370,7 @@ class DocInfo extends React.Component {
     this.state = {
       data: props.props
     }
-  }  
+  }   
   render() {
     return (
       <div className="top-area text-center">
@@ -380,12 +380,13 @@ class DocInfo extends React.Component {
             <i className="bx bx-user"></i>{' '}{this.state.data.doc_name}
           </span>
         </div>
-        <div className="doc-career">
-          <span class="badge custom-badge text-dark"><i class="fas fa-solid fa-certificate"></i>{' '}경력 사항</span>
+        <div className="career-area">
+          <span class="doc-career-name"><i class="fas fa-solid fa-certificate"></i>{' '}경력 사항</span>
+          <span class="doc-career-list">{this.state.data.doc_career}</span>
         </div>
         <div className="hos-area">
           <span className="hos-name"><i class="bx bx-plus-medical"></i>{' '}{this.state.data.hos_name}</span>
-          <span className="hos-info" ><i class="fas fa-stethoscope"></i>{' '}병원 진료 과목</span>
+          <span className="hos-info" ><i class="fas fa-stethoscope"></i>{' '}{this.state.data.doc_license}</span>
           <span className="hos-addr"><i class="bi-hospital"></i>{' '}{this.state.data.hos_addr}</span>
         </div>
       </div>  

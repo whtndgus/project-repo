@@ -74,6 +74,15 @@
       m_no=#{no}
   </select>
   
+  <select id="findByToken" parameterType="String" resultMap="memberMap">
+    select 
+      *
+    from 
+      app_member 
+    where 
+      m_pw=sha2(#{token},256)
+  </select>
+  
   <select id="findByTel" parameterType="String" resultMap="memberMap">
     select 
       m.m_id, 

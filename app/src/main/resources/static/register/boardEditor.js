@@ -1,3 +1,7 @@
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+
 class Pbtr extends React.Component {
   constructor(props) {
     super(props);
@@ -201,20 +205,20 @@ function Pboard(props) {
         />
       </div>
       <div className="top-content">
-        제목 :
+        <strong>제목 :</strong>
         <input type="text" className="form-control board-title" placeholder="" defaultValue={props.props.title} readOnly="true" />
-        증상 :
+        <strong>증상 :</strong>
         <input type="text" className="form-control board-pain" placeholder="" defaultValue={props.props.pain} readOnly="true" />
       </div>
       <div className="middle-content">
         <h3>인적 사항</h3>
-        이름 :
+        <strong>이름 :</strong>
         <input type="text" className="form-control board-name" placeholder="" defaultValue={props.props.another.split(",")[0]} readOnly="true" />
-        나이 :
+        <strong>나이 :</strong>
         <input type="text" className="form-control board-age" placeholder="" defaultValue={props.props.another.split(",")[1]} readOnly="true" />
-        연락처 :
+        <strong>연락처 :</strong>
         <input type="text" className="form-control board-tel" placeholder="" defaultValue={props.props.another.split(",")[3]} readOnly="true" />
-        주소 :
+        <strong>주소 :</strong>
         <input type="text" className="form-control board-addr" placeholder="" defaultValue={props.props.another.split(",")[4]} readOnly="true" />
       </div>
       <div className="bottom-content">

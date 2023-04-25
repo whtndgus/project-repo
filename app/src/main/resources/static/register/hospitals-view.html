@@ -1,992 +1,1167 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"
+    ></script>
+    <title>Pages / Contact - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
 
-  <script type="text/javascript"
-    src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID"></script>
-  <title>Pages / Contact - NiceAdmin Bootstrap Template</title>
-  <meta content="" name="description" />
-  <meta content="" name="keywords" />
+    <!-- Favicons -->
+    <link href="../assets/img/newlogo.png" rel="icon" />
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-  <!-- Favicons -->
-  <link href="../assets/img/newlogo.png" rel="icon" />
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect" />
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet" />
+    <!-- Vendor CSS Files -->
+    <link
+      href="../assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link
+      href="../assets/vendor/simple-datatables/style.css"
+      rel="stylesheet"
+    />
 
-  <!-- Vendor CSS Files -->
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-  <link href="../assets/vendor/quill/quill.snow.css" rel="stylesheet" />
-  <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
-  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-  <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet" />
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/style.css" rel="stylesheet" />
 
-  <!-- Template Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet" />
-
-  <!-- =======================================================
+    <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Mar 09 2023 with Bootstrap v5.2.3
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style>
-    .parent {
-      display: flex;
-      flex-direction: row;
-      /* 가로 방향으로 배치 */
-      justify-content: space-between;
-      /* 자식 요소들 사이의 간격을 최대화 */
-    }
+    <style>
+      .parent {
+        display: flex;
+        flex-direction: row;
+        /* 가로 방향으로 배치 */
+        justify-content: space-between;
+        /* 자식 요소들 사이의 간격을 최대화 */
+      }
 
-    /* 각각의 요소들의 크기와 위치를 조정 */
-    #hos-mypage-form,
-    .col-xl-11 {
-      flex-basis: 48%;
-      /* 2개의 요소를 가로로 총 96% 차지하도록 설정 */
-    }
+      /* 각각의 요소들의 크기와 위치를 조정 */
+      #hos-mypage-form,
+      .col-xl-11 {
+        flex-basis: 48%;
+        /* 2개의 요소를 가로로 총 96% 차지하도록 설정 */
+      }
 
-    .hos-addr:hover {
-      cursor: pointer;
-    }
+      .hos-addr:hover {
+        cursor: pointer;
+      }
+      .modal {
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE 10+ */
+      }
 
-    .modal-open {
-      background: radial-gradient(circle,
-          #000000,
-          #101010,
-          #202020,
-          #303030,
-          #404040,
-          #000000);
-      /* background: linear-gradient(
-          to bottom right,
-          #ff0000,
-          #ff8000,
-          #ffff00,
-          #00ff00,
-          #0000ff,
-          #4b0082,
-          #8b00ff
-        ); */
-    }
+      .modal::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge, Opera */
+      }
+      #update-hos-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
-    .modal-open table {
-      background-color: white;
-    }
+      #hos-preview-container {
+        width: 200px;
+        /* border-radius: 50%; */
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+      }
 
-    .modal-body {
-      padding: 0px;
-      background: radial-gradient(circle,
-          #000000,
-          #101010,
-          #202020,
-          #303030,
-          #404040,
-          #000000);
-      /* background: linear-gradient(
-          to bottom right,
-          #ff0000,
-          #ff8000,
-          #ffff00,
-          #00ff00,
-          #0000ff,
-          #4b0082,
-          #8b00ff
-        ); */
-    }
+      #hos-PhotoDelete:hover {
+        cursor: pointer;
+        color: red;
+      }
 
-    #update-hos-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+      .hos-pre-img {
+        width: 252px;
+        height: 40px;
+      }
+    </style>
+  </head>
 
-    #hos-preview-container {
-      width: 200px;
-      /* border-radius: 50%; */
-      overflow: hidden;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 20px;
-    }
-
-    #hos-PhotoDelete:hover {
-      cursor: pointer;
-      color: red;
-    }
-
-    .hos-pre-img {
-      width: 252px;
-      height: 40px;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="../assets/img/newlogo.png" alt="" />
-        <span class="d-none d-lg-block">MyClinic</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
-    <!-- End Logo -->
-
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword" />
-        <button type="submit" title="Search">
-          <i class="bi bi-search"></i>
-        </button>
-      </form>
-    </div>
-    <!-- End Search Bar -->
-
-    <div class="top-menu">
-      <a href="pages-notice.html" class="nav-link collapsed"><span>공지사항</span></a>
-
-      <a href="doctors-community-main.html" class="nav-link collapsed"><span>커뮤니티</span></a>
-    </div>
-
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-        <li class="nav-item dropdown">
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span> </a><!-- End Notification Icon -->
-
-          <!--우측 상단 알림 -->
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              확인하지 않은 알림이 있습니다.
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>진료 답변 확인하기</h4>
-                <p>OOO 환자님 안녕하세요....</p>
-                <p>30분 전</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-                <h4>개인정보 보호 안내</h4>
-                <p>비밀번호를 변경해주세요</p>
-                <p>1 시간 전</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <!--  알림
-          <li class="notification-item">
-            <i class="bi bi-check-circle text-success"></i>
-            <div>
-              <h4>Sit rerum fuga</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>2 hrs. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-info-circle text-primary"></i>
-            <div>
-              <h4>Dicta reprehenderit</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>4 hrs. ago</p>
-            </div>
-          </li>
-          -->
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
-          </ul>
-          <!-- End Notification Dropdown Items -->
-        </li>
-        <!-- End Notification Nav -->
-
-        <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="../assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" />
-            <span class="d-none d-md-block dropdown-toggle ps-2">엄 진 영</span> </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>엄 진 영</h6>
-              <span>개발자</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-          </ul>
-          <!-- End Profile Dropdown Items -->
-        </li>
-        <!-- End Profile Nav -->
-      </ul>
-    </nav>
-    <!-- End Icons Navigation -->
-  </header>
-  <!-- End Header -->
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-    <ul class="sidebar-nav" id="sidebar-nav">
-      <li class="nav-heading">의사 전용 페이지</li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="doctors-profile.html">
-          <i class="bi bi-person"></i>
-          <span>내 정보</span>
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="../assets/img/newlogo.png" alt="" />
+          <span class="d-none d-lg-block">MyClinic</span>
         </a>
-      </li>
-      <!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="doctors-advices.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>진료하기</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>Q & A</span>
-        </a>
-      </li>
-      <!-- End F.A.Q Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="hospitals-list.html">
-          <i class="bi bi-card-list"></i>
-          <span>내 병원 정보</span>
-        </a>
-      </li>
-      <!-- End Register Page Nav -->
-
-      <!-- 로그아웃 태그 -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-      <li class="nav-item logout">
-        <a class="nav-link collapsed">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>로그아웃</span>
-        </a>
-      </li>
-      <!-- End Login Page Nav -->
-      <script>
-        $(".logout").click(() => {
-          console.log(11);
-          fetch(`http://175.106.99.31/auth/logout`, {
-            method: "GET",
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.status == "success") {
-                location.href = "";
-              } else {
-                alert("로그아웃 실패");
-                location.href = "";
-              }
-            });
-        });
-      </script>
-
-      <!--
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-blank.html">
-        <i class="bi bi-file-earmark"></i>
-        <span>Blank</span>
-      </a>
-    </li> End Blank Page Nav -->
-    </ul>
-  </aside>
-  <!-- End Sidebar-->
-
-  <main id="main" class="main">
-    <section class="section contact align-middle">
-      <div class="pagetitle">
-        <h1>나의 병원 정보</h1>
-        <div id="hospitalNo" class="hos-no" style="display: none"></div>
-        <div id="hosName" class="hos-name"></div>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
-    </section>
+      <!-- End Logo -->
+      <div class="top-menu">
+        <a href="pages-notice.html" class="nav-link collapsed"
+          ><span>공지사항</span></a
+        >
 
-    <span class="align-middle">
-      <section class="section contact">
-        <div class="parent">
-          <form id="hos-mypage-form">
-            <div class="col-xl-11">
-              <div class="row">
-                <div class="col-lg-6 card-size">
-                  <div class="info-box card">
-                    <i class="bi bi-telephone"></i>
-                    <h3>연락처</h3>
-                    <p>전화번호</p>
-                    <div id="hosTel" class="hos-tel"></div>
-                    <!-- <p>홈페이지</p> -->
-                    <!-- <a href=""></a> -->
+        <a href="doctors-community-main.html" class="nav-link collapsed"
+          ><span>커뮤니티</span></a
+        >
+      </div>
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item dropdown pe-3">
+            <a class="nav-link nav-profile d-flex align-items-center pe-0">
+              <div id="pre-userimg"></div>
+              <img
+                id="userimg"
+                src="assets/img/profile-img.jpg"
+                alt="Profile"
+              />
+              <span id="username" class="d-none d-md-block ps-2"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-heading">의사 전용 페이지</li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="doctors-profile.html">
+            <i class="bi bi-person"></i>
+            <span>내 정보</span>
+          </a>
+        </li>
+        <!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="doctors-advices.html">
+            <i class="bi bi-file-earmark"></i>
+            <span>진료하기</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="QnQ-doc.html">
+            <i class="bi bi-question-circle"></i>
+            <span>문의하기</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="hospitals-view.html">
+            <i class="bi bi-card-list"></i>
+            <span>내 병원 정보</span>
+          </a>
+        </li>
+        <!-- End Register Page Nav -->
+
+        <!-- 로그아웃 태그 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <li class="nav-item logout">
+          <a class="nav-link collapsed">
+            <i class="bi bi-box-arrow-in-right"></i>
+            <span>로그아웃</span>
+          </a>
+        </li>
+        <!-- End Login Page Nav -->
+        <script>
+          $(".logout").click(() => {
+            console.log(11);
+            fetch(`http://175.106.99.31/auth/logout`, {
+              method: "GET",
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.status == "success") {
+                  location.href = "";
+                } else {
+                  alert("로그아웃 실패");
+                  location.href = "";
+                }
+              });
+          });
+        </script>
+      </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    <main id="main" class="main">
+      <section class="section contact align-middle">
+        <div class="pagetitle">
+          <h1>나의 병원 정보</h1>
+          <div id="hospitalNo" class="hos-no" style="display: none"></div>
+          <div id="hosName" class="hos-name"></div>
+        </div>
+      </section>
+
+      <span class="align-middle">
+        <section class="section contact">
+          <div class="parent">
+            <form id="hos-mypage-form">
+              <div class="col-xl-11">
+                <div class="row">
+                  <div class="col-lg-6 card-size">
+                    <div class="info-box card">
+                      <i class="bi bi-telephone"></i>
+                      <h3>연락처</h3>
+                      <p>전화번호</p>
+                      <div id="hosTel" class="hos-tel"></div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="info-box card">
-                    <i class="bi bi-clock"></i>
-                    <h3>진료 시간 안내</h3>
-                    <p>시간</p>
-                    <div id="hosTime" class="hos-time"></div>
+                  <div class="col-lg-6">
+                    <div class="info-box card">
+                      <i class="bi bi-clock"></i>
+                      <h3>진료 시간 안내</h3>
+                      <p>시간</p>
+                      <div id="hosTime" class="hos-time"></div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="info-box card">
-                    <i class="bi bi-info-circle"></i>
-                    <h3>진료 과목</h3>
-                    <div id="hosSub" class="hos-sub"></div>
+                  <div class="col-lg-6">
+                    <div class="info-box card">
+                      <i class="bi bi-info-circle"></i>
+                      <h3>진료 과목</h3>
+                      <div id="hosSub" class="hos-sub"></div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="info-box card">
-                    <i class="bi bi-geo-alt"></i>
-                    <h3>오시는 길</h3>
-                    <div id="hosAddr" class="hos-addr" onclick="goToHospitalMap()">
-                      ${hospital.hosAddr}
+                  <div class="col-lg-6">
+                    <div class="info-box card">
+                      <i class="bi bi-geo-alt"></i>
+                      <h3>오시는 길</h3>
+                      <div
+                        id="hosAddr"
+                        class="hos-addr"
+                        onclick="goToHospitalMap()"
+                      >
+                        ${hospital.hosAddr}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
 
-          <div class="col-xl-11">
-            <div class="card p-4">
-              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+            <div class="col-xl-11">
+              <div class="card p-4">
+                <div
+                  id="carouselExampleIndicators"
+                  class="carousel slide"
+                  data-bs-ride="true"
+                >
+                  <div class="carousel-indicators">
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide-to="0"
+                      class="active"
+                      aria-current="true"
+                      aria-label="Slide 1"
+                    ></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide-to="1"
+                      aria-label="Slide 2"
+                    ></button>
+                    <button
+                      type="button"
+                      data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide-to="2"
+                      aria-label="Slide 3"
+                    ></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="예시1.jpg" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                      <img src="예시1.jpg" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                      <img src="예시1.jpg" class="d-block w-100" alt="..." />
+                    </div>
+                  </div>
+                  <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="예시1.jpg" class="d-block w-100" alt="..." />
-                  </div>
-                  <div class="carousel-item">
-                    <img src="예시1.jpg" class="d-block w-100" alt="..." />
-                  </div>
-                  <div class="carousel-item">
-                    <img src="예시1.jpg" class="d-block w-100" alt="..." />
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-              <br />
+                <br />
 
-              <div class="text-center">
-                <button type="button" id="update-button" class="btn btn-secondary" style="
+                <div class="text-center">
+                  <button
+                    type="button"
+                    id="update-button"
+                    class="btn btn-secondary"
+                    style="
                       background-color: #77dd77;
                       color: #ffffff;
                       border: none;
                       height: 40px;
                       border-radius: 5px 5px 5px 5px;
-                    ">
-                  병원정보변경
-                </button>
-              </div>
-              <div class="modal fade" id="scrollingModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-body" style="min-height: 800px">
-                      <form id="update-hos-form" style="width: 500px">
-                        <h5 class="card-title" style="color: #ffffff">
-                          병원정보 변경
-                        </h5>
-                        <div id="update-hosNo" class="hos-no"></div>
-                        <!-- Slides only carousel -->
-                        <table class="table table-striped hos-pre-img">
-                          <thead>
-                            <tr>
-                              <th scope="col"></th>
-                              <th scope="col"></th>
-                              <th scope="col">기존 이미지(체크시 삭제)</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr id="hosphoto-get-list">
-                              <td>
-                                <div id="hos-listNo" class="hos-listNo" style="display: none"></div>
-                              </td>
-                              <td>
-                                <div id="hos-phoNo"></div>
-                              </td>
-                              <td>
-                                <div id="hos-PhotoFilename"></div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <!-- End Slides only carousel-->
-                        <div>
-                          <!-- 파일 선택 버튼 -->
-                          <div class="row mb-3">
-                            <label class="col-sm-2 form-label padding-right-0"></label>
-                            <div class="col-sm-8">
-                              <input type="file" id="hosPhoto" accept="image/*"
-                                class="hos-photo hospital-files form-control" multiple />
+                    "
+                  >
+                    병원정보변경
+                  </button>
+                </div>
+                <div
+                  class="modal fade"
+                  id="scrollingModal"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content" style="width: 450px">
+                      <div class="modal-body" style="min-height: 800px">
+                        <form id="update-hos-form">
+                          <h5 class="card-title" style="color: #ffffff">
+                            병원정보 변경
+                          </h5>
+                          <div id="update-hosNo" class="hos-no"></div>
+                          <!-- Slides only carousel -->
+                          <table class="table table-striped hos-pre-img">
+                            <thead>
+                              <tr>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                                <th scope="col">기존 이미지(체크시 삭제)</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr id="hosphoto-get-list">
+                                <td>
+                                  <div
+                                    id="hos-listNo"
+                                    class="hos-listNo"
+                                    style="display: none"
+                                  ></div>
+                                </td>
+                                <td>
+                                  <div id="hos-phoNo"></div>
+                                </td>
+                                <td>
+                                  <div id="hos-PhotoFilename"></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- End Slides only carousel-->
+                          <div>
+                            <!-- 파일 선택 버튼 -->
+                            <div class="row mb-3">
+                              <label
+                                class="col-sm-2 form-label padding-right-0"
+                              ></label>
+                              <div class="col-sm-8">
+                                <input
+                                  type="file"
+                                  id="hosPhoto"
+                                  accept="image/*"
+                                  class="hos-photo hospital-files form-control"
+                                  multiple
+                                />
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="form-floating mb-3 col-sm-6">
-                          <input type="text" class="form-control" id="update-hosName" placeholder="병원명" />
-                          <label for="floatingPassword">병원명</label>
-                        </div>
-                        <div class="form-floating mb-3 col-sm-6">
-                          <input type="text" class="form-control" id="update-hosAddr" placeholder="주소" />
-                          <label for="floatingInput-a">주소</label>
-                        </div>
-                        <div class="form-floating mb-3 col-sm-6">
-                          <input type="text" class="form-control" id="update-hosTel" placeholder="전화번호" />
-                          <label for="floatingInput-b">전화번호</label>
-                        </div>
-                        <div class="form-floating mb-3 col-sm-6">
-                          <input type="text" class="form-control" id="update-hosTime" placeholder="진료시간" />
-                          <label for="floatingInput-b">진료시간</label>
-                        </div>
-                        <div class="form-floating mb-3 col-sm-6">
-                          <input type="text" class="form-control" id="update-hosSub" placeholder="진료과목" />
-                          <label for="floatingInput-b">진료과목</label>
-                        </div>
-                        <div class="form-floating mb-3 col-sm-6">
-                          <input type="text" class="form-control" id="update-hosBusno" placeholder="사업자번호" />
-                          <label for="floatingInput-b">사업자번호</label>
-                        </div>
-                        <div id="hospital-success-message" style="
+                          <div class="form-floating mb-3 col-sm-6">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="update-hosName"
+                              placeholder="병원명"
+                            />
+                            <label for="floatingPassword">병원명</label>
+                          </div>
+                          <div class="form-floating mb-3 col-sm-6">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="update-hosAddr"
+                              placeholder="주소"
+                            />
+                            <label for="floatingInput-a">주소</label>
+                          </div>
+                          <div class="form-floating mb-3 col-sm-6">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="update-hosTel"
+                              placeholder="전화번호"
+                            />
+                            <label for="floatingInput-b">전화번호</label>
+                          </div>
+                          <div class="form-floating mb-3 col-sm-6">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="update-hosTime"
+                              placeholder="진료시간"
+                            />
+                            <label for="floatingInput-b">진료시간</label>
+                          </div>
+                          <div class="form-floating mb-3 col-sm-6">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="update-hosSub"
+                              placeholder="진료과목"
+                            />
+                            <label for="floatingInput-b">진료과목</label>
+                          </div>
+                          <div class="form-floating mb-3 col-sm-6">
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="update-hosPwd"
+                              placeholder="병원비밀번호 변경"
+                            />
+                            <label for="floatingInput-b"
+                              >병원비밀번호 변경</label
+                            >
+                          </div>
+                          <div id="confirm-password-validation-msg"></div>
+                          <div class="form-floating mb-3 col-sm-6">
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="update-hosPwd-check"
+                              placeholder="비밀번호확인 변경"
+                            />
+                            <label for="floatingInput-b">비밀번호확인</label>
+                          </div>
+                          <div
+                            id="hospital-success-message"
+                            style="
                               display: none;
                               text-align: center;
                               color: #77dd77;
-                            ">
-                          <h4>✅변경되었습니다.</h4>
-                        </div>
-                        <div class="row mb-3">
-                          <div class="sm-10">
-                            <button type="button" class="btn btn-secondary mr-auto" onclick="location.reload()"
-                              data-bs-dismiss="modal">
-                              Close
-                            </button>
-                            <button type="button" id="hos-update-submit" class="btn bbtn-secondary" style="
+                            "
+                          >
+                            <h4>✅변경되었습니다.</h4>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="sm-10">
+                              <button
+                                type="button"
+                                class="btn btn-secondary mr-auto"
+                                onclick="location.reload()"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                              <button
+                                type="button"
+                                id="hos-update-submit"
+                                class="btn bbtn-secondary"
+                                style="
                                   background-color: #77dd77;
                                   color: #ffffff;
                                   border: none;
                                   height: 40px;
                                   border-radius: 5px 5px 5px 5px;
-                                ">
-                              병원정보변경
-                            </button>
+                                "
+                              >
+                                병원정보변경
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </form>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- End Scrolling Modal-->
-            </div>
-            <p>
-              <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample" style="float: right">
-                등록된 병원삭제
-              </button>
-            </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body" style="
-                    width: 300px;
-                    display: inline-block;
-                    text-align: center;
-                  ">
-                등록된 병원정보를 삭제하시겠습니까?
-                <button id="hos-delete-ok" class="btn btn-danger" style="width: 100px">
-                  내병원삭제
-                </button>
-                <button type="button" class="btn btn-secondary mr-auto" onclick="location.reload()"
-                  data-bs-dismiss="modal" style="width: 100px">
-                  취소
-                </button>
+                <!-- End Scrolling Modal-->
+
+                <!-- 삭제 Modal -->
+                <div
+                  class="modal fade"
+                  id="staticBackdrop"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header"></div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-xl-6">
+                            <div class="card" style="width: 467px">
+                              <div class="card-body pt-3 row">
+                                <div class="pt-4 pb-2">
+                                  <h5 class="card-title text-center pb-0 fs-4">
+                                    병원정보 변경관리
+                                  </h5>
+                                  <p class="text-center small">
+                                    병원정보 변경을 원할시에 병원 가입시
+                                    기입하셨던 비밀번호를 입력해주세요
+                                  </p>
+                                </div>
+                                <form
+                                  id="check-password-form"
+                                  class="needs-validation"
+                                  novalidate
+                                >
+                                  <div id="delete-hosNo"></div>
+                                  <div id="delete-hosName"></div>
+                                  <div
+                                    class="row mb-3 d-flex align-items-center justify-content-center"
+                                    style="margin-left: 21px"
+                                  >
+                                    <label
+                                      for="password"
+                                      class="col-sm-2 form-label padding-right-0"
+                                      >비밀번호</label
+                                    >
+                                    <div class="col-sm-5">
+                                      <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        class="form-control"
+                                        required
+                                      />
+                                      <div
+                                        id="password-validation-msg"
+                                        class="validation-msg"
+                                      ></div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                      <button
+                                        type="button"
+                                        id="check-password-btn"
+                                        class="btn btn-primary"
+                                      >
+                                        확인
+                                      </button>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End 삭제 Modal-->
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </span>
-  </main>
-  <!-- End #main -->
+        </section>
+      </span>
+    </main>
+    <!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer>
-  <!-- End Footer -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="footer-img-container">
+        <img src="../register/assets/img/bitcamplogo.png" />
+        <img
+          src="../register/assets/img/navercloudlogo.png"
+          style="width: 200px; margin-left: 50px"
+        />
+        <img
+          src="../register/assets/img/magicecole.png"
+          style="width: 150px; margin-left: 50px"
+        />
+      </div>
+    </footer>
+    <!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-  <!-- Vendor JS Files -->
-  <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="../assets/vendor/echarts/echarts.min.js"></script>
-  <script src="../assets/vendor/quill/quill.min.js"></script>
-  <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="../assets/vendor/echarts/echarts.min.js"></script>
+    <script src="../assets/vendor/quill/quill.min.js"></script>
+    <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="../assets/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-  <script>
-    let myno = 0;
+    <script>
+      let myno = 0;
 
-    fetch(`http://175.106.99.31/auth/user`, {
-      method: 'GET'
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status == "success") {
-          return data.data;
-        } else {
-          location.href = "../auth/doctors-login.html"
-        }
-        return data.data
-      })
-      .then((user) => {
-        if (user.hosName !== undefined) {
-          myno = user.no
-        } else {
-          console.log(user.hosName)
-          location.href = "../auth/doctors-login.html"
-        }
-
-      })
-
-    const form = document.getElementById("hos-mypage-form");
-    const formData = new FormData(form);
-    let no = new URL(location.href).searchParams.get("no");
-
-    function goToHospitalMap() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const hospitalNo = urlParams.get("no");
-      location.href = `http://175.106.99.31/register/hospitals-map.html?no=${hospitalNo}`;
-    }
-
-    // 폼 유효성 검사 및 요청
-    if (form.checkValidity()) {
-      let json = JSON.stringify(Object.fromEntries(formData));
-      fetch(`http://175.106.99.31/hospital/list/${no}`, {
+      fetch(`http://175.106.99.31/auth/user`, {
         method: "GET",
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          if (result.status == "success") {
-            const hospital = result.data;
-            let photos = hospital.hosphotos;
-            for (let i = 0; i < photos.length; i++) {
-              let photo = photos[i];
-              let purl = photo.hosPhotoUrl.split("/")[5];
-              $(".d-block")[i].src =
-                "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/hospital-img/" +
-                purl +
-                "?type=f&w=580&h=410&quality=100&autorotate=true&faceopt=true&anilimit=24";
-            }
-            document.getElementById("hospitalNo").innerHTML =
-              hospital.hospitalNo;
-            document.getElementById("hosName").innerHTML = hospital.hosName;
-            document.getElementById("hosTel").innerHTML = hospital.hosTel;
-            document.getElementById("hosTime").innerHTML = hospital.hosTime;
-            document.getElementById("hosSub").innerHTML = hospital.hosSub;
-            document.getElementById("hosAddr").innerHTML = hospital.hosAddr;
-          } else {
-            alert("입력실패");
-          }
-        })
-        .catch((exception) => {
-          alert("입력 중 오류 발생");
-          console.log(exception);
-        });
-    } else {
-      form.reportValidity();
-    }
-
-    // 버튼 요소 참조
-    const updateBtn = document.querySelector("#update-button");
-
-    // 모달 요소 참조
-    const scrollingModal = document.querySelector("#scrollingModal");
-
-    // 버튼 클릭 이벤트 리스너 추가
-    updateBtn.addEventListener("click", function () {
-      // 모달 열기
-      scrollingModal.classList.add("show");
-      scrollingModal.style.display = "block";
-      document.body.classList.add("modal-open");
-    });
-
-    // 모달 창 요소 선택
-    const modal = document.querySelector(".modal");
-
-    // 모달 열기 함수
-    function openModal() {
-      modal.style.display = "block";
-    }
-
-    // 모달 닫기 함수
-    function closeModal() {
-      modal.style.display = "none";
-    }
-
-    // ESC 키 누르면 모달 닫기
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        closeModal();
-      }
-    });
-
-    //모달창 get요청
-    const uform = document.getElementById("update-hos-form");
-    const uformData = new FormData(uform);
-    let uno = new URL(location.href).searchParams.get("no");
-
-    // 폼 유효성 검사 및 요청
-    if (uform.checkValidity()) {
-      let json = JSON.stringify(Object.fromEntries(uformData));
-      fetch(`http://175.106.99.31/hospital/list/${uno}`, {
-        method: "GET",
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          if (result.status == "success") {
-            const hospital = result.data;
-            document.getElementById("hospitalNo").value = hospital.hospitalNo;
-            document.getElementById("update-hosName").value =
-              hospital.hosName;
-            document.getElementById("update-hosAddr").value =
-              hospital.hosAddr;
-            document.getElementById("update-hosTel").value = hospital.hosTel;
-            document.getElementById("update-hosTime").value =
-              hospital.hosTime;
-            document.getElementById("update-hosSub").value = hospital.hosSub;
-            document.getElementById("update-hosBusno").value =
-              hospital.hosBusno;
-
-            //리스트숫자증가
-            const hosPhotoNoDiv = document.getElementById("hos-phoNo");
-            const hosPhotoFilenameDivs =
-              document.querySelectorAll("#hos-PhotoFilename");
-            const phoNoDiv = document.getElementById("hos-listNo");
-
-            //포토넘버
-            hospital.hosphotos.forEach((photo, index) => {
-              const hosPhotoNo = photo.photoNo;
-              const phoNoElement = document.createElement("input");
-              phoNoElement.type = "number"; // type 속성 변경
-              phoNoElement.value = hosPhotoNo;
-              phoNoElement.style.width = "100px";
-              phoNoElement.style.margin = "0px auto";
-              phoNoElement.classList.add("photoNo");
-              phoNoDiv.appendChild(phoNoElement);
-            });
-            //순번
-            // const hosListNoDiv = document.getElementById("hos-listNo");
-            // for (let i = 0; i < hospital.hosphotos.length; i++) {
-            //   const hosListNo = i + 1;
-            //   const listNoElement = document.createElement("span");
-            //   listNoElement.textContent = hosListNo;
-            //   hosListNoDiv.appendChild(listNoElement);
-            // }
-            const photoFilenameDiv =
-              document.getElementById("hos-PhotoFilename");
-            for (let i = 0; i < hospital.hosphotos.length; i++) {
-              let hosPhotoFilename = hospital.hosphotos[i].hosPhotoFilename;
-              const filenameElement = document.createElement("span");
-              if (hosPhotoFilename.length > 12) {
-                hosPhotoFilename =
-                  hosPhotoFilename.substring(0, 15) + ". . . ";
-              }
-              filenameElement.textContent = hosPhotoFilename;
-
-              //이미지
-              const image = document.createElement("img");
-              image.src = hospital.hosphotos[i].hosPhotoUrl;
-              image.width = "20";
-              image.height = "20";
-
-              let imageContainer = document.createElement("div");
-              imageContainer.classList.add("filename-checkbox-container");
-              imageContainer.setAttribute(
-                "id",
-                `hos-imageContainer-${hospital.hosphotos[i].photoNo}`
-              );
-              imageContainer.style.marginBottom = "2px";
-              imageContainer.appendChild(filenameElement);
-              imageContainer.appendChild(image);
-              hosPhotoNoDiv.appendChild(imageContainer);
-              //체크박스
-              const checkbox = document.createElement("input");
-              checkbox.type = "checkbox";
-              checkbox.setAttribute(
-                "id",
-                `hos-PhotoCheck-${hospital.hosphotos[i].photoNo}`
-              );
-              checkbox.addEventListener("click", function (event) {
-                const container = this.parentElement;
-                //체크박스와 이미지 위치가 같으면 삭제인데 컨테이너 안에 체크박스와 span테그가 있음.
-                console.log(container);
-                console.log(event.target.id);
-                console.log(imageContainer);
-
-                container.remove();
-                imageContainer.remove();
-                const phoNoElements = phoNoDiv.getElementsByTagName("span");
-                if (phoNoElements.length > 0) {
-                  phoNoElements[phoNoElements.length - 1].remove();
-                }
-              });
-              const checkboxlist = document.getElementById("hos-listCheck");
-              const container = document.createElement("div");
-              container.classList.add("filename-checkbox-container");
-              container.appendChild(filenameElement);
-              container.appendChild(checkbox);
-              container.style.marginLeft = "30px";
-              // container.style.marginBottom = "px";
-              photoFilenameDiv.appendChild(container);
-            }
-            //체크박스로 사진삭제
-            const checkboxes = document.querySelectorAll(
-              'input[type="checkbox"]'
-            );
-            checkboxes.forEach((checkbox) => {
-              checkbox.addEventListener("click", function (event) {
-                const container = this.parentElement;
-                hosListPhotoNo = event.target.id.split("-")[2];
-                container.remove();
-
-                fetch(`http://175.106.99.31/hospitalImg/${hosListPhotoNo}`, {
-                  method: "DELETE",
-                })
-                  .then((response) => response.json())
-                  .then((data) => {
-                    console.log("성공하였음");
-                    // document.querySelector('#btn-img-delete').style.display = 'none';
-                    // location.href = "";
-                    if (data.status == "failure") {
-                      console.log("이미지 삭제 실패!\n" + data.data);
-                      return;
-                    }
-                  })
-                  .catch((error) => {
-                    console.log("실패:", error);
-                  });
-              });
-            });
-          } else {
-            alert("입력실패");
-          }
-        })
-        .catch((exception) => {
-          alert("입력 중 오류 발생");
-          console.log(exception);
-        });
-    } else {
-      uform.reportValidity();
-    }
-    document.querySelector("#hos-update-submit").onclick = (e) => {
-      document.getElementById("hos-update-submit").style.display = "none";
-      let kno = new URL(location.href).searchParams.get("no");
-      fetch(`http://175.106.99.31/hospital/${kno}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          hospitalNo: kno,
-          hosName: document.querySelector("#update-hosName").value,
-          hosAddr: document.querySelector("#update-hosAddr").value,
-          hosTel: document.querySelector("#update-hosTel").value,
-          hosTime: document.querySelector("#update-hosTime").value,
-          hosSub: document.querySelector("#update-hosSub").value,
-          hosBusno: document.querySelector("#update-hosBusno").value,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("성공:", data);
-          message.style.display = "block";
-          const hosNo = new URL(location.href).searchParams.get("no");
-          submitFiles(hosNo);
-          console.log(hosNo);
-        })
-        .catch((error) => {
-          console.error("실패:", error);
-        });
-    };
-    //사진인서트
-    function submitFiles(no) {
-      console.log(no);
-      let formData = new FormData();
-      let files = document.querySelector(".hospital-files").files;
-
-      if (files.length == 0) {
-        return;
-      }
-
-      for (let i = 0; i < files.length; i++) {
-        if (
-          files[i].name.includes(".bmp") ||
-          files[i].name.includes(".jpeg") ||
-          files[i].name.includes(".jpg") ||
-          files[i].name.includes(".gif") ||
-          files[i].name.includes(".png") ||
-          files[i].name.includes(".tiff") ||
-          files[i].name.includes(".psd") ||
-          files[i].name.includes(".tga") ||
-          files[i].name.includes(".ai") ||
-          files[i].name.includes(".svg") ||
-          files[i].name.includes(".exif") ||
-          files[i].name.includes(".jfif")
-        ) {
-          formData.append("files", files[i]);
-          formData.append("hosNo", no); //  여기 입력되는 정수가 커뮤 번호여야 한다
-        }
-      }
-      $.ajax({
-        url: "http://175.106.99.31/hospitalImg/insertHosImg",
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        type: "POST",
-        success: function (data) {
-          console.log("데이터 업로드 성공");
-        },
-        error: function (e) {
-          console.log("데이터 업로드 실패");
-        },
-      });
-    }
-    const message = document.querySelector("#hospital-success-message");
-
-    document.querySelector("#hos-delete-ok").onclick = (e) => {
-      let dno = new URL(location.href).searchParams.get("no");
-      fetch(`http://175.106.99.31/hospitalImg/delete/${dno}`, {
-        method: "DELETE",
       })
         .then((response) => response.json())
         .then((data) => {
           if (data.status == "success") {
-            console.log("이미지삭제성공");
-            fetch(`http://175.106.99.31/hospital/delete/${dno}`, {
-              method: "DELETE",
+            //옥동자 이름
+            document.querySelector("#username").innerHTML = data.data.name;
+            //옥동자 이미지
+            const preImageContainer = document.querySelector("#pre-userimg");
+            const phoUrl =
+              "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+              data.data.phoUrl +
+              "?type=f&w=120&h=180&quality=90&autorotate=true&faceopt=true&anilimit=24";
+            const phoType = data.data.phoType;
+            const phoName = data.data.phoName;
+
+            // 기존의 이미지 요소 삭제
+            const oldImg = document.querySelector("#userimg");
+            if (oldImg) {
+              oldImg.remove();
+            }
+
+            // 새로운 이미지 요소 생성 및 추가
+            const newImg = document.createElement("img");
+            newImg.setAttribute("id", "userimg");
+            newImg.setAttribute("src", phoUrl);
+            newImg.setAttribute("alt", phoName);
+            newImg.setAttribute("style", "width:36px; border-radius:50%");
+            preImageContainer.appendChild(newImg);
+            return data.data;
+          } else {
+            location.href = "../auth/doctors-login.html";
+          }
+          return data.data;
+        })
+        .then((user) => {
+          if (user.hosName !== undefined) {
+            myno = user.no;
+            if (new URL(location.href).searchParams.get("no") == null) {
+              if (user.hosNo == 0) {
+                location.href = "doctors-profile.html";
+              }
+              location.href = `?no=${user.hosNo}`;
+            }
+          } else {
+            console.log(user.hosName);
+            location.href = "../auth/doctors-login.html";
+          }
+        });
+      const form = document.getElementById("hos-mypage-form");
+      const formData = new FormData(form);
+      let no = new URL(location.href).searchParams.get("no");
+
+      function goToHospitalMap() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const hospitalNo = urlParams.get("no");
+        location.href = `http://175.106.99.31/register/hospitals-map.html?no=${hospitalNo}`;
+      }
+
+      setTimeout(() => {
+        // 폼 유효성 검사 및 요청
+        if (form.checkValidity()) {
+          let json = JSON.stringify(Object.fromEntries(formData));
+          fetch(`http://175.106.99.31/hospital/list/${no}`, {
+            method: "GET",
+          })
+            .then((response) => response.json())
+            .then((result) => {
+              if (result.status == "success") {
+                const hospital = result.data;
+                let photos = hospital.hosphotos;
+                for (let i = 0; i < photos.length; i++) {
+                  let photo = photos[i];
+                  let purl = photo.hosPhotoUrl.split("/")[5];
+                  $(".d-block")[i].src =
+                    "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/hospital-img/" +
+                    purl +
+                    "?type=f&w=580&h=410&quality=100&autorotate=true&faceopt=true&anilimit=24";
+                }
+                document.getElementById("hospitalNo").innerHTML =
+                  hospital.hospitalNo;
+                document.getElementById("hosName").innerHTML = hospital.hosName;
+                document.getElementById("hosTel").innerHTML = hospital.hosTel;
+                document.getElementById("hosTime").innerHTML = hospital.hosTime;
+                document.getElementById("hosSub").innerHTML = hospital.hosSub;
+                document.getElementById("hosAddr").innerHTML = hospital.hosAddr;
+              } else {
+                alert("입력실패");
+              }
+            })
+            .catch((exception) => {
+              alert("입력 중 오류 발생");
+              console.log(exception);
+            });
+        } else {
+          form.reportValidity();
+        }
+      }, 200);
+      // // 버튼 요소 참조
+      const updateBtn = document.querySelector("#update-button");
+
+      // // 모달 요소 참조
+      const scrollingModal = document.querySelector("#scrollingModal");
+
+      // // 버튼 클릭 이벤트 리스너 추가
+      // updateBtn.addEventListener("click", function () {
+      //   // 모달 열기
+      // scrollingModal.classList.add("show");
+      // scrollingModal.style.display = "block";
+      // document.body.classList.add("modal-open");
+      // });
+
+      // // 모달 창 요소 선택
+      // const modal = document.querySelector(".modal");
+
+      // // 모달 열기 함수
+      // function openModal() {
+      //   modal.style.display = "block";
+      // }
+
+      // // 모달 닫기 함수
+      // function closeModal() {
+      //   modal.style.display = "none";
+      // }
+
+      // // ESC 키 누르면 모달 닫기
+      // document.addEventListener("keydown", function (event) {
+      //   if (event.key === "Escape") {
+      //     closeModal();
+      //   }
+      // });
+
+      //모달창 get요청
+      const uform = document.getElementById("update-hos-form");
+      const uformData = new FormData(uform);
+      let uno = new URL(location.href).searchParams.get("no");
+
+      // 폼 유효성 검사 및 요청
+
+      setTimeout(() => {
+        if (uform.checkValidity()) {
+          let json = JSON.stringify(Object.fromEntries(uformData));
+          fetch(`http://175.106.99.31/hospital/list/${uno}`, {
+            method: "GET",
+          })
+            .then((response) => response.json())
+            .then((result) => {
+              if (result.status == "success") {
+                const hospital = result.data;
+                document.getElementById("hospitalNo").value =
+                  hospital.hospitalNo;
+                document.getElementById("update-hosName").value =
+                  hospital.hosName;
+                document.getElementById("update-hosAddr").value =
+                  hospital.hosAddr;
+                document.getElementById("update-hosTel").value =
+                  hospital.hosTel;
+                document.getElementById("update-hosTime").value =
+                  hospital.hosTime;
+                document.getElementById("update-hosSub").value =
+                  hospital.hosSub;
+                // document.getElementById("update-hosPwd").value = hospital.hosPwd;
+
+                //리스트숫자증가
+                const hosPhotoNoDiv = document.getElementById("hos-phoNo");
+                const hosPhotoFilenameDivs =
+                  document.querySelectorAll("#hos-PhotoFilename");
+                const phoNoDiv = document.getElementById("hos-listNo");
+
+                //포토넘버
+                hospital.hosphotos.forEach((photo, index) => {
+                  const hosPhotoNo = photo.photoNo;
+                  const phoNoElement = document.createElement("input");
+                  phoNoElement.type = "number"; // type 속성 변경
+                  phoNoElement.value = hosPhotoNo;
+                  phoNoElement.style.width = "100px";
+                  phoNoElement.style.margin = "0px auto";
+                  phoNoElement.classList.add("photoNo");
+                  phoNoDiv.appendChild(phoNoElement);
+                });
+                const photoFilenameDiv =
+                  document.getElementById("hos-PhotoFilename");
+                for (let i = 0; i < hospital.hosphotos.length; i++) {
+                  let hosPhotoFilename = hospital.hosphotos[i].hosPhotoFilename;
+                  const filenameElement = document.createElement("span");
+                  if (hosPhotoFilename.length > 12) {
+                    hosPhotoFilename =
+                      hosPhotoFilename.substring(0, 15) + ". . . ";
+                  }
+                  filenameElement.textContent = hosPhotoFilename;
+
+                  //이미지
+                  const image = document.createElement("img");
+                  image.src = hospital.hosphotos[i].hosPhotoUrl;
+                  image.width = "20";
+                  image.height = "20";
+
+                  let imageContainer = document.createElement("div");
+                  imageContainer.classList.add("filename-checkbox-container");
+                  imageContainer.setAttribute(
+                    "id",
+                    `hos-imageContainer-${hospital.hosphotos[i].photoNo}`
+                  );
+                  imageContainer.style.marginBottom = "2px";
+                  imageContainer.appendChild(filenameElement);
+                  imageContainer.appendChild(image);
+                  hosPhotoNoDiv.appendChild(imageContainer);
+                  //체크박스
+                  const checkbox = document.createElement("input");
+                  checkbox.type = "checkbox";
+                  checkbox.setAttribute(
+                    "id",
+                    `hos-PhotoCheck-${hospital.hosphotos[i].photoNo}`
+                  );
+                  checkbox.addEventListener("click", function (event) {
+                    const container = this.parentElement;
+                    //체크박스와 이미지 위치가 같으면 삭제인데 컨테이너 안에 체크박스와 span테그가 있음.
+                    console.log(container);
+                    console.log(event.target.id);
+                    console.log(imageContainer);
+
+                    container.remove();
+                    imageContainer.remove();
+                    const phoNoElements = phoNoDiv.getElementsByTagName("span");
+                    if (phoNoElements.length > 0) {
+                      phoNoElements[phoNoElements.length - 1].remove();
+                    }
+                  });
+                  const checkboxlist = document.getElementById("hos-listCheck");
+                  const container = document.createElement("div");
+                  container.classList.add("filename-checkbox-container");
+                  container.appendChild(filenameElement);
+                  container.appendChild(checkbox);
+                  container.style.marginLeft = "30px";
+                  // container.style.marginBottom = "px";
+                  photoFilenameDiv.appendChild(container);
+                }
+                //체크박스로 사진삭제
+                const checkboxes = document.querySelectorAll(
+                  'input[type="checkbox"]'
+                );
+                checkboxes.forEach((checkbox) => {
+                  checkbox.addEventListener("click", function (event) {
+                    const container = this.parentElement;
+                    hosListPhotoNo = event.target.id.split("-")[2];
+                    container.remove();
+
+                    fetch(
+                      `http://175.106.99.31/hospitalImg/${hosListPhotoNo}`,
+                      {
+                        method: "DELETE",
+                      }
+                    )
+                      .then((response) => response.json())
+                      .then((data) => {
+                        console.log("성공하였음");
+                        // document.querySelector('#btn-img-delete').style.display = 'none';
+                        // location.href = "";
+                        if (data.status == "failure") {
+                          console.log("이미지 삭제 실패!\n" + data.data);
+                          return;
+                        }
+                      })
+                      .catch((error) => {
+                        console.log("실패:", error);
+                      });
+                  });
+                });
+              } else {
+                alert("입력실패");
+              }
+            })
+            .catch((exception) => {
+              alert("입력 중 오류 발생");
+              console.log(exception);
+            });
+        } else {
+          uform.reportValidity();
+        }
+      }, 200);
+      //파일첨부 3개 제한.
+      let fileInput = document.querySelector("#hosPhoto");
+      fileInput.addEventListener("change", function (e) {
+        let files = e.target.files;
+        if (files.length > 3) {
+          alert("파일 첨부 개수는 3개 이상이 될 수 없습니다.");
+          // 최대 첨부 가능한 파일 개수를 넘어서는 경우, 파일 선택을 초기화합니다.
+          fileInput.value = "";
+        }
+      });
+      // 비밀번호 변수
+      const password = document.getElementById("update-hosPwd");
+      const passwordMsg = document.getElementById("password-msg");
+      const confirmPassword = document.getElementById("update-hosPwd-check");
+      const confirmPasswordValidationMsg = document.getElementById(
+        "confirm-password-validation-msg"
+      );
+      // 비밀번호 재확인
+      confirmPassword.addEventListener("input", () => {
+        if (password.value === confirmPassword.value) {
+          confirmPasswordValidationMsg.textContent = "비밀번호가 일치합니다.";
+          confirmPassword.classList.remove("is-valid", "is-invalid");
+          confirmPassword.classList.add("is-valid");
+          confirmPasswordValidationMsg.style.color = "#198754";
+        } else {
+          confirmPasswordValidationMsg.textContent =
+            "비밀번호가 일치하지 않습니다.";
+          confirmPassword.classList.remove("is-valid", "is-invalid");
+          confirmPassword.classList.add("is-invalid");
+          confirmPasswordValidationMsg.style.color = "#dc3545";
+        }
+      });
+
+      document.querySelector("#hos-update-submit").onclick = (e) => {
+        document.getElementById("hos-update-submit").style.display = "none";
+        let kno = new URL(location.href).searchParams.get("no");
+        fetch(`http://175.106.99.31/hospital/${kno}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            hospitalNo: kno,
+            hosName: document.querySelector("#update-hosName").value,
+            hosAddr: document.querySelector("#update-hosAddr").value,
+            hosTel: document.querySelector("#update-hosTel").value,
+            hosTime: document.querySelector("#update-hosTime").value,
+            hosSub: document.querySelector("#update-hosSub").value,
+            hosPwd: document.querySelector("#update-hosPwd").value,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("성공:", data);
+            message.style.display = "block";
+            const hosNo = new URL(location.href).searchParams.get("no");
+            submitFiles(hosNo);
+            console.log(hosNo);
+          })
+          .catch((error) => {
+            console.error("실패:", error);
+          });
+      };
+      //사진인서트
+      function submitFiles(no) {
+        console.log(no);
+        let formData = new FormData();
+        let files = document.querySelector(".hospital-files").files;
+
+        if (files.length == 0) {
+          return;
+        }
+
+        for (let i = 0; i < files.length; i++) {
+          if (
+            files[i].name.includes(".bmp") ||
+            files[i].name.includes(".jpeg") ||
+            files[i].name.includes(".jpg") ||
+            files[i].name.includes(".gif") ||
+            files[i].name.includes(".png") ||
+            files[i].name.includes(".tiff") ||
+            files[i].name.includes(".psd") ||
+            files[i].name.includes(".tga") ||
+            files[i].name.includes(".ai") ||
+            files[i].name.includes(".svg") ||
+            files[i].name.includes(".exif") ||
+            files[i].name.includes(".jfif")
+          ) {
+            formData.append("files", files[i]);
+            formData.append("hosNo", no); //  여기 입력되는 정수가 커뮤 번호여야 한다
+          }
+        }
+        $.ajax({
+          url: "http://175.106.99.31/hospitalImg/insertHosImg",
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false,
+          type: "POST",
+          success: function (data) {
+            console.log("데이터 업로드 성공");
+          },
+          error: function (e) {
+            console.log("데이터 업로드 실패");
+          },
+        });
+      }
+      const message = document.querySelector("#hospital-success-message");
+
+      //인증 오픈
+      $(document).ready(function () {
+        $("#update-button").click(function () {
+          $("#staticBackdrop").modal("show");
+        });
+      });
+      const hosNoInput = document.querySelector("#hosNo");
+      const hosNameInput = document.querySelector("#hosName");
+      const passwordInput = document.getElementById("password");
+      const passwordValidationMsg = document.getElementById(
+        "password-validation-msg"
+      );
+      const checkPasswordBtn = document.getElementById("check-password-btn");
+
+      // 비밀번호 확인 버튼 클릭 시 실행되는 함수
+      checkPasswordBtn.addEventListener("click", () => {
+        // FormData 객체 생성
+        const form = document.getElementById("check-password-form");
+        const formData = new FormData(form);
+
+        // FormData 객체에 hosName, password 값을 추가
+        formData.append("delete-hosNo", passwordInput.value);
+        formData.append("delete-hosName", hosNameInput.textContent);
+        formData.append("hosPwd", passwordInput.value);
+
+        // JSON.stringify를 이용해 JSON 형식으로 변환
+        const json = JSON.stringify(Object.fromEntries(formData));
+
+        // fetch 요청 보내기
+        fetch("http://175.106.99.31/hospital/check-mypage", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: json,
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            if (result.status == "success") {
+              console.log(result);
+              console.log(result.data);
+              $("#staticBackdrop").modal("hide");
+              scrollingModal.classList.add("show");
+              scrollingModal.style.display = "block";
+              document.body.classList.add("modal-open");
+            } else {
+              alert("병원 비밀번호가 틀렸습니다.");
+              passwordValidationMsg.textContent = "비밀번호가 틀립니다.";
+              passwordInput.classList.remove("is-valid", "is-invalid");
+              passwordInput.classList.add("is-invalid");
+              passwordValidationMsg.style.color = "#dc3545";
+            }
+          })
+          .catch((exception) => {
+            console.error("오류 발생:", exception);
+            passwordValidationMsg.textContent =
+              "오류가 발생했습니다. 다시 시도해주세요.";
+            passwordInput.classList.remove("is-valid", "is-invalid");
+            passwordInput.classList.add("is-invalid");
+            passwordValidationMsg.style.color = "#dc3545";
+          });
+      });
+
+      document.addEventListener(
+        "keydown",
+        function (event) {
+          if (event.keyCode === 13) {
+            event.preventDefault();
+            console.log(11);
+            const form = document.getElementById("check-password-form");
+            const formData = new FormData(form);
+
+            // FormData 객체에 hosName, password 값을 추가
+            formData.append("delete-hosNo", passwordInput.value);
+            formData.append("delete-hosName", hosNameInput.textContent);
+            formData.append("hosPwd", passwordInput.value);
+
+            // JSON.stringify를 이용해 JSON 형식으로 변환
+            const json = JSON.stringify(Object.fromEntries(formData));
+
+            // fetch 요청 보내기
+            fetch("http://175.106.99.31/hospital/check-mypage", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: json,
             })
               .then((response) => response.json())
-              .then((data) => {
-                console.log("삭제성공 데이터베이스확인");
-                location.href =
-                  "http://175.106.99.31/register/hospitals-list.html";
+              .then((result) => {
+                if (result.status == "success") {
+                  console.log(result);
+                  console.log(result.data);
+                  $("#staticBackdrop").modal("hide");
+                  scrollingModal.classList.add("show");
+                  scrollingModal.style.display = "block";
+                  document.body.classList.add("modal-open");
+                } else {
+                  alert("병원 비밀번호가 틀렸습니다.");
+                  passwordValidationMsg.textContent = "비밀번호가 틀립니다.";
+                  passwordInput.classList.remove("is-valid", "is-invalid");
+                  passwordInput.classList.add("is-invalid");
+                  passwordValidationMsg.style.color = "#dc3545";
+                }
+              })
+              .catch((exception) => {
+                console.error("오류 발생:", exception);
+                passwordValidationMsg.textContent =
+                  "오류가 발생했습니다. 다시 시도해주세요.";
+                passwordInput.classList.remove("is-valid", "is-invalid");
+                passwordInput.classList.add("is-invalid");
+                passwordValidationMsg.style.color = "#dc3545";
               });
           }
-        })
-        .catch((error) => {
-          console.log("실패:", error);
-        });
-    };
-  </script>
-</body>
-
+        },
+        true
+      );
+    </script>
+  </body>
 </html>

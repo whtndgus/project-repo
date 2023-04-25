@@ -23,7 +23,9 @@
       f.rev_date as rev_createdDate,
       m.m_name as doc_name,
       h.hos_name as hos_name,
-      h.hos_addr as hos_addr
+      h.hos_addr as hos_addr,
+      li.license_name as doc_license,
+      d.career as doc_career
     FROM 
 	    app_feedback f
       LEFT JOIN app_symp_board b
@@ -34,6 +36,10 @@
 	    ON d.d_no=m.m_no 
 	    LEFT JOIN app_hospital h
 	    ON h.hos_no=d.hos_no
+	    LEFT JOIN app_license l
+	    ON l.d_no=d.d_no
+	    LEFT JOIN app_license_info li
+	    ON l.license_no = li.license_no
     where
       f.symp_no=#{no}
   </select>

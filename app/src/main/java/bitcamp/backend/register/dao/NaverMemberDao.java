@@ -7,6 +7,6 @@ import bitcamp.backend.register.vo.NaverMember;
 public interface NaverMemberDao {
 
   void insert(NaverMember n);
-  NaverMember findByEmail(String email);
+  NaverMember findByPassword(String email);
   NaverMember update(NaverMember n);
 }

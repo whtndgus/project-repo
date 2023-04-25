@@ -1,46 +1,98 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+    charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
+
 <body>
-<script type="text/javascript">
-  /*
- * 아래 값을 name 으로 사용할 수 있음.
- * age
- * birthday
- * email
- * enc_id
- * gender
- * id
- * nickname
- * profile_image
- * */
-  var naver_id_login = new naver_id_login("xrpuojJYw18imfX2Z6DQ", "http://localhost:8080/register/index.html");
-  // 접근 토큰 값 출력
-  // 네이버 사용자 프로필 조회
-  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-  function naverSignInCallback() {
-    console.log(naver_id_login.oauthParams.access_token)
-    console.log(naver_id_login)
-    fetch("http://localhost:8080/auth/naverLogin", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: naver_id_login.getProfileData('name'),
-        birthday: naver_id_login.getProfileData('birthday'),
-        email: naver_id_login.getProfileData('email')
+  <script type="text/javascript">
+    /*
+   * 아래 값을 name 으로 사용할 수 있음.
+   * age
+   * birthday
+   * email
+   * enc_id
+   * gender
+   * id
+   * nickname
+   * profile_image
+   * */
+    var naver_id_login = new naver_id_login("x9QsZfbe1nRbY_xq0a2s", "http://175.106.99.31/register/index.html");
+    // 접근 토큰 값 출력
+    // 네이버 사용자 프로필 조회
+    naver_id_login.get_naver_userprofile("naverSignInCallback()");
+    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    function naverSignInCallback() {
+      console.log(naver_id_login.oauthParams.access_token)
+      console.log(naver_id_login)
+      fetch("http://175.106.99.31/auth/naverLogin", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: naver_id_login.getProfileData('name'),
+          email: naver_id_login.getProfileData('email'),
+          nickname: naver_id_login.getProfileData('nickname'),
+          mobile: naver_id_login.getProfileData('mobile'),
+          age: naver_id_login.getProfileData('age'),
+          accessToken: naver_id_login.oauthParams.access_token
+        })
+      }).then(function (response) {
+        // location.href='../register/index.html';
+        return response.json();
+        // 서버로부터 응답을 받았을 때 처리할 코드
       })
-    }).then(function(response) {
-      // 서버로부터 응답을 받았을 때 처리할 코드
-    }).catch(function(error) {
-      // 오류 처리 코드
-    });
-  }
-</script>
+        .then(data => {
+          if (data.status == "success") {
+            if (data.data != null) {
+              const formData = new FormData();
+              formData.append("id", data.data.id);
+              formData.append("password", data.naverMember.password);
+              sessionStorage.setItem("token", data.naverMember.password)
+              fetch("http://175.106.99.31/auth/patientLogin", {
+                method: "POST",
+                body: formData
+              })
+                .then(response => {
+                  return response.json();
+                })
+                .then(result => {
+                  if (result.status == 'success') {
+                    if (result.data != null) {
+                      location.href = '../register/memberEditor.html';
+                    } else {
+                      location.href = '../register/index.html';
+                    }
+                  } else {
+                    alert('login fail!');
+                    console.log(result)
+                      // location.href = 'patients-login.html';
+                  }
+                })
+                .catch(exception => {
+                  alert("login error!");
+                  console.log(exception);
+                });
+            } else {
+              console.log(data)
+              sessionStorage.setItem("token", data.naverMember.password)
+              sessionStorage.setItem("email", data.naverMember.email)
+              location.href = "../register/naver-signup.html"
+            }
+          } else {
+            console.log(data)
+            console.log("로그인 요청 오류")
+          }
+        })
+        .catch(function (error) {
+          // 오류 처리 코드
+        });
+    }
+  </script>
 </body>
+
 </html>

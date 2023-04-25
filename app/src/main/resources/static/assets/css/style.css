@@ -1,15 +1,13 @@
-/**
-* Template Name: NiceAdmin
-* Updated: Mar 09 2023 with Bootstrap v5.2.3
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap');
+* {
+  font-family: 'SUIT-Regular' !important;
+}
 
 :root {
   scroll-behavior: smooth;
@@ -28,6 +26,10 @@ body {
 .container {
   width: 1200px;
   max-width: none !important;
+}
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
 }
 
 #register-form {
@@ -1347,6 +1349,7 @@ h6 {
 }
 
 #naver_id_login img{
-  width: 350px;
-  height: 60px;
+  width: 200px;
+  height: 40px;
+  margin-left: 75px;
 }

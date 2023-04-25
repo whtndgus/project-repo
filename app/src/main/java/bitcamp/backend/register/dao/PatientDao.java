@@ -13,6 +13,8 @@ public interface PatientDao {
 
   Patient findByNo(int no);
 
+  Patient findByToken(String token);
+
   Patient findByIdAndPassword(Map<String, Object> params);
 
   int update(Patient p);

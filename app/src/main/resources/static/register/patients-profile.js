@@ -1,7 +1,9 @@
 let patientNo = 0;
 let samePw = false;
 patientNo = 0;
-
+if(sessionStorage.getItem("token") != null) {
+  $(".pass-change").css("display", "none");
+}
 fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET'
 })
@@ -109,12 +111,12 @@ function checkPw() {
   let pw = document.querySelector(".change-pw").value;
   let checkpw = document.querySelector(".change-pw-check").value;
   if (pw == checkpw) {
-    $(".change-pw-check").css("border", "2px solid #0d62fd");
-    $(".change-pw").css("border", "2px solid #0d62fd");
+    $(".change-pw-check").css("border", "2px solid #198754");
+    $(".change-pw").css("border", "2px solid #198754");
     samePw = true;
   } else {
-    $(".change-pw-check").css("border", "2px solid #ff5a5a");
-    $(".change-pw").css("border", "2px solid #ff5a5a");
+    $(".change-pw-check").css("border", "2px solid #dc3545");
+    $(".change-pw").css("border", "2px solid #dc3545");
     samePw = false;
   }
 }

@@ -212,16 +212,17 @@
           <i class="bi bi-envelope"></i>
           <span>진료 리뷰 확인</span>
         </a>
-      </li><!-- End Contact Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>Q & A</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li> 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="hospitals-list.html">
+        <a class="nav-link collapsed" href="QnQ-doc.html">
+          <i class="bi bi-question-circle"></i>
+          <span>문의하기</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="hospitals-view.html">
           <i class="bi bi-card-list"></i>
           <span>내 병원 정보</span>
         </a>
@@ -319,6 +320,10 @@
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">비밀번호
                     변경</button>
                 </li>
+                
+                <!-- <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-delete">회원 탈퇴</button>
+                </li> -->
 
               </ul>
               <div class="tab-content pt-2">
@@ -402,7 +407,7 @@
                         <input type="text" class="form-control change-tel" id="tel"
                           readonly>
                       </div>
-                      <button type="button" onclick="tel()" class="btn btn-secondary col-md-2" style="height: 90%;">변경 /
+                      <button type="button" onclick="calltel()" class="btn btn-secondary col-md-2" style="height: 90%;">변경 /
                         인증</button>
                     </div>
 
@@ -489,8 +494,8 @@
                         <input type="text" class="form-control change-email" id="email"
                           readonly>
                       </div>
-                      <button type="button" onclick="tel()" class="btn btn-secondary col-md-2" style="height: 90%;">변경 /
-                        인증</button>
+                      <!-- <button type="button" onclick="calltel()" class="btn btn-secondary col-md-2" style="height: 90%;">변경 /
+                        인증</button> -->
                     </div>
 
                     <!-- <div class="row mb-3">
@@ -518,6 +523,17 @@
                     </div>
                   </div>
 
+                  <div class="row mb-3">
+                    <label for="hospital" class="col-md-4 col-lg-3 col-form-label">소속 병원</label>
+                    <div class="col-md-6 col-lg-3">
+                      <input type="text" class="form-control change-hospital" id="hospital"
+                        readonly>
+                      <input type="text" class="form-control change-hospitalNo"
+                        readonly style="display: none;" value="0">
+                    </div>
+                    <button type="button" onclick="hospital()" class="btn btn-secondary col-md-2" style="height: 90%;">등록/변경</button>
+                  </div>
+
                     <div class="text-center">
                       <button type="button" class="btn btn-primary change-btn">저장</button>
                     </div>
@@ -533,14 +549,16 @@
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">현재 비밀번호</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control doctors-pw" id="currentPassword">
+                        <input name="password" type="password" class="form-control doctors-pw" id="currentPassword" placeholder="8자 이상 숫자, 특수 문자 포함"
+                        pattern="^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">새 비밀번호</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control change-pw" id="newPassword"
+                        <input name="newpassword" type="password" class="form-control change-pw" id="newPassword" placeholder="8자 이상 숫자, 특수 문자 포함"
+                        pattern="^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
                           onchange="checkPw()">
                       </div>
                     </div>
@@ -548,7 +566,8 @@
                     <div class="row mb-3">
                       <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">새 비밀번호 확인</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control change-pw-check"
+                        <input name="renewpassword" type="password" class="form-control change-pw-check" placeholder="8자 이상 숫자, 특수 문자 포함"
+                        pattern="^(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"
                           id="renewPassword" onchange="checkPw()">
                       </div>
                     </div>
@@ -559,6 +578,16 @@
                   </form><!-- End Change Password Form -->
 
                 </div>
+
+                <!-- <div class="tab-pane fade pt-3" id="profile-delete">
+                    <div class="member-delete row mb-3 d-flex align-items-center justify-content-center">
+                      <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger member-delete-btn">
+                          회원 탈퇴
+                        </button>
+                      </div>
+                    </div>
+                </div> -->
 
               </div><!-- End Bordered Tabs -->
 

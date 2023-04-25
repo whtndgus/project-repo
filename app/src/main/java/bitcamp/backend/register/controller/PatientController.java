@@ -55,8 +55,8 @@ public class PatientController {
 
   @PostMapping
   public Object insert(@RequestBody Patient patient) {
-    patientService.add(patient);
     System.out.println(patient);
+    patientService.add(patient);
     return new RestResult().setStatus(RestStatus.SUCCESS);
   }
 
@@ -77,9 +77,6 @@ public class PatientController {
   public Object checkMypage(@RequestBody Map<String, String> formData, HttpSession session) {
     String id = formData.get("id");
     String password = formData.get("password");
-    System.out.println(id);
-    System.out.println(password);
-    System.out.println(patientService.get(id, password));
     Patient patient = patientService.get(id, password);
     if (patient != null) {
       session.setAttribute("mycheck", true);

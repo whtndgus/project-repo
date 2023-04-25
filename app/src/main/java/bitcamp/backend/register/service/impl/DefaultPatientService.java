@@ -96,6 +96,11 @@ public class DefaultPatientService implements PatientService {
   public Member getMember(int no) {
     return memberDao.findByNo(no);
   }
+
+  @Override
+  public Member getT(String token) {
+    return patientDao.findByToken(token);
+  }
 }
 
 

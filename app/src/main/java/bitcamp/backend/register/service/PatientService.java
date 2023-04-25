@@ -26,6 +26,8 @@ public interface PatientService {
   Member tget(String tel);
 
   Member getMember(int no);
+
+  Member getT(String token);
 }
 
 

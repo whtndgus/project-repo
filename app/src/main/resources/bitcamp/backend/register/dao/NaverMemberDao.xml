@@ -11,25 +11,23 @@
     <result column="email" property="email"/>
     <result column="nickname" property="nickname"/>
     <result column="mobile" property="mobile"/>
-    <result column="create_date" property="createDate"/>
-    <result column="modify_date" property="modifyDate"/>
   </resultMap>
   
   <insert id="insert" parameterType="naverMember"
           useGeneratedKeys="true" keyProperty="id" keyColumn="no">
-    insert into app_naver_member(username, password, email, nickname, mobile, create_date, modify_date)
-    values( #{username} ,sha2(#{password},256), #{email}, #{nickname}, #{mobile}, now(), now())
+    insert into app_naver_member(username, password, email, nickname, mobile)
+    values( #{username} ,#{password}, #{email}, #{nickname}, #{mobile})
     <selectKey resultType="int" keyProperty="id" order="AFTER">
       SELECT LAST_INSERT_ID()
     </selectKey>
   </insert>
   
-  <select id="findByEmail" parameterType="String" resultMap="naver_memberMap">
+  <select id="findByPassword" parameterType="String" resultMap="naver_memberMap">
     select 
       *
     from 
       app_naver_member 
     where 
-      email=#{email}
+      password=#{password}
   </select>
 </mapper>

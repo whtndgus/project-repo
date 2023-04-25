@@ -432,13 +432,17 @@ DEMO
 
 }
 
-.doc-career {
+.career-area {
   float: left;
   width: 150px;
   height: 165px;
   margin: 5px 10px 0 0;
   background-color: #c5edff;
 } 
+
+.career-area span {
+  display: block;
+}
 
 .custom-badge {
   width : 150px;

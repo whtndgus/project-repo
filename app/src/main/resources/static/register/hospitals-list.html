@@ -66,14 +66,6 @@
       border: none;
     }
   </style>
-  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>  -->
-  <!-- <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script> -->
-  <!-- <script>
-        jQuery(function($){
-            $("#foo-table").DataTable();
-            $("#foo-table2").DataTable();
-        });
-    </script> -->
 </head>
 
 <body>
@@ -101,6 +93,7 @@
 
       <a href="doctors-community-main.html" class="nav-link"><span>커뮤니티</span></a>
 
+      <a href="doctors-signup.html" class="nav-link collapsed"><span>회원가입(의사)</span></a>
     </div>
 
     <nav class="header-nav ms-auto">
@@ -192,20 +185,24 @@
           <span>진료하기</span>
         </a>
       </li>
-
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>Q & A</span>
+        <a class="nav-link collapsed" href="doctors-review.html">
+          <i class="bi bi-envelope"></i>
+          <span>진료 리뷰 확인</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
-
+      </li> 
+      <li>
+        <a class="nav-link collapsed" href="QnQ-doc.html">
+          <i class="bi bi-question-circle"></i>
+          <span>문의하기</span>
+        </a>
+      </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="hospitals-list.html">
+        <a class="nav-link collapsed" href="hospitals-view.html">
           <i class="bi bi-card-list"></i>
           <span>내 병원 정보</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li>
 
       <!-- 로그아웃 태그 -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -234,13 +231,14 @@
       </script>
 
 
+
       <!--
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-blank.html">
-        <i class="bi bi-file-earmark"></i>
-        <span>Blank</span>
-      </a>
-    </li> End Blank Page Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="pages-blank.html">
+      <i class="bi bi-file-earmark"></i>
+      <span>Blank</span>
+    </a>
+  </li> End Blank Page Nav -->
 
     </ul>
 
@@ -250,13 +248,7 @@
 
     <div class="pagetitle">
       <h1>병원정보</h1>
-      <!-- <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
-          <li class="breadcrumb-item active">Main</li>
-
-        </ol>
-      </nav> -->
+   
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -286,7 +278,7 @@
                       <th scope="col">전화</th>
                       <!-- <th scope="col">진료시간</th> 굳이시간 받을필요 없음 -->
                       <th scope="col">진료과목</th>
-                      <th scope="col">사업자번호</th>
+                      <!-- <th scope="col">사업자번호</th> -->
                     </tr>
                   </thead>
                   <tbody id="hospital-list" class="table-group-divider">
@@ -297,7 +289,7 @@
                       <td id="hospitalTel"></td>
                       <!-- <td id="hospitalTime"></td> 굳이시간 받을필요 없음 -->
                       <td id="hospitalSub"></td>
-                      <td id="hospitalBusno"></td>
+                      <!-- <td id="hospitalPwd"></td> -->
                     </tr>
                   </tbody>
                 </table>
@@ -323,23 +315,36 @@
                               <th scope="col">전화<span id="id-validation-msg" class="validation-msg"></span></th>
                               <th scope="col">진료시간</th>
                               <th scope="col">진료과목</th>
-                              <th scope="col">사업자번호</th>
+                              <th scope="col">병원 비밀번호</th>
                               <th scope="col">병원사진</th>
                             </tr>
                           </thead>
+                          <style>
+                            input[type="number"]::-webkit-inner-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                          </style>
                           <form id="hospital-list">
                             <tbody class="table-group-divider">
                               <div class="hospital-list-css">
                                 <tr>
                                   <td><input id="hosName" class="hos-name" type="text" /></td>
                                   <td><input id="hosAddr" class="hos-addr" type="text" /></td>
-                                  <td><input id="hosTel" class="hos-tel" type="text" placeholder="'-' 없이 입력"
-                                      pattern="^01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}$" maxlength="13"
-                                      oninput="autoTelHyphen(event)" required /></td>
+                                  <td><input id="hosTel" class="hos-tel" type="number" placeholder="'-' 없이 입력"
+                                     maxlength="11"
+                                      oninput="changeNo()" required /></td>
+                                    <script>
+                                      function changeNo(){
+                                        if( document.querySelector(".hos-tel").value.length > document.querySelector(".hos-tel").maxLength) {
+                                          document.querySelector(".hos-tel").value = document.querySelector(".hos-tel").value.substring(0,11);
+                                        }
+                                      }
+                                    </script>
                                   <td><input id="hosTime" class="hos-time" type="text"
                                       placeholder="예:월~금 08시~18시30분,토 휴진" /></td>
                                   <td><input id="hosSub" class="hos-sub" type="text" placeholder="예: 가정의학과,소아과" /></td>
-                                  <td><input id="hosBusno" class="hos-busno" type="text" /></td>
+                                  <td><input id="hosPwd" class="hos-pwd" type="password" /></td>
                                   <form>
                                     <td><input type="file" id="hosPhoto" class="hos-photo hospital-files"
                                         style="width: 220px;" accept="image/*" multiple required></td>
@@ -376,17 +381,14 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+  
+    <div class="footer-img-container">
+     <img src ="../register/assets/img/bitcamplogo.png" > 
+     <img src ="../register/assets/img/navercloudlogo.png" style="width:200px; margin-left: 50px;"> 
+     <img src ="../register/assets/img/magicecole.png" style="width:150px; margin-left: 50px;">
     </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
+     
+    </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
@@ -457,7 +459,8 @@
       }
     });
     //검색기능 출력(렌더링)
-    // <td>${row.hosTime}</td>
+    // <td>${row.hosPwd}</td>  비밀번호 필요없음
+    // <td>${row.hosTime}</td> 진료시간 필요없음
     function renderDataList(dataList) {
       let html = '';
       for (var row of dataList) {
@@ -467,7 +470,6 @@
         <td>${row.hosAddr}</td>
         <td>${row.hosTel}</td>        
         <td>${row.hosSub}</td>
-        <td>${row.hosBusno}</td>
         </tr>\n`;
       }
       tbody.innerHTML = html;
@@ -500,14 +502,7 @@
         idValidationMsg.style.color = '#dc3545';
         return;
       }
-      // 전화번호 자동 하이픈 입력
-      function autoTelHyphen(event) {
-        const target = event.target;
-        target.value = target.value
-          .replace(/[^0-9]/g, '')
-          .replace(/^(\d{3})(\d{4})(\d{4})$/g, '$1-$2-$3')
-          .replace(/(\-{1,2})$/g, '');
-      }
+
 
       // 유효한 전화번호인 경우에만 fetch 요청을 보냅니다.
       fetch(`http://175.106.99.31/hospital/check-duplicate/${tel}`)
@@ -536,7 +531,18 @@
         });
     });
 
+    let fileInput = document.querySelector('#hosPhoto');
+
+    fileInput.addEventListener('change', function(e) {
+      let files = e.target.files;
+      if (files.length > 3) {
+        alert('파일 첨부 개수는 3개 이상이 될 수 없습니다.');
+        // 최대 첨부 가능한 파일 개수를 넘어서는 경우, 파일 선택을 초기화합니다.
+        fileInput.value = '';
+      }
+    });
     const message = document.querySelector('#hospital-success-message');
+
 
     document.querySelector('#btn-submit').onclick = (e) => {
       if (hosTel.value === '' || hosTel.value.length < 7) {
@@ -546,7 +552,7 @@
 
       //인풋태그 read only로 변경
       function makeInputsReadonly() {
-        var inputs = document.querySelectorAll(".hos-name, .hos-addr, .hos-tel, .hos-time, .hos-sub, .hos-busno, .hos-photo");
+        var inputs = document.querySelectorAll(".hos-name, .hos-addr, .hos-tel, .hos-time, .hos-sub, .hos-pwd, .hos-photo");
         inputs.forEach(function (input) {
           input.setAttribute("readonly", true);
           input.style.color = 'grey;';
@@ -565,7 +571,7 @@
           hosTel: document.querySelector('#hosTel').value,
           hosTime: document.querySelector('#hosTime').value,
           hosSub: document.querySelector('#hosSub').value,
-          hosBusno: document.querySelector('#hosBusno').value,
+          hosPwd: document.querySelector('#hosPwd').value,
         }),
       })
         .then((response) => response.json())
@@ -623,9 +629,7 @@
         }
       });
     }
-    // document.getElementById('btn-submit').addEventListener('click', function() {
-    // document.getElementById('hospital-list').innerHTML = ''; // clear the table
-  // });
+
   </script>
   <script>
 

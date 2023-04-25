@@ -1,14 +1,16 @@
 package bitcamp.backend.register.vo;
 
+import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+@SuppressWarnings("serial")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class Doctor extends Member {
+public class Doctor extends Member implements Serializable {
   private List<License> licenses;
   private Hospital hospital;
   private String hosName;

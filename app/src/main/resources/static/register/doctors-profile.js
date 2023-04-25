@@ -2,7 +2,6 @@ let doctorNo = 0;
 let samePw = false;
 doctorNo = 0;
 
-
 fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET',
 })
@@ -18,10 +17,10 @@ fetch(`http://175.106.99.31/auth/user`, {
   })
   .then((user) => {
     if (!user.passwordcheck) location.href = 'doctors-profile-auth.html';
-    if(user.hosName !== undefined) {
-    }else {
-      console.log(user.hosName)
-      location.href = "../auth/doctors-login.html"
+    if (user.hosName !== undefined) {
+    } else {
+      console.log(user.hosName);
+      location.href = '../auth/doctors-login.html';
     }
     doctorNo = user.no;
     if (doctorNo > 0) {
@@ -68,7 +67,8 @@ fetch(`http://175.106.99.31/auth/user`, {
             document.getElementById('roadAddress').value = arrAddr[1];
             document.getElementById('detailAddress').value = arrAddr[2];
 
-            document.querySelector('.doctors-addr').innerText = data.addr;
+            document.querySelector('.doctors-addr').innerText =
+              arrAddr.join(' ');
 
             document.querySelector('.doctors-email').innerText = data.email;
             document.querySelector('.change-email').value = data.email;
@@ -143,6 +143,9 @@ fetch(`http://175.106.99.31/auth/user`, {
             if (data.hosName == null)
               document.querySelector('.doctors-hospital').innerText =
                 '소속없음';
+
+            document.querySelector('.change-hospital').value = data.hosName;
+            document.querySelector('.change-hospitalNo').value = data.hosNo;
           } else {
             console.log('잘못 된 회원 정보');
           }
@@ -167,10 +170,15 @@ $('.change-btn').click(() => {
   formData.append('name', document.querySelector('.change-name').value);
   formData.append('birth', document.querySelector('.change-birth').value);
   formData.append('tel', document.querySelector('.change-tel').value);
-  formData.append('addr', document.querySelector('.change-addr').value);
+
+  const zipcode = document.getElementById('postcode').value;
+  const roadAddress = document.getElementById('roadAddress').value;
+  const detailAddress = document.getElementById('detailAddress').value;
+  formData.append('addr', `${zipcode}, ${roadAddress}, ${detailAddress}`);
   // formData.append("gender", '1');
   formData.append('email', document.querySelector('.change-email').value);
-  const career = form.querySelectorAll('.change-career');
+  formData.append('hosNo', document.querySelector('.change-hospitalNo').value);
+  const career = document.querySelectorAll('.change-career');
   let careers = [];
   career.forEach((input) => {
     careers.push(input.value);
@@ -192,12 +200,12 @@ function checkPw() {
   let pw = document.querySelector('.change-pw').value;
   let checkpw = document.querySelector('.change-pw-check').value;
   if (pw == checkpw) {
-    $('.change-pw-check').css('border', '2px solid #0d62fd');
-    $('.change-pw').css('border', '2px solid #0d62fd');
+    $('.change-pw-check').css('border', '2px solid #198754');
+    $('.change-pw').css('border', '2px solid #198754');
     samePw = true;
   } else {
-    $('.change-pw-check').css('border', '2px solid #ff5a5a');
-    $('.change-pw').css('border', '2px solid #ff5a5a');
+    $('.change-pw-check').css('border', '2px solid #dc3545');
+    $('.change-pw').css('border', '2px solid #dc3545');
     samePw = false;
   }
 }
@@ -232,6 +240,130 @@ $('.change-pw-btn').click(() => {
   }
 });
 
+// $('.member-delete-btn').click(() => {
+//   const memberDeleteDiv = document.querySelector('.member-delete');
+
+//   const reallyDelete = document.createElement('div');
+//   reallyDelete.classList.add(
+//     'member-delete',
+//     'row',
+//     'mb-3',
+//     'd-flex',
+//     'align-items-center',
+//     'justify-content-center'
+//   );
+//   reallyDelete.innerHTML = `
+//   <div class="pt-4 pb-2">
+//   <p class="text-center small">
+//   정말 탈퇴하시겠습니까?
+// </p>
+// </div>
+// <div class="col-sm-2 justify-content-center d-flex">
+//         <button type="button" class="btn btn-secondary member-delete-yes-btn">
+//           예
+//         </button>
+//         </div>
+//         <div class="col-sm-2 justify-content-center d-flex">
+//         <button type="button" class="btn btn-secondary member-delete-no-btn">
+//           아니오
+//         </button>
+//         </div>
+//   `;
+//   memberDeleteDiv.replaceWith(reallyDelete);
+
+//   // 회원 탈퇴 요청 후 응답 처리 함수
+//   const handleDelete = () => {
+//     // 응답이 성공이면 회원 정보 삭제 메시지를 보여줌
+//     const successDelete = document.createElement('div');
+//     successDelete.classList.add(
+//       'member-delete',
+//       'row',
+//       'mb-3',
+//       'd-flex',
+//       'align-items-center',
+//       'justify-content-center'
+//     );
+//     successDelete.innerHTML = `
+//       <div class="pt-4 pb-2">
+//         <p class="text-center small">
+//           회원 정보가 삭제되었습니다.
+//         </p>
+//         </div>
+//       `;
+//     memberDeleteDiv.replaceWith(successDelete);
+//   };
+
+//   // 예 버튼 클릭 시 동작
+//   const memberDeleteYesBtn = document.querySelector('.member-delete-yes-btn');
+//   memberDeleteYesBtn.addEventListener('click', () => {
+//     fetch(`http://175.106.99.31/doctors/${doctorNo}`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         if (data.status == 'success') {
+//           handleDelete();
+//         } else {
+//           alert('회원 정보 삭제 실패');
+//         }
+//       });
+//   });
+
+//     // 아니오 버튼 클릭 시 동작
+//     const memberDeleteNoBtn = document.querySelector('.member-delete-no-btn');
+//     memberDeleteNoBtn.addEventListener('click', () => {
+//       // 회원 탈퇴 버튼이 다시 보이도록 함
+//       reallyDelete.replaceWith(memberDeleteDiv);
+//     });
+
+// });
+
+var popupWidth = 320;
+var popupHeight = 450;
+
+var popupX = window.screen.width / 2 - popupWidth / 2;
+
+var popupY = window.screen.height / 2 - popupHeight / 2;
+
+function calltel() {
+  window.open(
+    'tel-input.html',
+    'popupNo1',
+    'status=no, height=' +
+      popupHeight +
+      ', width=' +
+      popupWidth +
+      ', left=' +
+      popupX +
+      ', top=' +
+      popupY
+  );
+}
+
+var hosPopupWidth = 800;
+var hosPopupHeight = 450;
+
+var hosPopupX = window.screen.width / 2 - hosPopupWidth / 2;
+
+var hosPopupY = window.screen.height / 2 - hosPopupHeight / 2;
+
+function hospital() {
+  window.open(
+    'hospitals-input.html',
+    'popupNo1',
+    'status=no, height=' +
+      hosPopupHeight +
+      ', width=' +
+      hosPopupWidth +
+      ', left=' +
+      hosPopupX +
+      ', top=' +
+      hosPopupY
+  );
+}
 // {
 //   "messages":{
 //     "to":"01051521314",

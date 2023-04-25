@@ -5,7 +5,6 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,6 +50,7 @@ public class AuthController {
 
   @PostMapping("/patientLogin")
   public Object patientLogin(String id, String password, HttpSession session) {
+    System.out.println("id : " + id + " pw : " + password);
 
     Member member = null;
     member = patientService.get(id, password);
@@ -59,7 +59,6 @@ public class AuthController {
       session.setAttribute("loginNo", member.getNo());
       session.setAttribute("pUser", member);
       session.setAttribute("mycheck", false);
-      System.out.println(member);
       if (member.isAdmin()) {
         return new RestResult().setStatus(RestStatus.SUCCESS).setData(member);
       } else {
@@ -117,29 +116,43 @@ public class AuthController {
   }
 
   @PostMapping("/naverLogin")
-  public ResponseEntity<?> naverLogin(@RequestBody Map<String, Object> userInfo) {
+  public Object naverLogin(@RequestBody Map<String, Object> userInfo) {
     // 클라이언트에서 전송한 회원 정보를 Map<String, String> 형태로 받아옴
-    System.out.println(userInfo);
-    String name = (String) userInfo.get("name");
-    String email = (String) userInfo.get("email");
-
-    NaverMember naverMember = naverMemberService.get(email);
-    if (naverMember == null) {
-      // 신규 회원 등록
-      naverMember = new NaverMember();
-      naverMember.setUsername(name);
-      naverMember.setEmail(email);
-      naverMemberService.add(naverMember);
+    if (naverMemberService.get((String) userInfo.get("accessToken")) != null) {
+      System.out.println("기존 : " + patientService.getT((String) userInfo.get("accessToken")));
+      return new RestResult().setStatus(RestStatus.SUCCESS)
+          .setData(patientService.getT((String) userInfo.get("accessToken")))
+          .setNaverMember(naverMemberService.get((String) userInfo.get("accessToken")));
     } else {
-      // 기존 회원 정보 업데이트
-      naverMember.setUsername(name);
-      // naverMemberService.update(naverMember);
-    }
+      NaverMember naverMember = new NaverMember();
 
-    // 회원 정보 업데이트 후 응답 메시지를 생성해서 반환
-    String message = String.format("%s 님, 환영합니다.", name);
-    return ResponseEntity.ok().body(message);
+      naverMember.setUsername((String) userInfo.get("name"));
+      naverMember.setEmail((String) userInfo.get("email"));
+      naverMember.setNickname((String) userInfo.get("nickname"));
+      naverMember.setPassword((String) userInfo.get("accessToken"));
+
+
+      naverMemberService.add(naverMember);
+      System.out.println("새로 : " + naverMember);
+      // 회원 정보 업데이트 후 응답 메시지를 생성해서 반환
+      return new RestResult().setStatus(RestStatus.SUCCESS)
+          .setData(patientService.getT((String) userInfo.get("accessToken")))
+          .setNaverMember(naverMemberService.get((String) userInfo.get("accessToken")));
+    }
   }
+  // naverMember = naverMemberService.get(email);
+  // if (naverMember == null) {
+  // // 신규 회원 등록
+  // naverMember = new NaverMember();
+  // naverMember.setUsername(name);
+  // naverMember.setEmail(email);
+  // naverMemberService.add(naverMember);
+  // } else {
+  // // 기존 회원 정보 업데이트
+  // naverMember.setUsername(name);
+  // // naverMemberService.update(naverMember);
+  // }
+  // }
 
   // @PostMapping("facebookLogin")
   // public Object facebookLogin(
@@ -202,10 +215,8 @@ public class AuthController {
   public Object patientsComm(@RequestBody HashMap<String, Object> param) {
     try {
       Community community = communityService.get((int) param.get("no"));
-      System.out.println(community);
       community.setFilter((boolean) param.get("filter"));
       communityService.update(community);
-      System.out.println(communityService.get((int) param.get("no")));
 
       return new RestResult().setStatus(RestStatus.SUCCESS);
     } catch (Exception e) {

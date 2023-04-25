@@ -69,9 +69,17 @@ public class DefaultDoctorService implements DoctorService {
   @Transactional
   @Override
   public void update(Doctor doctor) {
-    if (memberDao.update(doctor) == 1 && doctorDao.update(doctor) == 1) {
-    } else {
-      throw new RuntimeException("의사가 존재하지 않습니다.");
+    System.out.println(doctor);
+    if(doctor.getHosNo() > 0) {
+      if (memberDao.update(doctor) == 1 && doctorDao.update(doctor) == 1) {
+      } else {
+        throw new RuntimeException("의사가 존재하지 않습니다.");
+      }
+    }else {
+      if (memberDao.update(doctor) == 1 && doctorDao.updatec(doctor) == 1) {
+      } else {
+        throw new RuntimeException("의사가 존재하지 않습니다.");
+      }
     }
   }
 
