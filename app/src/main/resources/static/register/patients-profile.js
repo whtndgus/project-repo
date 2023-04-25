@@ -25,6 +25,7 @@ fetch(`http://175.106.99.31/auth/user`, {
     }
     patientNo = user.no;
     if (patientNo > 0) {
+      console.log(user)
       fetch(`http://175.106.99.31/patients/${patientNo}`, {
         method: 'GET'
       })
