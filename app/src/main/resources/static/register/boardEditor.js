@@ -122,7 +122,7 @@ fetch(`http://175.106.99.31/auth/user`, {
   })
   .then((user) => {
     if(user.admin) {
-      myno = user.no
+      // myno = user.no
     }else {
       location.href = "index.html"
     }

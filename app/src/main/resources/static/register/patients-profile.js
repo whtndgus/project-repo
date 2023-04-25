@@ -70,7 +70,11 @@ fetch(`http://175.106.99.31/auth/user`, {
               console.log(user)
               $(".pass-change").css("display", "none");
               document.querySelector(".patients-id").innerText = "네이버 회원 입니다."
+              $(".patients-id").css("color", "#2DB400")
+              $(".patients-id").css("font-weight", "bold")
               document.querySelector(".change-id").value = "네이버 회원 입니다."
+              $(".change-id").css("color", "#2DB400")
+              $(".change-id").css("font-weight", "bold")
             }
 
           } else {
