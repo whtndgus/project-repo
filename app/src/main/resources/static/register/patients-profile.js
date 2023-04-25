@@ -25,7 +25,7 @@ fetch(`http://175.106.99.31/auth/user`, {
     }
     patientNo = user.no;
     if (patientNo > 0) {
-      console.log(user)
+      
       fetch(`http://175.106.99.31/patients/${patientNo}`, {
         method: 'GET'
       })
@@ -65,6 +65,14 @@ fetch(`http://175.106.99.31/auth/user`, {
             document.querySelector(".patients-drug").innerText = data.drug
             document.querySelector(".change-drug").value = data.drug
             document.querySelector(".change-phy").value = data.phy
+
+            if(user.naver) {
+              console.log(user)
+              $(".pass-change").css("display", "none");
+              document.querySelector(".patients-id").innerText = "네이버 회원 입니다."
+              document.querySelector(".change-id").value = "네이버 회원 입니다."
+            }
+
           } else {
             console.log("잘못 된 회원 정보")
           }
