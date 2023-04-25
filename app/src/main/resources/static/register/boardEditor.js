@@ -141,6 +141,8 @@ fetch("http://175.106.99.31/boardSearch")
 
       if (patient.title.length > 8) {
         patient.titles = patient.title.substring(0, 8) + ". . ."
+      }else {
+        patient.titles = patient.title
       }
       if (patient.ano.length > 6) {
         patient.anos = patient.ano.substring(0, 6) + ". . ."
