@@ -27,8 +27,9 @@ function Li(params) {
     <li className="chat-left list-group-item" onClick={() => {
       location.href = `AnA-admin.html?no=${params.data.no}`
     }}>
-      <div>
-        <span>작성자 : {params.data.pname},  제목 : {params.data.title}</span>
+      <div className="list-box">
+        <span id="list-title">제목 : {params.data.title}</span>
+        <span id="list-name">작성자 : {params.data.pname}</span>
       </div>
     </li>
   )

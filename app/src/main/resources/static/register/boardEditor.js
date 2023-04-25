@@ -1,12 +1,16 @@
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+const tooltipTriggerList = document.querySelectorAll(
+  '[data-bs-toggle="tooltip"]'
+);
+const tooltipList = [...tooltipTriggerList].map(
+  (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+);
 
 
 class Pbtr extends React.Component {
   constructor(props) {
     super(props);
     props = props.props;
-    this.state = props
+    this.state = props;
   }
   render() {
     if (this.state.filter) {
@@ -17,16 +21,20 @@ class Pbtr extends React.Component {
           <th>{this.state.name}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.anos != "null" ? this.state.anos : "-"}</td>
-          <td><button
-            type="button"
-            className="btn btn-success"
-            style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
-            onClick={() => {
-              ReactDOM.createRoot($(".new-windows")[0]).render(<Pboardc props={this.state} />);
-            }}
-          >
-            검증
-          </button></td>
+          <td>
+            <button
+              type="button"
+              className="btn btn-success"
+              style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
+              onClick={() => {
+                ReactDOM.createRoot($(".new-windows")[0]).render(
+                  <Pboardc props={this.state} />
+                );
+              }}
+            >
+              검증
+            </button>
+          </td>
           <td>{this.state.createdDate}</td>
         </tr>
       );
@@ -38,16 +46,20 @@ class Pbtr extends React.Component {
           <th>{this.state.name}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.anos != "null" ? this.state.anos : "-"}</td>
-          <td><button
-            type="button"
-            className="btn btn-danger"
-            style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
-            onClick={() => {
-              ReactDOM.createRoot($(".new-windows")[0]).render(<Pboard props={this.state} />);
-            }}
-          >
-            검증필요
-          </button></td>
+          <td>
+            <button
+              type="button"
+              className="btn btn-danger"
+              style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
+              onClick={() => {
+                ReactDOM.createRoot($(".new-windows")[0]).render(
+                  <Pboard props={this.state} />
+                );
+              }}
+            >
+              검증필요
+            </button>
+          </td>
           <td>{this.state.createdDate}</td>
         </tr>
       );
@@ -70,16 +82,20 @@ class Dctr extends React.Component {
           <th>{this.state.doctorName}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.contents}</td>
-          <td><button
-            type="button"
-            className="btn btn-success"
-            style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
-            onClick={() => {
-              ReactDOM.createRoot($(".new-windows")[0]).render(<Dcommc props={this.state}/>);
-            }}
-          >
-            증명
-          </button></td>
+          <td>
+            <button
+              type="button"
+              className="btn btn-success"
+              style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
+              onClick={() => {
+                ReactDOM.createRoot($(".new-windows")[0]).render(
+                  <Dcommc props={this.state} />
+                );
+              }}
+            >
+              증명
+            </button>
+          </td>
           <td>{this.state.createdDate}</td>
         </tr>
       );
@@ -91,16 +107,20 @@ class Dctr extends React.Component {
           <th>{this.state.doctorName}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.contents}</td>
-          <td><button
-            type="button"
-            className="btn btn-danger"
-            style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
-            onClick={() => {
-              ReactDOM.createRoot($(".new-windows")[0]).render(<Dcomm props={this.state}/>);
-            }}
-          >
-            증명필요
-          </button></td>
+          <td>
+            <button
+              type="button"
+              className="btn btn-danger"
+              style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
+              onClick={() => {
+                ReactDOM.createRoot($(".new-windows")[0]).render(
+                  <Dcomm props={this.state} />
+                );
+              }}
+            >
+              증명필요
+            </button>
+          </td>
           <td>{this.state.createdDate}</td>
         </tr>
       );
@@ -109,7 +129,7 @@ class Dctr extends React.Component {
 }
 
 fetch(`http://175.106.99.31/auth/user`, {
-  method: 'GET'
+  method: 'GET',
 })
   .then(response => response.json())
   .then(data => {

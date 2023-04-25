@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>의사 / 전체 상담글 조회 - Myclinic</title>
+    <title>의사 - 상담글 조회</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -37,13 +37,6 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
 
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
     <style>
       .pagination {
         display: flex;
@@ -71,210 +64,36 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-          <img src="assets/img/newlogo.png" alt="" />
-          <span class="d-none d-lg-block">MyClinic</span>
+          <span class="d-none d-lg-block">P DC</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
       <!-- End Logo -->
-
-      <div class="search-bar">
-        <form
-          class="search-form d-flex align-items-center"
-          method="POST"
-          action="#"
-        >
-          <input
-            type="text"
-            name="query"
-            placeholder="Search"
-            title="Enter search keyword"
-          />
-          <button type="submit" title="Search">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-      </div>
-      <!-- End Search Bar -->
-
       <div class="top-menu">
-        <a href="pages-notice.html" class="nav-link collapsed"
-          ><span>공지사항</span></a
+        <a href="hospitals-list.html" class="nav-link collapsed"
+          ><span>병원</span></a
         >
 
         <a href="doctors-community-main.html" class="nav-link collapsed"
           ><span>커뮤니티</span></a
         >
-
-        <!-- <a href="../auth/doctors-login.html"
-        class="nav-link collapsed"><span>로그인</span></a> -->
       </div>
-
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span> </a
-            ><!-- End Notification Icon -->
-
-            <!--우측 상단 알림 -->
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
-            >
-              <li class="dropdown-header">
-                확인하지 않은 알림이 있습니다.
-                <a href="#"
-                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                    >View all</span
-                  ></a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>진료 답변 확인하기</h4>
-                  <p>OOO 환자님 안녕하세요....</p>
-                  <p>30분 전</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-x-circle text-danger"></i>
-                <div>
-                  <h4>개인정보 보호 안내</h4>
-                  <p>비밀번호를 변경해주세요</p>
-                  <p>1 시간 전</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <!--  알림
-          <li class="notification-item">
-            <i class="bi bi-check-circle text-success"></i>
-            <div>
-              <h4>Sit rerum fuga</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>2 hrs. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-info-circle text-primary"></i>
-            <div>
-              <h4>Dicta reprehenderit</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>4 hrs. ago</p>
-            </div>
-          </li>
-          -->
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
-              </li>
-            </ul>
-            <!-- End Notification Dropdown Items -->
-          </li>
-          <!-- End Notification Nav -->
-
           <li class="nav-item dropdown pe-3">
-            <a
-              class="nav-link nav-profile d-flex align-items-center pe-0"
-              href="#"
-              data-bs-toggle="dropdown"
-            >
+            <a class="nav-link nav-profile d-flex align-items-center pe-0">
+              <div id="pre-userimg"></div>
               <img
+                id="userimg"
                 src="assets/img/profile-img.jpg"
                 alt="Profile"
-                class="rounded-circle"
               />
-              <span
-                id="username"
-                class="d-none d-md-block dropdown-toggle ps-2"
-              ></span> </a
-            ><!-- End Profile Iamge Icon -->
-
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
-            >
-              <li class="dropdown-header">
-                <h6>엄 진 영</h6>
-                <span>개발자</span>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="users-profile.html"
-                >
-                  <i class="bi bi-person"></i>
-                  <span>My Profile</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="users-profile.html"
-                >
-                  <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="pages-faq.html"
-                >
-                  <i class="bi bi-question-circle"></i>
-                  <span>Need Help?</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <i class="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
-                </a>
-              </li>
-            </ul>
-            <!-- End Profile Dropdown Items -->
+              <span id="username" class="d-none d-md-block ps-2"></span>
+            </a>
           </li>
-          <!-- End Profile Nav -->
         </ul>
       </nav>
-      <!-- End Icons Navigation -->
     </header>
-    <!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -282,7 +101,7 @@
         <li class="nav-heading">의사 전용 페이지</li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="doctors-profile.html">
+          <a class="nav-link" href="doctors-profile.html">
             <i class="bi bi-person"></i>
             <span>내 정보</span>
           </a>
@@ -309,7 +128,6 @@
             <span>내 병원 정보</span>
           </a>
         </li>
-        <!-- End Register Page Nav -->
         <!-- End Register Page Nav -->
 
         <!-- 로그아웃 태그 -->
@@ -338,30 +156,17 @@
               });
           });
         </script>
-
-        <!--
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-blank.html">
-        <i class="bi bi-file-earmark"></i>
-        <span>Blank</span>
-      </a>
-    </li> End Blank Page Nav -->
       </ul>
+      <img
+        src="../register/assets/img/mainlogo.png"
+        style="height: 150px; margin-top: 400px; margin-left: 40px"
+      />
     </aside>
     <!-- End Sidebar-->
 
     <main id="main" class="main">
       <div class="pagetitle">
         <h1>전체 상담글 조회</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="index.html"><i class="bi bi-house-door"></i></a>
-            </li>
-            <li class="breadcrumb-item active">전체 상담글 조회</li>
-            <!-- <li class="breadcrumb-item active">Data</li> -->
-          </ol>
-        </nav>
       </div>
       <!-- End Page Title -->
 
@@ -416,18 +221,63 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-      <div class="copyright">
-        &copy; Copyright <strong><span>NiceAdmin</span></strong
-        >. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <div>
+        <div class="tooltip-container">
+          <a
+            href="https://github.com/whtmdgus"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="조승현"
+          >
+            <img src="../register/assets/img/gitlogo.png" style="width: 40px" />
+          </a>
+          <a
+            href="https://github.com/chaminju927"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="차민주"
+          >
+            <img src="../register/assets/img/gitlogo.png" style="width: 40px" />
+          </a>
+          <a
+            href="https://github.com/molang2"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="이준영"
+          >
+            <img src="../register/assets/img/gitlogo.png" style="width: 40px" />
+          </a>
+          <a
+            href="https://github.com/hyunwookimkim"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="김현우"
+          >
+            <img src="../register/assets/img/gitlogo.png" style="width: 40px" />
+          </a>
+          <a
+            href="https://github.com/omelase"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="이예찬"
+          >
+            <img src="../register/assets/img/gitlogo.png" style="width: 40px" />
+          </a>
+        </div>
+        <div class="footer-img-container">
+          <img src="../register/assets/img/bitcamplogo.png" />
+          <img
+            src="../register/assets/img/navercloudlogo.png"
+            style="width: 200px; margin-left: 50px"
+          />
+          <img
+            src="../register/assets/img/magicecole.png"
+            style="width: 150px; margin-left: 50px"
+          />
+        </div>
       </div>
     </footer>
+    <!-- End Footer -->
     <!-- End Footer -->
 
     <a

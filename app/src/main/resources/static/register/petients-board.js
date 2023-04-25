@@ -373,21 +373,19 @@ class DocInfo extends React.Component {
   }   
   render() {
     return (
-      <div className="top-area text-center">
-        <div className="doc-area">
+      <div className="top-area">
+        <div className="doc-area  text-center">
           <img className="doc-img" src={this.state.data.doc_image} alt="의사 이미지"/>
-          <span className="doc-name">
-            <i className="bx bx-user"></i>{' '}{this.state.data.doc_name}
-          </span>
-        </div>
-        <div className="career-area">
-          <span class="doc-career-name"><i class="fas fa-solid fa-certificate"></i>{' '}경력 사항</span>
-          <span class="doc-career-list">{this.state.data.doc_career}</span>
+          <span className="doc-name">{this.state.data.doc_name}{' '}의사</span>
         </div>
         <div className="hos-area">
-          <span className="hos-name"><i class="bx bx-plus-medical"></i>{' '}{this.state.data.hos_name}</span>
-          <span className="hos-info" ><i class="fas fa-stethoscope"></i>{' '}{this.state.data.doc_license}</span>
-          <span className="hos-addr"><i class="bi-hospital"></i>{' '}{this.state.data.hos_addr}</span>
+          <span className="hos-name">소속병원 |{' '}{this.state.data.hos_name}</span>
+          <span className="hos-addr">병원주소 |{' '}{this.state.data.hos_addr}</span>
+          <span className="hos-info">진료분야 |{' '}{this.state.data.doc_license}</span>
+        </div>
+        <div className="career-area">
+          <span class="doc-career-name"><h5>학력/경력</h5></span>
+          <span class="doc-career-list">{this.state.data.doc_career}</span>
         </div>
       </div>  
     )
@@ -405,7 +403,7 @@ class FedText extends React.Component {
     return (
       <div className="middle-area">
         <span className="fed-text">
-          -진단 내용-<br/>
+        <h6>담당의사 진단 내용</h6><br/>
           {this.state.data.content}
         </span>
       </div>  
@@ -423,7 +421,7 @@ class Review extends React.Component {
   render() {
     return (
       <div className="review-area">
-        리뷰영역
+        <h6>진료일자</h6>{this.state.data.createdDate}
       </div>  
     )
   }

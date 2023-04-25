@@ -92,8 +92,8 @@
       <!-- End Search Bar -->
 
       <div class="top-menu">
-        <a href="pages-notice.html" class="nav-link collapsed"
-          ><span>공지사항</span></a
+        <a href="hospitals-list.html" class="nav-link collapsed"
+          ><span>병원</span></a
         >
 
         <a href="doctors-community-main.html" class="nav-link collapsed"
@@ -233,18 +233,18 @@
         </li>
         <!-- End Login Page Nav -->
         <script>
-          $('.logout').click(() => {
+          $(".logout").click(() => {
             console.log(11);
             fetch(`http://175.106.99.31/auth/logout`, {
-              method: 'GET',
+              method: "GET",
             })
               .then((response) => response.json())
               .then((data) => {
-                if (data.status == 'success') {
-                  location.href = '';
+                if (data.status == "success") {
+                  location.href = "";
                 } else {
-                  alert('로그아웃 실패');
-                  location.href = '';
+                  alert("로그아웃 실패");
+                  location.href = "";
                 }
               });
           });
@@ -691,7 +691,7 @@
           oncomplete: function (data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
             // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-            document.querySelector('.change-addr').value = data.address;
+            document.querySelector(".change-addr").value = data.address;
           },
         }).open();
       }

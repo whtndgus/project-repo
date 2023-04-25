@@ -21,7 +21,6 @@ public class Member {
   private String phoType;
   private boolean passwordcheck;
   private boolean admin;
-  private boolean naver;
 
   @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
   private Date birth;

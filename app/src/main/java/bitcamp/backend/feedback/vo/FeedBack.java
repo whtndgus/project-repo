@@ -10,7 +10,7 @@ public class FeedBack {
   private int symp_no;
   private int doc_no;
 
-  @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
+  @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
   private Date createdDate;
 
   private String content;

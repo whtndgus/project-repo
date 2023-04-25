@@ -73,135 +73,31 @@
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
       <!-- End Logo -->
-
-      <div class="search-bar">
-        <form
-          class="search-form d-flex align-items-center"
-          method="POST"
-          action="#"
-        >
-          <input
-            type="text"
-            name="query"
-            placeholder="Search"
-            title="Enter search keyword"
-          />
-          <button type="submit" title="Search">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-      </div>
-      <!-- End Search Bar -->
-
       <div class="top-menu">
-        <a href="pages-notice.html" class="nav-link collapsed"
-          ><span>공지사항</span></a
+        <a href="hospitals-list.html" class="nav-link collapsed"
+          ><span>병원</span></a
         >
 
         <a href="doctors-community-main.html" class="nav-link collapsed"
           ><span>커뮤니티</span></a
         >
       </div>
-
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span> </a
-            ><!-- End Notification Icon -->
-
-            <!--우측 상단 알림 -->
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
-            >
-              <li class="dropdown-header">
-                확인하지 않은 알림이 있습니다.
-                <a href="#"
-                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                    >View all</span
-                  ></a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>진료 답변 확인하기</h4>
-                  <p>OOO 환자님 안녕하세요....</p>
-                  <p>30분 전</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-x-circle text-danger"></i>
-                <div>
-                  <h4>개인정보 보호 안내</h4>
-                  <p>비밀번호를 변경해주세요</p>
-                  <p>1 시간 전</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <!--  알림
-          <li class="notification-item">
-            <i class="bi bi-check-circle text-success"></i>
-            <div>
-              <h4>Sit rerum fuga</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>2 hrs. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-info-circle text-primary"></i>
-            <div>
-              <h4>Dicta reprehenderit</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>4 hrs. ago</p>
-            </div>
-          </li>
-          -->
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
-              </li>
-            </ul>
-            <!-- End Notification Dropdown Items -->
-          </li>
-          <!-- End Notification Nav -->
-
           <li class="nav-item dropdown pe-3">
             <a class="nav-link nav-profile d-flex align-items-center pe-0">
+              <div id="pre-userimg"></div>
               <img
+                id="userimg"
                 src="assets/img/profile-img.jpg"
                 alt="Profile"
-                class="rounded-circle"
               />
-              <span id="username" class="d-none d-md-block ps-2"></span> </a
-            ><!-- End Profile Iamge Icon -->
+              <span id="username" class="d-none d-md-block ps-2"></span>
+            </a>
           </li>
-          <!-- End Profile Nav -->
         </ul>
       </nav>
-      <!-- End Icons Navigation -->
     </header>
-    <!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -221,7 +117,7 @@
             <i class="bi bi-file-earmark"></i>
             <span>진료하기</span>
           </a>
-        </li> 
+        </li>
 
         <li class="nav-item">
           <a class="nav-link collapsed" href="QnQ-doc.html">
@@ -231,7 +127,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="hospitals-list.html">
+          <a class="nav-link collapsed" href="hospitals-view.html">
             <i class="bi bi-card-list"></i>
             <span>내 병원 정보</span>
           </a>
@@ -264,14 +160,6 @@
               });
           });
         </script>
-
-        <!--
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-blank.html">
-      <i class="bi bi-file-earmark"></i>
-      <span>Blank</span>
-    </a>
-  </li> End Blank Page Nav -->
       </ul>
     </aside>
     <!-- End Sidebar-->

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>커뮤니티 - 글 상세조회</title>
+  <title>커뮤니티 - 게시글 조회</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,153 +37,98 @@
 
   <div class="d-flex align-items-center justify-content-between">
     <a href="index.html" class="logo d-flex align-items-center">
-      <img src="assets/img/newlogo.png" alt="">
-      <span class="d-none d-lg-block">MyClinic</span>
+     
+      <span class="d-none d-lg-block">P DC</span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
-  </div><!-- End Logo -->
+   <!-- End Logo -->
+   <div class="top-menu">
+    <a href="hospitals-list.html" class="nav-link collapsed"><span>병원</span></a>
 
-  <div class="search-bar">
-    <form class="search-form d-flex align-items-center" method="POST" action="#">
-      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-    </form>
-  </div><!-- End Search Bar -->
-
-  <div class="top-menu">
-    <a href="pages-notice.html"  class="nav-link collapsed"><span>공지사항</span></a>
-    
-    <a href="doctors-community-main.html"  class="nav-link"><span>커뮤니티</span></a>
-
+    <a href="doctors-community-main.html" class="nav-link collapsed"
+      ><span>커뮤니티</span></a
+    >
   </div>
-
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
-
-      <li class="nav-item dropdown">
-
-        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-          <i class="bi bi-bell"></i>
-          <span class="badge bg-primary badge-number">2</span>
-        </a><!-- End Notification Icon -->
-
-        <!--우측 상단 알림 -->
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-          <li class="dropdown-header">
-            확인하지 않은 알림이 있습니다.
-            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-exclamation-circle text-warning"></i>
-            <div>
-              <h4>진료 답변 확인하기</h4>
-              <p>OOO 환자님 안녕하세요....</p>
-              <p>30분 전</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-x-circle text-danger"></i>
-            <div>
-              <h4>개인정보 보호 안내</h4>
-              <p>비밀번호를 변경해주세요</p>
-              <p>1 시간 전</p>
-            </div>
-          </li>        
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li class="dropdown-footer">
-            <a href="#">Show all notifications</a>
-          </li>
-
-        </ul><!-- End Notification Dropdown Items -->
-
-      </li><!-- End Notification Nav -->
-
-      
-
       <li class="nav-item dropdown pe-3">
-        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-          <span class="d-none d-md-block dropdown-toggle ps-2">엄 진 영</span>
-        </a><!-- End Profile Iamge Icon -->
-      </li>
-
-
-</header><!-- End Header -->
-
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-    
-      <li class="nav-heading">의사 전용 페이지</li>
-
-      <li class="nav-item">
-        <a class="nav-link " href="doctors-profile.html">
-          <i class="bi bi-person"></i>
-          <span>내 정보</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="doctors-advices.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>진료하기</span>
-        </a>
-      </li> 
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="QnQ-doc.html">
-          <i class="bi bi-question-circle"></i>
-          <span>문의하기</span>
+        <a class="nav-link nav-profile d-flex align-items-center pe-0">
+          <div id="pre-userimg"></div>
+          <img
+            id="userimg"
+            src="assets/img/profile-img.jpg"
+            alt="Profile"
+          />
+          <span id="username" class="d-none d-md-block ps-2"></span>
         </a>
       </li>
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="hospitals-view.html">
-          <i class="bi bi-card-list"></i>
-          <span>내 병원 정보</span>
-        </a>
-      </li>
-      <!-- End Register Page Nav -->
-
-      <!-- 로그아웃 태그 -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-      <li class="nav-item logout">
-        <a class="nav-link collapsed">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>로그아웃</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-      <script>
-        $(".logout").click(() => {
-          console.log(11)
-          fetch(`http://175.106.99.31/auth/logout`, {
-            method: 'GET'
-          })
-            .then(response => response.json())
-            .then(data => {
-              if (data.status == "success") {
-                location.href = ""
-              } else {
-                alert("로그아웃 실패")
-                location.href = ""
-              }
-            })
-        })
-      </script>
-
     </ul>
+  </nav>
+</header>
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-heading">의사 전용 페이지</li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="doctors-profile.html">
+        <i class="bi bi-person"></i>
+        <span>내 정보</span>
+      </a>
+    </li>
+    <!-- End Profile Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="doctors-advices.html">
+        <i class="bi bi-file-earmark"></i>
+        <span>진료하기</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="QnQ-doc.html">
+        <i class="bi bi-question-circle"></i>
+        <span>문의하기</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="hospitals-view.html">
+        <i class="bi bi-card-list"></i>
+        <span>내 병원 정보</span>
+      </a>
+    </li>
+    <!-- End Register Page Nav -->
+
+    <!-- 로그아웃 태그 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <li class="nav-item logout">
+      <a class="nav-link collapsed">
+        <i class="bi bi-box-arrow-in-right"></i>
+        <span>로그아웃</span>
+      </a>
+    </li>
+    <!-- End Login Page Nav -->
+    <script>
+      $(".logout").click(() => {
+        console.log(11);
+        fetch(`http://175.106.99.31/auth/logout`, {
+          method: "GET",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status == "success") {
+              location.href = "";
+            } else {
+              alert("로그아웃 실패");
+              location.href = "";
+            }
+          });
+      });
+    </script>
+  </ul>
+    <img src="../register/assets/img/mainlogo.png" style="height:150px; margin-top:400px; margin-left:40px;">
 
   </aside><!-- End Sidebar-->
 
@@ -191,12 +136,7 @@
 
     <div class="pagetitle">
       <h1>커뮤니티</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Community</li>
-        </ol>
-      </nav>
+      
     </div><!-- End Page Title -->
 
     <section class="section">

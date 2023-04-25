@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class Board {
 
-  @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
+  @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
   private Date createdDate;
   private int no;
   private int pno;

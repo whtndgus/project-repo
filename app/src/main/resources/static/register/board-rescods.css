@@ -414,13 +414,15 @@ DEMO
 .doc-area {
   float: left;
   width: 160px;
+  height: 290px;
   padding: 5px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* background-color: #673AB7; */
 }
 
 .doc-name {
@@ -434,10 +436,11 @@ DEMO
 
 .career-area {
   float: left;
-  width: 150px;
-  height: 165px;
-  margin: 5px 10px 0 0;
-  background-color: #c5edff;
+  width: 330px;
+  height: 115px;
+  margin-right: 6px;
+  padding: 20px;
+  /* background-color: #cf217b; */
 } 
 
 .career-area span {
@@ -453,10 +456,11 @@ DEMO
 
 .top-area{
   width: 100%;
-  height: 185px;
+  height: 300px;
   padding: 5px;
-  background-color: #e4f6ff;
+  /* background-color: #e4f6ff; */
   font-weight: 1000;
+  border-bottom: 1px solid black;
 }
 
 .top-area i {
@@ -469,63 +473,74 @@ DEMO
 }
 
 .hos-area {
-  width: 160px;
+  width: 330px;
   height: 165px;
   margin-top: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  /* box-sizing: border-; */
+  padding: 20px;
+  float: left;
+  /* background-color: red;  */
+  /* box-sizing: border-box; */
 }
 
 .hos-area span {
-  /* float: left; */
   display: block;
 }
 
 .hos-name {
   width: 190px;
-  height: 60px;
+  height: 30px;
   margin-bottom: 5px;
 }
 .hos-info {
   width: 190px;
-  height: 60px;
+  height: 50px;
   margin-bottom: 5px;
 }
 .hos-addr {
   width: 190px;
-  height: 25px;
+  height: 30px;
+  margin-bottom: 5px;
 }
 
 .doc-img {
   float: left;
-  width: 130px;
-  height: 130px;
-  border-radius: 65px;
+  width: 170px;
+  height: 170px;
+  border-radius: 105px;
   border: 1px solid black;
+}
+
+.doc-career-name {
+  border-bottom: 3px solid black;
+}
+
+.doc-career-list {
+  padding: 5px 0 0 10px;
 }
 
 .middle-area {
   height: 250px;
   margin-top: 15px;
+  border-bottom: 1px solid black;
   /* padding: 5px; */
 }
 .fed-text {
   display: inline-block;
-  font-weight: 600;
-  background-color: #e4f6ff;
+  font-weight: 900;
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  box-shadow: 0px 0px 3px 1px #c6ecfd;
+  /* box-shadow: 0px 0px 3px 1px #c6ecfd; */
   padding: 7px;
 } 
 
 .review-area {
   height: 120px;
   margin-top: 15px;
-  background-color: rgb(212, 212, 212);
+  /* background-color: rgb(212, 212, 212); */
   padding: 5px;
+}
+
+h5,h6 {
+  font-weight: 900;
 }

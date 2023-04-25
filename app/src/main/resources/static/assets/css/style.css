@@ -14,9 +14,9 @@
 }
 
 body {
-  font-family: 'Noto Sans KR', sans-serif;
   background: #f6f9ff;
   color: #444444;
+  padding-bottom : 50px;
 }
 
 .cursor {
@@ -1329,23 +1329,27 @@ h6 {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+.footer-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.tooltip-container {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center; 
+  
+}
+
 .footer {
-  padding: 20px 0;
-  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
   transition: all 0.3s;
   border-top: 1px solid #cddfff;
-}
-
-.footer .copyright {
-  text-align: center;
-  color: #012970;
-}
-
-.footer .credits {
-  padding-top: 5px;
-  text-align: center;
-  font-size: 13px;
-  color: #012970;
+  margin-top:50px;
 }
 
 #naver_id_login img{

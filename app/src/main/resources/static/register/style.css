@@ -244,10 +244,7 @@ body::-webkit-scrollbar {
 }
 
 
-.list-group-item {
-  margin-bottom: 3px;
-  padding-top: 15px !important;
-}
+
 
 
 #root {
