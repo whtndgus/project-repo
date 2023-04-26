@@ -86,7 +86,6 @@
           <th scope="col">전화</th>
           <!-- <th scope="col">진료시간</th> 굳이시간 받을필요 없음 -->
           <th scope="col">진료과목</th>
-          <th scope="col">사업자번호</th>
         </tr>
       </thead>
       <tbody id="hospital-list" class="table-group-divider">
@@ -97,7 +96,6 @@
           <td id="hospitalTel"></td>
           <!-- <td id="hospitalTime"></td> 굳이시간 받을필요 없음 -->
           <td id="hospitalSub"></td>
-          <td id="hospitalBusno"></td>
         </tr>
       </tbody>
     </table>
@@ -156,7 +154,6 @@
         <td>${row.hosAddr}</td>
         <td>${row.hosTel}</td>        
         <td>${row.hosSub}</td>
-        <td>${row.hosBusno}</td>
         </tr>\n`;
         }
         tbody.innerHTML = html;
