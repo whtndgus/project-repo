@@ -233,7 +233,7 @@ public class App {
       boardImg.setUrl(str);
       boardImg.setName(file.getOriginalFilename());
       boardImg.setMIMETYPE(file.getContentType());
-
+      
       boardImgService.add(boardImg);
     }
   }
