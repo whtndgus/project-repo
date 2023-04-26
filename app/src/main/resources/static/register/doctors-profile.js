@@ -13,7 +13,7 @@ fetch(`http://175.106.99.31/auth/user`, {
       //옥동자 이미지
       const preImageContainer = document.querySelector("#pre-userimg");
       let phoUrl = "";
-      if (data.data.phoUrl != null) {
+      if (data.data.phoUrl != "undefined") {
       phoUrl =
         "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
         data.data.phoUrl +
@@ -54,7 +54,7 @@ fetch(`http://175.106.99.31/auth/user`, {
             data = data.data;
             console.log(data);
 
-            if (data.phoUrl != null) {
+            if (data.phoUrl != "undefined") {
               let imgUrl =
                 "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
                 data.phoUrl +
