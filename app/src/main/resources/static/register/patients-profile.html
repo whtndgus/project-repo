@@ -95,13 +95,15 @@
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
+
         <li class="nav-item">
           <a class="nav-link collapsed" href="index.html">
             <i class="bi bi-grid"></i>
             <span>Main</span>
           </a>
         </li>
-        <li class="nav-heading">My page</li>
+
+        <li class="nav-heading">환자 페이지</li>
 
         <li class="nav-item">
           <a class="nav-link" href="patients-profile.html">
@@ -152,6 +154,9 @@
           });
         </script>
       </ul>
+      <img src="../register/assets/img/mainlogo.png" style="height:150px; margin-top:400px; margin-left:40px;">
+      
+      
     </aside>
     <!-- End Sidebar-->
 
@@ -168,11 +173,9 @@
               <div
                 class="card-body profile-card pt-4 d-flex flex-column align-items-center"
               >
-                <img
-                  src="무직.jpg"
-                  alt="Profile"
-                  class="rounded-circle patients-img"
-                />
+              <div id="preview-container">
+                <img id="preview-img" class="doctors-img" src="../assets/img/default_profile.png" />
+              </div>
                 <h2 class="top-name">엄 진 영</h2>
               </div>
             </div>
@@ -530,19 +533,35 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-      <div class="copyright">
-        &copy; Copyright <strong><span>NiceAdmin</span></strong
-        >. All Rights Reserved
+      <div>
+        <div class="tooltip-container">
+          <a href="https://github.com/whtmdgus" data-bs-toggle="tooltip" data-bs-placement="top" title="조승현">
+            <img src="../register/assets/img/gitlogo.png" style="width:40px">
+          </a>
+          <a href="https://github.com/chaminju927" data-bs-toggle="tooltip" data-bs-placement="top" title="차민주">
+            <img src="../register/assets/img/gitlogo.png" style="width:40px">
+          </a>
+          <a href="https://github.com/molang2" data-bs-toggle="tooltip" data-bs-placement="top" title="이준영">
+            <img src="../register/assets/img/gitlogo.png" style="width:40px">
+          </a>
+          <a href="https://github.com/hyunwookimkim" data-bs-toggle="tooltip" data-bs-placement="top" title="김현우">
+            <img src="../register/assets/img/gitlogo.png" style="width:40px">
+          </a>
+          <a href="https://github.com/omelase" data-bs-toggle="tooltip" data-bs-placement="top" title="이예찬">
+            <img src="../register/assets/img/gitlogo.png" style="width:40px">
+          </a>
+        </div>
+  
+        <div class="footer-img-container">
+          <img src="../register/assets/img/bitcamplogo.png">
+          <img src="../register/assets/img/navercloudlogo.png" style="width:200px; margin-left: 50px;">
+          <img src="../register/assets/img/magicecole.png" style="width:150px; margin-left: 50px;">
+        </div>
+  
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </footer>
-    <!-- End Footer -->
+  
+  
+    </footer><!-- End Footer -->
 
     <a
       href="#"

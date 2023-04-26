@@ -319,6 +319,7 @@ $(".btn-1").click(() => {
                     }),
                   }).then(data => data.json())
                     .then(data => {
+                      console.log(data)
                       let bno = data.no;
                       submitFiles(bno);
                     })
