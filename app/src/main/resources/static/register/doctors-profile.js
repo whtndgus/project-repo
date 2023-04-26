@@ -59,6 +59,7 @@ fetch(`http://175.106.99.31/auth/user`, {
               document.querySelector(".doctors-img").src = imgUrl;
             } else {
               imgUrl = "assets/img/default-profile.png"
+              document.querySelector(".doctors-img").src = imgUrl;
             }
 
             document.querySelector(".top-id").innerText = data.id;
