@@ -372,10 +372,14 @@ class DocInfo extends React.Component {
     }
   }   
   render() {
+    const imgUrl = 
+      "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+      this.state.data.doc_image +
+      "?type=f&w=170&h=220&quality=90&align=4";
     return (
       <div className="top-area">
         <div className="doc-area  text-center">
-          <img className="doc-img" src={this.state.data.doc_image} alt="의사 이미지"/>
+          <img className="doc-img" src={imgUrl} alt="의사 이미지"/>
           <span className="doc-name">{this.state.data.doc_name}{' '}의사</span>
         </div>
         <div className="hos-area">

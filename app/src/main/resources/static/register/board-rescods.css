@@ -413,11 +413,10 @@ DEMO
 
 .doc-area {
   float: left;
-  width: 160px;
+  width: 30%;
   height: 290px;
-  padding: 5px;
-  /* box-sizing: border-box; */
-  margin-right: 10px;
+  box-sizing: border-box;
+  margin: 0 10px 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -436,7 +435,8 @@ DEMO
 
 .career-area {
   float: left;
-  width: 330px;
+  width: 64%;
+  box-sizing: border-box;
   height: 115px;
   margin-right: 6px;
   padding: 20px;
@@ -473,13 +473,13 @@ DEMO
 }
 
 .hos-area {
-  width: 330px;
+  width: 64%;
   height: 165px;
   margin-top: 5px;
   padding: 20px;
   float: left;
   /* background-color: red;  */
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 .hos-area span {
@@ -505,12 +505,12 @@ DEMO
 .doc-img {
   float: left;
   width: 170px;
-  height: 170px;
-  border-radius: 105px;
+  height: 220px;
   border: 1px solid black;
 }
 
 .doc-career-name {
+  width: 300px;
   border-bottom: 3px solid black;
 }
 
