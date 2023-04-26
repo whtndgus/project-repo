@@ -54,8 +54,10 @@ fetch(`http://175.106.99.31/auth/user`, {
             data = data.data;
             console.log(data);
 
+            let imgUrl = "";
+
             if (data.phoUrl != "undefined") {
-              let imgUrl =
+              imgUrl =
                 "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
                 data.phoUrl +
                 "?type=f&w=120&h=180&quality=90&autorotate=true&faceopt=true&anilimit=24";
