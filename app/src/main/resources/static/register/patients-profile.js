@@ -12,10 +12,15 @@ fetch(`http://175.106.99.31/auth/user`, {
       document.querySelector("#username").innerHTML = data.data.name;
       //옥동자 이미지
       const preImageContainer = document.querySelector("#pre-userimg");
-      const phoUrl =
+      let phoUrl = "";
+      if (data.data.phoUrl != "undefined") {
+      phoUrl =
         "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
         data.data.phoUrl +
         "?type=f&w=36&h=36&quality=100&anilimit=24";
+      } else {
+        phoUrl = "../assets/img/default_profile.png"
+      }
       const phoType = data.data.phoType;
       const phoName = data.data.phoName;
 
@@ -38,6 +43,7 @@ fetch(`http://175.106.99.31/auth/user`, {
     }
   })
   .then((user) => {
+    if (!user.passwordcheck) location.href = "patients-profile-auth.html";
     if (user.phy !== undefined) {
     } else {
       console.log(user.phy);
@@ -53,13 +59,17 @@ fetch(`http://175.106.99.31/auth/user`, {
           if (data.status == "success") {
             data = data.data;
 
-            if (data.phoUrl != null) {
-              let imgUrl =
+            let imgUrl = "";
+
+            if (data.phoUrl != "undefined") {
+              imgUrl =
                 "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
                 data.phoUrl +
                 "?type=f&w=120&h=180&quality=90&autorotate=true&faceopt=true&anilimit=24";
-              document.querySelector(".patients-img").src = imgUrl;
+              document.querySelector(".doctors-img").src = imgUrl;
             } else {
+              imgUrl = "../assets/img/default_profile.png"
+              document.querySelector(".doctors-img").src = imgUrl;
             }
 
             document.querySelector(".top-name").innerText = data.name;

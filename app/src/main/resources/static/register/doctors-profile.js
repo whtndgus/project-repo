@@ -8,18 +8,18 @@ fetch(`http://175.106.99.31/auth/user`, {
   .then((response) => response.json())
   .then((data) => {
     if (data.status == "success") {
-      //옥동자 이름
+      //사용자 이름
       document.querySelector("#username").innerHTML = data.data.name;
-      //옥동자 이미지
+      //사용자 이미지
       const preImageContainer = document.querySelector("#pre-userimg");
       let phoUrl = "";
       if (data.data.phoUrl != "undefined") {
-      phoUrl =
-        "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
-        data.data.phoUrl +
-        "?type=f&w=36&h=36&quality=100&anilimit=24";
+        phoUrl =
+          "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+          data.data.phoUrl +
+          "?type=f&w=36&h=36&quality=100&anilimit=24";
       } else {
-        phoUrl = "../assets/img/default_profile.png"
+        phoUrl = "../assets/img/default_profile.png";
       }
       const phoType = data.data.phoType;
       const phoName = data.data.phoName;
@@ -63,7 +63,7 @@ fetch(`http://175.106.99.31/auth/user`, {
                 "?type=f&w=120&h=180&quality=90&autorotate=true&faceopt=true&anilimit=24";
               document.querySelector(".doctors-img").src = imgUrl;
             } else {
-              imgUrl = "../assets/img/default_profile.png"
+              imgUrl = "../assets/img/default_profile.png";
               document.querySelector(".doctors-img").src = imgUrl;
             }
 
