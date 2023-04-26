@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import bitcamp.backend.feedback.dao.FeedBackDao;
 import bitcamp.backend.feedback.service.FeedBackService;
 import bitcamp.backend.feedback.vo.FeedBack;
+import bitcamp.backend.register.dao.LicenseDao;
+import bitcamp.backend.register.vo.License;
 
 
 @Service
@@ -13,6 +15,8 @@ public class DefaultFeedBackService implements FeedBackService {
 
   @Autowired
   private FeedBackDao feedBackDao;
+  @Autowired
+  private LicenseDao licenseDao;
 
   @Override
   public void add(FeedBack feedBack) {
@@ -21,7 +25,11 @@ public class DefaultFeedBackService implements FeedBackService {
 
   @Override
   public List<FeedBack> blist(int no) {
-    return feedBackDao.findByBoardNo(no);
+    List<FeedBack> feeds = feedBackDao.findByBoardNo(no);
+    for(int i = 0; i < feeds.size(); i++) {
+      feeds.get(i).setDoc_license(licenseDao.findByDno(feeds.get(i).getDoc_no()));
+    }
+    return ;
   }
 
   @Override
