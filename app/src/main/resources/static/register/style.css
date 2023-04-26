@@ -156,6 +156,7 @@ body::-webkit-scrollbar {
 .log-btn {
   width: 91px;
   height: 38.67px;
+  
 }
 .log-mypage {
   
@@ -254,8 +255,8 @@ body::-webkit-scrollbar {
 .insert-btn{
   margin-right: 10px;
 }
-.font12 {
-  font-size: 12px
+.font13 {
+  font-size: 13px
 }
 
 

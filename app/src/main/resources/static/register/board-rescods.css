@@ -148,13 +148,15 @@ hr {
 
 .list-group-item {
   padding: 2px 5px 2px 5px;
+  background-color: rgba(232, 237, 240, 0.996);
+ 
   /* opacity: 0.8; */
 }
 
 .list-group-item:hover {
   cursor: pointer;
   opacity: 1;
-  background-color: rgb(215, 244, 255);
+  background-color: rgb(211, 235, 244);
 }
 .sogyon-list {
   padding: 1%;
