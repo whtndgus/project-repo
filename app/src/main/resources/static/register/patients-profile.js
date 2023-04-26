@@ -3,99 +3,125 @@ let samePw = false;
 patientNo = 0;
 
 fetch(`http://175.106.99.31/auth/user`, {
-  method: 'GET'
+  method: "GET",
 })
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     if (data.status == "success") {
-      document.querySelector('#username').innerHTML = data.data.name;
-      console.log(data.data)
+      //옥동자 이름
+      document.querySelector("#username").innerHTML = data.data.name;
+      //옥동자 이미지
+      const preImageContainer = document.querySelector("#pre-userimg");
+      const phoUrl =
+        "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+        data.data.phoUrl +
+        "?type=f&w=36&h=36&quality=100&anilimit=24";
+      const phoType = data.data.phoType;
+      const phoName = data.data.phoName;
+
+      // 기존의 이미지 요소 삭제
+      const oldImg = document.querySelector("#userimg");
+      if (oldImg) {
+        oldImg.remove();
+      }
+
+      // 새로운 이미지 요소 생성 및 추가
+      const newImg = document.createElement("img");
+      newImg.setAttribute("id", "userimg");
+      newImg.setAttribute("src", phoUrl);
+      newImg.setAttribute("alt", phoName);
+      newImg.setAttribute("style", "width:36px; border-radius:50%");
+      preImageContainer.appendChild(newImg);
       return data.data;
     } else {
-      location.href = 'index.html';
+      location.href = "index.html";
     }
   })
   .then((user) => {
     if (user.phy !== undefined) {
     } else {
-      console.log(user.phy)
-      location.href = 'index.html';
+      console.log(user.phy);
+      location.href = "index.html";
     }
     patientNo = user.no;
     if (patientNo > 0) {
-      
       fetch(`http://175.106.99.31/patients/${patientNo}`, {
-        method: 'GET'
+        method: "GET",
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           if (data.status == "success") {
             data = data.data;
 
             if (data.phoUrl != null) {
-              let imgUrl = "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" + data.phoUrl + "?type=f&w=120&h=180&quality=90&autorotate=true&faceopt=true&anilimit=24"
+              let imgUrl =
+                "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+                data.phoUrl +
+                "?type=f&w=120&h=180&quality=90&autorotate=true&faceopt=true&anilimit=24";
               document.querySelector(".patients-img").src = imgUrl;
             } else {
-
             }
 
-            document.querySelector(".top-name").innerText = data.name
+            document.querySelector(".top-name").innerText = data.name;
 
-            document.querySelector(".patients-name").innerText = data.name
-            document.querySelector(".change-name").value = data.name
-            document.querySelector(".patients-name").innerHTML = document.querySelector(".patients-name").innerHTML + `<span class="patients-gender">${data.gender ? "남성" : "여성"}</span>`
+            document.querySelector(".patients-name").innerText = data.name;
+            document.querySelector(".change-name").value = data.name;
+            document.querySelector(".patients-name").innerHTML =
+              document.querySelector(".patients-name").innerHTML +
+              `<span class="patients-gender">${
+                data.gender ? "남성" : "여성"
+              }</span>`;
 
-            document.querySelector(".patients-id").innerText = data.id
-            document.querySelector(".change-id").value = data.id
+            document.querySelector(".patients-id").innerText = data.id;
+            document.querySelector(".change-id").value = data.id;
 
-            document.querySelector(".patients-birth").innerText = data.birth
-            document.querySelector(".change-birth").value = data.birth
+            document.querySelector(".patients-birth").innerText = data.birth;
+            document.querySelector(".change-birth").value = data.birth;
 
-            document.querySelector(".patients-tel").innerText = data.tel
-            document.querySelector(".change-tel").value = data.tel
+            document.querySelector(".patients-tel").innerText = data.tel;
+            document.querySelector(".change-tel").value = data.tel;
 
-            document.querySelector(".patients-addr").innerText = data.addr
-            document.querySelector(".change-addr").value = data.addr
+            document.querySelector(".patients-addr").innerText = data.addr;
+            document.querySelector(".change-addr").value = data.addr;
 
-            document.querySelector(".patients-email").innerText = data.email
-            document.querySelector(".change-email").value = data.email
+            document.querySelector(".patients-email").innerText = data.email;
+            document.querySelector(".change-email").value = data.email;
 
-            document.querySelector(".patients-drug").innerText = data.drug
-            document.querySelector(".change-drug").value = data.drug
-            document.querySelector(".change-phy").value = data.phy
+            document.querySelector(".patients-drug").innerText = data.drug;
+            document.querySelector(".change-drug").value = data.drug;
+            document.querySelector(".change-phy").value = data.phy;
 
-            if(user.naver) {
-              console.log(user)
+            if (user.naver) {
+              console.log(user);
               $(".pass-change").css("display", "none");
-              document.querySelector(".patients-id").innerText = "네이버 회원 입니다."
-              $(".patients-id").css("color", "#2DB400")
-              $(".patients-id").css("font-weight", "bold")
-              document.querySelector(".change-id").value = "네이버 회원 입니다."
-              $(".change-id").css("color", "#2DB400")
-              $(".change-id").css("font-weight", "bold")
+              document.querySelector(".patients-id").innerText =
+                "네이버 회원 입니다.";
+              $(".patients-id").css("color", "#2DB400");
+              $(".patients-id").css("font-weight", "bold");
+              document.querySelector(".change-id").value =
+                "네이버 회원 입니다.";
+              $(".change-id").css("color", "#2DB400");
+              $(".change-id").css("font-weight", "bold");
             }
-
           } else {
-            console.log("잘못 된 회원 정보")
+            console.log("잘못 된 회원 정보");
           }
-        })
+        });
     }
-
-  })
-
+  });
 
 $(".change-btn").click(() => {
   let formData = new FormData();
   if (document.querySelector(".change-img").files.length > 0) {
-    formData.append("file", document.querySelector(".change-img").files[0])
+    formData.append("file", document.querySelector(".change-img").files[0]);
     fetch(`http://175.106.99.31/patients/updateImg/${patientNo}`, {
-      method: 'POST',
+      method: "POST",
       body: formData,
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
   }
   formData.append("id", document.querySelector(".change-id").value);
   formData.append("name", document.querySelector(".change-name").value);
@@ -108,15 +134,15 @@ $(".change-btn").click(() => {
   formData.append("phy", document.querySelector(".change-phy").value);
 
   fetch(`http://175.106.99.31/patients/${patientNo}`, {
-    method: 'PUT',
+    method: "PUT",
     body: formData,
   })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      window.location = ""
-    })
-})
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      window.location = "";
+    });
+});
 
 function checkPw() {
   let pw = document.querySelector(".change-pw").value;
@@ -133,31 +159,34 @@ function checkPw() {
 }
 
 $(".change-pw-btn").click(() => {
-  if (samePw && document.querySelector(".change-pw-check").value != document.querySelector(".patients-pw").value) {
+  if (
+    samePw &&
+    document.querySelector(".change-pw-check").value !=
+      document.querySelector(".patients-pw").value
+  ) {
     fetch(`http://175.106.99.31/patients/updatePw/${patientNo}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         password: document.querySelector(".patients-pw").value,
-        changepassword: document.querySelector(".change-pw-check").value
-      })
+        changepassword: document.querySelector(".change-pw-check").value,
+      }),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.status == "success") {
           alert("비밀번호 정상적으로 변경됨");
-          window.location = ""
+          window.location = "";
         } else {
           alert("기존 비밀번호와 다름");
         }
-      })
+      });
   } else {
-    alert("비밀번호 확인 과 입력 비밀번호가 다르거나 기존 비밀번호와 동일")
+    alert("비밀번호 확인 과 입력 비밀번호가 다르거나 기존 비밀번호와 동일");
   }
-})
-
+});
 
 // {
 //   "messages":{
