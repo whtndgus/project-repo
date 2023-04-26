@@ -93,8 +93,20 @@ fetch(`http://175.106.99.31/auth/user`, {
             document.querySelector(".doctors-email").innerText = data.email;
             document.querySelector(".change-email").value = data.email;
 
+            if (data.hosName != null) {
+            document.querySelector(".doctors-hospital").innerText = data.hosName; 
+            } else {
+              document.querySelector(".doctors-hospital").innerText =
+                "소속없음";
+            }
+
+            if (data.licenses.length == 1) {
+            document.querySelector(".doctors-license").innerText =
+              data.licenses[0].licensename;
+            } else {
             document.querySelector(".doctors-license").innerText =
               data.licenses[1].licensename;
+            }
             // document.querySelector('.change-license').value = data.drug;
 
             const arrCareer = data.career.split(", ");
@@ -156,13 +168,6 @@ fetch(`http://175.106.99.31/auth/user`, {
                 rowToRemove.remove();
               }
             });
-
-            document.querySelector(".doctors-hospital").innerText =
-              data.hosName;
-
-            if (data.hosName == null)
-              document.querySelector(".doctors-hospital").innerText =
-                "소속없음";
 
             document.querySelector(".change-hospital").value = data.hosName;
             document.querySelector(".change-hospitalNo").value = data.hosNo;
