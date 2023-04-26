@@ -174,7 +174,12 @@
           if (result.status == 'success') {
             location.href = '../register/doctors-advices.html';
           } else {
-            alert('로그인 실패!');
+            
+            if(result.data != null) {
+              alert('자격증 인증 안됨');
+            }else {
+              alert('로그인 실패!');
+            }
             document.querySelector('input[name="id"]').value = "";
             document.querySelector('input[name="password"]').value = "";
           }

@@ -77,11 +77,11 @@ public class AuthController {
     member = doctorService.get(id, password);
 
     if (member != null) {
-      session.setAttribute("loginNo", member.getNo());
-      session.setAttribute("dUser", member);
-      session.setAttribute("mycheck", false);
       for(int i = 0; i < member.getLicenses().size(); i++) {
         if(member.getLicenses().get(i).isLicenseOx()) {
+          session.setAttribute("loginNo", member.getNo());
+          session.setAttribute("dUser", member);
+          session.setAttribute("mycheck", false);
           return new RestResult().setStatus(RestStatus.SUCCESS);
         }
       }
