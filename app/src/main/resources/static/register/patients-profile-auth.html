@@ -60,133 +60,36 @@
         min-height: 218px;
       } */
     </style>
-  </head>
-
-  <body>
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
-      <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <img src="assets/img/newlogo.png" alt="" />
-          <span class="d-none d-lg-block">MyClinic</span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div>
-      <!-- End Logo -->
-
-      <div class="search-bar">
-        <form
-          class="search-form d-flex align-items-center"
-          method="POST"
-          action="#"
+  <!-- ======= Header ======= -->
+ <header id="header" class="header fixed-top d-flex align-items-center">
+  <div class="d-flex align-items-center justify-content-between">
+    <a class="logo d-flex align-items-center">
+      <!--  <img src="assets/img/newlogo.png" alt=""> -->
+      <span class="d-none d-lg-block">P DC</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div>
+  <!-- End Logo -->
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+      <li class="nav-item dropdown pe-3">
+        <a
+          class="nav-link nav-profile d-flex align-items-center pe-0"
+          href="doctors-profile-auth.html"
         >
-          <input
-            type="text"
-            name="query"
-            placeholder="Search"
-            title="Enter search keyword"
+          <div id="pre-userimg"></div>
+          <img
+            id="userimg"
+            src="assets/img/profile-img.jpg"
+            alt="Profile"
           />
-          <button type="submit" title="Search">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-      </div>
-      <!-- End Search Bar -->
-
-      <div class="top-menu">
-        <a href="hospitals-list.html" class="nav-link collapsed"
-          ><span>병원</span></a
-        >
-
-        <a href="doctors-community-main.html" class="nav-link collapsed"
-          ><span>커뮤니티</span></a
-        >
-      </div>
-
-      <nav class="header-nav ms-auto">
-        <ul class="d-flex align-items-center">
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span> </a
-            ><!-- End Notification Icon -->
-
-            <!--우측 상단 알림 -->
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
-            >
-              <li class="dropdown-header">
-                확인하지 않은 알림이 있습니다.
-                <a href="#"
-                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                    >View all</span
-                  ></a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>진료 답변 확인하기</h4>
-                  <p>OOO 환자님 안녕하세요....</p>
-                  <p>30분 전</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-x-circle text-danger"></i>
-                <div>
-                  <h4>개인정보 보호 안내</h4>
-                  <p>비밀번호를 변경해주세요</p>
-                  <p>1 시간 전</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
-              </li>
-            </ul>
-            <!-- End Notification Dropdown Items -->
-          </li>
-          <!-- End Notification Nav -->
-
-          <li class="nav-item dropdown pe-3">
-            <a
-              class="nav-link nav-profile d-flex align-items-center pe-0"
-              href="#"
-              data-bs-toggle="dropdown"
-            >
-              <img
-                src="assets/img/profile-img.jpg"
-                alt="Profile"
-                class="rounded-circle"
-              />
-              <span
-                id="username"
-                class="d-none d-md-block dropdown-toggle ps-2"
-              ></span> </a
-            ><!-- End Profile Iamge Icon -->
-          </li>
-          <!-- End Profile Nav -->
-        </ul>
-      </nav>
-      <!-- End Icons Navigation -->
-    </header>
-    <!-- End Header -->
+          <span id="username" class="d-none d-md-block ps-2"></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<!-- ======= Header ======= -->
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -254,12 +157,6 @@
     <main id="main" class="main">
       <div class="pagetitle">
         <h1>내 정보</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Profile</li>
-          </ol>
-        </nav>
       </div>
       <!-- End Page Title -->
 

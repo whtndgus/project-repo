@@ -3,60 +3,94 @@ class Board extends React.Component {
     super(props);
     props = props.props;
     this.state = {
-      data: props
-    }
+      data: props,
+    };
   }
   render() {
     return (
       <div class="col-lg-6">
         <div class="card cursor">
-          <div class="card-body" onClick={() => {
-            window.localStorage.setItem("boardNo", this.state.data.no)
-            location.href = "patients-record.html"
-          }}>
+          <div
+            class="card-body"
+            onClick={() => {
+              window.localStorage.setItem("boardNo", this.state.data.no);
+              location.href = "patients-record.html";
+            }}
+          >
             <h5 class="card-title">제목 : {this.state.data.title}</h5>
             <h6>문의 날짜 : {this.state.data.createdDate}</h6>
-            <p>{(this.state.data.another.split(",")[5] != "null" && this.state.data.another.split(",")[5].length > 0 ? this.state.data.another.split(",")[5] : "-")}</p>
-            <span class={this.state.data.clas1}><i class={this.state.data.clas2}></i>{this.state.data.clas3}</span>
+            <p>
+              {this.state.data.another.split(",")[5] != "null" &&
+              this.state.data.another.split(",")[5].length > 0
+                ? this.state.data.another.split(",")[5]
+                : "-"}
+            </p>
+            <span class={this.state.data.clas1}>
+              <i class={this.state.data.clas2}></i>
+              {this.state.data.clas3}
+            </span>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 fetch(`http://175.106.99.31/auth/user`, {
-  method: 'GET'
+  method: "GET",
 })
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     if (data.status == "success") {
-      console.log(data.data)
+      //옥동자 이름
+      document.querySelector("#username").innerHTML = data.data.name;
+      //옥동자 이미지
+      const preImageContainer = document.querySelector("#pre-userimg");
+      const phoUrl =
+        "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+        data.data.phoUrl +
+        "?type=f&w=36&h=36&quality=100&anilimit=24";
+      const phoType = data.data.phoType;
+      const phoName = data.data.phoName;
+
+      // 기존의 이미지 요소 삭제
+      const oldImg = document.querySelector("#userimg");
+      if (oldImg) {
+        oldImg.remove();
+      }
+
+      // 새로운 이미지 요소 생성 및 추가
+      const newImg = document.createElement("img");
+      newImg.setAttribute("id", "userimg");
+      newImg.setAttribute("src", phoUrl);
+      newImg.setAttribute("alt", phoName);
+      newImg.setAttribute("style", "width:36px; border-radius:50%");
+      preImageContainer.appendChild(newImg);
       return data.data;
     } else {
-      location.href = "index.html"
+      location.href = "index.html";
     }
   })
-  .then(user => {
+  .then((user) => {
     if (user.phy !== undefined) {
-
     } else {
-      location.href = "index.html"
+      location.href = "index.html";
     }
     fetch("http://175.106.99.31/patientsBoards", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ // 스프링에 전달할 값
-        no: user.no
-      })
+      body: JSON.stringify({
+        // 스프링에 전달할 값
+        no: user.no,
+      }),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.status == "success") {
           let pl = [];
-          data.data.forEach(board => {
+          data.data.forEach((board) => {
             let n = new Date();
             let countday = n.getDate() - board.createdDate.split("-")[2];
             let countmon = n.getMonth() - board.createdDate.split("-")[1];
@@ -88,21 +122,16 @@ fetch(`http://175.106.99.31/auth/user`, {
             board.clas1 = str1;
             board.clas2 = str2;
             board.clas3 = str3;
-            console.log(board)
+            console.log(board);
 
             pl.push(<Board props={board} />);
           });
           return pl;
         } else {
-          console.log("에러가 발생 하였거나 작성한 글이 없음")
+          console.log("에러가 발생 하였거나 작성한 글이 없음");
         }
       })
       .then((data) => {
-        ReactDOM.createRoot($(".row")[0]).render(
-          data
-        );
-      })
-  })
-
-
-
+        ReactDOM.createRoot($(".row")[0]).render(data);
+      });
+  });
