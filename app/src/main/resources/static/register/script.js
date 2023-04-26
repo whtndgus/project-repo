@@ -138,7 +138,7 @@ $(".btn-1").click(() => {
               />
             </div>
             <h5>증상 부위 또는 증상의 종류</h5>
-            <div className="input-group mb-3" style={{ height: 38 }}>
+            <div className="input-group mb-3" style={{  }}>
               <div className="input-group-text">
                 <span className="font12" style={{ marginRight: 2 }}>머리</span>
                 <input
@@ -211,6 +211,8 @@ $(".btn-1").click(() => {
                   aria-label="Checkbox for following text input"
                 />
               </div>
+            </div>
+            <div className="input-group mb-3" style={{  }}>
               <div className="input-group-text">
                 <span className="font12" style={{ marginRight: 2 }}>두통</span>
                 <input
@@ -275,140 +277,7 @@ $(".btn-1").click(() => {
                 />
               </div>
             </div>
-            <div className="input-group mb-3">
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상4</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상4"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상5</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상5"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상6</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상6"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상7</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상7"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상8</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상8"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="기타문항"
-                aria-label="Text input with checkbox"
-              />
-            </div>
+            
             <h3>추가 입력항목</h3>
 
             <form>
@@ -502,7 +371,7 @@ $(".btn-1").click(() => {
               />
             </div>
             <h5>증상 부위 또는 증상의 종류</h5>
-            <div className="input-group mb-3" style={{ height: 38 }}>
+            <div className="input-group mb-3" style={{  }}>
               <div className="input-group-text">
                 <span className="font12" style={{ marginRight: 2 }}>머리</span>
                 <input
@@ -575,6 +444,8 @@ $(".btn-1").click(() => {
                   aria-label="Checkbox for following text input"
                 />
               </div>
+            </div>
+            <div className="input-group mb-3" style={{  }}>
               <div className="input-group-text">
                 <span className="font12" style={{ marginRight: 2 }}>두통</span>
                 <input
@@ -638,140 +509,6 @@ $(".btn-1").click(() => {
                   aria-label="Checkbox for following text input"
                 />
               </div>
-            </div>
-            <div className="input-group mb-3">
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상4</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상4"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상5</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상5"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상6</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상6"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상7</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상7"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상8</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상8"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="기타문항"
-                aria-label="Text input with checkbox"
-              />
             </div>
             <h3>추가 입력항목</h3>
             <div className="input-group mb-3" style={{ width: 200, float: "left" }}>
@@ -878,8 +615,12 @@ $(".btn-1").click(() => {
               중복확인
             </button> */}
 
+            <form>
+              <input type="file" name="files" multiple="multiple" style={{ width: 250 }} />
+              <span style={{ fontWeight: 900 }}>증상 사진 선택</span>
+            </form>
 
-            <div className="input-group mb-3" style={{ marginLeft: 0, marginRight: 200, width: 500, float: "left" }}>
+            <div className="input-group mb-3" style={{ marginLeft: 0, marginRight: 200, width: 500, float: "left", marginTop: 20}}>
               <span className="input-group-text" id="basic-addon1">
                 주소
               </span>
@@ -889,15 +630,15 @@ $(".btn-1").click(() => {
                 placeholder="새주소?"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                readOnly="true"
+                id="extraAddress"
               />
+              <div class="col-sm-3" style={{marginLeft:20}}>
+                <input type="button" onClick={execDaumPostcode} defaultValue="우편번호 찾기" className="btn btn-primary"/>
+              </div>
             </div>
 
-            <form>
-              <input type="file" name="files" multiple="multiple" style={{ width: 250 }} />
-              <span style={{ fontWeight: 900 }}>증상 사진 선택</span>
-            </form>
-
-            <div className="input-group mb-3" style={{ width: 700, float: "left" }}>
+            <div className="input-group mb-3" style={{ width: 700, float: "left"}}>
               <span className="input-group-text" id="basic-addon1">
                 상세주소
               </span>
@@ -1389,4 +1130,42 @@ function btnoff(btn) {
   btn.css("margin-top", "9px")
   btn.css("opacity", "0.8")
   btn.css("box-shadow", "0 0 0 1px #82c8a0 inset,0 0 0 2px rgba(255,255,255,0.15) inset,0 0 0 1px rgba(0,0,0,0.4)")
+}
+function execDaumPostcode() {
+  new daum.Postcode({
+    oncomplete: function (data) {
+      // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+      // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+      // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+      var roadAddr = data.roadAddress; // 도로명 주소 변수
+      var extraRoadAddr = ''; // 참고 항목 변수
+
+      // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+      // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+      if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+        extraRoadAddr += data.bname;
+      }
+      // 건물명이 있고, 공동주택일 경우 추가한다.
+      if (data.buildingName !== '' && data.apartment === 'Y') {
+        extraRoadAddr +=
+          extraRoadAddr !== ''
+            ? ', ' + data.buildingName
+            : data.buildingName;
+      }
+      // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+      if (extraRoadAddr !== '') {
+        extraRoadAddr = ' (' + extraRoadAddr + ')';
+      }
+
+      // 우편번호와 주소 정보를 해당 필드에 넣는다.
+
+      // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+      if (roadAddr !== '') {
+        document.getElementById('extraAddress').value = data.roadAddress;
+      } else {
+        document.getElementById('extraAddress').value = '';
+      }
+    },
+  }).open();
 }
