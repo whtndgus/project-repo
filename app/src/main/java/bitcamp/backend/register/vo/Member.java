@@ -23,6 +23,6 @@ public class Member {
   private boolean admin;
   private boolean naver;
 
-  @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
+  @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
   private Date birth;
 }
