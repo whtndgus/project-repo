@@ -281,7 +281,7 @@ $(".btn-1").click(() => {
             <h3>추가 입력항목</h3>
 
             <form>
-              <input type="file" name="files" multiple="multiple" style={{ width: 250 }} />
+              <input type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 250 }} />
               <span style={{ fontWeight: 900 }}>증상 사진 선택</span>
             </form>
 
@@ -617,7 +617,7 @@ $(".btn-1").click(() => {
             </button> */}
 
             <form>
-              <input type="file" name="files" multiple="multiple" style={{ width: 250 }} />
+              <input type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 250 }} />
               <span style={{ fontWeight: 900 }}>증상 사진 선택</span>
             </form>
 
@@ -999,12 +999,8 @@ function submitFiles(no) {
     return
   }
   for (i = 0; i < files.length; i++) {
-    if (files[i].name.includes(".bmp") || files[i].name.includes(".jpeg") || files[i].name.includes(".jpg") || files[i].name.includes(".gif") || files[i].name.includes(".png") || files[i].name.includes(".tiff") || files[i].name.includes(".psd") || files[i].name.includes(".tga") || files[i].name.includes(".ai") || files[i].name.includes(".svg") || files[i].name.includes(".exif") || files[i].name.includes(".jfif")) {
-      formData.append("files", files[i]);
-      formData.append("boardNo", no); //  여기 입력되는 정수가 보드 번호여야 한다
-      console.log(formData.getAll("files"))
-      console.log(formData.getAll("boardNo"))
-    }
+    formData.append("files", files[i]);
+    formData.append("boardNo", no); //  여기 입력되는 정수가 보드 번호여야 한다
   }
 
   $.ajax({
