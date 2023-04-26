@@ -73,7 +73,7 @@ public class AuthController {
   public Object doctorLogin(String id, String password, HttpSession session) { 
 
 
-    Member member = null;
+    Doctor member = null;
     member = doctorService.get(id, password);
 
     if (member != null) {
