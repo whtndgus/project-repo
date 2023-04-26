@@ -1053,8 +1053,8 @@ $(".backmov-right").click(() => {
 })
 
 $(".body-cover").css("width", screen.availWidth)
-$("body").css("width", screen.availWidth*4)
-$("body").css("background-size", screen.availWidth*4)
+$("body").css("width", screen.availWidth*3)
+$("body").css("background-size", screen.availWidth*3)
 
 setTimeout(() => {
   let s = $(document).scrollLeft();
