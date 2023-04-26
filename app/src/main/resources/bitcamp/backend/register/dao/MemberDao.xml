@@ -24,8 +24,8 @@
 
   <insert id="insert" parameterType="member" 
           useGeneratedKeys="true" keyProperty="no" keyColumn="m_no">
-    insert into app_member(m_id, m_pw, m_name, m_bday, addr, m_email, m_gender, m_tel, m_auth, m_photo, pho_filename, pho_type)
-    values(#{id}, sha2(#{password},256), #{name}, #{birth}, #{addr}, #{email}, #{gender}, #{tel}, #{auth}, #{phoUrl}, #{phoName}, #{phoType})
+    insert into app_member(m_id, m_pw, m_name, m_bday, addr, m_email, m_gender, m_tel, m_auth, m_photo, pho_filename, pho_type, admin, naver)
+    values(#{id}, sha2(#{password},256), #{name}, #{birth}, #{addr}, #{email}, #{gender}, #{tel}, #{auth}, #{phoUrl}, #{phoName}, #{phoType}, #{admin}, #{naver})
   </insert>
   
   <select id="findById" parameterType="String" resultMap="memberMap">
