@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>의사 - Main</title>
@@ -74,15 +74,16 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="../assets/img/newlogo.png" alt="">
-        <span class="d-none d-lg-block">MyClinic</span>
+      <a class="logo d-flex align-items-center">
+       <!--  <img src="assets/img/newlogo.png" alt=""> -->
+        <span class="d-none d-lg-block">P DC</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
     <!-- End Logo -->
     <div class="top-menu">
       <a href="hospitals-list.html" class="nav-link collapsed"><span>병원</span></a>
-
+  
       <a href="doctors-community-main.html" class="nav-link collapsed"
         ><span>커뮤니티</span></a
       >
@@ -90,7 +91,10 @@
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
         <li class="nav-item dropdown pe-3">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0">
+          <a
+            class="nav-link nav-profile d-flex align-items-center pe-0"
+            href="doctors-profile-auth.html"
+          >
             <div id="pre-userimg"></div>
             <img
               id="userimg"
@@ -103,7 +107,6 @@
       </ul>
     </nav>
   </header>
-
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -306,15 +309,31 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-  
-    <div class="footer-img-container">
-     <img src ="../register/assets/img/bitcamplogo.png" > 
-     <img src ="../register/assets/img/navercloudlogo.png" style="width:200px; margin-left: 50px;"> 
-     <img src ="../register/assets/img/magicecole.png" style="width:150px; margin-left: 50px;">
+    <div >
+     <div class="tooltip-container">
+        <a href="https://github.com/whtmdgus" data-bs-toggle="tooltip" data-bs-placement="top" title="조승현">
+          <img src="../register/assets/img/gitlogo.png" style="width:40px">
+        </a>
+        <a href="https://github.com/chaminju927" data-bs-toggle="tooltip" data-bs-placement="top" title="차민주">
+          <img src="../register/assets/img/gitlogo.png" style="width:40px">
+        </a>
+        <a href="https://github.com/molang2" data-bs-toggle="tooltip" data-bs-placement="top" title="이준영">
+          <img src="../register/assets/img/gitlogo.png" style="width:40px">
+        </a>
+        <a href="https://github.com/hyunwookimkim" data-bs-toggle="tooltip" data-bs-placement="top" title="김현우">
+          <img src="../register/assets/img/gitlogo.png" style="width:40px">
+        </a>
+        <a href="https://github.com/omelase" data-bs-toggle="tooltip" data-bs-placement="top" title="이예찬">
+          <img src="../register/assets/img/gitlogo.png" style="width:40px">
+        </a>
+     </div>
+     <div class="footer-img-container">
+       <img src ="../register/assets/img/bitcamplogo.png" > 
+       <img src ="../register/assets/img/navercloudlogo.png" style="width:200px; margin-left: 50px;"> 
+       <img src ="../register/assets/img/magicecole.png" style="width:150px; margin-left: 50px;">
+      </div>
     </div>
-     
-    </footer><!-- End Footer -->
-
+      </footer><!-- End Footer -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
@@ -347,8 +366,8 @@
       .then(response => response.json())
       .then(data => {
         if (data.status == "success") {
-          //옥동자 이름
-          document.querySelector("#username").innerHTML = data.data.name;
+            //옥동자 이름
+            document.querySelector("#username").innerHTML = data.data.name;
             //옥동자 이미지
             const preImageContainer = document.querySelector("#pre-userimg");
             const phoUrl =

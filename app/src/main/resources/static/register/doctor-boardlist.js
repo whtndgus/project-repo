@@ -1,40 +1,67 @@
 let boardList = [];
 
 function Span(props) {
-  return (<span className={props.data[1]}>{props.data[0]}</span>)
+  return <span className={props.data[1]}>{props.data[0]}</span>;
 }
 function Tds(props) {
-  return (<td><Span data={props.data}></Span></td>)
+  return (
+    <td>
+      <Span data={props.data}></Span>
+    </td>
+  );
 }
 
 function Td(props) {
-  return (<td>{props.data}</td>)
+  return <td>{props.data}</td>;
 }
 
-  let myno = 0; 
+let myno = 0;
 
-  fetch(`http://175.106.99.31/auth/user`, {
-    method: 'GET'
+fetch(`http://175.106.99.31/auth/user`, {
+  method: "GET",
+})
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.status == "success") {
+      //옥동자 이름
+      document.querySelector("#username").innerHTML = data.data.name;
+      //옥동자 이미지
+      const preImageContainer = document.querySelector("#pre-userimg");
+      const phoUrl =
+        "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+        data.data.phoUrl +
+        "?type=f&w=36&h=36&quality=100&anilimit=24";
+      const phoType = data.data.phoType;
+      const phoName = data.data.phoName;
+
+      // 기존의 이미지 요소 삭제
+      const oldImg = document.querySelector("#userimg");
+      if (oldImg) {
+        oldImg.remove();
+      }
+
+      // 새로운 이미지 요소 생성 및 추가
+      const newImg = document.createElement("img");
+      newImg.setAttribute("id", "userimg");
+      newImg.setAttribute("src", phoUrl);
+      newImg.setAttribute("alt", phoName);
+      newImg.setAttribute("style", "width:36px; border-radius:50%");
+      preImageContainer.appendChild(newImg);
+      return data.data;
+    } else {
+      location.href = "../auth/doctors-login.html";
+    }
+    return data.data;
   })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status == "success") {
-        return data.data;
-      } else {
-        location.href = "../auth/doctors-login.html"
-      }
-      return data.data
-    })
-    .then((user) => {
-      console.log(user.hosName !== undefined)
-      if(user.hosName !== undefined) {
-        myno = user.no
-      }else {
-        console.log(user.hosName)
-        location.href = "../auth/doctors-login.html"
-      }
-  
-    })
+  .then((user) => {
+    console.log(user.hosName !== undefined);
+    if (user.hosName !== undefined) {
+      myno = user.no;
+    } else {
+      console.log(user.hosName);
+      location.href = "../auth/doctors-login.html";
+    }
+  });
 
 class BoardLists extends React.Component {
   constructor(props) {
@@ -47,15 +74,18 @@ class BoardLists extends React.Component {
       warn: props.warn,
       writer: props.writer,
       date: props.date,
-      warnLevel: props.warnLevel
-    }
+      warnLevel: props.warnLevel,
+    };
   }
   render() {
     return (
-      <tr className="selects" onClick={() => {
-        window.localStorage.setItem("boardNo", this.state.no)
-        location.href = "doctors-records.html?no=" + this.state.no;
-      }}>
+      <tr
+        className="selects"
+        onClick={() => {
+          window.localStorage.setItem("boardNo", this.state.no);
+          location.href = "doctors-records.html?no=" + this.state.no;
+        }}
+      >
         <Td data={this.state.answer}></Td>
         <Td data={this.state.no}></Td>
         <Td data={this.state.title}></Td>
@@ -67,33 +97,32 @@ class BoardLists extends React.Component {
   }
 }
 
-reflesh("")
+reflesh("");
 
 $(".search-btn").click(() => {
-  reflesh($(".search-filter").val())
+  reflesh($(".search-filter").val());
 });
 
 function reflesh(string) {
   let lists;
 
   fetch("http://175.106.99.31/boardSearch", {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ // 스프링에 전달할 값
+    body: JSON.stringify({
+      // 스프링에 전달할 값
       search: string,
-      tags: $(".search-tags").val()
-    })
+      tags: $(".search-tags").val(),
+    }),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       boardList = data;
       let list = [];
-      new Promise(resolve => {
-        data.forEach(board => {
-          
-
+      new Promise((resolve) => {
+        data.forEach((board) => {
           let n = new Date();
           let countday = n.getDate() - board.createdDate.split("-")[2];
           let countmon = n.getMonth() - board.createdDate.split("-")[1];
@@ -114,26 +143,24 @@ function reflesh(string) {
             title: board.title,
             warn: "경고",
             warnLevel: str,
-            writer: board.another.split(",")[0].length > 0 ? board.another.split(",")[0] : "-",
+            writer:
+              board.another.split(",")[0].length > 0
+                ? board.another.split(",")[0]
+                : "-",
             date: board.createdDate,
-          }
+          };
           if (board.title.includes($(".search-filter").val())) {
-            list.push(<BoardLists props={obj} />)
+            list.push(<BoardLists props={obj} />);
           }
         });
         resolve();
-      })
-      .then(() => {
+      }).then(() => {
         lists = list;
-      })
+      });
     })
     .then(() => {
-      ReactDOM.createRoot($(".table tbody")[0]).render(
-        lists
-      )
-    })
+      ReactDOM.createRoot($(".table tbody")[0]).render(lists);
+    });
 }
 
-function name(params) {
-  
-}
+function name(params) {}

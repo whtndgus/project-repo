@@ -5,7 +5,6 @@ const tooltipList = [...tooltipTriggerList].map(
   (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
 );
 
-
 class Pbtr extends React.Component {
   constructor(props) {
     super(props);
@@ -15,9 +14,7 @@ class Pbtr extends React.Component {
   render() {
     if (this.state.filter) {
       return (
-        <tr onClick={() => {
-
-        }}>
+        <tr onClick={() => {}}>
           <th>{this.state.name}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.anos != "null" ? this.state.anos : "-"}</td>
@@ -40,9 +37,7 @@ class Pbtr extends React.Component {
       );
     } else {
       return (
-        <tr onClick={() => {
-
-        }}>
+        <tr onClick={() => {}}>
           <th>{this.state.name}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.anos != "null" ? this.state.anos : "-"}</td>
@@ -71,14 +66,12 @@ class Dctr extends React.Component {
   constructor(props) {
     super(props);
     props = props.props;
-    this.state = props
+    this.state = props;
   }
   render() {
     if (this.state.filter) {
       return (
-        <tr onClick={() => {
-
-        }}>
+        <tr onClick={() => {}}>
           <th>{this.state.doctorName}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.contents}</td>
@@ -101,9 +94,7 @@ class Dctr extends React.Component {
       );
     } else {
       return (
-        <tr onClick={() => {
-
-        }}>
+        <tr onClick={() => {}}>
           <th>{this.state.doctorName}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.contents}</td>
@@ -129,91 +120,109 @@ class Dctr extends React.Component {
 }
 
 fetch(`http://175.106.99.31/auth/user`, {
-  method: 'GET',
+  method: "GET",
 })
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     if (data.status == "success") {
+      //옥동자 이름
+      document.querySelector("#username").innerHTML = data.data.name;
+      //옥동자 이미지
+      const preImageContainer = document.querySelector("#pre-userimg");
+      const phoUrl =
+        "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+        data.data.phoUrl +
+        "?type=f&w=36&h=36&quality=100&anilimit=24";
+      const phoType = data.data.phoType;
+      const phoName = data.data.phoName;
+
+      // 기존의 이미지 요소 삭제
+      const oldImg = document.querySelector("#userimg");
+      if (oldImg) {
+        oldImg.remove();
+      }
+
+      // 새로운 이미지 요소 생성 및 추가
+      const newImg = document.createElement("img");
+      newImg.setAttribute("id", "userimg");
+      newImg.setAttribute("src", phoUrl);
+      newImg.setAttribute("alt", phoName);
+      newImg.setAttribute("style", "width:36px; border-radius:50%");
+      preImageContainer.appendChild(newImg);
       return data.data;
     } else {
-      location.href = "index.html"
+      location.href = "index.html";
     }
-    return data.data
+    return data.data;
   })
   .then((user) => {
-    if(user.admin) {
+    if (user.admin) {
       // myno = user.no
-    }else {
-      location.href = "index.html"
+    } else {
+      location.href = "index.html";
     }
-
-  })
-
+  });
 
 fetch("http://175.106.99.31/boardSearch")
   .then((response) => response.json())
   .then((data) => {
-    console.log(data)
+    console.log(data);
     let patients = [];
-    data.forEach(patient => {
+    data.forEach((patient) => {
       patient.name = patient.another.split(",")[0];
       patient.ano = patient.another.split(",")[5];
 
       if (patient.title.length > 8) {
-        patient.titles = patient.title.substring(0, 8) + ". . ."
-      }else {
-        patient.titles = patient.title
+        patient.titles = patient.title.substring(0, 8) + ". . .";
+      } else {
+        patient.titles = patient.title;
       }
       if (patient.ano.length > 6) {
-        patient.anos = patient.ano.substring(0, 6) + ". . ."
-      }else if(patient.ano == "null") {
-        patient.ano = "-"
+        patient.anos = patient.ano.substring(0, 6) + ". . .";
+      } else if (patient.ano == "null") {
+        patient.ano = "-";
       }
 
-      patients.push(<Pbtr props={patient} />)
+      patients.push(<Pbtr props={patient} />);
     });
     return patients;
   })
-  .then(list => {
-    ReactDOM.createRoot($(".patients-members")[0]).render(
-      list
-    )
-  })
+  .then((list) => {
+    ReactDOM.createRoot($(".patients-members")[0]).render(list);
+  });
 
 fetch("http://175.106.99.31/community/list")
   .then((response) => response.json())
   .then((data) => {
-    console.log(data)
+    console.log(data);
     let doctors = [];
-    data.data.forEach(doctor => {
-      if(doctor.category == 1) {
+    data.data.forEach((doctor) => {
+      if (doctor.category == 1) {
         doctor.category = "자유 게시판";
-      }else if(doctor.category == 2) {
+      } else if (doctor.category == 2) {
         doctor.category = "의학 뉴스";
-      }else if(doctor.category == 3) {
+      } else if (doctor.category == 3) {
         doctor.category = "질문 게시판";
       }
       if (doctor.title.length > 6) {
-        doctor.titles = doctor.title.substring(0, 6) + ". . ."
-      }else {
-        doctor.titles = doctor.title
+        doctor.titles = doctor.title.substring(0, 6) + ". . .";
+      } else {
+        doctor.titles = doctor.title;
       }
 
       if (doctor.content.length > 6) {
-        doctor.contents = doctor.content.substring(0, 6) + ". . ."
-      }else {
-        doctor.contents = doctor.content
+        doctor.contents = doctor.content.substring(0, 6) + ". . .";
+      } else {
+        doctor.contents = doctor.content;
       }
 
-      doctors.push(<Dctr props={doctor} />)
+      doctors.push(<Dctr props={doctor} />);
     });
     return doctors;
   })
-  .then(list => {
-    ReactDOM.createRoot($(".doctors-members")[0]).render(
-      list
-    )
-  })
+  .then((list) => {
+    ReactDOM.createRoot($(".doctors-members")[0]).render(list);
+  });
 
 function Pboard(props) {
   return (
@@ -228,20 +237,56 @@ function Pboard(props) {
       </div>
       <div className="top-content">
         <strong>제목 :</strong>
-        <input type="text" className="form-control board-title" placeholder="" defaultValue={props.props.title} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-title"
+          placeholder=""
+          defaultValue={props.props.title}
+          readOnly="true"
+        />
         <strong>증상 :</strong>
-        <input type="text" className="form-control board-pain" placeholder="" defaultValue={props.props.pain} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-pain"
+          placeholder=""
+          defaultValue={props.props.pain}
+          readOnly="true"
+        />
       </div>
       <div className="middle-content">
         <h3>인적 사항</h3>
         <strong>이름 :</strong>
-        <input type="text" className="form-control board-name" placeholder="" defaultValue={props.props.another.split(",")[0]} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-name"
+          placeholder=""
+          defaultValue={props.props.another.split(",")[0]}
+          readOnly="true"
+        />
         <strong>나이 :</strong>
-        <input type="text" className="form-control board-age" placeholder="" defaultValue={props.props.another.split(",")[1]} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-age"
+          placeholder=""
+          defaultValue={props.props.another.split(",")[1]}
+          readOnly="true"
+        />
         <strong>연락처 :</strong>
-        <input type="text" className="form-control board-tel" placeholder="" defaultValue={props.props.another.split(",")[3]} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-tel"
+          placeholder=""
+          defaultValue={props.props.another.split(",")[3]}
+          readOnly="true"
+        />
         <strong>주소 :</strong>
-        <input type="text" className="form-control board-addr" placeholder="" defaultValue={props.props.another.split(",")[4]} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-addr"
+          placeholder=""
+          defaultValue={props.props.another.split(",")[4]}
+          readOnly="true"
+        />
       </div>
       <div className="bottom-content">
         <div className="form-floating">
@@ -257,69 +302,78 @@ function Pboard(props) {
         </div>
       </div>
       <div className="btn-content">
-        <button type="button" className="btn btn-primary board-close" onClick={() => {
-          ReactDOM.createRoot($(".new-windows")[0]).render();
-        }}>
+        <button
+          type="button"
+          className="btn btn-primary board-close"
+          onClick={() => {
+            ReactDOM.createRoot($(".new-windows")[0]).render();
+          }}
+        >
           닫기
         </button>
-        <button type="button" className="btn btn-danger board-delete" onClick={() => {
-            if(confirm(`작성글을 삭제\n진달글 수 : ${props.props.fedcount}개`)){
+        <button
+          type="button"
+          className="btn btn-danger board-delete"
+          onClick={() => {
+            if (
+              confirm(`작성글을 삭제\n진달글 수 : ${props.props.fedcount}개`)
+            ) {
               fetch("http://175.106.99.31/deleteByNo", {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                  'Content-Type': 'application/json',
+                  "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ // 스프링에 전달할 값
-                  no: props.props.no
-                })
+                body: JSON.stringify({
+                  // 스프링에 전달할 값
+                  no: props.props.no,
+                }),
               })
-                .then(response => response.json())
-                .then(data => {
-    
+                .then((response) => response.json())
+                .then((data) => {
                   ReactDOM.createRoot($(".new-windows")[0]).render();
                   return data.status;
                 })
                 .then((status) => {
-                  if(status == "success")
-                    location.href = "";
-                })
-            }else {
-
+                  if (status == "success") location.href = "";
+                });
+            } else {
             }
-          }}>
+          }}
+        >
           삭제
         </button>
-        <button type="button" className="btn btn-primary board-insert" onClick={() => {
-          fetch("http://175.106.99.31/auth/adminBoard", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ // 스프링에 전달할 값
-              no: props.props.no,
-              filter: $(".window-check").prop('checked')
+        <button
+          type="button"
+          className="btn btn-primary board-insert"
+          onClick={() => {
+            fetch("http://175.106.99.31/auth/adminBoard", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // 스프링에 전달할 값
+                no: props.props.no,
+                filter: $(".window-check").prop("checked"),
+              }),
             })
-          })
-            .then(response => response.json())
-            .then(data => {
-
-              ReactDOM.createRoot($(".new-windows")[0]).render();
-              return data.status;
-            })
-            .then((status) => {
-              if(status == "success")
-                location.href = "";
-            })
-        }}>
+              .then((response) => response.json())
+              .then((data) => {
+                ReactDOM.createRoot($(".new-windows")[0]).render();
+                return data.status;
+              })
+              .then((status) => {
+                if (status == "success") location.href = "";
+              });
+          }}
+        >
           적용
         </button>
       </div>
     </div>
-
-  )
+  );
 }
 function Pboardc(props) {
-
   return (
     <div className="new-window">
       <div className="form-check form-switch window-check-cover">
@@ -333,20 +387,56 @@ function Pboardc(props) {
       </div>
       <div className="top-content">
         제목 :
-        <input type="text" className="form-control board-title" placeholder="" defaultValue={props.props.title} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-title"
+          placeholder=""
+          defaultValue={props.props.title}
+          readOnly="true"
+        />
         증상 :
-        <input type="text" className="form-control board-pain" placeholder="" defaultValue={props.props.pain} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-pain"
+          placeholder=""
+          defaultValue={props.props.pain}
+          readOnly="true"
+        />
       </div>
       <div className="middle-content">
         <h3>인적 사항</h3>
         이름 :
-        <input type="text" className="form-control board-name" placeholder="" defaultValue={props.props.another.split(",")[0]} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-name"
+          placeholder=""
+          defaultValue={props.props.another.split(",")[0]}
+          readOnly="true"
+        />
         나이 :
-        <input type="text" className="form-control board-age" placeholder="" defaultValue={props.props.another.split(",")[1]} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-age"
+          placeholder=""
+          defaultValue={props.props.another.split(",")[1]}
+          readOnly="true"
+        />
         연락처 :
-        <input type="text" className="form-control board-tel" placeholder="" defaultValue={props.props.another.split(",")[3]} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-tel"
+          placeholder=""
+          defaultValue={props.props.another.split(",")[3]}
+          readOnly="true"
+        />
         주소 :
-        <input type="text" className="form-control board-addr" placeholder="" defaultValue={props.props.another.split(",")[4]} readOnly="true" />
+        <input
+          type="text"
+          className="form-control board-addr"
+          placeholder=""
+          defaultValue={props.props.another.split(",")[4]}
+          readOnly="true"
+        />
       </div>
       <div className="bottom-content">
         <div className="form-floating">
@@ -362,71 +452,79 @@ function Pboardc(props) {
         </div>
       </div>
       <div className="btn-content">
-        <button type="button" className="btn btn-primary board-close" onClick={() => {
-          ReactDOM.createRoot($(".new-windows")[0]).render();
-        }}>
+        <button
+          type="button"
+          className="btn btn-primary board-close"
+          onClick={() => {
+            ReactDOM.createRoot($(".new-windows")[0]).render();
+          }}
+        >
           닫기
         </button>
-        <button type="button" className="btn btn-danger board-delete" onClick={() => {
-            if(confirm(`작성글을 삭제\n진달글 수 : ${props.props.fedcount}개`)){
+        <button
+          type="button"
+          className="btn btn-danger board-delete"
+          onClick={() => {
+            if (
+              confirm(`작성글을 삭제\n진달글 수 : ${props.props.fedcount}개`)
+            ) {
               fetch("http://175.106.99.31/deleteByNo", {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                  'Content-Type': 'application/json',
+                  "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ // 스프링에 전달할 값
-                  no: props.props.no
-                })
+                body: JSON.stringify({
+                  // 스프링에 전달할 값
+                  no: props.props.no,
+                }),
               })
-                .then(response => response.json())
-                .then(data => {
-    
+                .then((response) => response.json())
+                .then((data) => {
                   ReactDOM.createRoot($(".new-windows")[0]).render();
                   return data.status;
                 })
                 .then((status) => {
-                  if(status == "success")
-                    location.href = "";
-                })
-            }else {
-
+                  if (status == "success") location.href = "";
+                });
+            } else {
             }
-          }}>
+          }}
+        >
           삭제
         </button>
-        <button type="button" className="btn btn-primary board-insert" onClick={() => {
-          fetch("http://175.106.99.31/auth/adminBoard", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ // 스프링에 전달할 값
-              no: props.props.no,
-              filter: $(".window-check").prop('checked')
+        <button
+          type="button"
+          className="btn btn-primary board-insert"
+          onClick={() => {
+            fetch("http://175.106.99.31/auth/adminBoard", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // 스프링에 전달할 값
+                no: props.props.no,
+                filter: $(".window-check").prop("checked"),
+              }),
             })
-          })
-            .then(response => response.json())
-            .then(data => {
-
-              ReactDOM.createRoot($(".new-windows")[0]).render();
-              return data.status;
-            })
-            .then((status) => {
-              if(status == "success")
-                location.href = "";
-            })
-        }}>
+              .then((response) => response.json())
+              .then((data) => {
+                ReactDOM.createRoot($(".new-windows")[0]).render();
+                return data.status;
+              })
+              .then((status) => {
+                if (status == "success") location.href = "";
+              });
+          }}
+        >
           적용
         </button>
       </div>
     </div>
-
-  )
+  );
 }
 
 let patientsBoardList = <Pboard props={0} />;
-
-
 
 function Dcomm(props) {
   return (
@@ -441,16 +539,40 @@ function Dcomm(props) {
       </div>
       <div className="top-content">
         제목 :
-        <input type="text" className="form-control comm-title" placeholder="" defaultValue={props.props.title} readOnly="true"/>
+        <input
+          type="text"
+          className="form-control comm-title"
+          placeholder=""
+          defaultValue={props.props.title}
+          readOnly="true"
+        />
       </div>
       <div className="middle-content">
         <h3>인적 사항</h3>
         카테고리 :
-        <input type="text" className="form-control comm-cat" placeholder="" defaultValue={props.props.category} readOnly="true" />
+        <input
+          type="text"
+          className="form-control comm-cat"
+          placeholder=""
+          defaultValue={props.props.category}
+          readOnly="true"
+        />
         작성자 :
-        <input type="text" className="form-control comm-name" placeholder="" defaultValue={props.props.doctorName} readOnly="true" />
+        <input
+          type="text"
+          className="form-control comm-name"
+          placeholder=""
+          defaultValue={props.props.doctorName}
+          readOnly="true"
+        />
         작성일 :
-        <input type="text" className="form-control comm-date" placeholder="" defaultValue={props.props.createdDate} readOnly="true" />
+        <input
+          type="text"
+          className="form-control comm-date"
+          placeholder=""
+          defaultValue={props.props.createdDate}
+          readOnly="true"
+        />
       </div>
       <div className="bottom-content">
         <div className="form-floating">
@@ -466,62 +588,70 @@ function Dcomm(props) {
         </div>
       </div>
       <div className="btn-content">
-        <button type="button" className="btn btn-primary comm-close" onClick={() => {
-          ReactDOM.createRoot($(".new-windows")[0]).render();
-        }}>
+        <button
+          type="button"
+          className="btn btn-primary comm-close"
+          onClick={() => {
+            ReactDOM.createRoot($(".new-windows")[0]).render();
+          }}
+        >
           닫기
         </button>
-        <button type="button" className="btn btn-danger comm-delete" onClick={() => {
-            if(confirm(`작성글을 삭제`)){
+        <button
+          type="button"
+          className="btn btn-danger comm-delete"
+          onClick={() => {
+            if (confirm(`작성글을 삭제`)) {
               fetch(`http://175.106.99.31/community/${props.props.no}`, {
-                method: 'DELETE',
+                method: "DELETE",
                 headers: {
-                  'Content-Type': 'application/json',
+                  "Content-Type": "application/json",
                 },
               })
-                .then(response => response.json())
-                .then(data => {
+                .then((response) => response.json())
+                .then((data) => {
                   ReactDOM.createRoot($(".new-windows")[0]).render();
                   return data.status;
                 })
-                .then(status => {
-                  if(status == "success")
-                  location.href = "";
-                })
-            }else {
-
+                .then((status) => {
+                  if (status == "success") location.href = "";
+                });
+            } else {
             }
-          }}>
+          }}
+        >
           삭제
         </button>
-        <button type="button" className="btn btn-primary comm-insert" onClick={() => {
-          fetch("http://175.106.99.31/auth/adminComm", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ // 스프링에 전달할 값
-              no: props.props.no,
-              filter: $(".window-check").prop('checked')
+        <button
+          type="button"
+          className="btn btn-primary comm-insert"
+          onClick={() => {
+            fetch("http://175.106.99.31/auth/adminComm", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // 스프링에 전달할 값
+                no: props.props.no,
+                filter: $(".window-check").prop("checked"),
+              }),
             })
-          })
-            .then(response => response.json())
-            .then(data => {
-
-              ReactDOM.createRoot($(".new-windows")[0]).render();
-              return data.status;
-            })
-            .then((status) => {
-              if(status == "success")
-                location.href = "";
-            })
-        }}>
+              .then((response) => response.json())
+              .then((data) => {
+                ReactDOM.createRoot($(".new-windows")[0]).render();
+                return data.status;
+              })
+              .then((status) => {
+                if (status == "success") location.href = "";
+              });
+          }}
+        >
           적용
         </button>
       </div>
     </div>
-
-  )
+  );
 }
 function Dcommc(props) {
   return (
@@ -537,16 +667,40 @@ function Dcommc(props) {
       </div>
       <div className="top-content">
         제목 :
-        <input type="text" className="form-control comm-title" placeholder="" defaultValue={props.props.title} readOnly="true"/>
+        <input
+          type="text"
+          className="form-control comm-title"
+          placeholder=""
+          defaultValue={props.props.title}
+          readOnly="true"
+        />
       </div>
       <div className="middle-content">
         <h3>인적 사항</h3>
         카테고리 :
-        <input type="text" className="form-control comm-cat" placeholder="" defaultValue={props.props.category} readOnly="true" />
+        <input
+          type="text"
+          className="form-control comm-cat"
+          placeholder=""
+          defaultValue={props.props.category}
+          readOnly="true"
+        />
         작성자 :
-        <input type="text" className="form-control comm-name" placeholder="" defaultValue={props.props.doctorName} readOnly="true" />
+        <input
+          type="text"
+          className="form-control comm-name"
+          placeholder=""
+          defaultValue={props.props.doctorName}
+          readOnly="true"
+        />
         작성일 :
-        <input type="text" className="form-control comm-date" placeholder="" defaultValue={props.props.createdDate} readOnly="true" />
+        <input
+          type="text"
+          className="form-control comm-date"
+          placeholder=""
+          defaultValue={props.props.createdDate}
+          readOnly="true"
+        />
       </div>
       <div className="bottom-content">
         <div className="form-floating">
@@ -562,60 +716,68 @@ function Dcommc(props) {
         </div>
       </div>
       <div className="btn-content">
-        <button type="button" className="btn btn-primary comm-close" onClick={() => {
-          ReactDOM.createRoot($(".new-windows")[0]).render();
-        }}>
+        <button
+          type="button"
+          className="btn btn-primary comm-close"
+          onClick={() => {
+            ReactDOM.createRoot($(".new-windows")[0]).render();
+          }}
+        >
           닫기
         </button>
-        <button type="button" className="btn btn-danger comm-delete" onClick={() => {
-            if(confirm(`작성글을 삭제`)){
+        <button
+          type="button"
+          className="btn btn-danger comm-delete"
+          onClick={() => {
+            if (confirm(`작성글을 삭제`)) {
               fetch(`http://175.106.99.31/community/${props.props.no}`, {
-                method: 'DELETE',
+                method: "DELETE",
                 headers: {
-                  'Content-Type': 'application/json',
+                  "Content-Type": "application/json",
                 },
               })
-                .then(response => response.json())
-                .then(data => {
+                .then((response) => response.json())
+                .then((data) => {
                   ReactDOM.createRoot($(".new-windows")[0]).render();
                   return data.status;
                 })
-                .then(status => {
-                  if(status == "success")
-                  location.href = "";
-                })
-            }else {
-
+                .then((status) => {
+                  if (status == "success") location.href = "";
+                });
+            } else {
             }
-          }}>
+          }}
+        >
           삭제
         </button>
-        <button type="button" className="btn btn-primary comm-insert" onClick={() => {
-          fetch("http://175.106.99.31/auth/adminComm", {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ // 스프링에 전달할 값
-              no: props.props.no,
-              filter: $(".window-check").prop('checked')
+        <button
+          type="button"
+          className="btn btn-primary comm-insert"
+          onClick={() => {
+            fetch("http://175.106.99.31/auth/adminComm", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // 스프링에 전달할 값
+                no: props.props.no,
+                filter: $(".window-check").prop("checked"),
+              }),
             })
-          })
-            .then(response => response.json())
-            .then(data => {
-
-              ReactDOM.createRoot($(".new-windows")[0]).render();
-              return data.status;
-            })
-            .then((status) => {
-              if(status == "success")
-                location.href = "";
-            })
-        }}>
+              .then((response) => response.json())
+              .then((data) => {
+                ReactDOM.createRoot($(".new-windows")[0]).render();
+                return data.status;
+              })
+              .then((status) => {
+                if (status == "success") location.href = "";
+              });
+          }}
+        >
           적용
         </button>
       </div>
     </div>
-
-  )
+  );
 }
