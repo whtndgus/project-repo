@@ -55,7 +55,6 @@ public class PatientController {
 
   @PostMapping
   public Object insert(@RequestBody Patient patient) {
-    System.out.println(patient);
     patientService.add(patient);
     return new RestResult().setStatus(RestStatus.SUCCESS);
   }

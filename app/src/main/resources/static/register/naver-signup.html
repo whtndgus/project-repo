@@ -393,6 +393,7 @@
           formData.append('email', sessionStorage.getItem("email"));
           formData.append('id', sessionStorage.getItem("token").substring(0,8));
           formData.append('password', sessionStorage.getItem("token"));
+          formData.append('naver', true);
           json = JSON.stringify(Object.fromEntries(formData));
           // console.log(json);
           fetch('http://175.106.99.31/patients', {
