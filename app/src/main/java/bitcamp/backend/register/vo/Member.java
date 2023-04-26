@@ -1,8 +1,8 @@
 package bitcamp.backend.register.vo;
 
-import java.awt.Shape;
 import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import lombok.Data;
 
 @Data
@@ -23,6 +23,6 @@ public class Member {
   private boolean admin;
   private boolean naver;
 
-  @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
+  @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
   private Date birth;
 }
