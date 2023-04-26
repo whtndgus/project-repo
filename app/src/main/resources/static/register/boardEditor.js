@@ -169,8 +169,8 @@ fetch("http://175.106.99.31/boardSearch")
     console.log(data);
     let patients = [];
     data.forEach((patient) => {
-      patient.name = patient.another.split(",")[0];
-      patient.ano = patient.another.split(",")[5];
+      patient.name = patient.another.split("@")[0];
+      patient.ano = patient.another.split("@")[6];
 
       if (patient.title.length > 8) {
         patient.titles = patient.title.substring(0, 8) + ". . .";
@@ -260,7 +260,7 @@ function Pboard(props) {
           type="text"
           className="form-control board-name"
           placeholder=""
-          defaultValue={props.props.another.split(",")[0]}
+          defaultValue={props.props.another.split("@")[0]}
           readOnly="true"
         />
         <strong>나이 :</strong>
@@ -268,7 +268,7 @@ function Pboard(props) {
           type="text"
           className="form-control board-age"
           placeholder=""
-          defaultValue={props.props.another.split(",")[1]}
+          defaultValue={props.props.another.split("@")[1]}
           readOnly="true"
         />
         <strong>연락처 :</strong>
@@ -276,7 +276,7 @@ function Pboard(props) {
           type="text"
           className="form-control board-tel"
           placeholder=""
-          defaultValue={props.props.another.split(",")[3]}
+          defaultValue={props.props.another.split("@")[3]}
           readOnly="true"
         />
         <strong>주소 :</strong>
@@ -284,7 +284,7 @@ function Pboard(props) {
           type="text"
           className="form-control board-addr"
           placeholder=""
-          defaultValue={props.props.another.split(",")[4]}
+          defaultValue={props.props.another.split("@")[4]}
           readOnly="true"
         />
       </div>
@@ -410,7 +410,7 @@ function Pboardc(props) {
           type="text"
           className="form-control board-name"
           placeholder=""
-          defaultValue={props.props.another.split(",")[0]}
+          defaultValue={props.props.another.split("@")[0]}
           readOnly="true"
         />
         나이 :
@@ -418,7 +418,7 @@ function Pboardc(props) {
           type="text"
           className="form-control board-age"
           placeholder=""
-          defaultValue={props.props.another.split(",")[1]}
+          defaultValue={props.props.another.split("@")[1]}
           readOnly="true"
         />
         연락처 :
@@ -426,7 +426,7 @@ function Pboardc(props) {
           type="text"
           className="form-control board-tel"
           placeholder=""
-          defaultValue={props.props.another.split(",")[3]}
+          defaultValue={props.props.another.split("@")[3]}
           readOnly="true"
         />
         주소 :
@@ -434,7 +434,7 @@ function Pboardc(props) {
           type="text"
           className="form-control board-addr"
           placeholder=""
-          defaultValue={props.props.another.split(",")[4]}
+          defaultValue={props.props.another.split("@")[4]}
           readOnly="true"
         />
       </div>

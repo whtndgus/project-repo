@@ -111,39 +111,39 @@ if (window.localStorage.getItem("boardNo") != null) {
       $(".board-title").html(data.title);
       $(".board-pain").html(data.pain);
       $(".board-another").html(
-        data.another.split(",")[5] != "null" &&
-          data.another.split(",")[5].length > 0
-          ? data.another.split(",")[5]
+        data.another.split("@")[5] != "null" &&
+          data.another.split("@")[5].length > 0
+          ? data.another.split("@")[5]
           : "-"
       );
       $(".board-name").val(
-        data.another.split(",")[0] != "null" &&
-          data.another.split(",")[0].length > 0
-          ? data.another.split(",")[0]
+        data.another.split("@")[0] != "null" &&
+          data.another.split("@")[0].length > 0
+          ? data.another.split("@")[0]
           : "-"
       );
       $(".board-gender").val(
-        data.another.split(",")[2] != "null" &&
-          data.another.split(",")[2].length > 0
-          ? data.another.split(",")[2]
+        data.another.split("@")[2] != "null" &&
+          data.another.split("@")[2].length > 0
+          ? data.another.split("@")[2]
           : "-"
       );
       $(".board-age").val(
-        data.another.split(",")[1] != "null" &&
-          data.another.split(",")[1].length > 0
-          ? data.another.split(",")[1]
+        data.another.split("@")[1] != "null" &&
+          data.another.split("@")[1].length > 0
+          ? data.another.split("@")[1]
           : "-"
       );
       $(".board-addr").val(
-        data.another.split(",")[4] != "null" &&
-          data.another.split(",")[4].length > 0
-          ? data.another.split(",")[4]
+        data.another.split("@")[4] != "null" &&
+          data.another.split("@")[4].length > 0
+          ? data.another.split("@")[4]
           : "-"
       );
       $(".board-tel").val(
-        data.another.split(",")[3] != "null" &&
-          data.another.split(",")[3].length > 0
-          ? data.another.split(",")[3]
+        data.another.split("@")[3] != "null" &&
+          data.another.split("@")[3].length > 0
+          ? data.another.split("@")[3]
           : "-"
       );
     });

@@ -144,8 +144,8 @@ function reflesh(string) {
             warn: "경고",
             warnLevel: str,
             writer:
-              board.another.split(",")[0].length > 0
-                ? board.another.split(",")[0]
+              board.another.split("@")[0].length > 0
+                ? board.another.split("@")[0]
                 : "-",
             date: board.createdDate,
           };

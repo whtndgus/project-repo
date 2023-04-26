@@ -20,9 +20,9 @@ class Board extends React.Component {
             <h5 class="card-title">제목 : {this.state.data.title}</h5>
             <h6>문의 날짜 : {this.state.data.createdDate}</h6>
             <p>
-              {this.state.data.another.split(",")[5] != "null" &&
-              this.state.data.another.split(",")[5].length > 0
-                ? this.state.data.another.split(",")[5]
+              {this.state.data.another.split("@")[5] != "null" &&
+              this.state.data.another.split("@")[5].length > 0
+                ? this.state.data.another.split("@")[5]
                 : "-"}
             </p>
             <span class={this.state.data.clas1}>
