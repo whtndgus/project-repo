@@ -3,6 +3,8 @@ package bitcamp.backend.feedback.vo;
 import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import bitcamp.backend.register.vo.License;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -15,7 +17,7 @@ public class FeedBack {
 
   private String content;
   private String doc_name;
-  private String doc_license;
+  private List<License> doc_license;
   private String doc_career; // 의사테이블 - career
   private String doc_image; // 멤버테이블 - m_photo 컬럼
   private String hos_name;

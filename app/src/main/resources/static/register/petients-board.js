@@ -195,6 +195,14 @@ if (window.localStorage.getItem("boardNo") != null) {
           } else {
             feed.title = feed.content;
           }
+          feed.doc_license.forEach(license => {
+            if(license.licenseOx) {
+              feed.doc_license = license.licensename;
+            }
+          });
+          if((typeof feed.doc_license) != "string") {
+            feed.doc_license = "-"
+          }
           feeds.push(<Sogyun props={feed} />);
         });
         feedlist = feeds;
