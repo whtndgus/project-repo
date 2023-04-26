@@ -80,7 +80,12 @@ public class AuthController {
       session.setAttribute("loginNo", member.getNo());
       session.setAttribute("dUser", member);
       session.setAttribute("mycheck", false);
-      return new RestResult().setStatus(RestStatus.SUCCESS);
+      for(int i = 0; i < member.licenses.size(); i++) {
+        if(member.licenses.get(i).getLicenseOx()) {
+          return new RestResult().setStatus(RestStatus.SUCCESS);
+        }
+      }
+      return new RestResult().setStatus(RestStatus.FAILURE).setData("licenseNONE");
     } else {
       return new RestResult().setStatus(RestStatus.FAILURE);
     }
