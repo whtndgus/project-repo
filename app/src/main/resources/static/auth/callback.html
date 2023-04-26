@@ -47,7 +47,7 @@
           nickname: naver_id_login.getProfileData('nickname'),
           mobile: naver_id_login.getProfileData('mobile'),
           age: naver_id_login.getProfileData('age'),
-          accessToken: naver_id_login.oauthParams.access_token
+          accessToken: naver_id_login.getProfileData('id')
         })
       }).then(function (response) {
         // location.href='../register/index.html';
@@ -89,7 +89,7 @@
               console.log(data)
               sessionStorage.setItem("token", data.naverMember.password)
               sessionStorage.setItem("email", data.naverMember.email)
-              // location.href = "../register/naver-signup.html"
+              location.href = "../register/naver-signup.html"
             }
           } else {
             console.log(data)
