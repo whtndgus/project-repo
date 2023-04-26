@@ -53,22 +53,21 @@ fetch(`http://175.106.99.31/auth/user`, {
   .then((response) => response.json())
   .then((data) => {
     if (data.status == "success") {
-      //옥동자 이름
+      //사용자 이름
       document.querySelector("#username").innerHTML = data.data.name;
-      //옥동자 이미지
+      //사용자 이미지
       const preImageContainer = document.querySelector("#pre-userimg");
-      const phoUrl =
-        "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
-        data.data.phoUrl +
-        "?type=f&w=36&h=36&quality=100&anilimit=24";
+      let phoUrl = "";
+      if (data.data.phoUrl != "undefined") {
+        phoUrl =
+          "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+          data.data.phoUrl +
+          "?type=f&w=36&h=36&quality=100&anilimit=24";
+      } else {
+        phoUrl = "../assets/img/default_profile.png";
+      }
       const phoType = data.data.phoType;
       const phoName = data.data.phoName;
-
-      // 기존의 이미지 요소 삭제
-      const oldImg = document.querySelector("#userimg");
-      if (oldImg) {
-        oldImg.remove();
-      }
 
       // 새로운 이미지 요소 생성 및 추가
       const newImg = document.createElement("img");
@@ -195,13 +194,13 @@ if (window.localStorage.getItem("boardNo") != null) {
           } else {
             feed.title = feed.content;
           }
-          feed.doc_license.forEach(license => {
-            if(license.licenseOx) {
+          feed.doc_license.forEach((license) => {
+            if (license.licenseOx) {
               feed.doc_license = license.licensename;
             }
           });
-          if((typeof feed.doc_license) != "string") {
-            feed.doc_license = "-"
+          if (typeof feed.doc_license != "string") {
+            feed.doc_license = "-";
           }
           feeds.push(<Sogyun props={feed} />);
         });
@@ -437,15 +436,15 @@ class DocInfo extends React.Component {
     };
   }
   render() {
-    const imgUrl = 
+    const imgUrl =
       "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
       this.state.data.doc_image +
       "?type=f&w=170&h=220&quality=90&align=4";
     return (
       <div className="top-area">
         <div className="doc-area  text-center">
-          <img className="doc-img" src={imgUrl} alt="의사 이미지"/>
-          <span className="doc-name">{this.state.data.doc_name}{' '}의사</span>
+          <img className="doc-img" src={imgUrl} alt="의사 이미지" />
+          <span className="doc-name">{this.state.data.doc_name} 의사</span>
         </div>
         <div className="hos-area">
           <span className="hos-name">

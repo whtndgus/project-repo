@@ -1027,47 +1027,47 @@ let scright = true;
 $(".backmov-left").click(() => {
   if ($(document).scrollLeft() == 0) {
 
-  } else if ($(document).scrollLeft() == 1920) {
+  } else if ($(document).scrollLeft() == screen.availWidth) {
     scrollmov(0)
-  } else if ($(document).scrollLeft() == 3840) {
-    scrollmov(1920)
-  } else if ($(document).scrollLeft() == 5760) {
-    scrollmov(3840)
-  } else if ($(document).scrollLeft() == 7680) {
-    scrollmov(5760)
+  } else if ($(document).scrollLeft() == screen.availWidth*2) {
+    scrollmov(screen.availWidth)
+  } else if ($(document).scrollLeft() == screen.availWidth*3) {
+    scrollmov(screen.availWidth*2)
+  } else if ($(document).scrollLeft() == screen.availWidth*4) {
+    scrollmov(screen.availWidth*3)
   }
 })
 
 $(".backmov-right").click(() => {
   if ($(document).scrollLeft() == 0) {
-    scrollmov(1920)
-  } else if ($(document).scrollLeft() == 1920) {
-    scrollmov(3840)
-  } else if ($(document).scrollLeft() == 3840) {
-    scrollmov(5760)
-  } else if ($(document).scrollLeft() == 5760) {
-    scrollmov(7680)
-  } else if ($(document).scrollLeft() == 7680) {
+    scrollmov(screen.availWidth)
+  } else if ($(document).scrollLeft() == screen.availWidth) {
+    scrollmov(screen.availWidth*2)
+  } else if ($(document).scrollLeft() == screen.availWidth*2) {
+    scrollmov(screen.availWidth*3)
+  } else if ($(document).scrollLeft() == screen.availWidth*3) {
+    scrollmov(screen.availWidth*4)
+  } else if ($(document).scrollLeft() == screen.availWidth*4) {
 
   }
 })
 
 $(".body-cover").css("width", screen.availWidth)
-$("body").css("width", screen.availWidth*4)
-$("body").css("background-size", screen.availWidth*4)
+$("body").css("width", screen.availWidth*3)
+$("body").css("background-size", screen.availWidth*3)
 
 setTimeout(() => {
   let s = $(document).scrollLeft();
-  if (s == 0 || s == 1920 || s == 3840 || s == 5760 || s == 7680) {
+  if (s == 0 || s == screen.availWidth || s == screen.availWidth*2 || s == screen.availWidth*3 || s == screen.availWidth*4) {
     
-  }else if ($(document).scrollLeft() >= 6720) {
-    scrollmov(7680)
-  }else if ($(document).scrollLeft() >= 4800) {
-    scrollmov(5760)
-  }else if ($(document).scrollLeft() >= 2880) {
-    scrollmov(3840)
-  }else if ($(document).scrollLeft() >= 960) {
-    scrollmov(1920)
+  }else if ($(document).scrollLeft() >= screen.availWidth*3.5) {
+    scrollmov(screen.availWidth*4)
+  }else if ($(document).scrollLeft() >= screen.availWidth*2.5) {
+    scrollmov(screen.availWidth*3)
+  }else if ($(document).scrollLeft() >= screen.availWidth*1.5) {
+    scrollmov(screen.availWidth*2)
+  }else if ($(document).scrollLeft() >= screen.availWidth*0.5) {
+    scrollmov(screen.availWidth)
   }else {
     console.log($(document).scrollLeft())
     scrollmov(0)
@@ -1085,13 +1085,13 @@ setTimeout(() => {
 //   if(event.originalEvent.deltaY == 100){
 //     console.log(event.originalEvent.deltaY +" "+$(document).scrollLeft());
 //     new Promise(resolve => {
-//       $('html').animate({scrollLeft : 1920}, 1000)
+//       $('html').animate({scrollLeft : screen.availWidth}, 1000)
 //       resolve();
 //     })
 //   }else if(event.originalEvent.deltaY == -100) {
 //     console.log(event.originalEvent.deltaY +" "+$(document).scrollLeft());
 //     new Promise(resolve => {
-//       $('html').animate({scrollLeft : 3840}, 1000)
+//       $('html').animate({scrollLeft : screen.availWidth*2}, 1000)
 //       resolve();
 //     })
 //   }
