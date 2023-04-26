@@ -114,9 +114,9 @@ if (window.localStorage.getItem("boardNo") != null) {
       $(".board-pain").html("증상 : " + data.pain);
       $(".board-another").html(
         "그 외 전달사항\n" +
-          (data.another.split(",")[5] != "null" &&
-          data.another.split(",")[5].length > 0
-            ? data.another.split(",")[5]
+          (data.another.split(",")[6] != "null" &&
+          data.another.split(",")[6].length > 0
+            ? data.another.split(",")[6]
             : "-")
       );
       $(".board-name").val(
@@ -138,9 +138,9 @@ if (window.localStorage.getItem("boardNo") != null) {
           : "-"
       );
       $(".board-addr").val(
-        data.another.split(",")[4] != "null" &&
-          data.another.split(",")[4].length > 0
-          ? data.another.split(",")[4]
+        data.another.split(",")[4]+data.another.split(",")[5] != "null" &&
+        (data.another.split(",")[4]+data.another.split(",")[5]).length > 0
+          ? data.another.split(",")[4]+" "+data.another.split(",")[5]
           : "-"
       );
       $(".board-tel").val(
