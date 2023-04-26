@@ -22,6 +22,7 @@
       f.rev_cont as rev_content,
       f.rev_date as rev_createdDate,
       m.m_name as doc_name,
+      m.m_photo as doc_image,
       h.hos_name as hos_name,
       h.hos_addr as hos_addr,
       li.license_name as doc_license,
