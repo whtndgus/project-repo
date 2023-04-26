@@ -171,7 +171,7 @@ body::-webkit-scrollbar {
   margin-left: auto;
   margin-right: auto;
   background-color: white;
-  border: 3px solid black;
+  box-shadow: 0px 0px 6px 2px rgb(105, 105, 105);
   border-radius: 10px;
   box-sizing: border-box;
   transition: 1s;
@@ -198,9 +198,11 @@ body::-webkit-scrollbar {
   margin-left: auto;
   margin-right: auto;
   background-color: white;
-  border: 3px solid black;
+  border: 0px solid black;
+  box-shadow: 0px 0px 6px 2px rgb(105, 105, 105);
   border-radius: 10px;
   box-sizing: border-box;
+  padding-top: 1.8%;
   transition: 1s;
 }
 #root_2 .input-group {
@@ -211,7 +213,6 @@ body::-webkit-scrollbar {
 }
 #root_2 h4 {
   margin-left: 8%;
-  margin-top: 4%;
   font-weight: bold;
   font-size: 22px;
 }

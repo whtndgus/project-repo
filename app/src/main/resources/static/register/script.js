@@ -80,8 +80,8 @@ fetch(`http://175.106.99.31/auth/user`, {
         $(".btn-3").css("display", "none")
       }, 100);
       $(".btn-3").text("")
-      $(".btn-1").css("width", "49%")
-      $(".btn-2").css("width", "49%")
+      $(".btn-1").css("width", "99%")
+      // $(".btn-2").css("width", "49%")
       $(".log-mypage").click(() => {
         location.href = "patients-profile.html"
       })
