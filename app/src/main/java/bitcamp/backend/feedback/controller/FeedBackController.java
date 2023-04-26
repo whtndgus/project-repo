@@ -28,7 +28,6 @@ public class FeedBackController {
     int bno = Integer.parseInt((String) param.get("bno"));
     result.put("status", "success");
     result.put("data", backService.blist(bno));
-    System.out.println(backService.blist(bno));
     return result;
   }
 
