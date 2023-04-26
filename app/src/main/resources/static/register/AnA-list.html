@@ -151,7 +151,7 @@
     <!-- End Sidebar-->
     <main id="main" class="main">
       <div class="pagetitle">
-        <h1>QnA</h1>
+        <h1>QnA 리스트</h1>
       </div>
       <!-- End Page Title -->
 
@@ -204,8 +204,10 @@
             }
 
             .list-box {
-              font-size: bigger;
+              font-size: bolder;
               margin: auto 20px;
+              display: flex;
+              justify-content: space-between;
             }
 
             #list-title {
@@ -213,11 +215,12 @@
             }
 
             #list-name {
-              display: inline-block;
+              margin-right:30px !important;
+              font-weight: bolder;
             }
           </style>
 
-          <div class="chat-cover">
+          <div class="chat-cover" style="margin-top: 10px !important;">
             <div class="chats scroll">
               <ul class="chat-list list-group"></ul>
             </div>

@@ -124,7 +124,7 @@ $(".btn-1").click(() => {
       roots.render(
         <div id="root">
           <div className="insert-left">
-            <h3>필수 입력항목</h3>
+            <h3><strong>필수 입력항목</strong></h3>
             <div className="input-group mb-3" style={{ height: 50, float: "left" }}>
               <span className="input-group-text" id="basic-addon1">
                 제목
@@ -137,10 +137,10 @@ $(".btn-1").click(() => {
                 aria-describedby="basic-addon1"
               />
             </div>
-            <h5>증상 부위 또는 증상의 종류</h5>
+            <h5><strong>증상 부위 또는 증상의 종류</strong></h5>
             <div className="input-group mb-3" style={{  }}>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>머리</span>
+                <span className="font13" style={{ marginRight: 2 }}>머리</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -149,7 +149,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>인후</span>
+                <span className="font13" style={{ marginRight: 2 }}>인후</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -158,7 +158,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>가슴</span>
+                <span className="font13" style={{ marginRight: 2 }}>가슴</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -167,7 +167,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>복부</span>
+                <span className="font13" style={{ marginRight: 2 }}>복부</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -176,7 +176,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>손,발</span>
+                <span className="font13" style={{ marginRight: 2 }}>손,발</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -185,7 +185,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>팔</span>
+                <span className="font13" style={{ marginRight: 2 }}>팔</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -194,7 +194,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>하체</span>
+                <span className="font13" style={{ marginRight: 2 }}>하체</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -203,7 +203,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>허리</span>
+                <span className="font13" style={{ marginRight: 2 }}>허리</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -214,7 +214,7 @@ $(".btn-1").click(() => {
             </div>
             <div className="input-group mb-3" style={{  }}>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>두통</span>
+                <span className="font13" style={{ marginRight: 2 }}>두통</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -223,7 +223,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>흉통(가슴)</span>
+                <span className="font13" style={{ marginRight: 2 }}>흉통(가슴)</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -232,7 +232,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>복통</span>
+                <span className="font13" style={{ marginRight: 2 }}>복통</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -241,7 +241,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>요통</span>
+                <span className="font13" style={{ marginRight: 2 }}>요통</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -250,7 +250,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>치통</span>
+                <span className="font13" style={{ marginRight: 2 }}>치통</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -259,7 +259,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상1</span>
+                <span className="font13" style={{ marginRight: 2 }}>증상1</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -268,7 +268,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상2</span>
+                <span className="font13" style={{ marginRight: 2 }}>증상2</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -374,7 +374,7 @@ $(".btn-1").click(() => {
             <h5>증상 부위 또는 증상의 종류</h5>
             <div className="input-group mb-3" style={{  }}>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>머리</span>
+                <span className="font13" style={{ marginRight: 2 }}>머리</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -383,7 +383,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>인후</span>
+                <span className="font13" style={{ marginRight: 2 }}>인후</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -392,7 +392,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>가슴</span>
+                <span className="font13" style={{ marginRight: 2 }}>가슴</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -401,7 +401,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>복부</span>
+                <span className="font13" style={{ marginRight: 2 }}>복부</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -410,7 +410,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>손,발</span>
+                <span className="font13" style={{ marginRight: 2 }}>손,발</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -419,7 +419,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>팔</span>
+                <span className="font13" style={{ marginRight: 2 }}>팔</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -428,7 +428,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>하체</span>
+                <span className="font13" style={{ marginRight: 2 }}>하체</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -437,7 +437,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>허리</span>
+                <span className="font13" style={{ marginRight: 2 }}>허리</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -448,7 +448,7 @@ $(".btn-1").click(() => {
             </div>
             <div className="input-group mb-3" style={{  }}>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>두통</span>
+                <span className="font13" style={{ marginRight: 2 }}>두통</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -457,7 +457,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>흉통(가슴)</span>
+                <span className="font13" style={{ marginRight: 2 }}>흉통(가슴)</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -466,7 +466,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>복통</span>
+                <span className="font13" style={{ marginRight: 2 }}>복통</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -475,7 +475,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>요통</span>
+                <span className="font13" style={{ marginRight: 2 }}>요통</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -484,7 +484,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>치통</span>
+                <span className="font13" style={{ marginRight: 2 }}>치통</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -493,7 +493,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상1</span>
+                <span className="font13" style={{ marginRight: 2 }}>증상1</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
@@ -502,7 +502,7 @@ $(".btn-1").click(() => {
                 />
               </div>
               <div className="input-group-text">
-                <span className="font12" style={{ marginRight: 2 }}>증상2</span>
+                <span className="font13" style={{ marginRight: 2 }}>증상2</span>
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
