@@ -13,10 +13,14 @@ fetch(`http://175.106.99.31/auth/user`, {
       //옥동자 이미지
       const preImageContainer = document.querySelector("#pre-userimg");
       let phoUrl = "";
+      if (data.data.phoUrl != null) {
       phoUrl =
         "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
         data.data.phoUrl +
         "?type=f&w=36&h=36&quality=100&anilimit=24";
+      } else {
+        phoUrl = "../assets/img/default-profile.png"
+      }
       const phoType = data.data.phoType;
       const phoName = data.data.phoName;
 
@@ -50,15 +54,14 @@ fetch(`http://175.106.99.31/auth/user`, {
             data = data.data;
             console.log(data);
 
-            let imgUrl = "";
             if (data.phoUrl != null) {
-              imgUrl =
+              let imgUrl =
                 "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
                 data.phoUrl +
                 "?type=f&w=120&h=180&quality=90&autorotate=true&faceopt=true&anilimit=24";
               document.querySelector(".doctors-img").src = imgUrl;
             } else {
-              imgUrl = "assets/img/default-profile.png"
+              imgUrl = "../assets/img/default-profile.png"
               document.querySelector(".doctors-img").src = imgUrl;
             }
 
@@ -93,20 +96,8 @@ fetch(`http://175.106.99.31/auth/user`, {
             document.querySelector(".doctors-email").innerText = data.email;
             document.querySelector(".change-email").value = data.email;
 
-            if (data.hosName != null) {
-            document.querySelector(".doctors-hospital").innerText = data.hosName; 
-            } else {
-              document.querySelector(".doctors-hospital").innerText =
-                "소속없음";
-            }
-
-            if (data.licenses.length == 1) {
-            document.querySelector(".doctors-license").innerText =
-              data.licenses[0].licensename;
-            } else {
             document.querySelector(".doctors-license").innerText =
               data.licenses[1].licensename;
-            }
             // document.querySelector('.change-license').value = data.drug;
 
             const arrCareer = data.career.split(", ");
@@ -168,6 +159,13 @@ fetch(`http://175.106.99.31/auth/user`, {
                 rowToRemove.remove();
               }
             });
+
+            document.querySelector(".doctors-hospital").innerText =
+              data.hosName;
+
+            if (data.hosName == null)
+              document.querySelector(".doctors-hospital").innerText =
+                "소속없음";
 
             document.querySelector(".change-hospital").value = data.hosName;
             document.querySelector(".change-hospitalNo").value = data.hosNo;
