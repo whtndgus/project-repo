@@ -436,17 +436,8 @@ class DocInfo extends React.Component {
     return (
       <div className="top-area">
         <div className="doc-area  text-center">
-<<<<<<< Updated upstream
           <img className="doc-img" src={imgUrl} alt="의사 이미지"/>
           <span className="doc-name">{this.state.data.doc_name}{' '}의사</span>
-=======
-          <img
-            className="doc-img"
-            src={this.state.data.doc_image}
-            alt="의사 이미지"
-          />
-          <span className="doc-name">{this.state.data.doc_name} 의사</span>
->>>>>>> Stashed changes
         </div>
         <div className="hos-area">
           <span className="hos-name">
