@@ -113,11 +113,11 @@ public class App {
     }
     System.out.println("param : " + param);
     String str = "";
-    str += param.get("name") + ",";
-    str += param.get("age") + ",";
-    str += param.get("gender") + ",";
-    str += param.get("tel") + ",";
-    str += param.get("addr1") + " " + param.get("addr2") + ",";
+    str += param.get("name") + "@";
+    str += param.get("age") + "@";
+    str += param.get("gender") + "@";
+    str += param.get("tel") + "@";
+    str += param.get("addr1") + " " + param.get("addr2") + "@";
     str += param.get("another");
 
     Board board = new Board();
@@ -233,7 +233,7 @@ public class App {
       boardImg.setUrl(str);
       boardImg.setName(file.getOriginalFilename());
       boardImg.setMIMETYPE(file.getContentType());
-
+      
       boardImgService.add(boardImg);
     }
   }

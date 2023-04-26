@@ -140,12 +140,12 @@ function reflesh(string) {
           let obj = {
             answer: board.fedcount,
             no: board.no,
-            title: board.title,
+            title: board.title.length > 45 ? board.title.substring(0,43)+". . ." : board.title,
             warn: "경고",
             warnLevel: str,
             writer:
-              board.another.split(",")[0].length > 0
-                ? board.another.split(",")[0]
+              board.another.split("@")[0].length > 0
+                ? board.another.split("@")[0]
                 : "-",
             date: board.createdDate,
           };

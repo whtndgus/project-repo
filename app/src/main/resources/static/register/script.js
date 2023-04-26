@@ -1002,6 +1002,8 @@ function submitFiles(no) {
     if (files[i].name.includes(".bmp") || files[i].name.includes(".jpeg") || files[i].name.includes(".jpg") || files[i].name.includes(".gif") || files[i].name.includes(".png") || files[i].name.includes(".tiff") || files[i].name.includes(".psd") || files[i].name.includes(".tga") || files[i].name.includes(".ai") || files[i].name.includes(".svg") || files[i].name.includes(".exif") || files[i].name.includes(".jfif")) {
       formData.append("files", files[i]);
       formData.append("boardNo", no); //  여기 입력되는 정수가 보드 번호여야 한다
+      console.log(formData.getAll("files"))
+      console.log(formData.getAll("boardNo"))
     }
   }
 
