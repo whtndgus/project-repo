@@ -29,7 +29,7 @@ public class DefaultFeedBackService implements FeedBackService {
     for(int i = 0; i < feeds.size(); i++) {
       feeds.get(i).setDoc_license(licenseDao.findByDno(feeds.get(i).getDoc_no()));
     }
-    return ;
+    return feeds;
   }
 
   @Override
