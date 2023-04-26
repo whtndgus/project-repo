@@ -170,7 +170,7 @@ fetch("http://175.106.99.31/boardSearch")
     let patients = [];
     data.forEach((patient) => {
       patient.name = patient.another.split("@")[0];
-      patient.ano = patient.another.split("@")[6];
+      patient.ano = patient.another.split("@")[5];
 
       if (patient.title.length > 8) {
         patient.titles = patient.title.substring(0, 8) + ". . .";
