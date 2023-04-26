@@ -62,8 +62,9 @@ public class DefaultDoctorService implements DoctorService {
     Map<String, Object> paramMap = new HashMap<>();
     paramMap.put("id", id);
     paramMap.put("password", password);
-
-    return doctorDao.findByIdAndPassword(paramMap);
+    Doctor doc = doctorDao.findByIdAndPassword(paramMap);
+    doc.setLicenses(licenseDao.findByDno(doc.getNo()));
+    return doc;
   }
 
   @Transactional
