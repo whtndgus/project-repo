@@ -138,6 +138,8 @@ public class App {
 
     boardService.add(board);
 
+    System.out.println(boardService.get(board.getSerial()));
+
     return boardService.get(board.getSerial());
   }
 

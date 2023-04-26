@@ -1,8 +1,8 @@
 package bitcamp.backend.register.vo;
 
+import java.awt.Shape;
 import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import lombok.Data;
 
 @Data
