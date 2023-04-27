@@ -51,7 +51,7 @@ function Lli(params) {
     <li className="chat-left">
       <div>
         <span id="q-content">{params.text}</span>
-        <br /><br /><br />
+        <br /><br />
         <span id="q-date">{params.date}</span>
       </div>
     </li>
@@ -63,7 +63,7 @@ function Rli(params) {
     <li className="chat-right">
       <div>
         <span id="a-content">{params.text}</span>
-        <br /><br /><br />
+        <br /><br />
         <span id="a-date">{params.date}</span>
       </div>
     </li>
