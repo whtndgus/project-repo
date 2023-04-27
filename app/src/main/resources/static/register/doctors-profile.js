@@ -373,7 +373,7 @@ function calltel() {
   );
 }
 
-var hosPopupWidth = 800;
+var hosPopupWidth = 1080;
 var hosPopupHeight = 450;
 
 var hosPopupX = window.screen.width / 2 - hosPopupWidth / 2;
