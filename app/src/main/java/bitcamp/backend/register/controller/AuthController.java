@@ -70,19 +70,19 @@ public class AuthController {
   }
 
   @PostMapping("/doctorLogin")
-  public Object doctorLogin(String id, String password, HttpSession session) {
+  public Object doctorLogin(String id, String password, HttpSession session) { 
 
 
-    Member member = null;
+    Doctor member = null;
     member = doctorService.get(id, password);
 
     if (member != null) {
-      session.setAttribute("loginNo", member.getNo());
-      session.setAttribute("dUser", member);
-      session.setAttribute("mycheck", false);
-      for(int i = 0; i < member.licenses.size(); i++) {
-        if(member.licenses.get(i).getLicenseOx()) {
-          return new RestResult().setStatus(RestStatus.SUCCESS); 
+      for(int i = 0; i < member.getLicenses().size(); i++) {
+        if(member.getLicenses().get(i).isLicenseOx()) {
+          session.setAttribute("loginNo", member.getNo());
+          session.setAttribute("dUser", member);
+          session.setAttribute("mycheck", false);
+          return new RestResult().setStatus(RestStatus.SUCCESS);
         }
       }
       return new RestResult().setStatus(RestStatus.FAILURE).setData("licenseNONE");

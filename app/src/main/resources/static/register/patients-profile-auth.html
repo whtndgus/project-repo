@@ -78,11 +78,6 @@
           href="patients-profile.html"
         >
           <div id="pre-userimg" ></div>
-          <img
-            id="userimg"
-            src="assets/img/profile-img.jpg"
-            alt="Profile"
-          />
           <span id="username" class="d-none d-md-block ps-2"></span>
         </a>
       </li>
@@ -385,6 +380,61 @@
             passwordValidationMsg.style.color = "#dc3545";
           });
       });
+      document.addEventListener(
+        "keydown",
+        function (event) {
+          if (event.keyCode === 13) {
+            event.preventDefault();
+            console.log(21);
+            // $("#btn-insert").prop('disabled', true);
+            const form = document.getElementById("check-password-form");
+            const formData = new FormData(form);
+
+            const password = passwordInput.value;
+
+            formData.append("id", profileId);
+
+            let json = JSON.stringify(Object.fromEntries(formData));
+            console.log(json);
+
+            fetch("http://175.106.99.31/patients/check-mypage", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: json,
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                if (result.status == "success") {
+                  console.log(result);
+                  console.log(result.data);
+                  // passwordValidationMsg.textContent = '올바른 비밀번호입니다.';
+                  // passwordInput.classList.remove('is-valid', 'is-invalid');
+                  // passwordInput.classList.add('is-valid');
+                  // passwordValidationMsg.style.color = '#198754';
+                  location.replace("./patients-profile.html");
+                } else {
+                  alert("잘못 된 회원 정보");
+                  passwordValidationMsg.textContent = "비밀번호가 틀립니다.";
+                  passwordInput.classList.remove("is-valid", "is-invalid");
+                  passwordInput.classList.add("is-invalid");
+                  passwordValidationMsg.style.color = "#dc3545";
+                }
+              })
+              .then(() => {})
+              .catch((exception) => {
+                console.error("오류 발생:", exception);
+                passwordValidationMsg.textContent =
+                  "오류가 발생했습니다. 다시 시도해주세요.";
+                passwordInput.classList.remove("is-valid", "is-invalid");
+                passwordInput.classList.add("is-invalid");
+                passwordValidationMsg.style.color = "#dc3545";
+              });
+          }
+        },
+        true
+      );
     </script>
   </body>
 </html>

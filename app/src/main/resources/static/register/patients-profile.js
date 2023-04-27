@@ -60,10 +60,10 @@ fetch(`http://175.106.99.31/auth/user`, {
                 "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
                 data.phoUrl +
                 "?type=f&w=120&h=180&quality=90&autorotate=true&faceopt=true&anilimit=24";
-              document.querySelector(".doctors-img").src = imgUrl;
+              document.querySelector(".patients-img").src = imgUrl;
             } else {
               imgUrl = "../assets/img/default_profile.png";
-              document.querySelector(".doctors-img").src = imgUrl;
+              document.querySelector(".patients-img").src = imgUrl;
             }
 
             document.querySelector(".top-name").innerText = data.name;

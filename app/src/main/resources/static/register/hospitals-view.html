@@ -737,9 +737,10 @@
             myno = user.no;
             if (new URL(location.href).searchParams.get("no") == null) {
               if (user.hosNo == 0) {
-                location.href = "doctors-profile.html";
+                location.href = "doctors-advices.html";
+              }else {
+                location.href = `?no=${user.hosNo}`;
               }
-              location.href = `?no=${user.hosNo}`;
             }
           } else {
             console.log(user.hosName);

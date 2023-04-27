@@ -199,9 +199,7 @@
                       <th scope="col">병원명</th>
                       <th scope="col">주소</th>
                       <th scope="col">전화</th>
-                      <!-- <th scope="col">진료시간</th> 굳이시간 받을필요 없음 -->
                       <th scope="col">진료과목</th>
-                      <!-- <th scope="col">사업자번호</th> -->
                     </tr>
                   </thead>
                   <tbody id="hospital-list" class="table-group-divider">
@@ -210,17 +208,12 @@
                       <td id="hospitalName"></td>
                       <td id="hospitalAddr"></td>
                       <td id="hospitalTel"></td>
-                      <!-- <td id="hospitalTime"></td> 굳이시간 받을필요 없음 -->
                       <td id="hospitalSub"></td>
-                      <!-- <td id="hospitalPwd"></td> -->
                     </tr>
                   </tbody>
                 </table>
 
-                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#staticBackdrop"style="background-color: #77DD77; color: #FFFFFF; border: none; height:40px; border-radius: 5px 5px 5px 5px;">
-                병원추가
-              </button>               -->
-                <!-- Modal -->
+    
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1"
                   aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog modal-xl" style="max-width: 1600px;">
@@ -425,10 +418,10 @@
     // <td>${row.hosTime}</td> 진료시간 필요없음
     function renderDataList(dataList) {
       let html = '';
-      for (var row of dataList) {
-        html += `<tr>
+      for (var row of dataList) {   
+        html += `<tr onclick="window.location.href='hospitals-view.html?no=${row.hospitalNo}'">
         <td>${row.hospitalNo}</td>
-        <td><a href="hospitals-view.html?no=${row.hospitalNo}">${row.hosName}</a></td>
+        <td>${row.hosName}</td>
         <td>${row.hosAddr}</td>
         <td>${row.hosTel}</td>        
         <td>${row.hosSub}</td>
