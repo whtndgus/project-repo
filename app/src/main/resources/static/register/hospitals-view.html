@@ -959,9 +959,12 @@
       let fileInput = document.querySelector("#hosPhoto");
       fileInput.addEventListener("change", function (e) {
         let files = e.target.files;
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         if (files.length > 3) {
           alert("파일 첨부 개수는 3개 이상이 될 수 없습니다.");
-          // 최대 첨부 가능한 파일 개수를 넘어서는 경우, 파일 선택을 초기화합니다.
+          fileInput.value = "";
+        } else if (files.length + checkboxes.length > 3) {
+          alert("이미지 개수는 3개 이상이 될 수 없습니다.");
           fileInput.value = "";
         }
       });
