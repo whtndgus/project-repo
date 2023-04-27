@@ -103,7 +103,7 @@ $(".search-btn").click(() => {
 });
 
 $(".search-btn").keydown(function(event) {
-  if(event.which === 13) {
+  if(event.keyCode == 13) {
     reflesh($(".search-filter").val());
   }
 });
