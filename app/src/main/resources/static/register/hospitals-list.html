@@ -8,7 +8,7 @@
   <title>의사 - Main</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+ 
   <!--구글폰트-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,6 +64,9 @@
     .hos-time::-webkit-scrollbar-thumb {
       background-color: transparent;
       border: none;
+    }
+    .hos-tr{
+      cursor: pointer;
     }
   </style>
 </head>
@@ -244,7 +247,7 @@
                           <form id="hospital-list">
                             <tbody class="table-group-divider">
                               <div class="hospital-list-css">
-                                <tr>
+                                <tr class="hos-tr">
                                   <td><input id="hosName" class="hos-name" type="text" /></td>
                                   <td><input id="hosAddr" class="hos-addr" type="text" /></td>
                                   <td><input id="hosTel" class="hos-tel" type="number" placeholder="'-' 없이 입력"
