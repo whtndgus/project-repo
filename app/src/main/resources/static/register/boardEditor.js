@@ -21,7 +21,7 @@ class Pbtr extends React.Component {
           <td>
             <button
               type="button"
-              className="btn btn-success"
+              className="btn btn-outline-success"
               style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
               onClick={() => {
                 ReactDOM.createRoot($(".new-windows")[0]).render(
@@ -78,7 +78,7 @@ class Dctr extends React.Component {
           <td>
             <button
               type="button"
-              className="btn btn-success"
+              className="btn btn-outline-success"
               style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
               onClick={() => {
                 ReactDOM.createRoot($(".new-windows")[0]).render(
@@ -235,8 +235,8 @@ function Pboard(props) {
         />
       </div>
       <div className="top-content">
-       <h3>증상 내용</h3>
-        <strong>제목 :</strong>
+       <h4>증상 내용</h4>
+       <strong>제목 :</strong>
         <input
           type="text"
           className="form-control board-title"
@@ -254,7 +254,7 @@ function Pboard(props) {
         />
       </div>
       <div className="middle-content">
-        <h3>인적 사항</h3>
+        <h4>인적 사항</h4>
         <strong>이름 :</strong>
         <input
           type="text"
@@ -304,7 +304,7 @@ function Pboard(props) {
       <div className="btn-content">
         <button
           type="button"
-          className="btn btn-outline-secondary board-close"
+          className="btn btn-outline-success board-close"
           onClick={() => {
             ReactDOM.createRoot($(".new-windows")[0]).render();
           }}
@@ -344,7 +344,7 @@ function Pboard(props) {
         </button>
         <button
           type="button"
-          className="btn btn-outline-secondary board-insert"
+          className="btn btn-outline-success board-insert"
           onClick={() => {
             fetch("http://175.106.99.31/auth/adminBoard", {
               method: "POST",
@@ -386,8 +386,8 @@ function Pboardc(props) {
         />
       </div>
       <div className="top-content">
-      <h3>증상 내용</h3>
-        제목 :
+      <h4>증상 내용</h4>
+        <strong>제목 :</strong>
         <input
           type="text"
           className="form-control board-title"
@@ -395,7 +395,7 @@ function Pboardc(props) {
           defaultValue={props.props.title}
           readOnly="true"
         />
-        증상 :
+        <strong>증상 :</strong>
         <input
           type="text"
           className="form-control board-pain"
@@ -405,7 +405,7 @@ function Pboardc(props) {
         />
       </div>
       <div className="middle-content">
-        <h3>인적 사항</h3>
+        <h4>인적 사항</h4>
         이름 :
         <input
           type="text"
@@ -455,7 +455,7 @@ function Pboardc(props) {
       <div className="btn-content">
         <button
           type="button"
-          className="btn btn-outline-secondary board-close"
+          className="btn btn-outline-success board-close"
           onClick={() => {
             ReactDOM.createRoot($(".new-windows")[0]).render();
           }}
@@ -495,7 +495,7 @@ function Pboardc(props) {
         </button>
         <button
           type="button"
-          className="btn btn-outline-secondary board-insert"
+          className="btn btn-outline-success board-insert"
           onClick={() => {
             fetch("http://175.106.99.31/auth/adminBoard", {
               method: "POST",
@@ -539,8 +539,8 @@ function Dcomm(props) {
         />
       </div>
       <div className="top-content">
-      <h3>증상 내용</h3>
-        제목 :
+      <h4>증상 내용</h4>
+        <strong>제목 :</strong>
         <input
           type="text"
           className="form-control comm-title"
@@ -550,7 +550,7 @@ function Dcomm(props) {
         />
       </div>
       <div className="middle-content">
-        <h3>인적 사항</h3>
+        <h4>인적 사항</h4>
         카테고리 :
         <input
           type="text"
@@ -592,7 +592,7 @@ function Dcomm(props) {
       <div className="btn-content">
         <button
           type="button"
-          className="btn btn-outline-secondary comm-close"
+          className="btn btn-outline-success comm-close"
           onClick={() => {
             ReactDOM.createRoot($(".new-windows")[0]).render();
           }}
@@ -626,7 +626,7 @@ function Dcomm(props) {
         </button>
         <button
           type="button"
-          className="btn btn-outline-secondary comm-insert"
+          className="btn btn-outline-success comm-insert"
           onClick={() => {
             fetch("http://175.106.99.31/auth/adminComm", {
               method: "POST",
@@ -668,8 +668,8 @@ function Dcommc(props) {
         />
       </div>
       <div className="top-content">
-      <h3>증상 내용</h3>
-        제목 :
+      <h4>증상 내용</h4>
+      <strong>제목 :</strong>
         <input
           type="text"
           className="form-control comm-title"
@@ -679,7 +679,7 @@ function Dcommc(props) {
         />
       </div>
       <div className="middle-content">
-        <h3>인적 사항</h3>
+        <h4>인적 사항</h4>
         카테고리 :
         <input
           type="text"
@@ -721,7 +721,7 @@ function Dcommc(props) {
       <div className="btn-content">
         <button
           type="button"
-          className="btn btn-outline-secondary comm-close"
+          className="btn btn-outline-success comm-close"
           onClick={() => {
             ReactDOM.createRoot($(".new-windows")[0]).render();
           }}
@@ -755,7 +755,7 @@ function Dcommc(props) {
         </button>
         <button
           type="button"
-          className="btn btn-outline-secondary comm-insert"
+          className="btn btn-outline-success comm-insert"
           onClick={() => {
             fetch("http://175.106.99.31/auth/adminComm", {
               method: "POST",
