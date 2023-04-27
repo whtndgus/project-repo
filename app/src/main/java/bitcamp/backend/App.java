@@ -135,6 +135,7 @@ public class App {
     board.setAnother(str);
 
     board.setFilter(negaText(board.getTitle(), 0.8));
+    System.out.println("board : " + board);
 
     boardService.add(board);
 
@@ -233,7 +234,7 @@ public class App {
       boardImg.setUrl(str);
       boardImg.setName(file.getOriginalFilename());
       boardImg.setMIMETYPE(file.getContentType());
-      
+
       boardImgService.add(boardImg);
     }
   }
