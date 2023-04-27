@@ -177,13 +177,24 @@
 
                 <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p> -->
                 <form>
-                  <input
-                    type="text"
-                    name="keyword"
-                    class="search-filter"
-                    placeholder="입력하기"
-                  />
-                  <button type="button" class="search-btn">검색</button>
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="input-group mb-3">
+                        <input
+                          type="text"
+                          name="keyword"
+                          class="form-control search-filter"
+                          placeholder="검색하기"
+                        />
+                        <button
+                          class="btn btn-outline-secondary search-btn"
+                          type="button"
+                        >
+                          검색
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </form>
                 <!-- Table with stripped rows -->
                 <table class="table">
@@ -192,7 +203,7 @@
                       <!-- table 작업시에 <th><td> 갯수가 서로 일치하지 않으면 정렬 버튼 사라집니다 -->
                       <th scope="col">답변</th>
                       <th scope="col">번호</th>
-                      <th scope="col" clas="cursor">제목</th>
+                      <th scope="col" class="cursor">제목</th>
                       <th scope="col">위급정도</th>
                       <th scope="col">작성자</th>
                       <th scope="col">작성일</th>

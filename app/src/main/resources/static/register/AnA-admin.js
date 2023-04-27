@@ -51,7 +51,7 @@ function Lli(params) {
     <li className="chat-left">
       <div>
         <span id="q-content">{params.text}</span>
-        <br /><br /><br />
+        <br /><br />
         <span id="q-date">{params.date}</span>
       </div>
     </li>
@@ -63,7 +63,7 @@ function Rli(params) {
     <li className="chat-right">
       <div>
         <span id="a-content">{params.text}</span>
-        <br /><br /><br />
+        <br /><br />
         <span id="a-date">{params.date}</span>
       </div>
     </li>
@@ -86,7 +86,7 @@ function Rli(params) {
 </li>
 
 */
-
+let aciveText = "";
 function reflash() {
   fetch(`http://175.106.99.31/qna/admin/${no}`)
     .then((response) => response.json())
@@ -95,6 +95,7 @@ function reflash() {
       if (data.data == null) {
         return;
       }
+      aciveText = data.data.content;
       data.data.content.split(",").forEach((text) => {
         let content = text.split(":")[0];
         let user = text.split(":")[1];
@@ -107,7 +108,7 @@ function reflash() {
       });
       return lilist;
     })
-    .then((list) => {
+    .then((list) => {      
       ReactDOM.createRoot(document.querySelector(".chat-list")).render(list);
     })
     .then(() => {
@@ -125,9 +126,14 @@ function reFlash() {
   fetch(`http://175.106.99.31/qna/admin/${no}`)
     .then((response) => response.json())
     .then((data) => {
+      if(aciveText == data.data.content) {
+        return;
+      }else {
+        aciveText = data.data.content;
+      }
       let lilist = [];
       if (data.data == null) {
-        return;
+        return null;
       }
       data.data.content.split(",").forEach((text) => {
         let content = text.split(":")[0];
@@ -142,6 +148,7 @@ function reFlash() {
       return lilist;
     })
     .then((list) => {
+      if(list == null) return;
       ReactDOM.createRoot(document.querySelector(".chat-list")).render(list);
     })
 }
