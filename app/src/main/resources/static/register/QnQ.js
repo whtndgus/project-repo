@@ -161,7 +161,7 @@ function reflash() {
       console.log(document.querySelector(".chats").scrollHeight);
       setTimeout(() => {
         // document.querySelector(".chats").scrollTop = document.querySelector(".chats").scrollHeight;
-        if($(".chats").scrollTop() < document.querySelector(".chats").scrollHeight) {
+        if($(".chats").scrollTop()+40 >= document.querySelector(".chats").scrollHeight) {
           $(".chats").animate(
             { scrollTop: document.querySelector(".chats").scrollHeight },
             500

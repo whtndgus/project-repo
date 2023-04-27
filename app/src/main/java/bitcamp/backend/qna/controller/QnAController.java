@@ -36,7 +36,7 @@ public class QnAController {
         if(a.getContent().length() >= 210) {
           String tmp = "";
           for(int i = 1; i < str.split(",").length; i++) {
-            tmp += str.split(",")[i];
+            tmp += str.split(",")[i] + ",";
           }
           a.setContent(tmp);
         }
@@ -63,6 +63,14 @@ public class QnAController {
     try {
       if (qnAService.get((int) param.get("mno")) != null) {
         QnA a = qnAService.get((int) param.get("mno"));
+        String str = a.getContent();
+        if(a.getContent().length() >= 210) {
+          String tmp = "";
+          for(int i = 1; i < str.split(",").length; i++) {
+            tmp += str.split(",")[i] + ",";
+          }
+          a.setContent(tmp);
+        }
         a.setContent(a.getContent() + "," + param.get("content") + ":관리자:"
             + new SimpleDateFormat("MM월dd일 HH시mm분").format(new Date()));
         qnAService.updateM(a);
