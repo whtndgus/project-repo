@@ -97,7 +97,6 @@ function Lli(params) {
         <span id="q-content">{params.text}</span>
         <br />
         <br />
-        <br />
         <span id="q-date">{params.date}</span>
       </div>
     </li>
@@ -109,7 +108,6 @@ function Rli(params) {
     <li className="chat-right">
       <div>
         <span id="a-content">{params.text}</span>
-        <br />
         <br />
         <br />
         <span id="a-date">{params.date}</span>
