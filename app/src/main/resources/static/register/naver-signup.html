@@ -41,17 +41,14 @@
           <div class="row justify-content-center">
             <div class="col-0 d-flex flex-column align-items-center justify-content-center">
               <div class="d-flex justify-content-center py-4">
-                <a href="index.html" class="logo d-flex align-items-center w-auto">
-                  <img src="../assets/img/newlogo.png" />
-                  <span class="d-none d-lg-block">MyClinic</span>
-                </a>
+               
               </div>
               <div class="card" id="register-form">
                 <div class="card-body">
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">
+                    <h5 class="card-title text-center pb-0 fs-4"><strong>
                       Create an Account
-                    </h5>
+                    </strong></h5>
                     <p class="text-center small">
                       계정 생성을 위한 정보를 입력하세요.
                     </p>
@@ -88,7 +85,7 @@
                           oninput="autoTelHyphen(event)" required readonly />
                         <div id="tel-validation-msg" class="validation-msg"></div>
                       </div>
-                      <button type="button" onclick="calltel()" class="btn btn-primary col-md-2" style="height: 90%">
+                      <button type="button" onclick="calltel()" class="btn btn-outline-secondary col-md-2" style="height: 90%">
                         변경 / 인증
                       </button>
                     </div>
@@ -151,7 +148,7 @@
                           readonly />
                       </div>
                       <div class="col-sm-3">
-                        <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" />
+                        <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary" />
                       </div>
                     </div>
 
@@ -192,14 +189,14 @@
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <button type="submit" class="btn btn-primary w-100" id="btn-insert">
+                      <button type="submit" class="btn btn-outline-secondary w-50" id="btn-insert" style="margin-left: 180px;">
                         가입 완료
                       </button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">
                         이미 계정이 있으신가요?
-                        <a href="../auth/patients-login.html">로그인</a>
+                        <a href="../auth/patients-login.html"><strong>로그인</strong></a>
                       </p>
                     </div>
                   </form>

@@ -284,7 +284,7 @@ $(".btn-1").click(() => {
               <form>
               <span>
                 <h5>증상 사진 첨부</h5> 
-                <input id="formFileMultiple" className="form-control" type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 200 }} />
+                <input id="formFileMultiple" className="form-control" type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 250 }} />
                 </span>
               </form>
             </div>
@@ -623,12 +623,12 @@ $(".btn-1").click(() => {
               중복확인
             </button> */}
             <div className="input-group mb-3">
-             <form>
-              <span>
-               <h5>증상 사진 첨부</h5> 
-              <input id="formFileMultiple" className="form-control" type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 250 }} />
-              </span>
-             </form>
+               <form>
+                <span>
+                  <h5>증상 사진 첨부</h5> 
+                  <input id="formFileMultiple" className="form-control" type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 250 }} />
+                </span>
+              </form>
              </div>
           
 
