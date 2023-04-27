@@ -158,7 +158,6 @@ function reflash() {
       ReactDOM.createRoot(document.querySelector(".chat-list")).render(list);
     })
     .then(() => {
-      console.log(document.querySelector(".chats").scrollHeight);
       setTimeout(() => {
         // document.querySelector(".chats").scrollTop = document.querySelector(".chats").scrollHeight;
         $(".chats").animate(
@@ -168,3 +167,35 @@ function reflash() {
       }, 100);
     });
 }
+
+function reFlash() {
+  fetch(`http://175.106.99.31/qna/${myno}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      let lilist = [];
+      if (data.data == null) {
+        return;
+      }
+      data.data.content.split(",").forEach((text) => {
+        let content = text.split(":")[0];
+        let user = text.split(":")[1];
+        let date = text.split(":")[2];
+        if (user == "질문자") {
+          lilist.push(<Lli text={content} date={date} />);
+        } else if (user == "관리자") {
+          lilist.push(<Rli text={content} date={date} />);
+        }
+      });
+      return lilist;
+    })
+    .then((list) => {
+      ReactDOM.createRoot(document.querySelector(".chat-list")).render(list);
+    })
+}
+
+setTimeout(() => {
+  setInterval(() => {
+    reFlash();
+  }, 1000);
+}, 1000);
