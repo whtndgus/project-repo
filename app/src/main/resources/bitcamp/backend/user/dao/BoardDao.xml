@@ -17,6 +17,12 @@
     values(#{pno}, #{title}, #{pain}, #{another}, #{serial}, #{filter})
   </insert>
   
+  <insert id="insertBe" parameterType="bitcamp.backend.user.vo.Board" 
+          useGeneratedKeys="true" keyColumn="board_id" keyProperty="no">
+    insert into app_symp_board (symp_title, symp_cont1, symp_cont2, serial, filter)
+    values(#{title}, #{pain}, #{another}, #{serial}, #{filter})
+  </insert>
+  
   <select id="findAll" resultType="bitcamp.backend.user.vo.Board" parameterType="string">
     select 
       b.symp_no as no, 

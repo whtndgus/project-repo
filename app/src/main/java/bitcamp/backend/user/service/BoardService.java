@@ -7,6 +7,8 @@ import bitcamp.backend.user.vo.Board;
 public interface BoardService {
   void add(Board board);
 
+  void addBe(Board board);
+
   List<Board> list(String keyword);
 
   Board get(int no);
