@@ -131,7 +131,7 @@ function Rli(params) {
 </li>
 
 */
-
+let aciveText = "";
 function reflash() {
   fetch(`http://175.106.99.31/qna/${myno}`)
     .then((response) => response.json())
@@ -140,6 +140,7 @@ function reflash() {
       if (data.data == null) {
         return;
       }
+      aciveText = data.data.content;
       data.data.content.split(",").forEach((text) => {
         let content = text.split(":")[0];
         let user = text.split(":")[1];
@@ -170,6 +171,11 @@ function reFlash() {
   fetch(`http://175.106.99.31/qna/${myno}`)
     .then((response) => response.json())
     .then((data) => {
+      if(aciveText == data.data.content) {
+        return;
+      }else {
+        aciveText = data.data.content;
+      }
       let lilist = [];
       if (data.data == null) {
         return;
