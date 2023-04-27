@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>나의 작성 글</title> <!--tables.data에 연결할 상세 페이지-->
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="board-rescods.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" rel="stylesheet" <!-- Template
+    Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <style>
+    .carousel-item {
+      transition: 1s;
+    }
+  </style>
+</head>
+
+<body>
+
+ <!-- ======= Header ======= -->
+ <header id="header" class="header fixed-top d-flex align-items-center">
+  <div class="d-flex align-items-center justify-content-between">
+    <a class="logo d-flex align-items-center">
+      <!--  <img src="assets/img/newlogo.png" alt=""> -->
+      <span class="d-none d-lg-block">P DC</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div>
+  <!-- End Logo -->
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+      <li class="nav-item dropdown pe-3">
+        <a
+          class="nav-link nav-profile d-flex align-items-center pe-0"
+          href="patients-profile.html"
+        >
+          <div id="pre-userimg"></div>
+          <span id="username" class="d-none d-md-block ps-2"></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<!-- ======= Header ======= -->
+
+   <!-- ======= Sidebar ======= -->
+   <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Main</span>
+        </a>
+      </li>
+
+      <li class="nav-heading">환자 페이지</li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="patients-profile.html">
+          <i class="bi bi-person"></i>
+          <span>내 정보</span>
+        </a>
+      </li>
+      <!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="patients-records.html">
+          <i class="bi bi-file-earmark"></i>
+          <span>작성글 목록</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="QnQ.html">
+          <i class="bi bi-question-circle"></i>
+          <span>문의하기</span>
+        </a>
+      </li>
+
+      <!-- 로그아웃 태그 -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <li class="nav-item logout">
+        <a class="nav-link collapsed">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>로그아웃</span>
+        </a>
+      </li>
+      <!-- End Login Page Nav -->
+      <script>
+        $(".logout").click(() => {
+          console.log(11);
+          fetch(`http://175.106.99.31/auth/logout`, {
+            method: "GET",
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.status == "success") {
+                location.href = "";
+              } else {
+                alert("로그아웃 실패");
+                location.href = "";
+              }
+            });
+        });
+      </script>
+    </ul>
+    <img src="../register/assets/img/mainlogo.png" style="height:150px; margin-top:400px; margin-left:40px;">
+  </aside>
+  <!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>나의 진료 상세 내역</h1>
+    </div><!-- End Page Title -->
+
+    <div class="col-xxl-12" style="width:1250px">
+      <section class="section">
+        <div class="row gx-3">
+
+          <div class="col-lg-6 ">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title board-title"></h3>
+                <h5 class="card-title board-pain"></h5>
+
+                <div id="carouselExampleControls"
+                  style=" margin-top: 20px; margin-bottom: 20px; width: 490px; height: 300px; overflow: hidden; background-color: white; margin-left: auto; margin-right: auto;"
+                  class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner" style="width: 100%; height: 100%;" id="imgs" style="">
+                    <div class="carousel-item active">
+                      <img src="무직.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="무직.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="무직.png" class="d-block w-100" alt="...">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style=""></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+
+                <!-- Browser Default Validation -->
+                <form class="row gx-3">
+                  <div class="col-md-3">
+                    <label for="validationDefault01" class="form-label">이름</label>
+                    <input type="text" class="form-control board-name" id="validationDefault01" value="" readonly>
+                  </div>
+                  <div class="col-md-1">
+                    <label for="validationDefault02" class="form-label">성별</label>
+                    <input class="form-control board-gender" id="validationDefault02"
+                      style="padding: 0px; line-height: 38px; text-align: center; height: 38px;" value="" readonly>
+                  </div>
+                  <div class="col-md-2">
+                    <label for="validationDefault01" class="form-label">나이</label>
+                    <input type="text" class="form-control board-age" id="validationDefault01" value="" readonly>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="validationDefault01" class="form-label">지역</label>
+                    <input type="text" class="form-control board-addr" id="validationDefault01" value="" readonly>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="validationDefault01" class="form-label">연락처</label>
+                    <input type="text" class="form-control board-tel" id="validationDefault01" value=""
+                      readonly>
+                  </div>
+
+                  <div class="col-md-12 patients-another-area">
+                    <label for="validationDefault03" class="form-label">특이사항</label>
+                    <textarea class="form-control patients-another board-another" placeholder="Leave a comment here"
+                      id="floatingTextarea3"></textarea>
+                  </div>
+
+                  <div class="col-12">
+                    <button class="btn btn-primary patients-change-btn" type="button">내용 수정</button>
+                  </div>
+
+                </form>
+                <!-- End Browser Default Validation -->
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><strong>소견서</strong></h5>
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                  <!-- Custom Styled Validation -->
+                  <form class="row g-3 needs-validation sogyon-list-cover" novalidate>
+
+
+                    <div class="sogyon-list">  
+                      <ol class="list-group list-group-numbered" id="sogyon-list">
+                      </ol>
+                    </div>
+
+ 
+                  </form>
+
+                </div>
+              </div>
+
+
+              </form><!-- End Custom Styled Validation with Tooltips -->
+ 
+            </div>
+          </div>
+
+        </div>
+    </div>
+    </section>
+    </div>
+
+    <div id="react-window">
+    </div>
+
+  </main><!-- End #main -->
+
+   <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+<div >
+ <div class="tooltip-container">
+    <a href="https://github.com/whtmdgus" data-bs-toggle="tooltip" data-bs-placement="top" title="조승현">
+      <img src="../register/assets/img/gitlogo.png" style="width:40px">
+    </a>
+    <a href="https://github.com/chaminju927" data-bs-toggle="tooltip" data-bs-placement="top" title="차민주">
+      <img src="../register/assets/img/gitlogo.png" style="width:40px">
+    </a>
+    <a href="https://github.com/molang2" data-bs-toggle="tooltip" data-bs-placement="top" title="이준영">
+      <img src="../register/assets/img/gitlogo.png" style="width:40px">
+    </a>
+    <a href="https://github.com/hyunwookimkim" data-bs-toggle="tooltip" data-bs-placement="top" title="김현우">
+      <img src="../register/assets/img/gitlogo.png" style="width:40px">
+    </a>
+    <a href="https://github.com/omelase" data-bs-toggle="tooltip" data-bs-placement="top" title="이예찬">
+      <img src="../register/assets/img/gitlogo.png" style="width:40px">
+    </a>
+ </div>
+ <div class="footer-img-container">
+   <img src ="../register/assets/img/bitcamplogo.png" > 
+   <img src ="../register/assets/img/navercloudlogo.png" style="width:200px; margin-left: 50px;"> 
+   <img src ="../register/assets/img/magicecole.png" style="width:150px; margin-left: 50px;">
+  </div>
+</div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- 사용자가 추가한 스크립트 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type='text/babel' src="patients-record-be.js"></script>
+
+</body>
+
+</html>

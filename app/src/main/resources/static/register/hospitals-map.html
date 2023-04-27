@@ -366,12 +366,13 @@
                       response.v2.addresses[0].x
                     ),
                     map: map,
-                    icon: {
-                      url: "https://navermaps.github.io/maps.js.ncp/docs/img/example/sally.png",
-                      size: new naver.maps.Size(50, 52),
-                      origin: new naver.maps.Point(0, 0),
-                      anchor: new naver.maps.Point(25, 26),
-                    },
+                    // icon: {
+                    //   url: "https://navermaps.github.io/maps.js.ncp/docs/img/example/sally.png",
+                    //   size: new naver.maps.Size(50, 52),
+                    //   origin: new naver.maps.Point(0, 0),
+                    //   anchor: new naver.maps.Point(25, 26),
+                    // },
+                    animation: naver.maps.Animation.BOUNCE,
                   });
 
                   // 마커 클릭 시 정보창 표시
