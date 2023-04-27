@@ -23,32 +23,53 @@ let no = new URLSearchParams(location.search).get("no");
 
 reflash()
 $(".chat-btn").click(() => {
-  fetch("http://175.106.99.31/qna/admin", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ // 스프링에 전달할 값
-      content: $(".chat-text").val(),
-      mno: Number(no)
+  if ($(".chat-text").val().length > 1) {
+    fetch("http://175.106.99.31/qna/admin", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ // 스프링에 전달할 값
+        content: $(".chat-text").val(),
+        mno: Number(no)
+      })
     })
-  })
-    .then(response => response.json())
-    .then(data => {
-      if(data.status == "success") {
-        reflash();
-      }
-    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status == "success") {
+          reflash();
+        }
+      })
+  }
 })
 
-
+function enterkey() {
+  if (window.event.keyCode == 13 && $(".chat-text").val().length > 1) {
+    fetch("http://175.106.99.31/qna/admin", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ // 스프링에 전달할 값
+        content: $(".chat-text").val(),
+        mno: Number(no)
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status == "success") {
+          reflash();
+        }
+      })
+  }
+}
 
 function Lli(params) {
   return (
     <li className="chat-left">
       <div>
         <span id="q-content">{params.text}</span>
-        <br/><br/><br/>
+        <br /><br /><br />
         <span id="q-date">{params.date}</span>
       </div>
     </li>
@@ -60,7 +81,7 @@ function Rli(params) {
     <li className="chat-right">
       <div>
         <span id="a-content">{params.text}</span>
-        <br/><br/><br/>
+        <br /><br /><br />
         <span id="a-date">{params.date}</span>
       </div>
     </li>
