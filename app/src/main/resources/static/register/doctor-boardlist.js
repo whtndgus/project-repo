@@ -49,7 +49,7 @@ fetch(`http://175.106.99.31/auth/user`, {
       return data.data;
     } else {
       location.href = "../auth/doctors-login.html";
-    }
+    } 
     return data.data;
   })
   .then((user) => {
@@ -101,6 +101,14 @@ reflesh("");
 $(".search-btn").click(() => {
   reflesh($(".search-filter").val());
 });
+
+$(".search-btn").keydown(function(event) {
+  if(event.which === 13) {
+    reflesh($(".search-filter").val());
+  }
+});
+
+
 
 function reflesh(string) {
   let lists;
