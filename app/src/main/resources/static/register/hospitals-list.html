@@ -167,7 +167,10 @@
         });
       </script>
     </ul>
-
+    <img
+    src="../register/assets/img/mainlogo.png"
+    style="height: 150px; margin-top: 400px; margin-left: 40px"
+  />
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
@@ -422,7 +425,7 @@
     function renderDataList(dataList) {
       let html = '';
       for (var row of dataList) {   
-        html += `<tr onclick="window.location.href='hospitals-view.html?no=${row.hospitalNo}'">
+        html += `<tr style="cursor:pointer;" onclick="window.location.href='hospitals-view.html?no=${row.hospitalNo}'">
         <td>${row.hospitalNo}</td>
         <td>${row.hosName}</td>
         <td>${row.hosAddr}</td>
