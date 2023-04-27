@@ -37,7 +37,6 @@ fetch(`http://175.106.99.31/auth/user`, {
     }
   })
   .then((user) => {
-    alert(user.naver)
     if (!user.passwordcheck && !user.naver) location.href = "patients-profile-auth.html";
     if (user.phy !== undefined) {
     } else {
