@@ -195,6 +195,7 @@
             background-color: white;
             border: 3px solid rgb(211, 235, 244);
           }
+          
           .chat-right {}
 
           .chat-right div {
@@ -203,6 +204,16 @@
 		        background-color: white;
 		        border: 3px solid rgb(211, 235, 244);
 		      }
+          .chat-right div:before {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 10px;
+            border-width: 15px 15px 0 0;
+            border-style: solid;
+            border-color: rgb(211, 235, 244) transparent transparent transparent;
+          }
+
         #q-content{
           font-weight: bolder;
         }
