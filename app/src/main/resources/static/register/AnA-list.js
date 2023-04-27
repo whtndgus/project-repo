@@ -18,7 +18,7 @@ fetch(`http://175.106.99.31/auth/user`, {
       let phoUrl = "";
       if (data.data.phoUrl != "undefined") {
         phoUrl =
-          "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
+          "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" + 
           data.data.phoUrl +
           "?type=f&w=36&h=36&quality=100&anilimit=24";
       } else {
