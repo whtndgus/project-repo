@@ -137,7 +137,7 @@ $(".btn-1").click(() => {
                 aria-describedby="basic-addon1"
               />
             </div>
-            <h5><strong>증상 부위 또는 증상의 종류</strong></h5>
+            <h5>증상 부위 또는 증상의 종류</h5>
             <div className="input-group mb-3">
               <div className="input-group-text">
                 <span className="font13" style={{ marginRight: 2 }}>머리</span>
@@ -362,7 +362,7 @@ $(".btn-1").click(() => {
       roots.render(
         <div id="root">
           <div className="insert-left">
-            <h3>필수 입력항목</h3>
+            <h3><strong>필수 입력항목</strong></h3>
             <div className="input-group mb-3" style={{ height: 50, float: "left" }}>
               <span className="input-group-text" id="basic-addon1">
                 제목
