@@ -32,6 +32,14 @@ public class QnAController {
     try {
       if (qnAService.getM((int) param.get("mno")) != null) {
         QnA a = qnAService.getM((int) param.get("mno"));
+        String str = a.getContent().length();
+        if(a.getContent().length() >= 210) {
+          String tmp = "";
+          for(int i = 1; i < str.split(",").size(); i++) {
+            tmp += str.split(",")[i];
+          }
+          a.setContent(tmp);
+        }
         a.setContent(a.getContent() + "," + param.get("content") + ":질문자:"
             + new SimpleDateFormat("MM월dd일 HH시mm분").format(new Date()));
         qnAService.updateM(a);

@@ -161,10 +161,17 @@ function reflash() {
       console.log(document.querySelector(".chats").scrollHeight);
       setTimeout(() => {
         // document.querySelector(".chats").scrollTop = document.querySelector(".chats").scrollHeight;
-        $(".chats").animate(
-          { scrollTop: document.querySelector(".chats").scrollHeight },
-          500
-        );
+        if($(".chats").scrollTop() < document.querySelector(".chats").scrollHeight) {
+          $(".chats").animate(
+            { scrollTop: document.querySelector(".chats").scrollHeight },
+            500
+          );
+        }
       }, 100);
     });
 }
+setTimeout(() => {
+  setInterval(() => {
+    reflash();
+  }, 2000);
+}, 1500);
