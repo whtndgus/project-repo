@@ -93,7 +93,7 @@ function reflash() {
     .then((data) => {
       let lilist = [];
       if (data.data == null) {
-        return null;
+        return;
       }
       aciveText = data.data.content;
       data.data.content.split(",").forEach((text) => {
@@ -108,8 +108,7 @@ function reflash() {
       });
       return lilist;
     })
-    .then((list) => {
-      if(list == null) return;
+    .then((list) => {      
       ReactDOM.createRoot(document.querySelector(".chat-list")).render(list);
     })
     .then(() => {
@@ -134,7 +133,7 @@ function reFlash() {
       }
       let lilist = [];
       if (data.data == null) {
-        return;
+        return null;
       }
       data.data.content.split(",").forEach((text) => {
         let content = text.split(":")[0];
@@ -149,6 +148,7 @@ function reFlash() {
       return lilist;
     })
     .then((list) => {
+      if(list == null) return;
       ReactDOM.createRoot(document.querySelector(".chat-list")).render(list);
     })
 }
