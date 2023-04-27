@@ -34,6 +34,7 @@ public class QnAController {
         QnA a = qnAService.getM((int) param.get("mno"));
         String str = a.getContent();
         if(a.getContent().length() >= 210) {
+          System.out.println("콘테츠 길이 초과" + a.getContent().length());
           String tmp = "";
           for(int i = 1; i < str.split(",").length; i++) {
             tmp += str.split(",")[i] + ",";
@@ -65,6 +66,7 @@ public class QnAController {
         QnA a = qnAService.get((int) param.get("mno"));
         String str = a.getContent();
         if(a.getContent().length() >= 210) {
+          System.out.println("콘테츠 길이 초과" + a.getContent().length());
           String tmp = "";
           for(int i = 1; i < str.split(",").length; i++) {
             tmp += str.split(",")[i] + ",";
