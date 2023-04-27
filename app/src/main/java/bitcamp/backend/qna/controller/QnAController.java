@@ -32,7 +32,7 @@ public class QnAController {
     try {
       if (qnAService.getM((int) param.get("mno")) != null) {
         QnA a = qnAService.getM((int) param.get("mno"));
-        String str = a.getContent().length();
+        String str = a.getContent();
         if(a.getContent().length() >= 210) {
           String tmp = "";
           for(int i = 1; i < str.split(",").size(); i++) {
