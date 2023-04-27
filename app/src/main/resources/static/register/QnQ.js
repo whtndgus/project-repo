@@ -146,6 +146,7 @@ function reflash() {
         let content = text.split(":")[0];
         let user = text.split(":")[1];
         let date = text.split(":")[2];
+        content =  content.substring(0,8)+"\n"+content.substring(8,16)+"\n"+content.substring(16,24)
         if (user == "질문자") {
           lilist.push(<Lli text={content} date={date} />);
         } else if (user == "관리자") {
@@ -180,6 +181,7 @@ function reFlash() {
         let content = text.split(":")[0];
         let user = text.split(":")[1];
         let date = text.split(":")[2];
+        content =  content.substring(0,8)+"\n"+content.substring(8,16)+"\n"+content.substring(16,24)
         if (user == "질문자") {
           lilist.push(<Lli text={content} date={date} />);
         } else if (user == "관리자") {
