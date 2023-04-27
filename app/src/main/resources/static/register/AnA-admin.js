@@ -85,7 +85,7 @@ function Rli(params) {
 */
 
 function reflash() {
-  fetch(`http://175.106.99.31/qna/${no}`)
+  fetch(`http://175.106.99.31/qna/admin/${no}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -120,7 +120,7 @@ function reflash() {
 }
 
 function reFlash() {
-  fetch(`http://175.106.99.31/qna/${no}`)
+  fetch(`http://175.106.99.31/qna/admin/${no}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
