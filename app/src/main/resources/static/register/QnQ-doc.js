@@ -201,22 +201,23 @@ setTimeout(() => {
 
 document.addEventListener('keydown', (event) => {
   if (event.key == "Enter" && $(".chat-text").val().length > 1) {
-    fetch("http://175.106.99.31/qna/admin", {
-      method: 'POST',
+    fetch("http://175.106.99.31/qna", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ // 스프링에 전달할 값
+      body: JSON.stringify({
+        // 스프링에 전달할 값
         content: $(".chat-text").val(),
-        mno: Number(no)
-      })
+        mno: myno,
+      }),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.status == "success") {
           $(".chat-text").val("")
           reflash();
         }
-      })
+      });
   }
 });
