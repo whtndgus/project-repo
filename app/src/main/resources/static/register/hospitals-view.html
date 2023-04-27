@@ -212,6 +212,10 @@
           });
         </script>
       </ul>
+      <img
+        src="../register/assets/img/mainlogo.png"
+        style="height: 150px; margin-top: 400px; margin-left: 40px"
+      />
     </aside>
     <!-- End Sidebar-->
 
@@ -254,16 +258,17 @@
                     </div>
                   </div>
                   <div class="col-lg-6">
-                    <div class="info-box card">
+                    <div
+                      class="info-box card hos-addr"
+                      onclick="goToHospitalMap()"
+                    >
                       <i class="bi bi-geo-alt"></i>
                       <h3>오시는 길</h3>
                       <div
                         id="hosAddr"
                         class="hos-addr"
                         onclick="goToHospitalMap()"
-                      >
-                        ${hospital.hosAddr}
-                      </div>
+                      ></div>
                     </div>
                   </div>
                 </div>
@@ -738,7 +743,7 @@
             if (new URL(location.href).searchParams.get("no") == null) {
               if (user.hosNo == 0) {
                 location.href = "doctors-advices.html";
-              }else {
+              } else {
                 location.href = `?no=${user.hosNo}`;
               }
             }

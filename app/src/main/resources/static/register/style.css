@@ -133,7 +133,7 @@ body::-webkit-scrollbar {
   opacity: 1;
 }
 .btn-1 {
-  width: 70%;
+  width: 68%;
   transition: 0.2s;
 }
 .btn-2 {
@@ -142,7 +142,7 @@ body::-webkit-scrollbar {
   transition: 0.2s;
 }
 .btn-3 {
-  margin-left: 1%;
+  margin-left: 3%;
   width: 29%;
   font-size: 80%;
   transition: 0.2s;
