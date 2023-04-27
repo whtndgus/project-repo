@@ -35,7 +35,7 @@ public class QnAController {
         String str = a.getContent();
         if(a.getContent().length() >= 210) {
           String tmp = "";
-          for(int i = 1; i < str.split(",").size(); i++) {
+          for(int i = 1; i < str.split(",").length; i++) {
             tmp += str.split(",")[i];
           }
           a.setContent(tmp);
