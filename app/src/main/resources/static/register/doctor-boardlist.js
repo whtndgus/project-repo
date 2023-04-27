@@ -103,8 +103,9 @@ $(".search-btn").click(() => {
 });
 
 $(".search-btn").keydown(function(event) {
-  var keyCode = event.keyCode ? event.keyCode : event.which;
-  if(keyCode == 13) {
+  // var keyCode = event.keyCode ? event.keyCode : event.which;
+  if(event.keyCode === 13) {
+    event.preventDefault();
     reflesh($(".search-filter").val());
   }
 });
