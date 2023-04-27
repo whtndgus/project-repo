@@ -280,10 +280,14 @@ $(".btn-1").click(() => {
             
             <h3>추가 입력항목</h3>
 
-            <form>
-              <input type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 250 }} />
-              <span style={{ fontWeight: 900 }}>증상 사진 선택</span>
-            </form>
+            <div className="input-group mb-3">
+              <form>
+              <span>
+                <h5>증상 사진 첨부</h5> 
+                <input id="formFileMultiple" className="form-control" type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 200 }} />
+                </span>
+              </form>
+            </div>
 
             <div className="insert-btns">
               <button type="button" className="btn btn-primary insert-btn" onClick={() => {
@@ -356,7 +360,7 @@ $(".btn-1").click(() => {
       );
     } else {
       roots.render(
-        <div id="root">
+        <div id="root-login">
           <div className="insert-left">
             <h3>필수 입력항목</h3>
             <div className="input-group mb-3" style={{ height: 50, float: "left" }}>
@@ -511,7 +515,9 @@ $(".btn-1").click(() => {
                 />
               </div>
             </div>
+
             <h3>추가 입력항목</h3>
+            <div style={{ marginBottom: 0  }}>
             <div className="input-group mb-3" style={{ width: 200, float: "left" }}>
               <span className="input-group-text" id="basic-addon1">
                 이름
@@ -571,6 +577,7 @@ $(".btn-1").click(() => {
                 여
               </label>
             </div>
+            </div>
 
             {/* <div className="input-group mb-3" style={{ marginLeft: 5, marginRight: 5, width: 320, float: "left" }}>
               <span className="input-group-text" id="basic-addon1">
@@ -615,13 +622,17 @@ $(".btn-1").click(() => {
             }}>
               중복확인
             </button> */}
+            <div className="input-group mb-3">
+             <form>
+              <span>
+               <h5>증상 사진 첨부</h5> 
+              <input id="formFileMultiple" className="form-control" type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 250 }} />
+              </span>
+             </form>
+             </div>
+          
 
-            <form>
-              <input type="file" name="files" multiple="multiple" accept="image/*" style={{ width: 250 }} />
-              <span style={{ fontWeight: 900 }}>증상 사진 선택</span>
-            </form>
-
-            <div className="input-group mb-3" style={{ marginLeft: 0, marginRight: 200, width: 500, float: "left", marginTop: 20}}>
+            <div className="input-group mb-3" style={{ width: 500, float: "left", marginTop: 10}}>
               <span className="input-group-text" id="basic-addon1">
                 주소
               </span>
@@ -635,7 +646,7 @@ $(".btn-1").click(() => {
                 id="extraAddress"
               />
               <div class="col-sm-3" style={{marginLeft:20}}>
-                <input type="button" onClick={execDaumPostcode} defaultValue="우편번호 찾기" className="btn btn-primary"/>
+                <input type="button" onClick={execDaumPostcode} defaultValue="우편번호 찾기" className="btn btn-outline-secondary"/>
               </div>
             </div>
 
@@ -663,7 +674,7 @@ $(".btn-1").click(() => {
               />
             </div>
             <div className="insert-btns">
-              <button type="button" className="btn btn-primary insert-btn" onClick={() => {
+              <button type="button" className="btn btn-outline-secondary insert-btn" onClick={() => {
                 // 저장버튼 툴린후에 발생할 코드 입력 필요
                 let pa = "";
                 let vaol = $(".form-check-input:checked");
@@ -716,7 +727,7 @@ $(".btn-1").click(() => {
               }}>
                 저장
               </button>
-              <button type="button" className="btn btn-primary close-btn" onClick={() => {
+              <button type="button" className="btn btn-outline-secondary close-btn" onClick={() => {
                 // 취소버튼 툴린후에 발생할 코드 입력 필요
                   stat = 0;
                   roots.render(
