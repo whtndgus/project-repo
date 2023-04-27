@@ -137,7 +137,6 @@ function reflash() {
   fetch(`http://175.106.99.31/qna/${myno}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       let lilist = [];
       if (data.data == null) {
         return;
@@ -172,7 +171,6 @@ function reFlash() {
   fetch(`http://175.106.99.31/qna/${myno}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       let lilist = [];
       if (data.data == null) {
         return;
@@ -197,5 +195,5 @@ function reFlash() {
 setTimeout(() => {
   setInterval(() => {
     reFlash();
-  }, 2000);
-}, 1500);
+  }, 1000);
+}, 1000);

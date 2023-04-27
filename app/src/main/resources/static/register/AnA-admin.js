@@ -109,7 +109,6 @@ function reflash() {
   fetch(`http://175.106.99.31/qna/admin/${no}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       let lilist = [];
       if (data.data == null) {
         return;
@@ -144,7 +143,6 @@ function reFlash() {
   fetch(`http://175.106.99.31/qna/admin/${no}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       let lilist = [];
       if (data.data == null) {
         return;
