@@ -935,7 +935,7 @@ $(".btn-3").click(() => {
                 if (data.status == "success") {
                   let no = data.data.no
                   window.localStorage.setItem("boardNo", no);
-                  location.href = "/NiceAdmin/patients-record.html?no=" + no;
+                  location.href = "patients-record.html?no=" + no;
 
                 } else {
                   alert("잘못된 비밀번호 입니다")
