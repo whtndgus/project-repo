@@ -126,7 +126,7 @@ $(".btn-1").click(() => {
           <div className="insert-left">
             <h3><strong>필수 입력항목</strong></h3>
             <div className="input-group mb-3" style={{ height: 50, float: "left" }}>
-              <span className="input-group-text" id="basic-addon1">
+              <span className="input-group-text" id="basic-addon1" style="background-color:;">
                 제목
               </span>
               <input
