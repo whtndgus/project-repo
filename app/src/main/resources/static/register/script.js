@@ -138,7 +138,7 @@ $(".btn-1").click(() => {
               />
             </div>
             <h5><strong>증상 부위 또는 증상의 종류</strong></h5>
-            <div className="input-group mb-3" style={{  }}>
+            <div className="input-group mb-3">
               <div className="input-group-text">
                 <span className="font13" style={{ marginRight: 2 }}>머리</span>
                 <input
@@ -212,7 +212,7 @@ $(".btn-1").click(() => {
                 />
               </div>
             </div>
-            <div className="input-group mb-3" style={{  }}>
+            <div className="input-group mb-3" >
               <div className="input-group-text">
                 <span className="font13" style={{ marginRight: 2 }}>두통</span>
                 <input
@@ -372,7 +372,7 @@ $(".btn-1").click(() => {
               />
             </div>
             <h5>증상 부위 또는 증상의 종류</h5>
-            <div className="input-group mb-3" style={{  }}>
+            <div className="input-group mb-3" >
               <div className="input-group-text">
                 <span className="font13" style={{ marginRight: 2 }}>머리</span>
                 <input
