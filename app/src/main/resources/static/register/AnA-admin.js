@@ -93,7 +93,7 @@ function reflash() {
     .then((data) => {
       let lilist = [];
       if (data.data == null) {
-        return;
+        return null;
       }
       aciveText = data.data.content;
       data.data.content.split(",").forEach((text) => {
@@ -109,6 +109,7 @@ function reflash() {
       return lilist;
     })
     .then((list) => {
+      if(list == null) return;
       ReactDOM.createRoot(document.querySelector(".chat-list")).render(list);
     })
     .then(() => {

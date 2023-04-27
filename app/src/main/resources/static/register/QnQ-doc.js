@@ -172,7 +172,7 @@ function reFlash() {
     .then((response) => response.json())
     .then((data) => {
       if(aciveText == data.data.content) {
-        return;
+        return null;
       }else {
         aciveText = data.data.content;
       }
@@ -193,6 +193,7 @@ function reFlash() {
       return lilist;
     })
     .then((list) => {
+      if(list == null) return;
       ReactDOM.createRoot(document.querySelector(".chat-list")).render(list);
     })
 }
