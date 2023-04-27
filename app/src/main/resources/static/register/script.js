@@ -85,7 +85,7 @@ fetch(`http://175.106.99.31/auth/user`, {
       $(".log-mypage").click(() => {
         location.href = "patients-profile.html"
       })
-      $(".log-btn").attr("class", "btn btn-primary logout-btn")
+      $(".log-btn").attr("class", "btn btn-outline-secondary logout-btn")
       $(".logout-btn").click(() => {
         fetch(`http://175.106.99.31/auth/logout`, {
           method: 'GET'
@@ -290,7 +290,7 @@ $(".btn-1").click(() => {
             </div>
 
             <div className="insert-btns">
-              <button type="button" className="btn btn-primary insert-btn" onClick={() => {
+              <button type="button" className="btn btn-outline-secondary insert-btn" onClick={() => {
                 // 저장버튼 툴린후에 발생할 코드 입력 필요
                 let pa = "";
                 let vaol = $(".form-check-input:checked");
@@ -343,7 +343,7 @@ $(".btn-1").click(() => {
               }}>
                 저장
               </button>
-              <button type="button" className="btn btn-primary close-btn" onClick={() => {
+              <button type="button" className="btn btn-outline-secondary close-btn" onClick={() => {
                 // 취소버튼 툴린후에 발생할 코드 입력 필요
                   stat = 0;
                   roots.render(
@@ -829,7 +829,7 @@ $(".btn-2").click(() => {
           </div>
           <input
             type="button"
-            className="btn btn-primary"
+            className="btn btn-outline-secondary"
             defaultValue="검색 옵션 추가"
             style={{ width: 135, float: "right", marginRight: 5 }}
             onClick={() => {   // 검색 창에서 Tag 선택 버튼 클릭시 액션
