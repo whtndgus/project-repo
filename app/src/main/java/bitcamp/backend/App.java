@@ -125,19 +125,28 @@ public class App {
     int no = (int) (param.get("no"));
     if (no > 0) {
       board.setPno(no);
+
+      board.setTitle((String) param.get("title"));
+      board.setSerial(ran + "");
+      board.setPain((String) param.get("pain"));
+      board.setAnother(str);
+
+      board.setFilter(negaText(board.getTitle(), 0.8));
+      System.out.println("board : " + board);
+
+      boardService.add(board);
     } else {
 
+      board.setTitle((String) param.get("title"));
+      board.setSerial(ran + "");
+      board.setPain((String) param.get("pain"));
+      board.setAnother(str);
+
+      board.setFilter(negaText(board.getTitle(), 0.8));
+      System.out.println("board : " + board);
+
+      boardService.addBe(board);
     }
-
-    board.setTitle((String) param.get("title"));
-    board.setSerial(ran + "");
-    board.setPain((String) param.get("pain"));
-    board.setAnother(str);
-
-    board.setFilter(negaText(board.getTitle(), 0.8));
-    System.out.println("board : " + board);
-
-    boardService.add(board);
 
     System.out.println(boardService.get(board.getSerial()));
 

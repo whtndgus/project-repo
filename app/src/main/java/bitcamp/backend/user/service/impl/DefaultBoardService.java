@@ -27,6 +27,11 @@ public class DefaultBoardService implements BoardService {
   }
 
   @Override
+  public void addBe(Board board) {
+    boardDao.insertBe(board);
+  }
+
+  @Override
   public Board get(String password) {
     return boardDao.findByPassword(password);
   }

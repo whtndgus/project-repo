@@ -8,6 +8,8 @@ import bitcamp.backend.user.vo.Board;
 public interface BoardDao {
   void insert(Board board);
 
+  void insertBe(Board board);
+
   List<Board> findAll(String keyword);
 
   Board findByNo(int no);
