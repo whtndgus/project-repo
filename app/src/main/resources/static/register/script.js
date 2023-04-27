@@ -360,7 +360,7 @@ $(".btn-1").click(() => {
       );
     } else {
       roots.render(
-        <div id="root-login">
+        <div id="root">
           <div className="insert-left">
             <h3>필수 입력항목</h3>
             <div className="input-group mb-3" style={{ height: 50, float: "left" }}>
