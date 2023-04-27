@@ -183,7 +183,7 @@
           .chat-list li {
             list-style: none;
             width: 100%;
-            min-height: 120px;
+            min-height: 140px;
             margin-bottom: 2%;
           }
 
@@ -242,6 +242,9 @@
         .chats li div span {
           display: inline-block;
           box-sizing: border-box;
+          white-space: normal;
+          word-wrap:break-word;
+          word-break:break-all;
         }
 
         .chat-send-cover {
@@ -260,7 +263,7 @@
         </div>
         <div class="chat-send-cover">
           <div class="input-group mb-3">
-            <input type="text" class="form-control chat-text" placeholder="문의 사항을 입력해주세요"
+            <input type="text" class="form-control chat-text" maxlength="32" placeholder="문의 사항을 입력해주세요"
               aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary chat-btn" type="button" id="button-addon2" style="z-index:0 !important">입력</button>
           </div>
