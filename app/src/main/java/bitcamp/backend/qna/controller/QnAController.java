@@ -33,8 +33,8 @@ public class QnAController {
         QnA a = qnAService.getM((int) param.get("mno"));
         a.setContent(a.getContent() + "," + param.get("content") + ":질문자:"
             + new SimpleDateFormat("MM월dd일 HH시mm분").format(new Date()));
-        String str = a.getContent();
-        if(a.getContent().length() >= 240) {
+        while(a.getContent().length() >= 250) {
+          String str = a.getContent();
           System.out.println("콘테츠 길이 초과" + a.getContent().length());
           String tmp = "";
           for(int i = 2; i < str.split(",").length; i++) {
@@ -64,8 +64,8 @@ public class QnAController {
         QnA a = qnAService.get((int) param.get("mno"));
         a.setContent(a.getContent() + "," + param.get("content") + ":관리자:"
             + new SimpleDateFormat("MM월dd일 HH시mm분").format(new Date()));
-        String str = a.getContent();
-        if(a.getContent().length() >= 240) {
+        while(a.getContent().length() >= 250) {
+          String str = a.getContent();
           System.out.println("콘테츠 길이 초과" + a.getContent().length());
           String tmp = "";
           for(int i = 2; i < str.split(",").length; i++) {
