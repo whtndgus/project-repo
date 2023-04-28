@@ -244,30 +244,30 @@
                                 margin: 0;
                             }
                           </style>
-                        <form id="hospital-list">
-                          <tbody class="table-group-divider">
-                            <div class="hospital-list-css">
-                              <tr>
-                                <td><input id="hosName" class="hos-name" type="text" placeholder='병원이름' /></td>
-                                <td><input id="hosAddr" class="hos-addr" type="text" placeholder='주소'/></td>
-                                <td><input id="hosTel" class="hos-tel" type="number" placeholder="'-' 없이 입력"
-                                   maxlength="11"
-                                    oninput="changeNo()" required /></td>
-                                  <script>
-                                    function changeNo(){
-                                      if( document.querySelector(".hos-tel").value.length > document.querySelector(".hos-tel").maxLength) {
-                                        document.querySelector(".hos-tel").value = document.querySelector(".hos-tel").value.substring(0,11);
+                          <form id="hospital-list">
+                            <tbody class="table-group-divider">
+                              <div class="hospital-list-css">
+                                <tr>
+                                  <td class="mb-3"><input id="hosName" class="hos-name form-control" type="text" placeholder='병원이름' /></td>
+                                  <td class="mb-3"><input id="hosAddr" class="hos-addr form-control" type="text" placeholder='주소'/></td>
+                                  <td class="mb-3"><input id="hosTel" class="hos-tel form-control" type="number" placeholder="'-' 없이 입력"
+                                    maxlength="11"
+                                      oninput="changeNo()" required /></td>
+                                    <script>
+                                      function changeNo(){
+                                        if( document.querySelector(".hos-tel").value.length > document.querySelector(".hos-tel").maxLength) {
+                                          document.querySelector(".hos-tel").value = document.querySelector(".hos-tel").value.substring(0,11);
+                                        }
                                       }
-                                    }
-                                  </script>
-                                <td><input id="hosTime" class="hos-time" type="text"
-                                    placeholder="예:월~금 08시~18시30분,토 휴진" /></td>
-                                <td><input id="hosSub" class="hos-sub" type="text" placeholder="예: 가정의학과,소아과" /></td>
-                                <td><input id="hosPwd" class="hos-pwd" type="password" placeholder="비밀번호를 4자이상 입력"/></td>                      
-                                <form>
-                                  <td><input type="file" id="hosPhoto" class="hos-photo hospital-files"
-                                      style="width: 220px;" accept="image/*" multiple></td>
-                                </form>
+                                    </script>
+                                  <td class="mb-3"><input id="hosTime form-control" class="hos-time form-control" type="text"
+                                      placeholder="예:월~금 08시~18시30분,토 휴진" /></td>
+                                  <td class="mb-3"><input id="hosSub form-control" class="hos-sub form-control" type="text" placeholder="예: 가정의학과,소아과" /></td>
+                                  <td class="mb-3"><input id="hosPwd form-control" class="hos-pwd form-control" type="password" placeholder="비밀번호를 4자이상 입력"/></td>                      
+                                  <form>
+                                    <td class="mb-3"><input type="file" id="hosPhoto" class="hos-photo hospital-files form-control"
+                                        style="width: 220px;" accept="image/*" multiple></td>
+                                  </form>
                                 </tr>
                               </div>
                             </tbody>
