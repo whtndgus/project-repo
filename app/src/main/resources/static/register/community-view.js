@@ -23,6 +23,19 @@ function categoryName(category) {
   }
 }
 
+ function categoryNum(category) {
+  switch (category) {
+    case "자유게시판" :
+      return 1;
+    case "의학뉴스" :
+      return 2;
+    case "질문게시판" :
+      return 3;
+    default : 
+      return "-";
+  }
+ }
+
 fetch(`http://175.106.99.31/auth/user`, {
   method: "GET",
 })
@@ -181,7 +194,6 @@ $.ajax({
         }
       });
     })
-
     .catch((err) => {
       //alert('서버 요청 오류!');
       console.log(err);
@@ -221,7 +233,7 @@ $.ajax({
         doctorNo: myno,
         no: no,
         title: document.querySelector("#title").value,
-        category: document.querySelector("#category").value,
+        category: categoryNum(document.querySelector("#category").value),
         content: document.querySelector("#content").value,
         filter: 0,
         area: 0,
