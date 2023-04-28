@@ -545,6 +545,14 @@
         return false;
       }
       if (hosTel.value === '' || hosTel.value.length < 7) {
+        Swal.fire({
+          icon: 'error',
+          title: '전화번호를 7자 이상 입력해주세요.',
+          width: 400,
+          height: 320,
+          showConfirmButton: false,
+          timer: 750
+        });
         return false;
       }
       document.getElementById("btn-submit").style.display = "none";
