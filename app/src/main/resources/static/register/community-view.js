@@ -190,11 +190,11 @@ $.ajax({
 
   //댓글 입력
   document.querySelector("#rec-save-btn").onclick = ((e) => {
-    if (document.querySelector(".recomment").value == null) {
+    if (document.querySelector(".recomment").value.length > 1) {
       Swal.fire({
         icon: 'error',
         title: "댓글 입력 실패!",
-        text: "입력 값이 없습니다",
+        text: "입력 값이 너무짧습니다",
         width: 400,
         height: 320,
         showConfirmButton: false,
