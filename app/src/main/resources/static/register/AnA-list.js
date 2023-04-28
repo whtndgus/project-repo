@@ -33,8 +33,6 @@ fetch(`http://175.106.99.31/qna`)
   .then((data) => {
     if (data.status == "success") {
       //사용자 이름
-      document.querySelector("#username").innerHTML =
-        data.data.name + "(관리자)";
       return data.data;
     }
   })
