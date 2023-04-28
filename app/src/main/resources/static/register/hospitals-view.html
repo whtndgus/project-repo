@@ -1086,11 +1086,11 @@
         }
       });
 
-      const dbaddr = "";
-      const baddr = document.getElementById("update-hosAddr").value + ",";
-      const daddr = document.getElementById("update-dhosAddr").value;
-      dbaddr = baddr + daddr;
       document.querySelector("#hos-update-submit").onclick = (e) => {
+        const dbaddr = "";
+        const baddr = document.getElementById("update-hosAddr").value + ",";
+        const daddr = document.getElementById("update-dhosAddr").value;
+        dbaddr = baddr + daddr;
         document.getElementById("hos-update-submit").style.display = "none";
         let kno = new URL(location.href).searchParams.get("no");
         fetch(`http://175.106.99.31/hospital/${kno}`, {
