@@ -1032,7 +1032,14 @@
                   console.log('성공:', result);
                   return result.data.no;
                 } else {
-                  alert('입력실패');
+                  Swal.fire({
+                    icon: 'error',
+                    title: '입력 실패',
+                    width: 400,
+                    height: 320,
+                    showConfirmButton: false,
+                    timer: 750
+                  });
                   console.log(result.data);
                 }
               })
@@ -1046,7 +1053,14 @@
                 });
               })
               .catch((exception) => {
-                alert('입력 중 오류 발생');
+                Swal.fire({
+                    icon: 'error',
+                    title: '입력 중 오류발생',
+                    width: 400,
+                    height: 320,
+                    showConfirmButton: false,
+                    timer: 750
+                  });
                 console.log(exception);
               });
           });

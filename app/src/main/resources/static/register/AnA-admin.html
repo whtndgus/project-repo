@@ -112,6 +112,7 @@
           <span>로그아웃</span>
         </a>
       </li><!-- End Login Page Nav -->
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script>
         $(".logout").click(() => {
           console.log(11)
@@ -123,8 +124,17 @@
               if (data.status == "success") {
                 location.href = ""
               } else {
-                alert("로그아웃 실패")
-                location.href = ""
+                Swal.fire({
+                  icon: 'error',
+                  title: '로그아웃 실패',
+                  width: 400,
+                  height: 320,
+                  showConfirmButton: false,
+                  timer: 750
+                });
+                setTimeout(() => {
+                  location.href = "";
+                }, 800);
               }
             })
         })

@@ -230,7 +230,14 @@ class Sogyun extends React.Component {
           onClick={() => {
             new Promise((resolve) => {
               if (this.state.data.doc_no != myno) {
-                alert("본인 작성글만 조회 편집가능?");
+                Swal.fire({
+                  icon: 'question',
+                  title: '본인 작성글만 조회 편집가능',
+                  width: 400,
+                  height: 320,
+                  showConfirmButton: false,
+                  timer: 750
+                });
                 return;
               }
               ReactDOM.createRoot(
@@ -258,7 +265,14 @@ class Sogyun extends React.Component {
           onClick={() => {
             new Promise((resolve) => {
               if (this.state.data.doc_no != myno) {
-                alert("본인 작성글만 조회 편집가능?");
+                Swal.fire({
+                  icon: 'question',
+                  title: '본인 작성글만 조회 편집가능',
+                  width: 400,
+                  height: 320,
+                  showConfirmButton: false,
+                  timer: 750
+                });
                 return;
               }
               ReactDOM.createRoot(
