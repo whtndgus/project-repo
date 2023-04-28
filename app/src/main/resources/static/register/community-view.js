@@ -201,7 +201,7 @@ $.ajax({
 
   //댓글 입력
   document.querySelector("#rec-save-btn").onclick = (e) => {
-    if ($('#recContent').value == null) {
+    if (document.querySelector(".recomment").value == null) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
