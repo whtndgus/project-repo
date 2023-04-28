@@ -198,6 +198,7 @@ $.ajax({
         height: 320,
         showConfirmButton: false,
         timer: 750
+       
       });
       return;
     }
