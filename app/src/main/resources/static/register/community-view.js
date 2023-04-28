@@ -108,7 +108,7 @@ $.ajax({
       }
 
       $("#title").val(communityData.data.title);
-      categoryName($("#category").val()).val(communityData.data.category);
+      $("#category").val(categoryName(communityData.data.category));
       $("#doctorName").val(communityData.data.doctorName);
       $("#createdDate").val(communityData.data.createdDate);
       $("#content").val(communityData.data.content);
