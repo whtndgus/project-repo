@@ -336,7 +336,14 @@ $(".btn-1").click(() => {
                       btnon($(".btn-3"));
                     })
                 } else {
-                  alert("제목 및 필수 선택 사항 입력 필요")
+                  Swal.fire({
+                    icon: 'question',
+                    title: '제목 및 필수 선택 사항 입력 필요',
+                    width: 400,
+                    height: 320,
+                    showConfirmButton: false,
+                    timer: 750
+                  });
                 }
                 // .then((response) => response.json())
                 // .then((data) => console.log(data));
@@ -709,7 +716,7 @@ $(".btn-1").click(() => {
                     .then(data => {
                       let bno = data.no;
                       submitFiles(bno);
-                      alert("인증 번호(비회원 작성글 조회시에 필요 합니다) : " + data.serial);
+                      Swal.fire(`인증 번호(비회원 작성글 조회시에 필요 합니다) :( ${data.serial} )`);
                     })
                     .then(() => {
                       stat = 0
@@ -720,7 +727,14 @@ $(".btn-1").click(() => {
                       btnon($(".btn-3"));
                     })
                 } else {
-                  alert("제목 및 필수 선택 사항 입력 필요")
+                  Swal.fire({
+                    icon: 'question',
+                    title: '제목 및 필수 선택 사항 입력 필요',
+                    width: 400,
+                    height: 320,
+                    showConfirmButton: false,
+                    timer: 750
+                  });
                 }
                 // .then((response) => response.json())
                 // .then((data) => console.log(data));
@@ -808,7 +822,14 @@ $(".btn-2").click(() => {
                   })
                 $(".insert-title").val("")
               } else {
-                alert("검색어 입력 필요")
+                Swal.fire({
+                  icon: 'question',
+                  title: '검색어 입력 필요',
+                  width: 400,
+                  height: 320,
+                  showConfirmButton: false,
+                  timer: 750
+                });
               }
 
             }}>
@@ -918,7 +939,14 @@ $(".btn-3").click(() => {
           />
           <button type="button" className="btn btn-warning search-board-btn" onClick={() => {   // 비회원 작성글 비밀번호 조회 버튼 눌렸을 때 액션
             if ($(".search-board").val().length <= 4) {
-              alert("잘못된 일련번호 입니다")
+              Swal.fire({
+                icon: 'error',
+                title: '잘못된 일련번호',
+                width: 400,
+                height: 320,
+                showConfirmButton: false,
+                timer: 750
+              });
               return;
             }
             fetch("http://175.106.99.31/boardPassword", {
@@ -938,7 +966,14 @@ $(".btn-3").click(() => {
                   location.href = "patients-record-be.html?no=" + no;
 
                 } else {
-                  alert("잘못된 비밀번호 입니다")
+                  Swal.fire({
+                    icon: 'error',
+                    title: '잘못된 비밀번호 입니다',
+                    width: 400,
+                    height: 320,
+                    showConfirmButton: false,
+                    timer: 750
+                  });
                 }
               })
           }}>

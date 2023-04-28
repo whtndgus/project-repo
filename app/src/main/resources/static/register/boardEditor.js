@@ -14,7 +14,7 @@ class Pbtr extends React.Component {
   render() {
     if (this.state.filter) {
       return (
-        <tr onClick={() => {}}>
+        <tr onClick={() => { }}>
           <th>{this.state.name}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.anos != "null" ? this.state.anos : "-"}</td>
@@ -37,7 +37,7 @@ class Pbtr extends React.Component {
       );
     } else {
       return (
-        <tr onClick={() => {}}>
+        <tr onClick={() => { }}>
           <th>{this.state.name}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.anos != "null" ? this.state.anos : "-"}</td>
@@ -71,7 +71,7 @@ class Dctr extends React.Component {
   render() {
     if (this.state.filter) {
       return (
-        <tr onClick={() => {}}>
+        <tr onClick={() => { }}>
           <th>{this.state.doctorName}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.contents}</td>
@@ -94,7 +94,7 @@ class Dctr extends React.Component {
       );
     } else {
       return (
-        <tr onClick={() => {}}>
+        <tr onClick={() => { }}>
           <th>{this.state.doctorName}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.contents}</td>
@@ -295,29 +295,43 @@ function Pboard(props) {
           type="button"
           className="btn btn-outline-danger board-delete"
           onClick={() => {
-            if (
-              confirm(`작성글을 삭제\n진달글 수 : ${props.props.fedcount}개`)
-            ) {
-              fetch("http://175.106.99.31/deleteByNo", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  // 스프링에 전달할 값
-                  no: props.props.no,
-                }),
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                  ReactDOM.createRoot($(".new-windows")[0]).render();
-                  return data.status;
+            Swal.fire({
+              title: `작성글을 삭제\n진단글 수 : ${props.props.fedcount}개`,
+              showDenyButton: true,
+              showCancelButton: true,
+              denyButtonText: `삭제`,
+            }).then((result) => {
+              if (result.isDenied) {
+                fetch("http://175.106.99.31/deleteByNo", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    // 스프링에 전달할 값
+                    no: props.props.no,
+                  }),
                 })
-                .then((status) => {
-                  if (status == "success") location.href = "";
-                });
-            } else {
-            }
+                  .then((response) => response.json())
+                  .then((data) => {
+                    ReactDOM.createRoot($(".new-windows")[0]).render();
+                    return data.status;
+                  })
+                  .then((status) => {
+                    if (status == "success") {
+                      Swal.fire({
+                        icon: 'success',
+                        title: '삭제 완료',
+                        width: 400,
+                        height: 320,
+                        showConfirmButton: false,
+                        timer: 750
+                      })
+                      location.href = ""
+                    };
+                  });
+              }
+            })
           }}
         >
           삭제
@@ -446,29 +460,43 @@ function Pboardc(props) {
           type="button"
           className="btn btn-outline-danger board-delete"
           onClick={() => {
-            if (
-              confirm(`작성글을 삭제\n진달글 수 : ${props.props.fedcount}개`)
-            ) {
-              fetch("http://175.106.99.31/deleteByNo", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  // 스프링에 전달할 값
-                  no: props.props.no,
-                }),
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                  ReactDOM.createRoot($(".new-windows")[0]).render();
-                  return data.status;
+            Swal.fire({
+              title: `작성글을 삭제\n진단글 수 : ${props.props.fedcount}개`,
+              showDenyButton: true,
+              showCancelButton: true,
+              denyButtonText: `삭제`,
+            }).then((result) => {
+              if (result.isDenied) {
+                fetch("http://175.106.99.31/deleteByNo", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    // 스프링에 전달할 값
+                    no: props.props.no,
+                  }),
                 })
-                .then((status) => {
-                  if (status == "success") location.href = "";
-                });
-            } else {
-            }
+                  .then((response) => response.json())
+                  .then((data) => {
+                    ReactDOM.createRoot($(".new-windows")[0]).render();
+                    return data.status;
+                  })
+                  .then((status) => {
+                    if (status == "success") {
+                      Swal.fire({
+                        icon: 'success',
+                        title: '삭제 완료',
+                        width: 400,
+                        height: 320,
+                        showConfirmButton: false,
+                        timer: 750
+                      })
+                      location.href = ""
+                    };
+                  });
+              }
+            })
           }}
         >
           삭제
@@ -583,23 +611,30 @@ function Dcomm(props) {
           type="button"
           className="btn btn-outline-danger comm-delete"
           onClick={() => {
-            if (confirm(`작성글을 삭제`)) {
-              fetch(`http://175.106.99.31/community/${props.props.no}`, {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                  ReactDOM.createRoot($(".new-windows")[0]).render();
-                  return data.status;
+            Swal.fire({
+              title: `작성글을 삭제`,
+              showDenyButton: true,
+              showCancelButton: true,
+              denyButtonText: `삭제`,
+            }).then((result) => {
+              if (result.isDenied) {
+                fetch(`http://175.106.99.31/community/${props.props.no}`, {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
                 })
-                .then((status) => {
-                  if (status == "success") location.href = "";
-                });
-            } else {
-            }
+                  .then((response) => response.json())
+                  .then((data) => {
+                    ReactDOM.createRoot($(".new-windows")[0]).render();
+                    return data.status;
+                  })
+                  .then((status) => {
+                    if (status == "success") location.href = "";
+                  });
+              } else {
+              }
+            })
           }}
         >
           삭제
@@ -712,23 +747,30 @@ function Dcommc(props) {
           type="button"
           className="btn btn-outline-danger comm-delete"
           onClick={() => {
-            if (confirm(`작성글을 삭제`)) {
-              fetch(`http://175.106.99.31/community/${props.props.no}`, {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                  ReactDOM.createRoot($(".new-windows")[0]).render();
-                  return data.status;
+            Swal.fire({
+              title: `작성글을 삭제`,
+              showDenyButton: true,
+              showCancelButton: true,
+              denyButtonText: `삭제`,
+            }).then((result) => {
+              if (result.isDenied) {
+                fetch(`http://175.106.99.31/community/${props.props.no}`, {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
                 })
-                .then((status) => {
-                  if (status == "success") location.href = "";
-                });
-            } else {
-            }
+                  .then((response) => response.json())
+                  .then((data) => {
+                    ReactDOM.createRoot($(".new-windows")[0]).render();
+                    return data.status;
+                  })
+                  .then((status) => {
+                    if (status == "success") location.href = "";
+                  });
+              } else {
+              }
+            })
           }}
         >
           삭제
