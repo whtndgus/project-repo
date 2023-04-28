@@ -183,14 +183,37 @@ $(".change-pw-btn").click(() => {
       .then((response) => response.json())
       .then((data) => {
         if (data.status == "success") {
-          alert("비밀번호 정상적으로 변경됨");
-          window.location = "";
+          Swal.fire({
+            icon: 'success',
+            title: '비밀번호 정상적으로 변경됨',
+            width: 400,
+            height: 320,
+            showConfirmButton: false,
+            timer: 750
+          });
+          setTimeout(() => {
+            window.location = "";
+          }, 800);
         } else {
-          alert("기존 비밀번호와 다름");
+          Swal.fire({
+            icon: 'error',
+            title: '기존 비밀번호와 다름',
+            width: 400,
+            height: 320,
+            showConfirmButton: false,
+            timer: 750
+          });
         }
       });
   } else {
-    alert("비밀번호 확인 과 입력 비밀번호가 다르거나 기존 비밀번호와 동일");
+    Swal.fire({
+      icon: 'error',
+      title: '기존 비밀번호와 동일',
+      width: 400,
+      height: 320,
+      showConfirmButton: false,
+      timer: 750
+    });
   }
 });
 

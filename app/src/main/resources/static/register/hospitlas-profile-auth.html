@@ -253,6 +253,7 @@
     ></a>
 
     <!-- Vendor JS Files -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -346,7 +347,14 @@
               // hosNameInput.textContent = result.data.hosName; // 결과값으로 hosName 변경
               location.replace(`./hospitals-view.html?no=${no}`);
             } else {
-              alert("병원 비밀번호가 틀렸습니다.");
+              Swal.fire({
+                    icon: 'error',
+                    title: '병원 비밀번호가 틀렸습니다.',
+                    width: 400,
+                    height: 320,
+                    showConfirmButton: false,
+                    timer: 750
+                  });
               passwordValidationMsg.textContent = "비밀번호가 틀립니다.";
               passwordInput.classList.remove("is-valid", "is-invalid");
               passwordInput.classList.add("is-invalid");
@@ -395,7 +403,14 @@
                   // hosNameInput.textContent = result.data.hosName; // 결과값으로 hosName 변경
                   location.replace(`./hospitals-view.html?no=${no}`);
                 } else {
-                  alert("병원 비밀번호가 틀렸습니다.");
+                  Swal.fire({
+                    icon: 'error',
+                    title: '병원 비밀번호가 틀렸습니다.',
+                    width: 400,
+                    height: 320,
+                    showConfirmButton: false,
+                    timer: 750
+                  });
                   passwordValidationMsg.textContent = "비밀번호가 틀립니다.";
                   passwordInput.classList.remove("is-valid", "is-invalid");
                   passwordInput.classList.add("is-invalid");
