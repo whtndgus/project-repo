@@ -260,10 +260,10 @@
                                         }
                                       }
                                     </script>
-                                  <td class="mb-3"><input id="hosTime form-control" class="hos-time form-control" type="text"
+                                  <td class="mb-3"><input id="hosTime" class="hos-time form-control" type="text"
                                       placeholder="예:월~금 08시~18시30분,토 휴진" /></td>
-                                  <td class="mb-3"><input id="hosSub form-control" class="hos-sub form-control" type="text" placeholder="예: 가정의학과,소아과" /></td>
-                                  <td class="mb-3"><input id="hosPwd form-control" class="hos-pwd form-control" type="password" placeholder="비밀번호를 4자이상 입력"/></td>                      
+                                  <td class="mb-3"><input id="hosSub" class="hos-sub form-control" type="text" placeholder="예: 가정의학과,소아과" /></td>
+                                  <td class="mb-3"><input id="hosPwd" class="hos-pwd form-control" type="password" placeholder="비밀번호를 4자이상 입력"/></td>                      
                                   <form>
                                     <td class="mb-3"><input type="file" id="hosPhoto" class="hos-photo hospital-files form-control"
                                         style="width: 220px;" accept="image/*" multiple></td>
@@ -518,7 +518,8 @@
 
     document.querySelector('#btn-submit').onclick = (e) => {
       const hosNameInput = document.querySelector('#hosName');
-      const pwdInput = document.querySelector('#hosPwd');
+      const pwdInput = document.querySelector('#hosPwd');    
+
 
        if(hosNameInput.value == ""){
         Swal.fire({
