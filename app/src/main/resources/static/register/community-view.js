@@ -96,15 +96,8 @@ $.ajax({
     dataType: "json",
   })
     .done(function (recommentData) {
-      /* // 버튼 상태 초기화
-    $('#uptdel-btns').hide();
-    $('#title').prop('readOnly', true);
-    $('#content').prop('readOnly', true);
-    $('#category').prop('readOnly', true);
-    $('#createdDate').prop('readOnly', true);*/
-
-      console.log(communityData);
-      console.log(recommentData);
+     // console.log(communityData);
+      //console.log(recommentData);
       // 본인 글을 조회하는 경우와 아닌경우 버튼
       if (myno == communityData.data.doctorNo) {
         $("#uptdel-btns").show();
@@ -173,7 +166,7 @@ $.ajax({
 
         // 댓글 삭제
         for (var row of recommentData.data) {
-          document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = (e) => {
+          document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = ((e) => {
               fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
                 method: "DELETE",
               })
@@ -181,15 +174,11 @@ $.ajax({
                 .then((data) => {
                   console.log("성공:", data);
                   location.reload();
-                  /* if (data.status == 'failure') {
-          alert('댓글 삭제 실패!\n' + data.data);
-          return;
-        }*/
                 })
                 .catch((error) => {
                   console.error("실패:", error);
                 });
-            };
+            });
         }
       });
     })
@@ -199,7 +188,7 @@ $.ajax({
     });
 
   //댓글 입력
-  document.querySelector("#rec-save-btn").onclick = (e) => {
+  document.querySelector("#rec-save-btn").onclick = ((e) => {
     if (document.querySelector(".recomment").value == null) {
       Swal.fire({
         icon: 'error',
@@ -231,7 +220,7 @@ $.ajax({
       .catch((error) => {
         console.error("실패:", error);
       });
-  };
+  });
 
 
   //게시물 내용 변경
