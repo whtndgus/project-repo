@@ -205,7 +205,7 @@ $.ajax({
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: '입력값이 없습니다!',
+        text: '댓글 입력값이 없습니다!',
       })
       return;
     } else {
