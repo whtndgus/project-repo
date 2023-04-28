@@ -110,15 +110,15 @@ $.ajax({
         $("#uptdel-btns").show();
         $("#title").prop("readOnly", false);
         $("#content").prop("readOnly", false);
-        $("#category").prop("readOnly", false);
-        $("#createdDate").prop("readOnly", false);
+       // $("#category").prop("readOnly", false);
+       // $("#createdDate").prop("readOnly", false);
         $("#btn-img-delete").show();
       } else {
         $("#uptdel-btns").hide();
         $("#title").prop("readOnly", true);
         $("#content").prop("readOnly", true);
-        $("#category").prop("readOnly", true);
-        $("#createdDate").prop("readOnly", true);
+      // $("#category").prop("readOnly", true);
+       // $("#createdDate").prop("readOnly", true);
         $("#btn-img-delete").hide();
       }
 
