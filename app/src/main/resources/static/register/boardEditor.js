@@ -296,7 +296,7 @@ function Pboard(props) {
           className="btn btn-outline-danger board-delete"
           onClick={() => {
             Swal.fire({
-              title: `작성글을 삭제\n진단글 수 : ${props.props.fedcount}개`,
+              title: `작성글을 삭제 하시겠습니까?\n진단글 수 : ${props.props.fedcount}개`,
               showDenyButton: true,
               showConfirmButton: false,
               showCancelButton: true,
@@ -462,7 +462,7 @@ function Pboardc(props) {
           className="btn btn-outline-danger board-delete"
           onClick={() => {
             Swal.fire({
-              title: `작성글을 삭제\n진단글 수 : ${props.props.fedcount}개`,
+              title: `작성글을 삭제 하시겠습니까?\n진단글 수 : ${props.props.fedcount}개`,
               showDenyButton: true,
               showConfirmButton: false,
               showCancelButton: true,
@@ -614,7 +614,7 @@ function Dcomm(props) {
           className="btn btn-outline-danger comm-delete"
           onClick={() => {
             Swal.fire({
-              title: `작성글을 삭제`,
+              title: `작성글을 삭제 하시겠습니까?`,
               showConfirmButton: false,
               showDenyButton: true,
               showCancelButton: true,
@@ -751,7 +751,7 @@ function Dcommc(props) {
           className="btn btn-outline-danger comm-delete"
           onClick={() => {
             Swal.fire({
-              title: `작성글을 삭제`,
+              title: `작성글을 삭제 하시겠습니까?`,
               showConfirmButton: false,
               showDenyButton: true,
               showCancelButton: true,
