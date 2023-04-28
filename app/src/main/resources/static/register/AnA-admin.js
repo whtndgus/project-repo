@@ -26,6 +26,29 @@ fetch(`http://175.106.99.31/auth/user`, {
   .then((data) => {
     if (data.status == "success") {
       //사용자 이름
+      document.querySelector("#username").innerHTML =
+        data.data.name + "(관리자)";
+      return data.data;
+    } else {
+      location.href = "index.html";
+    }
+    return data.data;
+  })
+  .then((user) => {
+    if (user.admin) {
+      // myno = user.no
+    } else {
+      location.href = "index.html";
+    }
+  });
+
+fetch(`http://175.106.99.31/auth/user`, {
+  method: "GET",
+})
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.status == "success") {
+      //사용자 이름
       document.querySelector("#username").innerHTML = data.data.name;
       //사용자 이미지
       const preImageContainer = document.querySelector("#pre-userimg");
