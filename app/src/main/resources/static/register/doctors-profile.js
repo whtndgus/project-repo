@@ -135,7 +135,7 @@ fetch(`http://175.106.99.31/auth/user`, {
                   <input type="text" class="form-control change-career" value="${career}">
                 </div>
                 <div class="col-lg-1 btn-list">
-                  <button type="button" class="btn btn-outline-danger btn-sm remove-career-btn">×</button>
+                  <button type="button" class="btn btn-outline-danger btn-sm remove-career-btn"> × </button>
                 </div>
               `;
               registerCareerList.appendChild(oldRow);
@@ -156,7 +156,7 @@ fetch(`http://175.106.99.31/auth/user`, {
             <input type="text" class="form-control change-career">
           </div>
           <div class="col-lg-1 btn-list">
-            <button type="button" class="btn btn-outline-danger btn-sm remove-career-btn">×</button>
+            <button type="button" class="btn btn-outline-danger btn-sm remove-career-btn"> × </button>
           </div>
         `;
               registerCareerList.appendChild(newRow);
