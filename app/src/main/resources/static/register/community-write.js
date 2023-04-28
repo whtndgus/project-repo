@@ -50,7 +50,7 @@ fetch(`http://175.106.99.31/auth/user`, {
 document.querySelector(".btn-submit").onclick = (e) => {
   if(document.querySelector("#title").value.length < 2 && document.querySelector("#title").value == " " && document.querySelector("#title").value == "  ") {
     Swal.fire({
-      icon: 'success',
+      icon: 'error',
       title: '글 제목은 반드시 2글자 이상 입력이 필요합니다',
       width: 400,
       height: 320,
@@ -60,7 +60,7 @@ document.querySelector(".btn-submit").onclick = (e) => {
     return;
   }else if(!(Number(document.querySelector("#category").value) > 0)) {
     Swal.fire({
-      icon: 'success',
+      icon: 'error',
       title: '커뮤니티 항목이 선택되지 않았습니다',
       width: 400,
       height: 320,
@@ -70,7 +70,7 @@ document.querySelector(".btn-submit").onclick = (e) => {
     return;
   }else if(document.querySelector(".content").value.length < 1 && document.querySelector(".content").value == " ") {
     Swal.fire({
-      icon: 'success',
+      icon: 'error',
       title: '글 내용이 입력되지 않았습니다',
       width: 400,
       height: 320,
