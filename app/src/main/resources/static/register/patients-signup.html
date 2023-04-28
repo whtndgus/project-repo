@@ -473,6 +473,7 @@
     </main>
 
     <!-- Vendor JS Files -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/chart.js/chart.umd.js"></script>
@@ -776,7 +777,14 @@
                   location.replace('index.html');
                   // console.log('성공:', result);
                 } else {
-                  alert('입력실패');
+                  Swal.fire({
+                    icon: 'error',
+                    title: '입력 실패',
+                    width: 400,
+                    height: 320,
+                    showConfirmButton: false,
+                    timer: 750
+                  });
                   // console.log(result.data);
                 }
               })
