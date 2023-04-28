@@ -56,9 +56,7 @@
               <div
                 class="col-0 d-flex flex-column align-items-center justify-content-center"
               >
-                <div class="d-flex justify-content-center py-4">
-                 
-                </div>
+                <div class="d-flex justify-content-center py-4"></div>
                 <div class="card" id="register-form">
                   <div class="card-body">
                     <div class="pt-4 pb-2">
@@ -104,7 +102,7 @@
                         <label
                           for="id-input"
                           class="col-sm-2 form-label padding-right-0"
-                          >ID</label
+                          >ID<span class="required">*</span></label
                         >
                         <div class="col-sm-5">
                           <input
@@ -136,7 +134,7 @@
                         <label
                           for="password"
                           class="col-sm-2 form-label padding-right-0"
-                          >비밀번호</label
+                          >비밀번호<span class="required">*</span></label
                         >
                         <div class="col-sm-5">
                           <input
@@ -159,7 +157,7 @@
                         <label
                           for="confirmPassword"
                           class="col-sm-2 form-label padding-right-0"
-                          >비밀번호 확인</label
+                          >비밀번호 확인<span class="required">*</span></label
                         >
                         <div class="col-sm-5">
                           <input
@@ -179,7 +177,7 @@
                         <label
                           for="name"
                           class="col-sm-2 form-label padding-right-0"
-                          >이름</label
+                          >이름<span class="required">*</span></label
                         >
                         <div class="col-sm-5">
                           <input
@@ -196,7 +194,7 @@
                         <label
                           for="tel"
                           class="col-sm-2 form-label padding-right-0"
-                          >휴대폰번호</label
+                          >휴대폰번호<span class="required">*</span></label
                         >
                         <div class="col-sm-5">
                           <input
@@ -253,7 +251,7 @@
                         <label
                           for="birth"
                           class="col-sm-2 form-label padding-right-0"
-                          >생년월일</label
+                          >생년월일<span class="required">*</span></label
                         >
                         <div class="col-sm-5">
                           <input
@@ -270,7 +268,7 @@
                         <label
                           for="email-id"
                           class="col-sm-2 form-label padding-right-0"
-                          >이메일</label
+                          >이메일<span class="required">*</span></label
                         >
                         <div class="col-sm-3">
                           <input
@@ -309,7 +307,7 @@
 
                       <div class="row mb-3">
                         <label class="col-sm-2 form-label padding-right-0">
-                          성별
+                          성별<span class="required">*</span>
                         </label>
                         <div class="col-sm-5">
                           <div class="form-check form-check-inline">
@@ -344,7 +342,7 @@
                         <label
                           for="inputPostNo"
                           class="col-sm-2 form-label padding-right-0"
-                          >주소</label
+                          >주소<span class="required">*</span></label
                         >
                         <div class="col-sm-3">
                           <input
@@ -450,7 +448,8 @@
                       <div class="row mb-3">
                         <button
                           type="submit"
-                          class="btn btn-outline-secondary w-50" style="margin-left: 180px"
+                          class="btn btn-outline-secondary w-50"
+                          style="margin-left: 180px"
                           id="btn-insert"
                         >
                           가입 완료
@@ -459,7 +458,9 @@
                       <div class="col-12">
                         <p class="small mb-0">
                           이미 계정이 있으신가요?
-                          <a href="../auth/patients-login.html"><strong>로그인</strong></a>
+                          <a href="../auth/patients-login.html"
+                            ><strong>로그인</strong></a
+                          >
                         </p>
                       </div>
                     </form>
