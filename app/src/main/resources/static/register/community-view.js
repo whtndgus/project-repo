@@ -268,7 +268,14 @@ $.ajax({
         location.href = "doctors-community-main.html";
 
         if (data.status == "failure") {
-          alert("삭제 실패!\n" + data.data);
+          Swal.fire({
+            icon: 'error',
+            title: "삭제 실패!\n" + data.data,
+            width: 400,
+            height: 320,
+            showConfirmButton: false,
+            timer: 750
+          });
           return;
         }
       })
