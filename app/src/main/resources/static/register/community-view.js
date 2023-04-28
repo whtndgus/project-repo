@@ -10,6 +10,19 @@ let no = urlParams.get("no");
 
 let myno = 0;
 
+function categoryName(category) {
+  switch (category) {
+    case 1 :
+      return "자유게시판";
+    case 2 :
+      return "의학뉴스";
+    case 3 :
+      return "질문게시판";
+    default :
+      return "-";
+  }
+}
+
 fetch(`http://175.106.99.31/auth/user`, {
   method: "GET",
 })
@@ -59,87 +72,6 @@ document.querySelector("#former-btn").onclick = (e) => {
   location.href = "doctors-community-main.html";
 };
 
-/*//게시글,댓글 데이터 가져오기
-const fetch1 = fetch(`http://175.106.99.31/community/${no}`);
-const fetch2 = fetch(`http://175.106.99.31/recomment/${no}`);
-
-Promise.all([fetch1, fetch2])
-.then(responses => Promise.all(responses.map(response => response.json())))
-.then((data) => {
-  var communityData = data[0];
-  var recommentData = data[1];
-  console.log(communityData);
-  
- // 버튼 상태 초기화
-  document.querySelector('#uptdel-btns').style.display = 'none';
-  document.querySelector('#title').readOnly = true;
-  document.querySelector('#content').readOnly = true;
-  document.querySelector('#category').readOnly = true;
-  document.querySelector('#createdDate').readOnly = true;
-
-// 본인 글을 조회하는 경우와 아닌경우 버튼
-   if ( myno == communityData.data.doctorNo ) {  
-      document.querySelector('#uptdel-btns').style.display = 'block';    
-      document.querySelector('#title').readOnly = false;
-      document.querySelector('#content').readOnly = false;
-      document.querySelector('#category').readOnly = false;
-      document.querySelector('#createdDate').readOnly = false;
-    } else {
-      document.querySelector('#uptdel-btns').style.display = 'none';
-      document.querySelector('#title').readOnly = true;
-      document.querySelector('#content').readOnly = true;
-      document.querySelector('#category').readOnly = true;
-      document.querySelector('#createdDate').readOnly = true;
-    }
-
-  document.querySelector('#title').value = communityData.data.title;
-  document.querySelector('#category').value = communityData.data.category;
-  document.querySelector('#doctorName').value = communityData.data.doctorName;
-  document.querySelector('#createdDate').value = communityData.data.createdDate;
-  document.querySelector('#content').value = communityData.data.content;
-  
-  // 사진 없을 경우와 있을 경우 이미지 삭제 버튼
-  if (communityData.photo[0] != null) {
-    // 이미지 옵티마이저
-      let photoUrl = "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/community-img/"+communityData.photo[0].imgUrl+"?type=f&w=500&h=500&quality=85&autorotate=true&faceopt=true&anilimit=24"
-      if(myno == communityData.data.doctorNo) { 
-        $('#comImg')[0].src = photoUrl;
-        document.querySelector('#btn-img-delete').style.display = 'block'; 
-      } else if (myno != communityData.data.doctorNo) {
-            $('#comImg')[0].src = photoUrl;
-            document.querySelector('#btn-img-delete').style.display = 'none';
-        }        
-   } else if (communityData.photo[0] == null) {
-        $("#comImg").attr('src', ' ');
-        document.querySelector('#btn-img-delete').style.display = 'none';
-  }
-  
-  // 두번째 fetch 요청 후
-  var tbody = document.querySelector('#recomment-list');
-  var html = '';
-  for (var row of recommentData.data) {
-    console.log (row)
-    if ( row.docNo == myno) {
-      html += `<tr>
-          <td>${row.recNo}</td>
-          <td><p>${row.recContent}</p></td>
-          <td>${row.docName}</td> 
-          <td>${row.createdDate}</td>
-          <td><button type="button" class="btn btn-outline-danger btn-sm" 
-                      id="btn-recomment-delete-${row.recNo}">X</button></td>
-          </tr>\n`;
-    } else {
-       html += `<tr>
-          <td>${row.recNo}</td>
-          <td><p>${row.recContent}</p></td>
-          <td>${row.docName}</td> 
-          <td>${row.createdDate}</td>
-          </tr>\n`;
-      
-    } 
-  }
-  tbody.innerHTML = html;*/
-
 $.ajax({
   url: `http://175.106.99.31/community/${no}`,
   method: "GET",
@@ -167,16 +99,18 @@ $.ajax({
         $("#content").prop("readOnly", false);
         $("#category").prop("readOnly", false);
         $("#createdDate").prop("readOnly", false);
+        $("#btn-img-delete").show();
       } else {
         $("#uptdel-btns").hide();
         $("#title").prop("readOnly", true);
         $("#content").prop("readOnly", true);
         $("#category").prop("readOnly", true);
         $("#createdDate").prop("readOnly", true);
+        $("#btn-img-delete").hide();
       }
 
       $("#title").val(communityData.data.title);
-      $("#category").val(communityData.data.category);
+      $("#category").val(categoryName(communityData.data.category));
       $("#doctorName").val(communityData.data.doctorName);
       $("#createdDate").val(communityData.data.createdDate);
       $("#content").val(communityData.data.content);
