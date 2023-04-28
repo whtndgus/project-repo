@@ -176,7 +176,6 @@
           if (result.status == 'success') {
             location.href = '../register/doctors-advices.html';
           } else {
-            
             if(result.data == "licenseNONE") {
               Swal.fire({
                 title: '자격증 인증 안됨',
@@ -198,7 +197,11 @@
           }
         })
         .catch(exception => {
-          alert("로그인 오류!");
+          Swal.fire({
+                title: '로그인 오류',
+                width: 320,
+                height: 200
+              });
           console.log(exception);
         });
     }
