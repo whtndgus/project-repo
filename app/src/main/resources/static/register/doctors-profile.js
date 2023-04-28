@@ -1,6 +1,7 @@
 let doctorNo = 0;
 let samePw = false;
 doctorNo = 0;
+let gen = false;
 
 fetch(`http://175.106.99.31/auth/user`, {
   method: 'GET',
@@ -53,7 +54,7 @@ fetch(`http://175.106.99.31/auth/user`, {
           if (data.status == 'success') {
             data = data.data;
             console.log(data);
-
+            gen = data.gender;
             let imgUrl = '';
 
             if (data.phoUrl != 'undefined') {
@@ -206,7 +207,7 @@ $('.change-btn').click(() => {
   const roadAddress = document.getElementById('roadAddress').value;
   const detailAddress = document.getElementById('detailAddress').value;
   formData.append('addr', `${zipcode}, ${roadAddress}, ${detailAddress}`);
-  // formData.append("gender", '1');
+  formData.append("gender", gen);
   formData.append('email', document.querySelector('.change-email').value);
   formData.append('hosNo', document.querySelector('.change-hospitalNo').value);
   const career = document.querySelectorAll('.change-career');
