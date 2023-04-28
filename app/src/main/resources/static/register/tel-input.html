@@ -152,30 +152,37 @@
           console.log(data)
           if (data.status == "success") {
             Swal.fire({
-              position: 'top-end',
               icon: 'success',
               title: '인증 완료되었습니다',
+              width: 400,
+              height: 320,
               showConfirmButton: false,
-              timer: 500
+              timer: 750
             })
             setTimeout(() => {
+                exit();
               setParentText();
-            }, 500);
+            }, 850);
             // alert("인증 되었습니다.")
           } else {
             if(data.data == "중복된 연락처") {
               Swal.fire({
-                position: 'top-end',
                 icon: 'error',
                 title: '이미 등록된 연락처 입니다',
+                width: 400,
+                height: 320,
                 showConfirmButton: false,
-                timer: 500
+                timer: 750
               });
               setTimeout(() => {
                 exit();
-              }, 500);
+              }, 850);
             }else {
-              Swal.fire('틀린 인증번호');
+              Swal.fire({
+                title: '틀린 인증번호',
+                width: 320,
+                height: 200
+              });
             }
           }
         })

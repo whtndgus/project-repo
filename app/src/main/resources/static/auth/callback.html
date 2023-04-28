@@ -76,13 +76,11 @@
                       location.href = '../register/index.html';
                     }
                   } else {
-                    alert('login fail!');
                     console.log(result)
-                      // location.href = 'patients-login.html';
+                    location.href = 'patients-login.html';
                   }
                 })
                 .catch(exception => {
-                  alert("login error!");
                   console.log(exception);
                 });
             } else {
