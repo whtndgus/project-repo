@@ -298,6 +298,7 @@ function Pboard(props) {
             Swal.fire({
               title: `작성글을 삭제\n진단글 수 : ${props.props.fedcount}개`,
               showDenyButton: true,
+              showConfirmButton: false,
               showCancelButton: true,
               denyButtonText: `삭제`,
             }).then((result) => {
@@ -463,6 +464,7 @@ function Pboardc(props) {
             Swal.fire({
               title: `작성글을 삭제\n진단글 수 : ${props.props.fedcount}개`,
               showDenyButton: true,
+              showConfirmButton: false,
               showCancelButton: true,
               denyButtonText: `삭제`,
             }).then((result) => {
@@ -613,6 +615,7 @@ function Dcomm(props) {
           onClick={() => {
             Swal.fire({
               title: `작성글을 삭제`,
+              showConfirmButton: false,
               showDenyButton: true,
               showCancelButton: true,
               denyButtonText: `삭제`,
@@ -749,6 +752,7 @@ function Dcommc(props) {
           onClick={() => {
             Swal.fire({
               title: `작성글을 삭제`,
+              showConfirmButton: false,
               showDenyButton: true,
               showCancelButton: true,
               denyButtonText: `삭제`,

@@ -167,6 +167,10 @@ fetch(`http://175.106.99.31/auth/user`, {
             if (row.docNo == myno) {
               console.log(document.querySelector(`#btn-recomment-delete-${row.recNo}`))
               document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = ((e) => {
+                
+
+                
+
                 fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
                   method: "DELETE",
                 })
@@ -178,6 +182,10 @@ fetch(`http://175.106.99.31/auth/user`, {
                   .catch((error) => {
                     console.error("실패:", error);
                   });
+
+
+
+
               });
     
             }
