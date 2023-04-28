@@ -91,7 +91,7 @@ fetch(`http://175.106.99.31/auth/user`, {
             document.querySelector(".patients-email").innerText = data.email;
             document.querySelector(".change-email").value = data.email;
 
-            document.querySelector(".patients-drug").innerText = data.drug;
+            document.querySelector(".patients-drug").innerText = data.drug+", "+data.phy;
             document.querySelector(".change-drug").value = data.drug;
             document.querySelector(".change-phy").value = data.phy;
 
