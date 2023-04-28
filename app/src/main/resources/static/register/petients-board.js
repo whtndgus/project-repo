@@ -521,7 +521,7 @@ $(".patients-change-btn").click(() => {
       tel: $(".board-tel").val(),
       addr: $(".board-addr").val(),
       another: $(".board-another").val(),
-      gender: $("board-gender").val(),
+      gender: $(".board-gender").val(),
     }),
   })
     .then((data) => data.json())
