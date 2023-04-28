@@ -1088,9 +1088,9 @@
 
       document.querySelector("#hos-update-submit").onclick = (e) => {
         let dbaddr = "";
-        let baddr = document.getElementById("update-hosAddr").value;
+        let baddr = document.getElementById("update-hosAddr").value + ",";
         let daddr = document.getElementById("update-dhosAddr").value;
-        dbaddr = baddr + "," + daddr;
+        dbaddr = baddr + daddr;
         document.getElementById("hos-update-submit").style.display = "none";
         let kno = new URL(location.href).searchParams.get("no");
         fetch(`http://175.106.99.31/hospital/${kno}`, {
@@ -1101,7 +1101,7 @@
           body: JSON.stringify({
             hospitalNo: kno,
             hosName: document.querySelector("#update-hosName").value,
-            hosAddr: document.querySelector("#update-hosAddr").value,
+            hosAddr: dbaddr,
             hosTel: document.querySelector("#update-hosTel").value,
             hosTime: document.querySelector("#update-hosTime").value,
             hosSub: document.querySelector("#update-hosSub").value,

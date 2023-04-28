@@ -2,6 +2,8 @@ let patientNo = 0;
 let samePw = false;
 patientNo = 0;
 
+let gen = false;
+
 fetch(`http://175.106.99.31/auth/user`, {
   method: "GET",
 })
@@ -52,7 +54,7 @@ fetch(`http://175.106.99.31/auth/user`, {
         .then((data) => {
           if (data.status == "success") {
             data = data.data;
-
+            gen = data.gender;
             let imgUrl = "";
 
             if (data.phoUrl != "undefined") {
@@ -91,7 +93,7 @@ fetch(`http://175.106.99.31/auth/user`, {
             document.querySelector(".patients-email").innerText = data.email;
             document.querySelector(".change-email").value = data.email;
 
-            document.querySelector(".patients-drug").innerText = data.drug;
+            document.querySelector(".patients-drug").innerText = data.drug+", "+data.phy;
             document.querySelector(".change-drug").value = data.drug;
             document.querySelector(".change-phy").value = data.phy;
 
@@ -132,7 +134,7 @@ $(".change-btn").click(() => {
   formData.append("birth", document.querySelector(".change-birth").value);
   formData.append("tel", document.querySelector(".change-tel").value);
   formData.append("addr", document.querySelector(".change-addr").value);
-  // formData.append("gender", '1');
+  formData.append("gender", true);
   formData.append("email", document.querySelector(".change-email").value);
   formData.append("drug", document.querySelector(".change-drug").value);
   formData.append("phy", document.querySelector(".change-phy").value);
