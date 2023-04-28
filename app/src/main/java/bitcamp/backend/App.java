@@ -270,11 +270,11 @@ public class App {
     Board board = new Board();
 
     String str = "";
-    str += param.get("name") + ",";
-    str += param.get("age") + ",";
-    str += param.get("gender") + ",";
-    str += param.get("tel") + ",";
-    str += param.get("addr") + ",";
+    str += param.get("name") + "@";
+    str += param.get("age") + "@";
+    str += param.get("gender") + "@";
+    str += param.get("tel") + "@";
+    str += param.get("addr") + "@";
     str += param.get("another");
 
     board.setNo((int) param.get("no"));
