@@ -152,7 +152,7 @@ $.ajax({
           <td><p>${row.recContent}</p></td>
           <td>${row.docName}</td> 
           <td>${row.createdDate}</td>
-          <td><button type="button" class="btn btn-outline-danger btn-sm" id="btn-recomment-delete-${row.recNo}">X</button></td> 
+          <td><button type="button" class="btn btn-outline-danger btn-sm" id="btn-recomment-delete-${row.recNo}">X</button></td>
         </tr>\n`;
         } else {
           html += `<tr>
