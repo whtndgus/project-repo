@@ -166,6 +166,7 @@ $.ajax({
 
         // 댓글 삭제
         for (var row of recommentData.data) {
+          console.log(document.querySelector(`#btn-recomment-delete-${row.recNo}`))
           document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = ((e) => {
               fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
                 method: "DELETE",
