@@ -1084,6 +1084,27 @@ setTimeout(() => {
     scrollmov(0)
   }
 }, 500);
+let bol = true;
+setInterval(() => {
+  if ($(document).scrollLeft() == 0) {
+    scrollmov(screen.availWidth*1)
+  }else if ($(document).scrollLeft() <= screen.availWidth*1) {
+    if(bol) {
+      scrollmov(screen.availWidth*2);
+      bol = !bol;
+    }else {
+      scrollmov(screen.availWidth*0);
+      bol = !bol;
+    }
+  }else if ($(document).scrollLeft() <= screen.availWidth*2) {
+    scrollmov(screen.availWidth*1)
+  }else if ($(document).scrollLeft() <= screen.availWidth*3) {
+    scrollmov(screen.availWidth)
+  }else {
+    console.log($(document).scrollLeft())
+    scrollmov(0)
+  }
+}, 5000);
 
 
 // $(".body-cover").css("height", screen.availHeight)
