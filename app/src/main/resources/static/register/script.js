@@ -314,7 +314,7 @@ $(".btn-1").click(() => {
                       title: $(".insert-title").val(),
                       pain: pa,
                       name: mydata.name,
-                      age: mydata.birth.split("-")[0] - new Date().getYear() + 1900,
+                      age: new Date().getYear() + 1900-mydata.birth.split("-")[0],
                       tel: mydata.tel,
                       addr1: mydata.addr,
                       addr2: "",
