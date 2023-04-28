@@ -166,8 +166,9 @@ $.ajax({
 
         // 댓글 삭제
       });
-      if (row.docNo == myno) {
-        for (var row of recommentData.data) {
+
+      for (var row of recommentData.data) {
+        if (row.docNo == myno) {
           console.log(document.querySelector(`#btn-recomment-delete-${row.recNo}`))
           document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = ((e) => {
             fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
@@ -182,6 +183,7 @@ $.ajax({
                 console.error("실패:", error);
               });
           });
+
         }
       }
     })
