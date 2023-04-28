@@ -201,6 +201,14 @@ $.ajax({
 
   //댓글 입력
   document.querySelector("#rec-save-btn").onclick = (e) => {
+    if ($('#recContent').value == null) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '입력값이 없습니다!',
+      })
+      return;
+    } else {
     fetch("http://175.106.99.31/recomment", {
       method: "POST",
       headers: {
@@ -221,6 +229,7 @@ $.ajax({
         console.error("실패:", error);
       });
   };
+}
 
   //게시물 내용 변경
   document.querySelector("#update-btn").onclick = (e) => {
