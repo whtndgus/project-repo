@@ -115,9 +115,6 @@
         width: 252px;
         height: 40px;
       }
-      .addr-button {
-        background-color: #e9ecef;
-      }
     </style>
   </head>
 
@@ -426,12 +423,12 @@
                             <label for="floatingPassword">병원명</label>
                           </div>
                           <div class="form-floating mb-3 col-sm-6">
-                            <input
+                            <button
                               type="button"
-                              class="addr-button form-control"
+                              class="addr-button btn btn-outline-dark"
                               onclick="sample6_execDaumPostcode()"
                               value="주소찾기"
-                            />
+                            ></button>
                           </div>
                           <div class="form-floating mb-3 col-sm-6">
                             <input
@@ -612,7 +609,7 @@
                                       <button
                                         type="button"
                                         id="check-password-btn"
-                                        class="btn btn-primary"
+                                        class="btn btn-outline-primary"
                                       >
                                         확인
                                       </button>
