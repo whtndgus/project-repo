@@ -12,29 +12,29 @@ let myno = 0;
 
 function categoryName(category) {
   switch (category) {
-    case 1 :
+    case 1:
       return "자유게시판";
-    case 2 :
+    case 2:
       return "의학뉴스";
-    case 3 :
+    case 3:
       return "질문게시판";
-    default :
+    default:
       return "-";
   }
 }
 
- function categoryNum(category) {
+function categoryNum(category) {
   switch (category) {
-    case "자유게시판" :
+    case "자유게시판":
       return 1;
-    case "의학뉴스" :
+    case "의학뉴스":
       return 2;
-    case "질문게시판" :
+    case "질문게시판":
       return 3;
-    default : 
+    default:
       return "-";
   }
- }
+}
 
 fetch(`http://175.106.99.31/auth/user`, {
   method: "GET",
@@ -96,22 +96,22 @@ $.ajax({
     dataType: "json",
   })
     .done(function (recommentData) {
-     // console.log(communityData);
+      // console.log(communityData);
       //console.log(recommentData);
       // 본인 글을 조회하는 경우와 아닌경우 버튼
       if (myno == communityData.data.doctorNo) {
         $("#uptdel-btns").show();
         $("#title").prop("readOnly", false);
         $("#content").prop("readOnly", false);
-       // $("#category").prop("readOnly", false);
-       // $("#createdDate").prop("readOnly", false);
+        // $("#category").prop("readOnly", false);
+        // $("#createdDate").prop("readOnly", false);
         $("#btn-img-delete").show();
       } else {
         $("#uptdel-btns").hide();
         $("#title").prop("readOnly", true);
         $("#content").prop("readOnly", true);
-      // $("#category").prop("readOnly", true);
-       // $("#createdDate").prop("readOnly", true);
+        // $("#category").prop("readOnly", true);
+        // $("#createdDate").prop("readOnly", true);
         $("#btn-img-delete").hide();
       }
 
@@ -165,23 +165,25 @@ $.ajax({
         tbody.html(html);
 
         // 댓글 삭제
+      });
+      if (row.docNo == myno) {
         for (var row of recommentData.data) {
           console.log(document.querySelector(`#btn-recomment-delete-${row.recNo}`))
           document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = ((e) => {
-              fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
-                method: "DELETE",
+            fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
+              method: "DELETE",
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log("성공:", data);
+                location.reload();
               })
-                .then((response) => response.json())
-                .then((data) => {
-                  console.log("성공:", data);
-                  location.reload();
-                })
-                .catch((error) => {
-                  console.error("실패:", error);
-                });
-            });
+              .catch((error) => {
+                console.error("실패:", error);
+              });
+          });
         }
-      });
+      }
     })
     .catch((err) => {
       //alert('서버 요청 오류!');
@@ -199,7 +201,7 @@ $.ajax({
         height: 320,
         showConfirmButton: false,
         timer: 750
-       
+
       });
       return;
     }
