@@ -89,7 +89,8 @@ fetch(`http://175.106.99.31/auth/user`, {
   .then((data) => {
     if (data.status == "success") {
       //사용자 이름
-      document.querySelector("#username").innerHTML = data.data.name;
+      document.querySelector("#username").innerHTML =
+        data.data.name + "(관리자)";
       return data.data;
     } else {
       location.href = "index.html";
