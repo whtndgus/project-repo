@@ -173,8 +173,7 @@ $.ajax({
 
         // 댓글 삭제
         for (var row of recommentData.data) {
-          document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick =
-            (e) => {
+          document.querySelector(`#btn-recomment-delete-${row.recNo}`).onclick = (e) => {
               fetch(`http://175.106.99.31/recomment/delete/${row.recNo}`, {
                 method: "DELETE",
               })
@@ -207,8 +206,7 @@ $.ajax({
         title: 'Oops...',
         text: '댓글 입력값이 없습니다!',
       })
-      return;
-    } else {
+    }
     fetch("http://175.106.99.31/recomment", {
       method: "POST",
       headers: {
@@ -229,7 +227,7 @@ $.ajax({
         console.error("실패:", error);
       });
   };
-}
+
 
   //게시물 내용 변경
   document.querySelector("#update-btn").onclick = (e) => {
