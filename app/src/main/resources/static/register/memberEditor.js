@@ -38,7 +38,7 @@ class Dtr extends React.Component {
           <td>
             <button
               type="button"
-              className="btn btn-success"
+              className="btn btn-outline-success"
               style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
               onClick={() => {
                 ReactDOM.createRoot($(".new-windows")[0]).render(
@@ -62,7 +62,7 @@ class Dtr extends React.Component {
           <td>
             <button
               type="button"
-              className="btn btn-danger"
+              className="btn btn-outline-danger"
               style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
               onClick={() => {
                 ReactDOM.createRoot($(".new-windows")[0]).render(
@@ -190,7 +190,7 @@ function Docli(props) {
       <span className="license-check">
         <button
           type="button"
-          className="btn btn-danger"
+          className="btn btn-outline-danger"
           onClick={() => {
             fetch("http://175.106.99.31/doctors/changeLicenseCheck", {
               method: "POST",
@@ -237,7 +237,7 @@ function Doclic(props) {
       <span className="license-check">
         <button
           type="button"
-          className="btn btn-success"
+          className="btn btn-outline-success"
           onClick={() => {
             fetch("http://175.106.99.31/doctors/changeLicenseCheck", {
               method: "POST",
