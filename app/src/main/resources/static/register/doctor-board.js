@@ -364,11 +364,12 @@ class Selects extends React.Component {
           <input
             id="first-name"
             className="field__input sogyon-money"
-            placeholder="만 단위로 입력"
+            placeholder=""
           />
           <span className="field__label-wrap" aria-hidden="true">
             <span className="field__label">예상 진료비용</span>
           </span>
+          <span style={{lineHeight: '223%'}}>원</span>
         </div>
       </div>
     );
