@@ -126,28 +126,8 @@ fetch(`http://175.106.99.31/auth/user`, {
   .then((data) => {
     if (data.status == "success") {
       //사용자 이름
-      document.querySelector("#username").innerHTML = data.data.name;
-      //사용자 이미지
-      const preImageContainer = document.querySelector("#pre-userimg");
-      let phoUrl = "";
-      if (data.data.phoUrl != "undefined") {
-        phoUrl =
-          "http://uyaxhfqyqnwh16694929.cdn.ntruss.com/member-img/" +
-          data.data.phoUrl +
-          "?type=f&w=36&h=36&quality=100&anilimit=24";
-      } else {
-        phoUrl = "../assets/img/default_profile.png";
-      }
-      const phoType = data.data.phoType;
-      const phoName = data.data.phoName;
-
-      // 새로운 이미지 요소 생성 및 추가
-      const newImg = document.createElement("img");
-      newImg.setAttribute("id", "userimg");
-      newImg.setAttribute("src", phoUrl);
-      newImg.setAttribute("alt", phoName);
-      newImg.setAttribute("style", "width:36px; border-radius:50%");
-      preImageContainer.appendChild(newImg);
+      document.querySelector("#username").innerHTML =
+        data.data.name + "(관리자)";
       return data.data;
     } else {
       location.href = "index.html";
@@ -235,8 +215,8 @@ function Pboard(props) {
         />
       </div>
       <div className="top-content">
-       <h4>증상 내용</h4>
-       <strong>제목 :</strong>
+        <h4>증상 내용</h4>
+        <strong>제목 :</strong>
         <input
           type="text"
           className="form-control board-title"
@@ -386,7 +366,7 @@ function Pboardc(props) {
         />
       </div>
       <div className="top-content">
-      <h4>증상 내용</h4>
+        <h4>증상 내용</h4>
         <strong>제목 :</strong>
         <input
           type="text"
@@ -539,7 +519,7 @@ function Dcomm(props) {
         />
       </div>
       <div className="top-content">
-      <h4>증상 내용</h4>
+        <h4>증상 내용</h4>
         <strong>제목 :</strong>
         <input
           type="text"
@@ -668,8 +648,8 @@ function Dcommc(props) {
         />
       </div>
       <div className="top-content">
-      <h4>증상 내용</h4>
-      <strong>제목 :</strong>
+        <h4>증상 내용</h4>
+        <strong>제목 :</strong>
         <input
           type="text"
           className="form-control comm-title"
