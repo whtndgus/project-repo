@@ -203,9 +203,14 @@ $.ajax({
     if (document.querySelector(".recomment").value == null) {
       Swal.fire({
         icon: 'error',
-        title: 'Oops...',
-        text: '댓글 입력값이 없습니다!',
-      })
+        title: "댓글 입력 실패!",
+        text: "입력 값이 없습니다",
+        width: 400,
+        height: 320,
+        showConfirmButton: false,
+        timer: 750
+      });
+      return;
     }
     fetch("http://175.106.99.31/recomment", {
       method: "POST",
