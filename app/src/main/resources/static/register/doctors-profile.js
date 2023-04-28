@@ -352,7 +352,7 @@ $('.change-pw-btn').click(() => {
 
 // });
 
-var popupWidth = 320;
+var popupWidth = 470;
 var popupHeight = 450;
 
 var popupX = window.screen.width / 2 - popupWidth / 2;
