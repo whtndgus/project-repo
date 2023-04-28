@@ -81,7 +81,6 @@ class Dtr extends React.Component {
     }
   }
 }
-let myno = 0;
 
 fetch(`http://175.106.99.31/auth/user`, {
   method: "GET",
