@@ -92,6 +92,10 @@ body {
   align-items: center;
 }
 
+label .required {
+  color: red;
+}
+
 a {
   color: #4154f1;
   text-decoration: none;
