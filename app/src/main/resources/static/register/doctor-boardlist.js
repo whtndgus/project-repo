@@ -131,6 +131,7 @@ function reflesh(string) {
       boardList = data;
       let list = [];
       new Promise((resolve) => {
+        console.log(resolve)
         data.forEach((board) => {
           let n = new Date();
           let countday = n.getDate() - board.createdDate.split("-")[2];
