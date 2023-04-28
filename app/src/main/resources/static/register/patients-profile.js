@@ -134,7 +134,7 @@ $(".change-btn").click(() => {
   formData.append("birth", document.querySelector(".change-birth").value);
   formData.append("tel", document.querySelector(".change-tel").value);
   formData.append("addr", document.querySelector(".change-addr").value);
-  formData.append("gender", true);
+  formData.append("gender", gen);
   formData.append("email", document.querySelector(".change-email").value);
   formData.append("drug", document.querySelector(".change-drug").value);
   formData.append("phy", document.querySelector(".change-phy").value);
