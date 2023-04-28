@@ -192,7 +192,7 @@ $.ajax({
 
   //댓글 입력
   document.querySelector("#rec-save-btn").onclick = ((e) => {
-    if (document.querySelector(".recomment").value.length > 1) {
+    if (document.querySelector(".recomment").value.length < 2) {
       Swal.fire({
         icon: 'error',
         title: "댓글 입력 실패!",
