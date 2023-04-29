@@ -186,14 +186,12 @@
           <div class="col-12">
             <div class="card">
               <div class="card-body">
+                <button type="button" style="margin-top: 15px;" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  병원추가
+                </button>               
                 <h4 class="card-title" style="float: right;">
-                  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    병원추가
-                  </button>
-                  <strong style="margin-left: 710px;">병원정보검색</strong>
-                  <input type="text" id="search-input" placeholder="병원명,주소,진료과목         🔍">
+                <input type="text" id="search-input" class="form-control" placeholder="병원정보검색">
                 </h4>
-                <!-- Table with stripped rows -->
                 <table id="foo-table" class="table table-hover">
                   <thead>
                     <tr>

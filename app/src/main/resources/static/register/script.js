@@ -680,7 +680,7 @@ $(".btn-1").click(() => {
                     .then(data => {
                       let bno = data.no;
                       submitFiles(bno);
-                      Swal.fire(`인증 번호(비회원 작성글 조회시에 필요 합니다) :( ${data.serial} )`);
+                      Swal.fire(`인증 번호\n(작성글 조회시에 필요 합니다)\n[ ${data.serial} ]`);
                     })
                     .then(() => {
                       stat = 0

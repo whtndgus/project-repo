@@ -44,6 +44,12 @@
     .carousel-item {
       transition: 1s;
     }
+    .sogyon-money {
+      width: var(--fieldWidth, 51%) !important;
+    }
+    .field__label-wrap::after {
+      width: 51% !important;
+    }
   </style>
 </head>
 
@@ -53,11 +59,9 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">MyClinic</span>
+       <a class="logo d-flex align-items-center">
+      <img src="../register/assets/img/headerlogo.png">
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
      <!-- End Logo -->
      <div class="top-menu">
@@ -158,14 +162,14 @@
     </div><!-- End Page Title -->
 
     <div class="col-xxl-12" style="width:1250px">
-      <section class="section">
+      <section class="section" style="margin-bottom:50px;">
         <div class="row gx-3">
 
           <div class="col-lg-6 ">
             <div class="card">
               <div class="card-body">
-                <h3 class="card-title board-title">제목</h3>
-                <h5 class="card-title board-pain">증상 : </h5>
+                <h3 class="card-title board-title"><strong>제목</strong></h3>
+                <h5 class="card-title board-pain"><strong>증상 : </strong></h5>
 
                 <div id="carouselExampleControls"
                   style=" margin-top: 20px; margin-bottom: 20px; width: 490px; height: 300px; overflow: hidden; background-color: white; margin-left: auto; margin-right: auto;"
@@ -197,30 +201,30 @@
                 <!-- Browser Default Validation -->
                 <form class="row gx-3">
                   <div class="col-md-3">
-                    <label for="validationDefault01" class="form-label">이름</label>
+                    <label for="validationDefault01" class="form-label"><strong>이름</strong></label>
                     <input type="text" class="form-control board-name" id="validationDefault01" value="" readonly>
                   </div>
                   <div class="col-md-1">
-                    <label for="validationDefault02" class="form-label">성별</label>
+                    <label for="validationDefault02" class="form-label"><strong>성별</strong></label>
                     <input class="form-control board-gender" id="validationDefault02"
                       style="padding: 0px; line-height: 38px; text-align: center; height: 38px;" value="" readonly>
                   </div>
                   <div class="col-md-2">
-                    <label for="validationDefault01" class="form-label">나이</label>
+                    <label for="validationDefault01" class="form-label"><strong>나이</strong></label>
                     <input type="text" class="form-control board-age" id="validationDefault01" value="" readonly>
                   </div>
                   <div class="col-md-3">
-                    <label for="validationDefault01" class="form-label">지역</label>
+                    <label for="validationDefault01" class="form-label"><strong>지역</strong></label>
                     <input type="text" class="form-control board-addr" id="validationDefault01" value="" readonly>
                   </div>
                   <div class="col-md-3">
-                    <label for="validationDefault01" class="form-label">연락처</label>
+                    <label for="validationDefault01" class="form-label"><strong>연락처</strong></label>
                     <input type="text" class="form-control board-tel" id="validationDefault01" value=""
                       readonly>
                   </div>
 
                   <div class="col-md-12 patients-another-area">
-                    <label for="validationDefault03" class="form-label">특이사항</label>
+                    <label for="validationDefault03" class="form-label"><strong>특이사항</strong></label>
                     <textarea class="form-control patients-another board-another" placeholder="Leave a comment here"
                       id="floatingTextarea3" readonly></textarea>
                   </div>
@@ -236,7 +240,7 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">소견서</h5>
+                <h5 class="card-title"><strong>소견서</strong></h5>
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                   <!-- Custom Styled Validation -->

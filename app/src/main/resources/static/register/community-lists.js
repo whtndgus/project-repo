@@ -77,7 +77,7 @@ fetch(`http://175.106.99.31/auth/user`, {
         for (row of data.data) {
           if (row.filter) {
             html += `<tr>
-            <td>${row.no}</td>
+          
             <td><a href="community-view.html?no=${row.no}">${row.title}</a></td>
             <td>${row.doctorName}</td>
             <td>${categoryName(row.category)}</td>
