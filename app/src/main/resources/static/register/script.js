@@ -258,24 +258,6 @@ $(".btn-1").click(() => {
                   aria-label="Checkbox for following text input"
                 />
               </div>
-              <div className="input-group-text">
-                <span className="font13" style={{ marginRight: 2 }}>증상1</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상1"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font13" style={{ marginRight: 2 }}>증상2</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상2"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
             </div>
             
             <h3>추가 입력항목</h3>
@@ -500,24 +482,6 @@ $(".btn-1").click(() => {
                   className="form-check-input mt-0"
                   type="checkbox"
                   defaultValue="치통"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font13" style={{ marginRight: 2 }}>증상1</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상1"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-              <div className="input-group-text">
-                <span className="font13" style={{ marginRight: 2 }}>증상2</span>
-                <input
-                  className="form-check-input mt-0"
-                  type="checkbox"
-                  defaultValue="증상2"
                   aria-label="Checkbox for following text input"
                 />
               </div>
