@@ -149,6 +149,7 @@
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title"><strong>실시간 인기 게시글</strong></h5>
+                
                   <ul>
                     <li><p id="hot-posting1" style="cursor:pointer;"></p></li>
                     <li><p id="hot-posting2" style="cursor:pointer;"></p></li>
@@ -161,7 +162,51 @@
               <div class="card">
                 <div class="card-body" >
                   <h5 class="card-title" id="naver-logo-title" ><img src="../assets/img/naverlogo.png" style="width:180px;"></h5>
-                   <div class="input-group mb-3">
+                 
+                  <div class="search_box">
+                    <style>
+                      .search_box input {
+	width: 90%;
+	height: 46px;
+	padding-left: 12px;
+	padding-right: 12px;
+	border: none;
+	outline: none;
+	font-size: 18px;
+	
+}
+
+.search_box button {
+	width: 10%;
+	height: 46px;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: #03cf5d;
+}
+
+.search_box i {
+	color: white;
+	font-size: 22px;
+	text-align: center;
+}
+
+#keyboard {
+	color: lightgray;
+	font-size: 20px;
+	text-align: center;
+	width: 10%;
+	padding-top:12px;
+}
+                    </style>
+                    <input type="text" maxlength="225"> <i id="keyboard"
+                      class="fa fa-keyboard-o"></i>
+                    <button>
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="input-group mb-3">
                     <button class="naver-btn btn btn-outline-secondary" type="button" id="naver-search button-addon1">Search</button>
                     <input type="text" class="form-control naver-search" placeholder="">
                   </div>
