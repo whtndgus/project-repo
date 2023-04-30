@@ -1,6 +1,10 @@
 // 로그인 정보 가져오기
 let myno = 0;
 
+document.querySelector('#former-btn').onclick = (e) => {
+  location.href= "doctors-community-main"
+}
+
 fetch(`http://175.106.99.31/auth/user`, {
   method: "GET",
 })
@@ -51,7 +55,7 @@ document.querySelector(".btn-submit").onclick = (e) => {
   if(document.querySelector("#title").value.length < 2 || document.querySelector("#title").value == " " || document.querySelector("#title").value == "  ") {
     Swal.fire({
       icon: 'error',
-      title: '글 제목은 반드시 2글자 이상 입력이 필요합니다',
+      title: '게시글은 반드시 2글자 이상 입력이 필요합니다',
       width: 400,
       height: 320,
       showConfirmButton: false,
