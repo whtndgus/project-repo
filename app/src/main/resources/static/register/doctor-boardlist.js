@@ -68,7 +68,7 @@ class BoardLists extends React.Component {
     props = props.props;
     this.state = {
       answer: props.answer,
-      no: props.no,
+      //no: props.no,
       title: props.title,
       warn: props.warn,
       writer: props.writer,
@@ -86,7 +86,7 @@ class BoardLists extends React.Component {
         }}
       >
         <Td data={this.state.answer}></Td>
-        <Td data={this.state.no}></Td>
+        
         <Td data={this.state.title}></Td>
         <Tds data={[this.state.warn, this.state.warnLevel]}></Tds>
         <Td data={this.state.writer}></Td>
@@ -155,7 +155,7 @@ function reflesh(string) {
 
           let obj = {
             answer: board.fedcount,
-            no: board.no,
+           // no: board.no,
             title:
               board.title.length > 45
                 ? board.title.substring(0, 43) + ". . ."
