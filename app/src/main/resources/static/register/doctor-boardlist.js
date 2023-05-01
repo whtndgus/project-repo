@@ -68,7 +68,7 @@ class BoardLists extends React.Component {
     props = props.props;
     this.state = {
       answer: props.answer,
-      //no: props.no,
+      no: props.no,
       title: props.title,
       warn: props.warn,
       writer: props.writer,
