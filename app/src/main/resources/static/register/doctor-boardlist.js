@@ -145,6 +145,7 @@ function reflesh(string) {
             str = "badge bg-warning";
           } else {
             str = "badge bg-success";
+            warn: "safe"
           }
 
           let obj = {
@@ -154,7 +155,7 @@ function reflesh(string) {
               board.title.length > 45
                 ? board.title.substring(0, 43) + ". . ."
                 : board.title,
-            warn: "경고",
+            warn: "warn",
             warnLevel: str,
             writer:
               board.another.split("@")[0].length > 0
