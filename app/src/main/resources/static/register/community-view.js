@@ -35,9 +35,10 @@ function categoryNum(category) {
       return "-";
   }
 }
-document.querySelector("#former-btn").onclick = (e) => {
+
+$("#former-btn").click (() => {
   location.href = "doctors-community-main.html";
-};
+});
 
 
 fetch(`http://175.106.99.31/auth/user`, {
