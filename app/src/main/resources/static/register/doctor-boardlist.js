@@ -145,7 +145,7 @@ function reflesh(string) {
             str = "badge bg-warning";
           } else {
             str = "badge bg-success";
-            warn: "safe"
+            warn: "warn"
           }
 
           let obj = {
@@ -166,6 +166,7 @@ function reflesh(string) {
           if (board.title.includes($(".search-filter").val())) {
             list.push(<BoardLists props={obj} />);
           }
+          console.log(obj);
         });
         resolve();
       }).then(() => {
