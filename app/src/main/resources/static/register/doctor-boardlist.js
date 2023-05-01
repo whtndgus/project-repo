@@ -155,7 +155,7 @@ function reflesh(string) {
 
           let obj = {
             answer: board.fedcount,
-           // no: board.no,
+           no: board.no,
             title:
               board.title.length > 45
                 ? board.title.substring(0, 43) + ". . ."
