@@ -137,15 +137,20 @@ function reflesh(string) {
           let countday = n.getDate() - board.createdDate.split("-")[2];
           let countmon = n.getMonth() - board.createdDate.split("-")[1];
           let str = "";
+          let warnStr="";
+
           if (countmon >= 0) {
             str = "badge bg-danger text-dark";
+            warnStr="warn"
           } else if (countday > 8) {
             str = "badge bg-danger text-dark";
+            warnStr="warn"
           } else if (countday > 5) {
             str = "badge bg-warning";
+            warnStr="warn"
           } else {
             str = "badge bg-success";
-            warn: "warn"
+            warnStr="safe"
           }
 
           let obj = {
@@ -155,7 +160,7 @@ function reflesh(string) {
               board.title.length > 45
                 ? board.title.substring(0, 43) + ". . ."
                 : board.title,
-            warn: "warn",
+            warn: warnStr,
             warnLevel: str,
             writer:
               board.another.split("@")[0].length > 0
