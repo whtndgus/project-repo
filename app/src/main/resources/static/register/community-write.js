@@ -1,9 +1,9 @@
 // 로그인 정보 가져오기
 let myno = 0;
 
-// document.querySelector('#former-btn').onclick = (e) => {
-//   location.href= "doctors-community-main"
-// }
+document.querySelector('#former-btn').onclick = (e) => {
+  location.href= "doctors-community-main"
+}
 
 fetch(`http://175.106.99.31/auth/user`, {
   method: "GET",
