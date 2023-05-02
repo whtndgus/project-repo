@@ -768,7 +768,7 @@
             myno = user.no;
             if (new URL(location.href).searchParams.get("no") == null) {
               if (user.hosNo == 0) {
-                location.href = "doctors-advices.html";
+                location.href = "hospitals-list.html";
               } else {
                 location.href = `?no=${user.hosNo}`;
               }
