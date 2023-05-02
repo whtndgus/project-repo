@@ -103,14 +103,14 @@ fetch(`http://175.106.99.31/auth/user`, {
           if (myno == communityData.data.doctorNo) {
             $("#uptdel-btns").show();
             $("#title").prop("readOnly", false);
-            $("#content").prop("readOnly", false);
+            $(".content").prop("readOnly", false);
             // $("#category").prop("readOnly", false);
             // $("#createdDate").prop("readOnly", false);
             $("#btn-img-delete").show();
           } else {
             $("#uptdel-btns").hide();
             $("#title").prop("readOnly", true);
-            $("#content").prop("readOnly", true);
+            $(".content").prop("readOnly", true);
             // $("#category").prop("readOnly", true);
             // $("#createdDate").prop("readOnly", true);
             $("#btn-img-delete").hide();
@@ -120,7 +120,7 @@ fetch(`http://175.106.99.31/auth/user`, {
           $("#category").val(categoryName(communityData.data.category));
           $("#doctorName").val(communityData.data.doctorName);
           $("#createdDate").val(communityData.data.createdDate);
-          $("#content").val(communityData.data.content);
+          $(".content").val(communityData.data.content);
     
           // 사진 없을 경우와 있을 경우 이미지 삭제 버튼
           if (communityData.photo[0] != null) {
@@ -243,7 +243,7 @@ fetch(`http://175.106.99.31/auth/user`, {
             no: no,
             title: document.querySelector("#title").value,
             category: categoryNum(document.querySelector("#category").value),
-            content: document.querySelector("#content").value,
+            content: document.querySelector(".content").value,
             filter: 0,
             area: 0,
           }),

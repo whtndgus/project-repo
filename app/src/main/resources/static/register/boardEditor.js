@@ -18,10 +18,11 @@ class Pbtr extends React.Component {
           <th>{this.state.name}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.anos != "null" ? this.state.anos : "-"}</td>
+          <td>{this.state.createdDate}</td>
           <td>
             <button
               type="button"
-              className="btn btn-outline-success"
+              className="btn btn-outline-secondary"
               style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
               onClick={() => {
                 ReactDOM.createRoot($(".new-windows")[0]).render(
@@ -29,10 +30,10 @@ class Pbtr extends React.Component {
                 );
               }}
             >
-              검증
+              조회
             </button>
           </td>
-          <td>{this.state.createdDate}</td>
+         
         </tr>
       );
     } else {
@@ -41,10 +42,11 @@ class Pbtr extends React.Component {
           <th>{this.state.name}</th>
           <td>{this.state.titles}</td>
           <td>{this.state.anos != "null" ? this.state.anos : "-"}</td>
+          <td>{this.state.createdDate}</td>
           <td>
             <button
               type="button"
-              className="btn btn-outline-danger"
+              className="btn btn-outline-secondary"
               style={{ width: 50, height: 25, padding: 0, fontSize: "70%" }}
               onClick={() => {
                 ReactDOM.createRoot($(".new-windows")[0]).render(
@@ -52,10 +54,10 @@ class Pbtr extends React.Component {
                 );
               }}
             >
-              검증필요
+              조회
             </button>
           </td>
-          <td>{this.state.createdDate}</td>
+         
         </tr>
       );
     }
