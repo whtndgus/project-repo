@@ -86,7 +86,7 @@ class BoardLists extends React.Component {
         }}
       >
         <Td data={this.state.answer}></Td>
-        <Td data={this.state.no}></Td>
+        
         <Td data={this.state.title}></Td>
         <Tds data={[this.state.warn, this.state.warnLevel]}></Tds>
         <Td data={this.state.writer}></Td>
@@ -137,24 +137,30 @@ function reflesh(string) {
           let countday = n.getDate() - board.createdDate.split("-")[2];
           let countmon = n.getMonth() - board.createdDate.split("-")[1];
           let str = "";
+          let warnStr="";
+
           if (countmon >= 0) {
             str = "badge bg-danger text-dark";
+            warnStr="warn"
           } else if (countday > 8) {
             str = "badge bg-danger text-dark";
+            warnStr="warn"
           } else if (countday > 5) {
             str = "badge bg-warning";
+            warnStr="warn"
           } else {
             str = "badge bg-success";
+            warnStr="safe"
           }
 
           let obj = {
             answer: board.fedcount,
-            no: board.no,
+           no: board.no,
             title:
               board.title.length > 45
                 ? board.title.substring(0, 43) + ". . ."
                 : board.title,
-            warn: "경고",
+            warn: warnStr,
             warnLevel: str,
             writer:
               board.another.split("@")[0].length > 0
@@ -165,6 +171,7 @@ function reflesh(string) {
           if (board.title.includes($(".search-filter").val())) {
             list.push(<BoardLists props={obj} />);
           }
+          console.log(obj);
         });
         resolve();
       }).then(() => {

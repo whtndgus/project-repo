@@ -37,8 +37,7 @@
 
   <div class="d-flex align-items-center justify-content-between">
     <a class="logo d-flex align-items-center">
-     <!--  <img src="assets/img/newlogo.png" alt=""> -->
-      <span class="d-none d-lg-block">P DC</span>
+      <img src="../register/assets/img/headerlogo-d.png">
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div>
@@ -163,7 +162,7 @@
                   
               </div>
                   <div class="form-floating col-md-12 " style="margin-top: 20px;">
-                    <textarea class="form-control content"  id="floatingTextarea" style="height: 100px;" placeholder="글 내용 입력" > </textarea>
+                    <textarea class="form-control content"  id="txtArea" onkeydown="return onTestChange();" style="height: 100px;" placeholder="글 내용 입력" > </textarea>
                   </div>
                   <div class="col-8 row g-3" style="margin-top: 10px;">
                     <form >
@@ -217,6 +216,21 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script>
+    function onTestChange() {
+        var key = window.event.keyCode;
+    
+        // If the user has pressed enter
+        if (key === 13) {
+            document.getElementById("txtArea").value = document.getElementById("txtArea").value + "\n*";
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    </script>
 
   <!-- Vendor JS Files -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -36,7 +36,7 @@ fetch(`http://175.106.99.31/auth/user`, {
     } else {
       location.href = '../auth/doctors-login.html';
     }
-  })
+  }) 
   .then((user) => {
     if (!user.passwordcheck) location.href = 'doctors-profile-auth.html';
     if (user.hosName !== undefined) {

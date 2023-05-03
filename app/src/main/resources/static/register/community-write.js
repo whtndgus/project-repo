@@ -2,7 +2,7 @@
 let myno = 0;
 
 document.querySelector('#former-btn').onclick = (e) => {
-  location.href= "doctors-community-main"
+  location.href= "doctors-community-main.html"
 }
 
 fetch(`http://175.106.99.31/auth/user`, {
