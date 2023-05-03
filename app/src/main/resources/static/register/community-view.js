@@ -149,7 +149,7 @@ fetch(`http://175.106.99.31/auth/user`, {
           $.each(recommentData.data, function (index, row) {
             if (row.docNo == myno) {
               html += `<tr>
-              <td>${row.recNo}</td>
+            
               <td><p>${row.recContent}</p></td>
               <td>${row.docName}</td> 
               <td>${row.createdDate}</td>
@@ -157,7 +157,7 @@ fetch(`http://175.106.99.31/auth/user`, {
             </tr>\n`;
             } else {
               html += `<tr>
-              <td>${row.recNo}</td>
+             
               <td><p>${row.recContent}</p></td>
               <td>${row.docName}</td> 
               <td>${row.createdDate}</td>
