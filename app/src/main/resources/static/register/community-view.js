@@ -258,7 +258,7 @@ fetch(`http://175.106.99.31/auth/user`, {
             console.error("실패:", error);
           });
       };
-    
+       
       // 게시물 삭제
       document.querySelector("#delete-btn").onclick = (e) => {
         fetch(`http://175.106.99.31/community/${no}`, {
