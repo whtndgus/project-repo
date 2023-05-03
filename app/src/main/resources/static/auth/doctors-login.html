@@ -155,10 +155,11 @@
     function login() {
       // 회원 ID를 쿠키에 보관
       if (document.querySelector('input[type="checkbox"]:checked') != null) {
+        // 쿠키의 유효기간 1주일로 지정(초,분,시,일)
         setCookie('id', document.querySelector('input[name="id"]').value, 60 * 60 * 24 * 7);
       } else {
         setCookie('id', '', 0);
-      }
+      } 
 
 
       const form = document.querySelector('#login-form');

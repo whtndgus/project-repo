@@ -51,7 +51,7 @@ class Dtr extends React.Component {
               증명
             </button>
           </td>
-          <td>{this.state.hospital}</td>
+          <td>{this.state.hosName}</td>
         </tr>
       );
     } else {
@@ -75,7 +75,7 @@ class Dtr extends React.Component {
               증명필요
             </button>
           </td>
-          <td>{this.state.hospital}</td>
+          <td>{this.state.hosName}</td>
         </tr>
       );
     }
