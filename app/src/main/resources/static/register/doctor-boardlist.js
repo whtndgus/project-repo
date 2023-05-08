@@ -146,7 +146,7 @@ function reflesh(string) {
             str = "badge bg-danger text-dark";
             warnStr="warn"
           } else if (countday > 5) {
-            str = "badge bg-warning";
+            str = "badge bg-warning"; 
             warnStr="warn"
           } else {
             str = "badge bg-success";
